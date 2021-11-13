@@ -177,6 +177,34 @@
       </div>
 
 
+       <div class="row pt-2 pb-4" style="width: 100%;">
+
+ <div class="col-12 pb-2">
+   
+<veeno 
+  @slide="sliderChange"
+  v-model="sliderPrice"
+     connect 
+    :handles="[ sliderPrice[0] , sliderPrice[1]]" 
+    :step="1"
+    :range="{ 
+      'min': [  1 ],
+      'max': [  1000 ]
+    }"
+  />
+
+  
+ </div>
+
+ <div class="col-md-6" style="font-size: 14px">
+   Precio Mínimo $ {{ (search.pricemin ) ? parseInt(search.pricemin).toLocaleString('es-MX') : 'Sin precio mínimo' }}
+ </div>
+  <div class="col-md-6" style="font-size: 14px">
+   Precio Maximo $ {{ search.pricemax ? parseInt(search.pricemax).toLocaleString('es-MX') : 'Sin precio maximo' }}
+ </div>
+</div>
+
+
     </template>
 
       <div class="row" style="width: 100%">
@@ -225,15 +253,14 @@
 </template>
 <script>
 
-/* import veeno from 'veeno';
-import '../../../public/css/nouislider.min.css';  
- */
-import { mapGetters } from "vuex";
+import veeno from 'veeno';
+
+import { mapGetters } from 'vuex';
 
 
 export default {
   components:{
-    // veeno
+    veeno
   },
   data() {
     return {

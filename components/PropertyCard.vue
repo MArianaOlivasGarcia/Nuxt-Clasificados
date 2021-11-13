@@ -56,7 +56,8 @@
 
 <script>
 
-// import { normalize } from "@/helpers/helpers";
+import helpers from '@/helpers/helpers'
+
 
 export default {
   props: {
@@ -119,7 +120,7 @@ export default {
         name: 'property-id-name',
         params: {
           id: productoid,
-          name
+          name: helpers.normalize( name )
         }
       });
 

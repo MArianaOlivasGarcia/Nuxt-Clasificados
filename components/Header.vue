@@ -37,16 +37,16 @@
             <li class="nav-item">
                   <NuxtLink to="/" class="link">Inicio</NuxtLink>
             </li>
-            <li class="nav-item">
+            <li class="nav-item" v-if="!userLogged">
                   <NuxtLink to="/register" class="link">Registrate</NuxtLink>
             </li>
-            <li class="nav-item">
+            <li class="nav-item" v-if="!userLogged">
                   <NuxtLink to="/session" class="link">Iniciar sesión</NuxtLink>
             </li>
             <li class="nav-item">
                   <NuxtLink to="/contact" class="link "><i class="icon-headset"></i> Contacto</NuxtLink>
             </li>
-            <li class="nav-item">
+            <li class="nav-item" v-if="userLogged">
               <a class="link icon-top" href="https://www.clasificadoscontacto.com/panel"><i class="fas fa-user-plus"></i>Mi cuenta</a>
             </li>
           </ul>
@@ -60,7 +60,24 @@
   </header>
 </template>
 
- 
+
+<script>
+
+import { mapGetters } from 'vuex';
+
+
+export default {
+  computed: {
+    ...mapGetters({
+      userLogged: 'getUserLogged',
+    }),
+  }  
+}
+
+</script>
+
+
+
 <style scoped>
 .search-nav .rounded-left{
   border-top-left-radius: 25px !important;

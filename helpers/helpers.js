@@ -1,7 +1,7 @@
+const helpers ={}
 
-
-const normalize = () => {
-
+// Format url
+helpers.normalize = (function() {
 	var from = "ÃÀÁÄÂÈÉËÊÌÍÏÎÒÓÖÔÙÚÜÛãàáäâèéëêìíïîòóöôùúüûÑñÇç"
 	var to   = "AAAAAEEEEIIIIOOOOUUUUaaaaaeeeeiiiioooouuuunncc"
 	var mapping = {};
@@ -22,8 +22,6 @@ const normalize = () => {
 		}      
 		return ret.join('').replace( /[^-A-Za-z0-9]+/g, '-' ).toLowerCase();
 	}
-}
+})()
 
-module.exports = {
-    normalize
-}
+export default helpers;

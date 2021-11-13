@@ -155,8 +155,17 @@ export default {
             this.isLoading = true
 
 
-            const { name } = await this.$store.dispatch('sendMain', this.form)
+          const success = await this.$store.dispatch('sendMain', this.form)
 
+           if ( !success ){
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops',
+                text: `No se pudo enviar el mensaje.`
+            })
+           } 
+
+           const { name } = success
     
             Swal.fire({
                 icon: 'success',

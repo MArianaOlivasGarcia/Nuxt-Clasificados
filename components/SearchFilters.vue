@@ -30,7 +30,7 @@
             <div class="form-group">
               <div class="form-field">
                 <select v-model="search.city" class="form-control">
-                  <option :value="''">Seleccione una ciudad</option>
+                  <option value="">Seleccione una ciudad</option>
                   <option
                     v-for="city in cities"
                     :key="city.city"
@@ -96,6 +96,49 @@
       </div>
 
 
+
+
+      <div class="col-sm-12 col-md-12 col-lg-12 pr-1 pl-1">
+        <div class="form-group">
+          <div class="form-field">
+            <div class="select-wrap">
+             
+              <veeno 
+                  @slide="sliderChange"
+                  v-model="sliderPrice"
+                     connect 
+                    :handles="[ sliderPrice[0] , sliderPrice[1]]" 
+                    :step="1"
+                    :range="{ 
+                      'min': [  1 ],
+                      'max': [  1000 ]
+                    }"
+                  />
+
+
+                 <div class="row">
+                   <div class="col-md-6" style="font-size: 12px" >
+                  Precio Mínimo $ {{ search.pricemin ? parseInt(search.pricemin).toLocaleString('es-MX') : 'Sin precio mínimo'  }}
+                </div>
+                 <div class="col-md-6" style="font-size: 12px"  >
+                  Precio Maximo $ {{ search.pricemax ? parseInt(search.pricemax).toLocaleString('es-MX') : 'Sin precio maximo' }}
+                </div>
+                 </div>
+              
+                 <div class=" text-right ">
+                   <span style="font-size: 14px;" 
+                                     @click="searchPrice"
+                                     class="pointer result col-6 p-0">Ver resultados</span>
+                 </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+
       <div class="col-sm-12 col-md-6 col-lg-6 pr-1 pl-1">
         <div class="form-group">
           <div class="form-field">
@@ -105,7 +148,7 @@
               id=""
               class="form-control"
             >
-              <option :value="undefined">Baños</option>
+              <option value="">Baños</option>
               <option value="1">1</option>
               <option value="2">2</option>
               <option value="3">3</option>
@@ -127,7 +170,7 @@
         <div class="form-group">
           <div class="form-field">
             <select v-model="search.bedroom" name="" id="" class="form-control">
-              <option :value="undefined">Recámaras</option>
+              <option value="">Recámaras</option>
               <option value="1">1</option>
               <option value="2">2</option>
               <option value="3">3</option>
@@ -162,9 +205,14 @@
 </template>
 <script>
 
-import { mapGetters } from "vuex";
+import { mapGetters } from 'vuex';
+import veeno from 'veeno';
+
 
 export default {
+    components:{
+      veeno
+    },
     props: {
         states: {
             required: true
@@ -172,6 +220,7 @@ export default {
     },
     data(){
         return {
+            sliderPrice: [1, 1000],
             search: {},
             tags: [],
         }
@@ -283,6 +332,10 @@ export default {
         },
     },
     methods: {
+        sliderChange( e ){
+          this.search.pricemin = e.values[0] * 100000
+          this.search.pricemax = e.values[1] * 100000
+        },
         buildTags( type ) {
 
 
@@ -594,7 +647,7 @@ export default {
             if ( tag.value == value && tag.propertie == 'pricemax' ){
               this.tags.splice(index, 1);
               /* TODO: Verificar */
-            this.search.pricemax = null
+            this.search.pricemax = ''
             }
 
           });
@@ -612,7 +665,7 @@ export default {
             if ( tag.value == value && tag.propertie == 'pricemin' ){
               this.tags.splice(index, 1);
               /* TODO: Verificar */
-            this.search.pricemin = null
+            this.search.pricemin = ''
             }
 
           });
@@ -630,7 +683,7 @@ export default {
 
         }
         },
-         goToResults() {
+        goToResults() {
 
 
       const queries = {
@@ -656,7 +709,17 @@ export default {
         }
       }); 
  
-    },
+        },
+        searchPrice(){
+          this.goToResults()
+
+          if ( !this.search.pricemax  || !this.search.pricemin ){
+            return
+          }
+
+          this.buildTags( 'pricemax' )
+          this.buildTags( 'pricemin' )
+        },
     }
 };
 </script>

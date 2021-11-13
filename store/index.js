@@ -14,6 +14,7 @@ export const state = () => ({
     GET_STATES: '?site=WHFNUnMvempwajFZNUYyaDNkenpFTXRsdnhDR3lDNVNNb3hzQVZDWVJRND0=',
     GET_CITIES: '?site=bSthSTBJZEwrc0xZaWFrcTNLMVdRVElzdmxKU0tpZ3BkcjNSWEtwRjMzTT0=',
     GET_PRODUCTSTYPE: '?site=UHZLWEF6Q2FtZjFjWHNrWDNORjNOQXpJaTRFNG9zOWtoTHNQczRXUW1GMD0=',
+    GET_PROPERTYDETAIL: '?site=elBvMEtpVmt4Qjk1U3dhMXNENDZQZWpQSnJPNjBOM3FxL203d1VRQ2U2TT0=',
     SEARCH_PROPERTIES: '?site=aHoxd1ZFOUdhYlRmNC9zMWRSNmdpTm15VVptaWE4aUhCaysraEk1ZFhJND0=',
     LOGIN_USER: '?site=a0VXNDI5SHhCSlljR1BXaThyL2kyQT09',
     REGISTER_USER: '?site=bERwdld0UGkwNU5iVmh4cDZzbU1BQT09',
@@ -32,15 +33,15 @@ export const state = () => ({
         keyword: '',
         city: '',
         category: '',
-        type: "",
-        outstanding: "",
-        limit: "",
-        pricemax: "",
-        pricemin: "",
-        m2t: "",
-        m2c: "",
-        bedroom: "",
-        bathroom: ""
+        type: '',
+        outstanding: '',
+        limit: '',
+        pricemax: '',
+        pricemin: '',
+        m2t: '',
+        m2c: '',
+        bedroom: '',
+        bathroom: ''
     },
     /* CARGANDO... */
     isLoading: true,
@@ -126,6 +127,21 @@ export const actions = {
         } 
     },
 
+    async getPropertyDetail({ commit, state }, id ){
+
+        commit('setAPI_PARAMS', { body: `folio=${ id }`})
+
+        const config = state.API_PARAMS
+
+        const resp = await fetch(state.API_URL + state.GET_PROPERTYDETAIL, config).then( resp => resp.json() )
+
+        if ( resp.status == 200 ) {
+            return resp.data
+        } 
+        
+
+    },
+
     async getCities({ commit, state }, folio){
 
         commit('setAPI_PARAMS', { body: `folio=${ folio }`})
@@ -140,6 +156,7 @@ export const actions = {
         
 
     },
+
     async getProductsTypeByCityName({ commit, state }, folio){
 
         commit( 'setLoading', true )
@@ -195,7 +212,7 @@ export const actions = {
 
         const config = state.API_PARAMS
 
-        const resp = await fetch(state.API_URL + state.ADD_USER, config).then((res) => res.json())
+        const resp = await fetch(state.API_URL + state.LOGIN_USER, config).then((res) => res.json())
         
         if ( resp.status == 200 ) {
             return resp.data
@@ -224,7 +241,7 @@ export const actions = {
     async sendMain({commit, state}, form ) {
 
         commit('setAPI_PARAMS', { body: `RDx_nombre=${form.name}&RDx_correo=${form.email}&RDx_message=${form.message}&RDx_telefono=${form.phone}` } )
-        // &RDx_productid=${this.idProduct}
+        // &RDx_productid=${30}
 
         const config = state.API_PARAMS
 
@@ -232,6 +249,8 @@ export const actions = {
     
         if ( resp.status == 200 ) {
             return resp.data
+        } else {
+            return null
         }
 
     },

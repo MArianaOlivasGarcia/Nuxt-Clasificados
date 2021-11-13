@@ -94,7 +94,6 @@ export default {
       goTocategory( id ){
         const search = {
           city: this.cityselected,
-          type: id,
           state: this.$route.params.folio,
           category: id
         }

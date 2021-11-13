@@ -14,7 +14,7 @@
             <Loader />
           </div>
           
-          <div class="pt-4 pt-md-0 col-lg-9 col-md-12 px-0 pl-md-4" >
+          <div v-else class="pt-4 pt-md-0 col-lg-9 col-md-12 px-0 pl-md-4" >
             
             <PropertyHorizontalCard 
               v-for="item in properties"
@@ -47,7 +47,7 @@ export default {
 
         this.$store.commit('setSearchFormValues', this.$route.query )
         this.$store.dispatch('searchProducts', this.searchForm )
-        console.log(this.searchForm)
+        // console.log('SEARCHFORM', this.searchForm)
     },
     computed: {
       ...mapGetters({ searchForm: 'getSearFormValues', 
@@ -63,7 +63,7 @@ export default {
               ...this.$route.query
             }
 
-            console.log(search)
+            // console.log(search)
             
             this.$store.dispatch("searchProducts", search );
         }

@@ -29,6 +29,7 @@ export default {
       { rel: 'stylesheet', href: '/css/style.css'},
       { rel: 'stylesheet', href: '/css/lightbox.css'},
       { rel: 'stylesheet', href: '/css/owl.carousel.css'},
+      { rel: 'stylesheet', href: '/css/nouislider.min.css'},
       
     ],
     script: [
@@ -43,8 +44,10 @@ export default {
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
+    { src: '~/plugins/VueAgile', mode: 'client' },
     { src: '~/plugins/Vuelidate' },
     { src: '~/plugins/VueTelInput' },
+    { src: '~/plugins/VueGoogleMaps', ssr: false},
   ],
 
 

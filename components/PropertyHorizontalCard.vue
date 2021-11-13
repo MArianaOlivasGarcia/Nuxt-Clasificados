@@ -36,7 +36,7 @@
             />
           </div>
           <div class="col-md-8">
-            <div class="card-body">
+            <div class="card-body no-gutters">
               <h5 class="card-title">{{ item.name }}</h5>
               <h6 class="card-subtitle mb-2 text-muted">
                 <i class="icon-location1"></i> {{ item.city }} , {{ item.state }}
@@ -91,7 +91,8 @@
 
 
 <script>
-// import services from "@/store/_services";
+
+import helpers from '@/helpers/helpers'
 
 export default {
   props: {
@@ -107,7 +108,17 @@ export default {
   },
   methods: {
     goToProperty() {
-        console.log('Click')
+
+      const { productoid, name } = this.item
+
+      this.$router.push({
+        name: 'property-id-name',
+        params: {
+          id: productoid,
+          name: helpers.normalize( name )
+        }
+      });
+
     },
     imageLoadError() {
         this.noImage = true;
@@ -207,8 +218,12 @@ small {
   font-size: 1.5em;
 }
 
-img {
-  height: 100%;
+.no-gutters {
+  min-height: 230px !important;
+}
+
+img.card-img {
+  height: 100% !important;
 }
 
 </style>

@@ -129,7 +129,7 @@ export default {
 
         this.isLoading = true;
 
-        const { folio } = await this.$store.dispatch('login', this.form)
+        const { folio } =  await this.$store.dispatch('login', this.form)
         
         if ( folio == '0' ){
             this.isLoading = false
