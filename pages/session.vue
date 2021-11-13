@@ -98,6 +98,9 @@ import { required, email } from 'vuelidate/lib/validators'
 import Swal from 'sweetalert2'
 
 export default {
+  head: {
+    titleTemplate: 'Clasificados Contacto | Iniciar Sesión',
+  },
   data() {
     return {
       contact: true,

@@ -20,6 +20,16 @@
 </template>
 
 
+
+<script>
+export default {
+  head: {
+    titleTemplate: 'Clasificados Contacto | Registro exitoso',
+  },
+}
+</script>
+
+
 <style >
 .supsuccess h1{
   font-size: 2rem;

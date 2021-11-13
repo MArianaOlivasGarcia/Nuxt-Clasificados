@@ -76,6 +76,9 @@ import { required, email } from 'vuelidate/lib/validators'
 
 
 export default {
+  head: {
+    titleTemplate: 'Clasificados Contacto | Contancto',
+  },
   data() {
     return {
       form: {

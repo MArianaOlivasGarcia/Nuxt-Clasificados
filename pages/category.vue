@@ -42,6 +42,9 @@
 import { mapGetters } from 'vuex';
 
 export default {
+    head: {
+      titleTemplate: 'Clasificados Contacto | Propiedades',
+    },
     created() {
         this.$store.dispatch('getStates');
 

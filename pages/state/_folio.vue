@@ -79,6 +79,9 @@ import { mapGetters } from "vuex";
 
 
 export default {
+    head: {
+      titleTemplate: 'Clasificados Contacto | Ciudades',
+    },
     data(){
       return {
         name: '',

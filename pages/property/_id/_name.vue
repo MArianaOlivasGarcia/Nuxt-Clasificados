@@ -510,6 +510,9 @@
 import { required, email } from 'vuelidate/lib/validators' 
 
 export default {
+    head: {
+      titleTemplate: 'Clasificados Contacto | Propiedad',
+    },
     data() {
         return {
             property: null,
