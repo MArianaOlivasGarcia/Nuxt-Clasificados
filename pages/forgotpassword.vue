@@ -1,6 +1,6 @@
 <template>
   <div>
-    <section class="ftco-section ResetP pb-5 pt-5 mt-5 mb-5">
+    <section class="ftco-section ForgotP pb-5 pt-5 mt-5 mb-5">
       <div class="container">
         <div class="row justify-content-center">
           <div class="col-md-6 mb-3">
@@ -11,42 +11,41 @@
                   <i class="fas fa-key fa-stack-1x text-white"></i>
                 </span>
               </div>
-
-              <form class="text-left pt-3"
-              v-on:submit.prevent="changePassword">
-                <div class="form-group">
-                  <label class="text-left">Ingresa tu nueva contraseña:</label>
-                  <input
-                    type="password"
-                    class="form-control form-control-sm"
-                    placeholder="Contraseña"
-                    v-model="form.password"
-                  />
-                </div>
-                <div class="form-group">
-                  <label class="text-left">Confirma tu contraseña</label>
-                  <input
-                    type="password"
-                    class="form-control form-control-sm"
-                    placeholder="Confirma tu contraseña"
-                    v-model="form.password2"
-                  />
-                </div>
-                <div v-if="!isLoading">
-                  <button
-                    type="submit"
-                    class="btn btn-primary btn-block"
+              <h1 class="font-weight-bold animated zoomIn">
+                ¿OLVIDASTE TU CONTRASEÑA?
+              </h1>
+              <form  v-on:submit.prevent="goToEmailSend" >
+                <div class="form-group text-left">
+                  <label class="text-left"
+                    >Ingresa tu e-mail y recibirás las instrucciones para
+                    recuperarla:</label
                   >
-                    Aceptar
-                  </button>
+                  <input
+                    type="email"
+                    class="form-control form-control-sm"
+                    placeholder="E-mail"
+                    v-model="form.email"
+                    @blur="$v.form.email.$touch()"
+                  />
+                  <small><span
+                      v-if="
+                        !$v.form.email.required &&
+                        $v.form.email.$dirty"
+                      class="text-danger">El correo electrónico es requerido.
+                    </span></small>
+
+                <small><span
+                      v-if="
+                        !$v.form.email.email &&
+                        $v.form.email.$dirty"
+                      class="text-danger">Correo electrónico inválido.
+                    </span></small>
+
                 </div>
-                <div v-else>
-                  <button
-                    disabled
-                    class="btn btn-primary btn-block">
-                    <i class="fas fa-spinner"></i> CARGANDO...
-                  </button>
-                </div>
+                <button
+                  class="btn btn-primary btn-block"
+                  tupe="submit"
+                  >Enviar</button>
               </form>
             </div>
           </div>
@@ -56,7 +55,12 @@
   </div>
 </template>
 
+
 <script>
+
+import { required, email } from 'vuelidate/lib/validators' 
+import Swal from 'sweetalert2'
+
 export default {
     head: {
         titleTemplate: 'Clasificados Contacto | Recuperar Contraseña',
@@ -64,35 +68,74 @@ export default {
     data() {
         return {
             form: {
-                password: '',
-                password2: '',
+                email: '',
             },
             isLoading: false
         }
     },
+    validations: {
+        form: {
+            email: {
+                required,
+                email
+            }
+        },
+    },
     methods: {
-        changePassword(){
-            console.log('Cambiar password')
+        async goToEmailSend(){
+
+            if ( this.$v.$invalid ) {
+                this.$v.$touch()
+                return 
+            } 
+
+            // API CLASIFICADOS.HOST
+            
+
+            
+            // API CLASIFICADOS.COM
+            const success = await this.$store.dispatch('forgotPassword', this.form )
+            
+            if ( !success ) {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Ocurrio un error',
+                    text: 'Hable con el administrador.'
+                })
+                return
+            }
+
+            const { status } = success
+
+            if ( status != 200 ) {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops!',
+                    text: 'No existe un usuario con ese correo electrónico'
+                })
+            } 
+
+            this.$router.push('/emailsend')
+
         }
     }
 }
 </script>
 
 
-
 <style scoped>
-.ResetP h1 {
+.ForgotP h1 {
   font-size: 1.5rem;
 }
-.ResetP .card {
+.ForgotP .card {
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
   border-radius: 15px;
   border: inherit;
 }
-.ResetP .check {
+.ForgotP .check {
   margin-top: -43px;
 }
-.ResetP .icn-background {
+.ForgotP .icn-background {
   color: #00569d;
 }
 </style>

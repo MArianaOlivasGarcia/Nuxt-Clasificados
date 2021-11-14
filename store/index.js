@@ -19,6 +19,7 @@ export const state = () => ({
     LOGIN_USER: '?site=a0VXNDI5SHhCSlljR1BXaThyL2kyQT09',
     REGISTER_USER: '?site=bERwdld0UGkwNU5iVmh4cDZzbU1BQT09',
     VISIT_CONTACT: '?site=VlRndFVwVVl2MExnVGtxVW4rZzhKZz09',
+    FORGOT_PASSWORD: '?site=bXoyN0tvN2tRdHFLZE5WYUVHYkxyZnBhYUZvSnVrM29LT1NPazRtSUE3az0=',
 
 
     /* Listado de Estados */
@@ -272,6 +273,30 @@ export const actions = {
         } 
   
       },
+      async forgotPassword({commit, state}, form ) {
+
+        commit('setAPI_PARAMS', { body: `email=${form.email}` } )
+
+        const config = state.API_PARAMS
+
+        const resp = await fetch(state.API_URL + state.FORGOT_PASSWORD, config).then((res) => res.json())
+        .catch( e => console.log(e))
+
+        /* Api clasificados.host */
+        if (!resp) {
+            return null
+        }
+        /* FIN Api clasificados.host */
+
+        
+        if ( resp.status != 200 ) {
+            return null
+        } 
+        
+        return resp.data
+        
+
+    },
 
 }
 
