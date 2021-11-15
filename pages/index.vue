@@ -25,8 +25,9 @@
                     <h2 class="mb-4">PROPIEDADES DESTACADAS</h2>
                 </div>
             </div>
-            <div class="row d-flex wow slideInUp">
-                 <!-- <SectionLoader v-if="!properties" />-->
+            
+            <SectionLoader v-if="outstanding.length == 0"/>
+            <div v-else class="row d-flex wow slideInUp">
                 <PropertyCard 
                 v-for="(item, i) in outstanding"
                     :key="i"

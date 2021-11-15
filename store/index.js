@@ -3,7 +3,7 @@
 export const state = () => ({
 
 
-    API_URL: "https://www.clasificadoscontacto.host/api/",
+    API_URL: "https://www.clasificadoscontacto.com/api/",
     API_PARAMS: {
         method: "POST",
         headers: {
@@ -30,19 +30,19 @@ export const state = () => ({
     productsType: [],
     /* Formulario busqueda */
     searchForm: {
-        state: '',
-        keyword: '',
-        city: '',
+        bathroom: '',
+        bedroom: '',
         category: '',
-        type: '',
-        outstanding: '',
+        city: '',
+        keyword: '',
         limit: '',
+        m2c: '',
+        m2t: '',
+        outstanding: '',
         pricemax: '',
         pricemin: '',
-        m2t: '',
-        m2c: '',
-        bedroom: '',
-        bathroom: ''
+        state: '',
+        type: '',
     },
     /* CARGANDO... */
     isLoading: true,
@@ -181,7 +181,7 @@ export const actions = {
       
         commit( 'setLoading', true )
 
-        commit('setAPI_PARAMS', { body: `state=${formData.state}&keyword=${formData.keyword}&city=${formData.city != undefined ? formData.city : ''}&category=${formData.category}&limitProperties=${ formData.limit }&m2t=${formData.m2t}&m2c=${formData.m2c}&bedroom=${formData.bedroom}&bathroom=${formData.bathroom}&pricemax=${formData.pricemax}&pricemin=${formData.pricemin}&type=${formData.type}`})
+        commit('setAPI_PARAMS', { body: `state=${formData.state}&keyword=${formData.keyword}&city=${formData.city != undefined ? formData.city : ''}&category=${formData.category}&limitProperties=${ formData.limit }&m2t=${formData.m2t}&m2c=${formData.m2c}&bedroom=${formData.bedroom}&bathroom=${formData.bathroom}&pricemax=${formData.pricemax}&pricemin=${formData.pricemin}&type=${formData.category}`})
         
         let config = state.API_PARAMS;
         // const outstanding = state.search.outstanding; 
@@ -194,11 +194,6 @@ export const actions = {
         if ( resp.status == 200  ) {
             console.log(resp)
             commit("setPropertiesList", resp.data);
-          /* if(outstanding){
-            commit("setPropertyOutstandingList", resp.data);
-          }else{
-            commit("setPropertyList", resp.data);
-          }  */
         } 
   
   
@@ -260,7 +255,7 @@ export const actions = {
       
         commit( 'setLoading', true )
 
-        commit('setAPI_PARAMS', { body: `limitProperties=${ 12 }`})//&outstanding=${1}
+        commit('setAPI_PARAMS', { body: `limitProperties=${ 12 }&outstanding=${ 1 }`})//&outstanding=${1}
         
         let config = state.API_PARAMS;
       

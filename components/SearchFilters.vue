@@ -227,23 +227,26 @@ export default {
     },
     computed: {
         ...mapGetters({ cities: 'getCitiesList', 
-                        categories: 'getPropertiesTypes' })
+                        categories: 'getPropertiesTypes',
+                        searchFom: 'getSearFormValues' })
     },
     created() {
 
-        this.search = {
-            ...this.$route.query
-        }  
-
+      this.search = {
+        ...this.searchFom,
+        ...this.$route.query
+      }
         for (const property in this.search) {
             if ( this.search[property] || this.search[property] > 0 ) {
                 this.buildTags( property )
             } 
         }
+
     },
     watch: {
         'search.state': {
             async handler(newValue, oldValue) {
+
                 this.$store.dispatch('getCities', this.search.state ) 
 
                 this.goToResults()
@@ -279,11 +282,10 @@ export default {
         },
         'search.m2c': {
             async handler() {
-            
+              
+          
             this.goToResults()
-            if ( !this.search.m2c ){
-              return
-            }
+            if ( !this.search.m2c ) return 
             this.buildTags( 'm2c' )
             
             }
@@ -292,9 +294,7 @@ export default {
             async handler() {
             
               this.goToResults()
-              if ( !this.search.m2t ){
-                return
-              }
+              if ( !this.search.m2t ) return 
               this.buildTags( 'm2t' )
 
             }
@@ -302,7 +302,7 @@ export default {
         'search.bathroom': {
             async handler( ) {
             
-            
+          
             this.goToResults()
             this.buildTags( 'bathroom' )
 
@@ -318,15 +318,12 @@ export default {
         },
         'search.keyword': {
             async handler( ) {
-
-            this.goToResults()
-
-            if ( !this.search.keyword ){
-              return
-            }
-
-            this.buildTags( 'keyword' )
-
+              
+              // if ( this.search.keyword == '' ) return 
+                
+              this.goToResults()
+              if ( !this.search.keyword ) return 
+              this.buildTags( 'keyword' )
 
             }
         },
@@ -465,20 +462,20 @@ export default {
 
         case 'keyword':
 
-
           this.tags?.forEach( (tag, index) => {
-
-
             
               if ( tag.propertie == 'keyword' ){
                 this.tags.splice(index, 1);
                 /* TODO: Verificar */
-              this.search.keyword = null
+              // this.search.keyword = null
               }
 
             });
 
+            
+
             this.tags.push({value: this.search.keyword, title: `${this.search.keyword}`, object: this.search.keyword , propertie: 'keyword' })
+            
           return;
       
 
@@ -632,7 +629,7 @@ export default {
             if ( tag.value == value && tag.propertie == 'keyword' ){
               this.tags.splice(index, 1);
               /* TODO: Verificar */
-            this.search.keyword = null
+            this.search.keyword =  null
             }
 
           });
@@ -687,8 +684,8 @@ export default {
 
 
       const queries = {
+        ...this.search,
         ...this.$route.query,
-        ...this.search
       }
 
       let data = {}
@@ -699,7 +696,7 @@ export default {
         } 
       }
 
-      this.$store.commit('setSearchFormValues', this.search )
+      // this.$store.commit('setSearchFormValues', this.search )
 
       
       this.$router.push({

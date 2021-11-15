@@ -113,6 +113,7 @@ export default {
                     title: 'Oops!',
                     text: 'No existe un usuario con ese correo electrónico'
                 })
+                return
             } 
 
             this.$router.push('/emailsend')

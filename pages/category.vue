@@ -48,9 +48,13 @@ export default {
     created() {
         this.$store.dispatch('getStates');
 
-        this.$store.commit('setSearchFormValues', this.$route.query )
-        this.$store.dispatch('searchProducts', this.searchForm )
-        // console.log('SEARCHFORM', this.searchForm)
+        // this.$store.commit('setSearchFormValues', this.$route.query )
+        const search = {
+          ...this.searchForm,
+          ...this.$route.query
+        }
+        console.log(search)
+        this.$store.dispatch('searchProducts', search )
     },
     computed: {
       ...mapGetters({ searchForm: 'getSearFormValues', 
@@ -66,7 +70,7 @@ export default {
               ...this.$route.query
             }
 
-            // console.log(search)
+            console.log(search)
             
             this.$store.dispatch("searchProducts", search );
         }

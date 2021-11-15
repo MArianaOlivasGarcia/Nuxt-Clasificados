@@ -21,12 +21,20 @@
       <!-- 
           v-bind:src="'https://www.clasificadoscontacto.com/'+item.image"
        -->
-        <img
-          id="propImg"
-          v-bind:src="item.image"
-          :alt="item.alt"
-          class="card-img-top"
-        />
+       <img v-if="!noImage"
+              id="propImg"
+              :src="item.image"
+              :alt="item.alt"
+              class="card-img"
+              @error="imageLoadError"
+            /> 
+            <img v-else
+              id="propImg"
+              src="@/static/images/no-image.jpg"
+              :alt="item.alt"
+              class="card-img"
+            />
+        
       </a>
         <div class="card-body glyphs">
           <h5 class="card-title pricecard">
@@ -66,6 +74,11 @@ export default {
       required: true,
     },
   },
+  data(){
+    return {
+      noImage: false
+    }
+  },
     filters: {
     truncate: function(str) {
       return str.substring(0, 125) + "...";
@@ -93,6 +106,9 @@ export default {
     }
   },
   methods: {
+    imageLoadError() {
+        this.noImage = true;
+    },
     goToProperty() {
 
       const { productoid, name } = this.item
@@ -209,4 +225,11 @@ small {
     border-radius: 10px;
     background-color: #f2e1158f  !important;
 }
+
+img{
+  border-top-left-radius: 1.25rem;
+  border-top-right-radius: 1.25rem;
+}
+
+
 </style>
