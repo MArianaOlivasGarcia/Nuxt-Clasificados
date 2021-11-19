@@ -48,6 +48,7 @@ export default {
     { src: '~/plugins/Vuelidate' },
     { src: '~/plugins/VueTelInput' },
     { src: '~/plugins/VueGoogleMaps', ssr: false},
+    { src: '~/plugins/VueGeolocationApi'},
   ],
 
 
@@ -62,6 +63,7 @@ export default {
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
+    'vue-geolocation-api/nuxt',
   ],
 
   // Build Configuration: https://go.nuxtjs.dev/config-build

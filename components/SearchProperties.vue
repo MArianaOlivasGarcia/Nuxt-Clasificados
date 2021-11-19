@@ -281,7 +281,8 @@ export default {
         m2t: null,
         m2c: null,
         bedroom: '',
-        bathroom: ''
+        bathroom: '',
+        page: 1
       },
       isLoading: true,
       slider : null

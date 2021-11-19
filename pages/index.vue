@@ -55,6 +55,9 @@ export default {
   created(){
     this.$store.dispatch("getStates")
     this.$store.dispatch("getOutstanding")
+  },
+  mounted(){
+
   }
 } 
 

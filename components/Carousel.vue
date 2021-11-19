@@ -6,13 +6,12 @@
             <div v-for="(slide,i) in items" 
                 :key="i" 
                 class="slide">
-                <img  class="card-img image-slide-back" :src="slide.largefile" :alt="slide.alt"/>
+                <img  class="card-img image-slide-back" :src="'https://www.clasificadoscontacto.com/' + slide.largefile" :alt="slide.alt"/>
                 <a class="example-image-link card-img-overlay slide-img-overlay cc_pointer" 
-                    :href="slide.largefile"
+                    :href="'https://www.clasificadoscontacto.com/'+ slide.largefile"
                 data-lightbox="example-set" :data-title="slide.alt">
-                <!-- :href="'https://www.clasificadoscontacto.com/'+slide.largefile"  -->
                     <img class="image-slide" 
-                        :src="slide.largefile" 
+                        :src="'https://www.clasificadoscontacto.com/'+ slide.largefile" 
                         :alt="slide.alt"/>
 
                     <!--<div v-if="info.imagenLogo" class="watermark" :style="'background-image:url('+info.imagenLogo+'); '"> </div>-->
@@ -33,10 +32,9 @@
                     <a v-for="(photo,i) in items" 
                         :key="i" 
                         class="example-image-link animated-link-dark" 
-                        :href="photo.largefile" 
+                        :href="'https://www.clasificadoscontacto.com/'+ photo.largefile" 
                         :data-title="photo.alt">
-                        <span v-if="i==0"> {{ '' }} <i class='fas fa-expand'> </i> </span>
-                        <!-- :href="'https://www.clasificadoscontacto.com/'+photo.largefile"  -->
+                        <span v-if="i==0"> {{ 'Ampliar Fotos ' }} <i class='fas fa-expand'> </i> </span>
                     </a>
                 </b>
             </div>

@@ -1,12 +1,18 @@
 <template>
+
      <main>
-    <Loader v-if="isLoading"/>
-    <div v-else>
+
+    <client-only v-if="!isLoading" >
+
+      
+   
       <!-- GENERAL CONTAINER -->
       <section class="ftco-section detail-section bg-light pb-5">
-        <div class="container">
-          <Carousel :items="property.images" />
-        </div>
+  
+          <div class="container">
+              <Carousel :items="property.images" />
+          </div>
+        
         <div class="container">
           <div class="row">
             <div class="col-md-5">
@@ -497,9 +503,14 @@
           </div>
         </div>
       </section>
-    </div>
+
+      </client-only>
+
+    <Loader v-else/>
+  
   </main>
 </template>
+
 
 
 
@@ -510,12 +521,31 @@
 import { required, email } from 'vuelidate/lib/validators' 
 
 export default {
-    head: {
-      titleTemplate: 'Clasificados Contacto | Propiedad',
+    async asyncData ({ params, store }) {
+
+      const { id } = params
+      
+      // fetch data from API
+      try {
+        const property = await store.dispatch('getPropertyDetail', id)
+
+        return {
+            property,
+        }
+      } catch (error) {
+        // Redirect to error page or 404 depending on server response
+      }
+    },
+    head() {
+      return {
+        title: 'Clasificados Contacto | ' + this.property.productName,
+        meta: [
+          { hid: 'og-title', property: 'og:title', content: this.property.productName },
+        ]
+      } 
     },
     data() {
         return {
-            property: null,
             isLoading: true,
             form: {
                 name: '',
@@ -523,6 +553,7 @@ export default {
                 phone: '',
                 message: '',
             },
+            url: '',
         }
     },
     validations: {
@@ -544,9 +575,14 @@ export default {
     },
     async created() {
 
-        const { id } = this.$route.params
-        this.property = await this.$store.dispatch('getPropertyDetail', id)
-        this.isLoading = false;
+        const { fullPath } = this.$route
+        this.url = `https://clasificadoscontacto.com${ fullPath }`
+
+    },
+    mounted(){
+      if ( this.property ){
+        this.isLoading = false
+      }
     }
 }
 </script>
