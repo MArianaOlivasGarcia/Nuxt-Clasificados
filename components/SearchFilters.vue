@@ -238,7 +238,7 @@ export default {
       }
         for (const property in this.search) {
             if ( this.search[property] || this.search[property] > 0 ) {
-              if ( property != 'page' ) {
+              if ( property != 'page' && property != 'ids' ) {
                 this.buildTags( property )
               }
             } 

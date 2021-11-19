@@ -29,7 +29,7 @@
 
 
           <div  v-if="totalResults > 0 " class="d-flex justify-content-center">
-            <Paginator :totalResults="totalResults" />
+            <Paginator :totalResults="totalResults" :ids="ids"/>
           </div>
 
           </div>

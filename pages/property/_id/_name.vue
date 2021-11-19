@@ -540,6 +540,7 @@ export default {
       return {
         title: 'Clasificados Contacto | ' + this.property.productName,
         meta: [
+          { hid:'description', name:'description', content: this.property.description},
           { hid: 'og-title', property: 'og:title', content: this.property.productName },
         ]
       } 

@@ -19,6 +19,9 @@ export default {
       totalResults: {
         type: Number,
         required: true
+      },
+      ids: {
+        type: String
       }
     },
     data(){
@@ -42,6 +45,8 @@ export default {
         for (let i = 1; i <= this.totalPages; i++) {
             this.pages.push(i)
         }
+
+        console.log(this.ids)
     },
     methods: {
         changePage( page ){
@@ -51,7 +56,8 @@ export default {
                 name: 'category',
                 query: {
                     ...this.$route.query,
-                    page: this.currentPage
+                    page: this.currentPage,
+                    ids: this.ids
                 }
             })
         }
