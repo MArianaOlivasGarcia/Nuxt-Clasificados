@@ -66,6 +66,7 @@ const actions = {
       
         commit( 'setLoading', true )
 
+        // commit('setAPI_PARAMS', { body: ``})
         commit('setAPI_PARAMS', { body: `ids=${ formData.ids }&page=${ formData.page }&state=${formData.state}&keyword=${formData.keyword}&city=${formData.city != undefined ? formData.city : ''}&category=${formData.category}&limitProperties=${ 20 }&m2t=${formData.m2t}&m2c=${formData.m2c}&bedroom=${formData.bedroom}&bathroom=${formData.bathroom}&pricemax=${formData.pricemax}&pricemin=${formData.pricemin}&type=${formData.category}`})
 
         let config = state.API_PARAMS;

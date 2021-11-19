@@ -13,8 +13,12 @@
           <div  v-if="isLoading"  class="loaderPadding col-lg-9 col-md-12 pr-0">
             <Loader />
           </div>
+
+          
           
           <div v-else class="pt-4 pt-md-0 col-lg-9 col-md-12 px-0 pl-md-4" >
+
+            <h5 v-if="totalResults > 0">Total resultados: <span>{{ totalResults }} propiedades.</span></h5>
             
             <PropertyHorizontalCard 
               v-for="item in properties"
@@ -29,7 +33,8 @@
 
 
           <div  v-if="totalResults > 0 " class="d-flex justify-content-center">
-            <Paginator :totalResults="totalResults" :ids="ids"/>
+            <Paginator :totalResults="totalResults"/>
+            <!-- <Paginator :totalResults="totalResults" :ids="ids"/> -->
           </div>
 
           </div>
@@ -57,7 +62,7 @@ export default {
     data(){
       return {
         totalResults: 0,
-        ids: ''
+        // ids: ''
       }
     },
     methods: {
@@ -70,7 +75,7 @@ export default {
         }
         const resp = await  this.$store.dispatch('searchProducts', search )
         this.totalResults = resp.xtr.result
-        this.ids = resp.xtr.ids
+        // this.ids = resp.xtr.ids
       }
     },
     created() {

@@ -20,9 +20,9 @@ export default {
         type: Number,
         required: true
       },
-      ids: {
-        type: String
-      }
+      // ids: {
+      //   type: String
+      // }
     },
     data(){
         return {
@@ -46,20 +46,23 @@ export default {
             this.pages.push(i)
         }
 
-        console.log(this.ids)
+        // console.log(this.ids)
     },
     methods: {
         changePage( page ){
-            this.currentPage = page
+          this.currentPage = page
+          
+          this.$router.push({
+              name: 'category',
+              query: {
+                  ...this.$route.query,
+                  page: this.currentPage,
+                  // ids: this.ids
+              }
+          })
+    
+          window.scroll(0,0)
 
-            this.$router.push({
-                name: 'category',
-                query: {
-                    ...this.$route.query,
-                    page: this.currentPage,
-                    ids: this.ids
-                }
-            })
         }
 
     }
