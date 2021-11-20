@@ -6,12 +6,15 @@
             <div v-for="(slide,i) in items" 
                 :key="i" 
                 class="slide">
-                <img  class="card-img image-slide-back" :src="'https://www.clasificadoscontacto.com/' + slide.largefile" :alt="slide.alt"/>
+                <!-- <img  class="card-img image-slide-back" :src="'https://www.clasificadoscontacto.com/' + slide.largefile" :alt="slide.alt"/> -->
+                <img  class="card-img image-slide-back" :src="slide.largefile" :alt="slide.alt"/>
+                    <!-- :href="'https://www.clasificadoscontacto.com/'+ slide.largefile" -->
                 <a class="example-image-link card-img-overlay slide-img-overlay cc_pointer" 
-                    :href="'https://www.clasificadoscontacto.com/'+ slide.largefile"
+                    :href="slide.largefile"
                 data-lightbox="example-set" :data-title="slide.alt">
+                        <!-- :src="'https://www.clasificadoscontacto.com/'+ slide.largefile"  -->
                     <img class="image-slide" 
-                        :src="'https://www.clasificadoscontacto.com/'+ slide.largefile" 
+                        :src="slide.largefile" 
                         :alt="slide.alt"/>
 
                     <!--<div v-if="info.imagenLogo" class="watermark" :style="'background-image:url('+info.imagenLogo+'); '"> </div>-->
