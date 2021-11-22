@@ -18,7 +18,7 @@
           
           <div v-else class="pt-4 pt-md-0 col-lg-9 col-md-12 px-0 pl-md-4" >
 
-            <h5 v-if="totalResults > 0">Total resultados: <span>{{ totalResults }} propiedades.</span></h5>
+            <h5 v-if="totalResults > 0">Total de resultados: <span>{{ totalResults }} propiedades.</span></h5>
             
             <PropertyHorizontalCard 
               v-for="item in properties"

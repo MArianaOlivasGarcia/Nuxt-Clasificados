@@ -538,11 +538,16 @@ export default {
       }
     },
     head() {
+
+      const { title, description, image } = this.property.meta
+
       return {
-        title: 'Clasificados Contacto | ' + this.property.productName,
+        title: title,
         meta: [
-          { hid:'description', name:'description', content: this.property.description},
-          { hid: 'og-title', property: 'og:title', content: this.property.productName },
+          { hid:'description', name:'description', content: description},
+          { hid: 'og-title', property: 'og:title', content: title },
+          { hid: 'og-description', property: 'og:description', content: description },
+          { hid: 'og-image', property: 'og:image', content: image },
         ]
       } 
     },
