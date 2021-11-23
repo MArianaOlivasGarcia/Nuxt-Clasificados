@@ -82,13 +82,13 @@
                 <div class="row">
                   <div class="col-md-6 mt-3">
                     <div class="share-property text-center">
-                      <a :href="``" target="_blank" class="pl-3 pr-3">
+                      <a :href="`http://www.facebook.com/sharer.php?u=${ url }&t=¡Mira lo que encontré  en Clasificados contacto :D!`" target="_blank" class="pl-3 pr-3">
                         <span class="icon-facebook"></span>
                       </a>
-                      <a :href="``" target="_blank" class="pl-3 pr-3">
+                      <a :href="`https://twitter.com/intent/tweet?url=${ url }&text=¡Mira lo que encontré  en Clasificados contacto :D!`" target="_blank" class="pl-3 pr-3">
                         <span class="icon-twitter"></span>
                       </a>
-                      <a :href="``" target="_blank" class="pl-3 pr-3">
+                      <a :href="`https://api.whatsapp.com/send?text=¡Mira lo que encontré  en Clasificados contacto :D! ${url}`" target="_blank" class="pl-3 pr-3">
                         <span class="icon-whatsapp"></span>
                       </a>
                       <div class="text-center mb-3">
