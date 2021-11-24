@@ -5,7 +5,25 @@
         <div class="row justify-content-center filter-search">
 
 
-            <div class="col-sm-12 col-md-12 col-lg-12 pr-1 pl-1">
+          <div class="col-sm-12 col-md-6 col-lg-6 pr-1 pl-1" >
+            <button type="button" 
+                  style="width: 100%; font-size: 16px !important" 
+                  class="btn btn-opt"
+                  :class="{ 'btn-active': search.operation == 1 }"
+                  @click="changeOperation( 1 )">Venta</button>
+          </div>
+          
+          <div class="col-sm-12 col-md-6 col-lg-6 pr-1 pl-1" >
+            <button type="button" 
+                  style="width: 100%; font-size: 16px !important" 
+                  class="btn btn-opt"
+                  :class="{ 'btn-active': search.operation == 2 }"
+                   @click="changeOperation( 2 )">Renta</button>
+          </div>
+        
+
+
+            <div class="col-sm-12 col-md-12 col-lg-12 pr-1 pl-1 mt-3">
                 <div class="form-group">
                   <div class="form-field">
                     <select 
@@ -193,8 +211,10 @@
             <span class="badge badge-pill p-2 m-1" 
                 v-for="(tag, index) in tags"
                 :key="index">
-                {{ tag.title }} <i class="pointer fas fa-times-circle"
-                @click=" deleteTag( tag.propertie, tag.value )"></i>
+                {{ tag.title }} 
+                <i class="pointer fas fa-times-circle"
+                  v-if="tag.propertie != 'operation'"
+                  @click=" deleteTag( tag.propertie, tag.value )"></i>
             </span>
         </div>
 
@@ -329,13 +349,25 @@ export default {
 
             }
         },
+        'search.operation': {
+            async handler() {
+            
+            this.goToResults()
+            this.buildTags( 'operation' )
+
+            }
+        },
     },
     methods: {
+      changeOperation( operation ) {
+        this.search.operation = operation
+        this.goToResults()
+      },
         sliderChange( e ){
           this.search.pricemin = e.values[0] * 100000
           this.search.pricemax = e.values[1] * 100000
         },
-        buildTags( type ) {
+      buildTags( type ) {
 
 
       switch ( type ) {
@@ -518,6 +550,24 @@ export default {
             this.tags.push({value: this.search.pricemin, title: `$ ${  parseInt(this.search.pricemin).toLocaleString('es-MX') } min`, object: this.search.pricemin , propertie: 'pricemin' })
           return;
 
+        case 'operation':
+
+
+          this.tags?.forEach( (tag, index) => {
+            
+              if ( tag.propertie == 'operation' ){
+                this.tags.splice(index, 1);
+                /* TODO: Verificar */
+              // this.search.pricemax = null
+              }
+
+            });
+
+            
+
+            this.tags.push({value: this.search.operation, title: (this.search.operation == '1') ? 'En venta' : 'En renta', object: this.search.operation , propertie: 'operation' })
+          return;
+
 
 
         default:
@@ -656,7 +706,7 @@ export default {
           return;
 
 
-          case 'pricemin':
+        case 'pricemin':
           
          this.tags?.forEach( (tag, index) => {
             
@@ -672,17 +722,14 @@ export default {
           this.searchPrice()
 
           return;
-
-        
-
           
 
         default:
           break;
 
         }
-        },
-        goToResults() {
+    },
+    goToResults() {
 
 
       const queries = {
@@ -708,8 +755,8 @@ export default {
         }
       }); 
  
-        },
-        searchPrice(){
+    },
+    searchPrice(){
           this.goToResults()
 
           if ( !this.search.pricemax  || !this.search.pricemin ){
@@ -719,7 +766,8 @@ export default {
           this.buildTags( 'pricemax' )
           this.buildTags( 'pricemin' )
         },
-    }
+    },
+    
 };
 </script>
 
@@ -789,6 +837,43 @@ i{
 span.result {
   font-weight: bold;
   color: #00569D ;
+}
+
+
+
+
+
+
+.btn-opt {
+  background-color: #fff !important;
+  color: #00569d !important;
+  border-radius: 20px ;
+  height: 46px !important;
+  font-family: 'Poppins';
+}
+
+.btn-active{
+  background-color: #00569d !important;
+  color: white !important;
+}
+
+
+
+.btn-active:hover{
+  background-color: #043a68 !important;
+  transition: 0.2s all ease-in;
+  color: white !important;
+}
+
+.btn-opt:hover {
+  color: white !important;
+  transition: 0.2s all ease-in;
+  background-color: #043a68 !important;
+}
+
+
+.btn {
+  box-shadow: rgb(99 99 99 / 20%) 0px 2px 8px 0px !important;
 }
 
 </style>

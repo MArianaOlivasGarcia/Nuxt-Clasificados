@@ -41,6 +41,7 @@ const state = {
         pricemin: '',
         state: '',
         type: '',
+        operation: 1,
         page: 1
     },
     /* CARGANDO... */

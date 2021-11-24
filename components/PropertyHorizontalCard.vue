@@ -112,7 +112,7 @@ export default {
       const { productoid, name } = this.item
 
       this.$router.push({
-        name: 'property',
+        path: '/property',
         query: {
           id: productoid,
           name: helpers.normalize( name )

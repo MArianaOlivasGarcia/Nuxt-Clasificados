@@ -528,6 +528,7 @@ export default {
       
       // fetch data from API
       try {
+
         const property = await store.dispatch('getPropertyDetail', id)
 
         return {
@@ -539,16 +540,16 @@ export default {
     },
     head() {
 
-      const { title, description, image } = this.property.meta
+      // const { title, description, image } = this.property.meta
 
       return {
-        title: title,
+        // title: title,
         meta: [
-          { hid:'description', name:'description', content: description},
+          /* { hid:'description', name:'description', content: description},
           { hid: 'og-title', property: 'og:title', content: title },
           { hid: 'og-description', property: 'og:description', content: description },
-          { hid: 'og-image', property: 'og:image', content: image },
-        ]
+          { hid: 'og-image', property: 'og:image', content: image },*/
+        ] 
       } 
     },
     data() {

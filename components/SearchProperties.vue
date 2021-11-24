@@ -12,15 +12,15 @@
             <button type="button" 
                   style="width: 80%; font-size: 16px !important" 
                   class="btn btn-opt"
-                  :class="{ 'btn-active': btnSelected == 'venta' }"
-                  @click="changeType('venta')">Venta</button>
+                  :class="{ 'btn-active': search.operation == 1 }"
+                  @click="changeOperation( 1 )">Venta</button>
           </div>
            <div class="col-6 p-1" >
             <button type="button" 
                   style="width: 80%; font-size: 16px !important" 
                   class="btn btn-opt"
-                  :class="{ 'btn-active': btnSelected == 'renta' }"
-                  @click="changeType('renta')">Renta</button>
+                  :class="{ 'btn-active': search.operation == 2 }"
+                  @click="changeOperation( 2 )">Renta</button>
           </div>
         </div>
 
@@ -266,23 +266,23 @@ export default {
     return {
       sliderPrice: [ 1, 1000 ],
       showAvanzado: false,
-      btnSelected: 'venta',
       search: {
-        state: '150',
-        keyword: null,
         // TODO: Poner en null cuando ningua ciudad llegue en null
-        city: '',
+        bathroom: '',
+        bedroom: '',
         category: 1,
-        type: null,
-        outstanding: null,
+        city: '',
+        keyword: null,
         limit: '',
+        m2c: null,
+        m2t: null,
+        operation: 1,
+        outstanding: null,
+        page: 1,
         pricemax: null,
         pricemin: null,
-        m2t: null,
-        m2c: null,
-        bedroom: '',
-        bathroom: '',
-        page: 1
+        state: '150',
+        type: null,
       },
       isLoading: true,
       slider : null
@@ -295,7 +295,6 @@ export default {
       this.search.pricemax = e.values[1] * 100000
     },
     goToResults() {
-
 
 
       // this.$store.commit("setSearchParams",this.search);
@@ -324,8 +323,8 @@ export default {
       }); */
       
     },
-    changeType( type ) {
-      this.btnSelected = type
+    changeOperation( type ) {
+      this.search.operation = type
       this.search.pricemax = null
     },
     changeShowAvanzada(){
@@ -404,7 +403,9 @@ select, input, button{
 }
 
 
-
+.btn {
+  box-shadow: rgb(99 99 99 / 20%) 0px 2px 8px 0px !important;
+}
 
 .btn-opt {
   background-color: #fff;
