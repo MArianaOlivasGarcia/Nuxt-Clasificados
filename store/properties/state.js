@@ -1,7 +1,7 @@
 
 const state = {
-    // API_URL: "https://www.clasificadoscontacto.com/api/",
-    API_URL: "https://www.clasificadoscontacto.host/api/",
+    API_URL: "https://www.clasificadoscontacto.com/api/",
+    // API_URL: "https://www.clasificadoscontacto.host/api/",
     API_PARAMS: {
         method: "POST",
         headers: {

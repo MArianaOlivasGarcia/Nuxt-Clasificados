@@ -17,11 +17,18 @@ const actions = {
 
         const config = state.API_PARAMS
 
-        const resp = await fetch(state.API_URL + state.GET_PROPERTYDETAIL, config).then( resp => resp.json() )
+        try {
+            const resp = await fetch(state.API_URL + state.GET_PROPERTYDETAIL, config).then( resp => resp.json() )
+
+            if ( resp.status == 200 ) {
+                return resp.data
+            } 
+        } catch( err ){
+            console.log(err)
+        }
+
         
-        if ( resp.status == 200 ) {
-            return resp.data
-        } 
+        
         
 
     },
