@@ -133,10 +133,10 @@ export default {
       }*/
 
       this.$router.push({
-        path: '/property',
-        query: {
-          id: productoid,
-          name: helpers.normalize( name )
+        name: 'property-id',
+        params: {
+          id: productoid/* 
+          name: helpers.normalize( name ) */
         } 
       });
 

@@ -310,7 +310,7 @@ export default {
 
 
      this.$router.push({
-        path: '/category',
+        name: 'category',
         query: {
             ...data
         }

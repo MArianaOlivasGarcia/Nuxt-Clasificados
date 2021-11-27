@@ -13,8 +13,10 @@ const actions = {
 
     async getPropertyDetail({ commit, state }, id ){
 
-        commit('setAPI_PARAMS', { body: `folio=${ id }`})
+        if ( id == undefined ) return
 
+        commit('setAPI_PARAMS', { body: `folio=${ id }`})
+        
         const config = state.API_PARAMS
 
         try {
