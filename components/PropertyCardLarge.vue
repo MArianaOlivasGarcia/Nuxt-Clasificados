@@ -1,7 +1,7 @@
 <template>
   <div
     class="
-      col-md-12
+      col-12
       d-flex
       align-self-stretch
       wow
@@ -17,7 +17,7 @@
     <div class="card">
       <a @click="goToProperty()">
         <div class="row no-gutters">
-          <div class="col-md-4">
+          <div class="col-4">
             <!-- 
               :src="'https://www.clasificadoscontacto.com/'+item.image"
              -->
@@ -35,7 +35,7 @@
               class="card-img"
             />
           </div>
-          <div class="col-md-8">
+          <div class="col-8">
             <div class="card-body no-gutters">
               <h5 class="card-title">{{ item.name }}</h5>
               <h6 class="card-subtitle mb-2 text-muted">
@@ -112,7 +112,7 @@ export default {
       const { productoid, name } = this.item
 
       this.$router.push({
-        name: 'property-id-name',
+        name: 'search-property-id-name',
         params: {
           id: productoid,
           name: helpers.normalize( name )
@@ -136,6 +136,7 @@ export default {
 #propImg {
   height: 250px;
   width: 350px;
+  max-height: 250px;
 }
 @media (max-width: 767px) {
   #contain_tarjet_property {
@@ -167,12 +168,6 @@ h4 {
 }
 .property-hor .icon-location1 {
   color: #f2e115;
-}
-@media only screen and (max-width: 991px) {
-  .property-hor .card-img {
-    border-bottom-left-radius: 0px;
-    border-top-right-radius: 15px;
-  }
 }
 
 .card {

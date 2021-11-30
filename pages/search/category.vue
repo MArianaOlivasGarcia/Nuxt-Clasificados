@@ -1,26 +1,21 @@
 <template>
   <div>
 
-    
     <div  class="mx-5 pl-1">
       <div class="mb-5">  
         <template>
           <div class="row">
-          <div class=" col-lg-3 col-md-12 pt-4 mt-2" v-if="states.length > 0">
-            <SearchFilters 
-              :states="states"/>
-          </div>
-          <div  v-if="isLoading"  class="loaderPadding col-lg-9 col-md-12 pr-0">
+          <div  v-if="isLoading"  class="loaderPadding col-12 pr-0">
             <Loader />
           </div>
 
           
           
-          <div v-else class="pt-4 pt-md-0 col-lg-9 col-md-12 px-0 pl-md-4" >
+          <div v-else class="pt-4 pt-0 col-12 px-0 pl-4" >
 
             <h5 v-if="totalResults > 0">Total de resultados: <span>{{ totalResults }} propiedades.</span></h5>
             
-            <PropertyHorizontalCard 
+            <PropertyCardLarge
               v-for="item in properties"
               :key="item.folio"
               :name="item.folio"
@@ -32,7 +27,7 @@
             </div>
 
 
-          <div  v-if="totalResults > 0 " class="d-flex justify-content-center">
+          <div  v-if="totalResults > 0 " class="d-flex justify-content-center pb-5">
             <Paginator :totalResults="totalResults"/>
             <!-- <Paginator :totalResults="totalResults" :ids="ids"/> -->
           </div>
@@ -54,6 +49,7 @@
 import { mapGetters } from 'vuex';
 
 export default {
+    layout: 'none',
     head() {
       return {
         title: 'Clasificados Contacto | Propiedades',

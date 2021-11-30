@@ -1,7 +1,7 @@
 export default {
   /* target: 'static', */
   // Global page headers: https://go.nuxtjs.dev/config-head
-  ssr: true,
+  ssr: true, // Importante poner en true
   head: {
     title: 'clasificados',
     htmlAttrs: {
@@ -72,8 +72,8 @@ export default {
   build: {
 
   },
-  server: {
+  /* server: {
     host: '192.168.1.102', // default: localhost
     port: 4200
-  }
+  } */
 }
