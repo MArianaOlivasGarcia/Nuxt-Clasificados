@@ -10,7 +10,7 @@
       <section class="ftco-section detail-section bg-light pb-5">
   
           <div class="container">
-              <Carousel :items="property.images" />
+              <CarouselSmall :items="property.images" />
           </div>
         
         <div class="container">
@@ -25,7 +25,7 @@
                 </div>
               </div>
             </div>
-            <div class="col-md-7">
+            <div class="col-md-7 pt-3">
               <div class="listing_details_top_right clearfix">
                 <div class="listing_details_top_product_list_box">
                   <ul class="listing_details_top_product_list list-unstyled">
@@ -521,7 +521,7 @@
 import { required, email } from 'vuelidate/lib/validators' 
 
 export default {
-  layout: 'none',
+    layout: 'none',
     async asyncData ({ params, store }) {
 
       const { id } = params
@@ -732,4 +732,18 @@ export default {
 .descrip{
   font-size: 18px;
 }
+
+
+@media (max-width: 768px) { 
+ 
+  .share-property span {
+    font-size: 18px;
+  }
+
+  .listing_details_top_product_list li span {
+    font-size: 18px;
+  }
+
+}
+
 </style>
