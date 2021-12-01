@@ -133,10 +133,15 @@ export default {
 
 
 <style scoped>
+.card {
+  height: 200px;
+  max-height: 200px;
+}
 #propImg {
-  height: 250px;
+  height: 200px;
   width: 350px;
-  max-height: 250px;
+  max-height: 200px;
+
 }
 @media (max-width: 767px) {
   #contain_tarjet_property {

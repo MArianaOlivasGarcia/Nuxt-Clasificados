@@ -28,7 +28,7 @@
 
 
           <div  v-if="totalResults > 0 " class="d-flex justify-content-center pb-5">
-            <Paginator :totalResults="totalResults"/>
+            <PaginatorNone :totalResults="totalResults"/>
             <!-- <Paginator :totalResults="totalResults" :ids="ids"/> -->
           </div>
 
@@ -67,7 +67,8 @@ export default {
         const search = {
           ...this.searchForm,
           ...this.$route.query,
-          ids: this.ids
+          limit: 10,
+          ids: (this.ids) ? this.ids : ''
         }
         const resp = await  this.$store.dispatch('searchProducts', search )
         this.totalResults = resp.xtr.result
