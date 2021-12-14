@@ -57,7 +57,6 @@ export default {
     this.$store.dispatch("getOutstanding")
   },
   mounted(){
-
   }
 } 
 

@@ -18,6 +18,9 @@ const state = {
     REGISTER_USER: '?site=bERwdld0UGkwNU5iVmh4cDZzbU1BQT09',
     VISIT_CONTACT: '?site=VlRndFVwVVl2MExnVGtxVW4rZzhKZz09',
     FORGOT_PASSWORD: '?site=bXoyN0tvN2tRdHFLZE5WYUVHYkxyZnBhYUZvSnVrM29LT1NPazRtSUE3az0=',
+    VERIFICATE_PASS: '?site=RlhlaWptQy9wSU1oZFhTQU1RMTg4Z0F2VmdZMHRFWnhvL2ExZU1oeWZQYz0=',
+    CHANGE_PASSWORD: '?site=c3ord1N0azN1MVlTSXl2SGRMZHZzVnFlKzZ1QnM3Qm9pNGVUS05MQUVPTT0=',
+
 
 
     /* Listado de Estados */

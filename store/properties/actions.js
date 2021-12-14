@@ -189,6 +189,33 @@ const actions = {
 
     },
 
+
+    async verifyToken({commit, state}, token){
+
+        commit('setAPI_PARAMS', { body: `token=${token}` } )
+
+        const config = state.API_PARAMS
+
+       const resp = await fetch(state.API_URL + state.VERIFICATE_PASS, config).then((res) => res.json())
+ 
+       return resp.data
+        
+    },
+
+
+    async changePassword({commit, state}, values){
+
+        commit('setAPI_PARAMS', { body: `token=${values.token}&RDx_contra=${values.password}` } )
+
+        const config = state.API_PARAMS
+
+        const resp = await fetch(state.API_URL + state.CHANGE_PASSWORD, config).then((res) => res.json())
+
+        return resp.data
+
+
+    }
+
 }
 
 
