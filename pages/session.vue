@@ -77,6 +77,13 @@
                   </button>
                 </div>
 
+                <hr>
+
+                  <div class="row google_btn mb-4">
+
+                     <div id="my-signin2"></div>
+
+                  </div>                  
                 <NuxtLink to="/forgotpassword"><span>¿Olvidaste tu contraseña?</span></NuxtLink> <br>
                 <NuxtLink to="/register"
                   >¿No tienes cuenta?, <span>¡Regístrate!</span></NuxtLink
@@ -90,12 +97,14 @@
 
 </template>
 
-
+<script src="https://apis.google.com/js/platform.js"></script>
 
 <script>
 
 import { required, email } from 'vuelidate/lib/validators' 
 import Swal from 'sweetalert2'
+
+
 
 export default {
   head: {
@@ -109,6 +118,7 @@ export default {
         password: ''
       },
       isLoading: false,
+      auth2: null
     };
   },
   validations: {
@@ -121,6 +131,10 @@ export default {
         required,
       },
     },
+  },
+  mounted() {
+
+    this.renderButton()
   },
   methods: {
     async login() {
@@ -151,6 +165,36 @@ export default {
 
         this.isLoading = false
 
+    },
+    renderButton() {
+      gapi.signin2.render('my-signin2', {
+        'scope': 'profile email',
+        'width': 240,
+        'height': 50,
+        'longtitle': true,
+        'theme': 'dark',
+      });
+      this.startApp()
+    },
+    startApp() {
+      gapi.load('auth2', () => {
+        this.auth2 = gapi.auth2.init({
+          client_id: '855212464867-dbmnlv1mtfm7ratcr00h7lk706027u30.apps.googleusercontent.com',
+          cookiepolicy: 'single_host_origin'
+        });
+        this.attachSignin(document.getElementById('my-signin2'));
+      });
+    },
+    attachSignin(element) {
+      this.auth2.attachClickHandler(element, {},
+        (googleUser) => {
+
+          const token = googleUser.getAuthResponse().id_token;
+          console.log(token);
+
+        }, (error) => {
+          alert(JSON.stringify(error, undefined, 2));
+        });
     }
   }
 };
@@ -198,6 +242,19 @@ export default {
   border-radius: 15px;
   /* box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.075); */
 }
+
+.google_btn {
+  justify-content: center;
+}
+
+.google_btn span{
+  color: white !important;
+}
+
+#not_signed_in8kbhcfzh5fih {
+  color: white;
+}
+
 @media (max-width: 576px) {
   .registration-form form {
     padding: 50px 20px;
@@ -215,4 +272,7 @@ export default {
   box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 50px;
   border-radius: 20px;
 }
+
+
+
 </style>

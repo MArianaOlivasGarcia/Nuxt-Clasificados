@@ -11,7 +11,10 @@ export default {
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
       { hid: 'description', name: 'description', content: '' },
-      { name: 'format-detection', content: 'telephone=no' }
+      { name: 'format-detection', content: 'telephone=no' },
+      { name: 'google-signin-client_id', content: '855212464867-dbmnlv1mtfm7ratcr00h7lk706027u30.apps.googleusercontent.com' },
+
+
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
@@ -37,7 +40,9 @@ export default {
     script: [
       { src: 'https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js' },
       { src: 'https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js' },
+      { src: 'https://apis.google.com/js/platform.js' },
     ]
+
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
@@ -72,8 +77,8 @@ export default {
   build: {
 
   },
-  /* server: {
-    host: '192.168.1.102', // default: localhost
-    port: 4200
-  } */
+  server: {
+   /*  host: '192.168.1.102', */ // default: localhost
+    port: 8080
+  } 
 }
