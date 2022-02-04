@@ -134,7 +134,7 @@ export default {
   },
   mounted() {
 
-    this.renderButton()
+    //this.renderButton()
   },
   methods: {
     async login() {
@@ -160,7 +160,8 @@ export default {
 
         this.$store.commit('setUserLogged', folio)
         localStorage.setItem('folio', folio)
-        window.open('https://www.clasificadoscontacto.com/panel/#/dashboard','_blank')
+        window.location.href = 'https://www.clasificadoscontacto.com/panel/#/dashboard'
+        //window.open()
         
 
         this.isLoading = false
