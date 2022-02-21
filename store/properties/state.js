@@ -10,7 +10,8 @@ const state = {
         body: {},
     },
     GET_STATES: '?site=WHFNUnMvempwajFZNUYyaDNkenpFTXRsdnhDR3lDNVNNb3hzQVZDWVJRND0=',
-    GET_CITIES: '?site=bSthSTBJZEwrc0xZaWFrcTNLMVdRVElzdmxKU0tpZ3BkcjNSWEtwRjMzTT0=',
+   // GET_CITIES: '?site=bSthSTBJZEwrc0xZaWFrcTNLMVdRVElzdmxKU0tpZ3BkcjNSWEtwRjMzTT0=',
+    GET_CITIES: '?site=YkVKanNRdmE3U29DV09kVHJxdkVIT3pKNnRkVU0rQXJxRHVpQUFJTmdnZz0=',
     GET_PRODUCTSTYPE: '?site=UHZLWEF6Q2FtZjFjWHNrWDNORjNOQXpJaTRFNG9zOWtoTHNQczRXUW1GMD0=',
     GET_PROPERTYDETAIL: '?site=elBvMEtpVmt4Qjk1U3dhMXNENDZQZWpQSnJPNjBOM3FxL203d1VRQ2U2TT0=',
     SEARCH_PROPERTIES: '?site=aHoxd1ZFOUdhYlRmNC9zMWRSNmdpTm15VVptaWE4aUhCaysraEk1ZFhJND0=',
@@ -20,13 +21,20 @@ const state = {
     FORGOT_PASSWORD: '?site=bXoyN0tvN2tRdHFLZE5WYUVHYkxyZnBhYUZvSnVrM29LT1NPazRtSUE3az0=',
     VERIFICATE_PASS: '?site=RlhlaWptQy9wSU1oZFhTQU1RMTg4Z0F2VmdZMHRFWnhvL2ExZU1oeWZQYz0=',
     CHANGE_PASSWORD: '?site=c3ord1N0azN1MVlTSXl2SGRMZHZzVnFlKzZ1QnM3Qm9pNGVUS05MQUVPTT0=',
+    GET_COLONIAS: '?site=ditYbW90MU1LRGp5OTlkTkpET3F1dz09',
 
-
+    userStateLocation: {
+        folio: "61",
+        image: "https://www.clasificadoscontacto.com/view/assets/images/states/DF.jpg",
+        name: "Distrito Federal"
+    },
 
     /* Listado de Estados */
     statesList: [],
     /* Listado de Ciudades */
     citiesList: [],
+    /* Listado de Colonias */
+    coloniasList: [],
     /* Listado de propiedades por tipo, obtenidas por nombre de la ciudad*/
     productsType: [],
     /* Formulario busqueda */
@@ -43,8 +51,9 @@ const state = {
         pricemax: '',
         pricemin: '',
         state: '',
+        suburb: '',
         type: '',
-        operation: 1,
+        operation: null, //1
         page: 1
     },
     /* CARGANDO... */
@@ -75,7 +84,8 @@ const state = {
         { name: 'Anexo ',             value: 18 },
     ],
     /* Folio del usuario logeado */
-    userLogged: null
+    userLogged: null,
+    showSearchGeneral: false
 
 }
 

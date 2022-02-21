@@ -326,7 +326,7 @@ h1, h2, h3, h4, h5, h6,
   color: inherit; }
 
 h1, .h1 {
-  font-size: 2.5rem; }
+  font-size: 2.4rem; }
 
 h2, .h2 {
   font-size: 2rem; }
@@ -7371,6 +7371,7 @@ body {
   font-size: 16px;
   line-height: 1.8;
   font-weight: 400;
+  width: 100% !important;
   color: #212529; }
   body.menu-show {
     overflow: hidden;
@@ -7833,7 +7834,7 @@ h1, h2, h3, h4, h5,
   .btn.btn-primary {
     background: #00569f !important;
     border: 1px solid #00569f;
-    border-radius: 10px;
+    border-radius: 20px;
     color: #fff !important; }
 
     .btn.btn-primary:hover {
@@ -9588,9 +9589,6 @@ border-top: 3px solid #ffd600;}
 .swal2-close:focus {
     outline: none !important;
     box-shadow: none !important;
-}
-.bg-softcc{
-  background-color: #eff1f6; 
 }
 
 

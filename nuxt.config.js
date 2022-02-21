@@ -35,6 +35,7 @@ export default {
       { rel: 'stylesheet', href: '/css/lightbox.css'},
       { rel: 'stylesheet', href: '/css/owl.carousel.css'},
       { rel: 'stylesheet', href: '/css/nouislider.min.css'},
+      { rel: 'stylesheet', href: 'https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css'}
       
     ],
     script: [
@@ -56,12 +57,21 @@ export default {
     { src: '~/plugins/VueTelInput' },
     { src: '~/plugins/VueGoogleMaps', ssr: false},
     { src: '~/plugins/VueGeolocationApi'},    
-    { src: '~/plugins/VueRangeSlider.js', ssr: false }
+    { src: '~/plugins/VueGeolocation'},    
+    { src: '~/plugins/VueSliderHorizontal'},    
+    { src: '~/plugins/VueRangeSlider.js', ssr: false },
+    { src: '~/plugins/VueSliderRange.js', ssr: false }
+
   ],
 
 
   // Auto import components: https://go.nuxtjs.dev/config-components
-  components: true,
+  components: {
+    dirs: [
+      '~/components',
+      '~/components/searchs/'
+    ]
+  },
 
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
   buildModules: [
@@ -83,5 +93,5 @@ export default {
   server: {
    /*  host: '192.168.1.102', */ // default: localhost
     port: 8080
-  } 
+  }
 }

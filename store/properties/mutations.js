@@ -2,6 +2,10 @@
 
 const mutations = {
 
+    userStateLocation(state, element){
+        state.userStateLocation = element
+    },
+
     setUserLogged(state, folio){
         state.userLogged = folio
     },
@@ -10,6 +14,9 @@ const mutations = {
     },
     setCitiesList(state, cities){
         state.citiesList = cities
+    },
+    setColoniasList(state, colonias){
+        state.coloniasList = colonias
     },
     setAPI_PARAMS(state, api_params){
         state.API_PARAMS = {
@@ -34,6 +41,16 @@ const mutations = {
     },
     setOutstanding(state, properties){
         state.outstanding = properties
+    },
+
+    setShowSearchGeneral( state, value ) {
+        state.showSearchGeneral = value
+    },
+
+
+
+    resetSuburs( state, value ) {
+        state.coloniasList = value
     }
 
 }

@@ -4,8 +4,7 @@
       class="
         navbar navbar-expand-lg navbar-dark
         ftco_navbar ftco-navbar-light
-        sleep
-      "
+        sleep"
       id="ftco-navbar"
     >
       <div class="container p-0">
@@ -17,6 +16,14 @@
             />
           </NuxtLink>
         </div>
+
+         <div class="search-btn">
+            <img 
+              v-on:click="openSearch()"
+              height="28" 
+              src="https://img.icons8.com/ios/2x/ffffff/search.png" alt="">
+          </div>
+
         
         <button
           class="navbar-toggler collapsed"
@@ -25,26 +32,25 @@
           data-target="#ftco-nav"
           aria-controls="ftco-nav"
           aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
+          aria-label="Toggle navigation">
           <span class="mr-3 oi oi-menu"></span>
         </button>
 
-
+         
 
         <div class="collapse navbar-collapse" id="ftco-nav">
-          <ul class="navbar-nav ml-auto header">
+          <ul class="navbar-nav ml-auto header" >
             <li class="nav-item">
                   <NuxtLink to="/" class="link">Inicio</NuxtLink>
             </li>
             <li class="nav-item" v-if="!userLogged">
-                  <NuxtLink to="/register" class="link">Registrate</NuxtLink>
+                  <NuxtLink to="/registro.html" class="link">Registrate</NuxtLink>
             </li>
             <li class="nav-item" v-if="!userLogged">
-                  <NuxtLink to="/session" class="link">Iniciar sesión</NuxtLink>
+                  <NuxtLink to="/sesion.html" class="link">Iniciar sesión</NuxtLink>
             </li>
             <li class="nav-item">
-                  <NuxtLink to="/contact" class="link "><i class="icon-headset"></i> Contacto</NuxtLink>
+                  <NuxtLink to="/#contacto" class="link "><i class="icon-headset"></i> Contacto</NuxtLink>
             </li>
             <li class="nav-item" v-if="userLogged">
               <a class="link icon-top" href="https://www.clasificadoscontacto.com/panel"><i class="fas fa-user-plus"></i>Mi cuenta</a>
@@ -70,8 +76,14 @@ export default {
   computed: {
     ...mapGetters({
       userLogged: 'getUserLogged',
+      showSearchGeneral: 'getShowSearchGeneral',
     }),
-  }  
+  },
+  methods: {
+    openSearch() {
+      this.$store.commit('setShowSearchGeneral', true )
+    }
+  }
 }
 
 </script>
@@ -127,6 +139,12 @@ a.nuxt-link-exact-active {
   color:#f2e115 !important;
 }
 
+.header {
+  justify-content: center;
+    display: flex;
+    align-items: center;
+}
+
 
 .header-logo {
   width: 15vw;
@@ -165,4 +183,21 @@ button.navbar-toggler span {
   font-style: "Extra-light";
   font-size: 15px;
 }
+
+
+.search-btn {
+  cursor: pointer; 
+  -webkit-transform: rotate(15deg) scale(1.4);
+	transform: rotate(15deg) scale(1.4);
+	-webkit-transition: .3s ease-in-out;
+	transition: .3s ease-in-out;
+
+}
+
+.search-btn:hover {
+	-webkit-transform: rotate(0) scale(1);
+	transform: rotate(0) scale(1);
+}
+
+
 </style>

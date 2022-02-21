@@ -1,5 +1,5 @@
 <template>
-  <div
+  <!-- <div
     class="
       col-xl-3
       col-lg-4
@@ -13,7 +13,7 @@
       pb-3
       pt-3
     "
-  >
+  >  -->
     <div class="card">
       <a class="card-thumb" @click="goToProperty()">
       <div  class="offer-type-wrap"><span  class="offer-type">{{item.tipo}}</span></div>
@@ -42,7 +42,7 @@
           </h5>
           <div class="postcard-bar"></div>
           <h6> {{item.operation}} </h6>
-          <p class="card-text">{{ item.name }}</p>
+          <p class="card-text">{{ item.name.length > 80 ? item.name.substr(0, 80) + '...' : item.name }}</p>
           <p class="card-text text-center"
           v-if="
             item.m2c != 0 ||
@@ -59,7 +59,7 @@
           </p>
         </div>
     </div>
-  </div>
+  <!-- </div> -->
 </template>
 
 <script>
@@ -113,30 +113,10 @@ export default {
 
       const { productoid, name } = this.item
 
-
-      /*let namePropFilt = normalize(this.item.name);
-      let folio = this.item.productoid;
-      let namePage="PropertyDetail";
-      let params;
-
-      if (this.nameRoute=='Agent') {
-        namePage="PropertyAgent";
-        params={
-          folio,
-          agentId:this.agent.folio
-        }
-      }else{
-        params={
-          folio,
-          namePropFilt
-        }
-      }*/
-
       this.$router.push({
-        name: 'property-id-name',
+        name: 'bienesraices-propiedad-id',
         params: {
-          id: productoid,
-          name: helpers.normalize( name )
+          id: `${helpers.normalize( name )}_${productoid}.html`
         } 
       });
 
@@ -167,6 +147,8 @@ export default {
   top: 0px;
   transition: 0.3s all ease;
   cursor: pointer;
+  /* EDITAR  */
+  height: 34rem !important; 
 }
 .postcard-bar {
   width: 50px;
@@ -184,6 +166,11 @@ export default {
     rgba(17, 17, 26, 0.05) 0px 8px 32px;
   top: -6px;
 }
+
+.card-text {
+  text-align: justify;
+}
+
 .pricecard {
   font-weight: 600;
 }

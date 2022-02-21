@@ -6,12 +6,17 @@
   	<a :href="`https://wa.me/+52${ this.number }?text=${ text }`" 
       class="fab shadow" target="_blank"> 
       <i class="fab fa-whatsapp"></i>
-    </a>
+    </a> 
+
+
 
 </template>
 
 <script>
+
+
 export default {
+
   props: {
       whatsApp: {
           type: String,

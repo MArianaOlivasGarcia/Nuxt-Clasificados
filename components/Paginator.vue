@@ -34,7 +34,7 @@ export default {
         }
     },
     created(){
-        const { page } = this.$route.query;
+        const page = this.$route.query.pagina;
         this.totalPages = Math.trunc(this.totalResults / 20) + 1
         this.lastPage = this.totalPages
         
@@ -53,11 +53,10 @@ export default {
           this.currentPage = page
           
           this.$router.push({
-              name: 'category',
+              name: 'bienesraices-search',
+              params: this.$route.params,
               query: {
-                  ...this.$route.query,
-                  page: this.currentPage,
-                  // ids: this.ids
+                  pagina: this.currentPage,
               }
           })
     

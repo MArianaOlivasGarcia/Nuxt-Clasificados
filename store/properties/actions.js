@@ -8,6 +8,38 @@ const actions = {
 
         if ( resp.status == 200 && resp.data.length > 0 ) {
             commit('setStatesList', resp.data)
+            return resp.data
+        } 
+    },
+
+    async getCities({ commit, state }, folio){
+
+        commit('setAPI_PARAMS', { body: `id=${ folio }`})
+
+        const config = state.API_PARAMS
+
+        const resp = await fetch(state.API_URL + state.GET_CITIES, config).then( resp => resp.json() )
+
+        if ( resp.status == 200 && resp.data.length > 0 ) {
+            commit('setCitiesList', resp.data)
+            console.log(resp.data)
+        } 
+        
+
+    },
+
+    async getColonias({ commit, state }, folio ) {
+
+        commit('setAPI_PARAMS', { body: `id=${ folio }`})
+
+        const config = state.API_PARAMS
+
+        const resp = await fetch(state.API_URL + state.GET_COLONIAS, config).then( resp => resp.json() )
+        console.log(resp)
+        if ( resp.status == 200 && resp.data.length > 0 ) {
+            commit('setColoniasList', resp.data)
+            console.log(resp)
+            return resp.data
         } 
     },
 
@@ -35,20 +67,7 @@ const actions = {
 
     },
 
-    async getCities({ commit, state }, folio){
-
-        commit('setAPI_PARAMS', { body: `folio=${ folio }`})
-
-        const config = state.API_PARAMS
-
-        const resp = await fetch(state.API_URL + state.GET_CITIES, config).then( resp => resp.json() )
-
-        if ( resp.status == 200 && resp.data.length > 0 ) {
-            commit('setCitiesList', resp.data)
-        } 
-        
-
-    },
+    
 
     async getProductsTypeByCityName({ commit, state }, folio){
 
@@ -63,9 +82,9 @@ const actions = {
         
         commit( 'setLoading', false )
 
-
-        if ( resp.status == 200 && resp.data.length > 0 ) {
+        if ( resp.status == 200) {
             commit('setProductsTypeByCityName', resp.data)
+            console.log(resp.data)
         }
 
     },
@@ -75,16 +94,17 @@ const actions = {
         commit( 'setLoading', true )
 
         console.log(formData)
-
+        // establecer el formulario al state
+        commit('setSearchFormValues', formData)
         // commit('setAPI_PARAMS', { body: ``})
-        commit('setAPI_PARAMS', { body: `ids=${ formData.ids ? formData.ids  : ''}&page=${ formData.page }&state=${formData.state}&keyword=${formData.keyword}&city=${formData.city != undefined ? formData.city : ''}&category=${formData.category}&limitProperties=${ formData.limit ? formData.limit : 20 }&m2t=${formData.m2t}&m2c=${formData.m2c}&bedroom=${formData.bedroom}&bathroom=${formData.bathroom}&pricemax=${formData.pricemax}&pricemin=${formData.pricemin}&type=${formData.category}&operation=${formData.operation}&folio=${formData.folio ? formData.folio : ''}`})
+        commit('setAPI_PARAMS', { body: `ids=${ formData.ids ? formData.ids  : ''}&page=${ formData.page ? formData.page : '' }&state=${formData.state ? formData.state : ''}&keyword=${formData.keyword ? formData.keyword : ''}&municipality=${formData.city != undefined ? formData.city : ''}&category=${formData.category ? formData.category : ''}&limitProperties=${ formData.limit ? formData.limit : 20 }&m2t=${formData.m2t ? formData.m2t : ''}&m2c=${formData.m2c ? formData.m2c : ''}&bedroom=${formData.bedroom ? formData.bedroom : ''}&bathroom=${formData.bathroom ? formData.bathroom : ''}&pricemax=${formData.pricemax ? formData.pricemax : ''}&pricemin=${formData.pricemin ? formData.pricemin : ''}&type=${formData.category ? formData.category : ''}&operation=${formData.operation  ? formData.operation : ''}&folio=${formData.folio ? formData.folio : ''}&outstanding=${ formData.outstanding ? formData.outstanding : '' }&suburb=${ formData.suburb ? formData.suburb : '' }`})
 
-        
 
         let config = state.API_PARAMS;
       
         const resp = await fetch(state.API_URL + state.SEARCH_PROPERTIES, config).then((res) => res.json())
         
+        console.log('SE LLAMO')
         console.log(resp.resp)
 
         commit( 'setLoading', false )
@@ -132,8 +152,8 @@ const actions = {
 
     async sendMain({commit, state}, form ) {
 
-        commit('setAPI_PARAMS', { body: `RDx_nombre=${form.name}&RDx_correo=${form.email}&RDx_message=${form.message}&RDx_telefono=${form.phone}` } )
-        // &RDx_productid=${30}
+        commit('setAPI_PARAMS', { body: `RDx_nombre=${form.name}&RDx_correo=${form.email}&RDx_message=${form.message}&RDx_telefono=${form.phone}&RDx_productid=${form.id}` } )
+      
 
         const config = state.API_PARAMS
 
@@ -214,8 +234,28 @@ const actions = {
         return resp.data
 
 
-    }
+    },
 
+
+    async getNews({ commit, state } ) {
+
+      
+
+        const resp = await fetch('https://api.newscatcherapi.com/v2/search?q=inmobiliarias&page_size=4&countries=mx', {
+            headers: {
+                'Content-Type': 'application/json',
+                'x-api-key': '8ju2OkZitjD-igaZTJ99_51lRRgBsQS9Vmq50FkAD_c'
+            }
+        }).then( resp => resp.json() )
+        // console.log(resp.articles)
+        if ( resp.status == 'error'){
+            return null;
+        } else {
+            return resp.articles;
+        }
+
+        
+    },
 }
 
 

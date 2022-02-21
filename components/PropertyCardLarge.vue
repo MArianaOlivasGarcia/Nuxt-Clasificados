@@ -111,11 +111,10 @@ export default {
 
       const { productoid, name } = this.item
 
-      this.$router.push({
-        name: 'search-property-id-name',
+       this.$router.push({
+        name: 'bienesraices-propiedad-id',
         params: {
-          id: productoid,
-          name: helpers.normalize( name )
+          id: `${helpers.normalize( name )}_${productoid}.html`
         } 
       });
 

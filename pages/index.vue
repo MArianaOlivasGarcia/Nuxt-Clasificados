@@ -1,24 +1,21 @@
 <template>
     <main class="clean">
+    
+    <section class="p-0">
         <BannerHome/>
+    </section>
+
+    <!-- <section class="p-0" id="categories">
+        <Categories />
+    </section> -->
+
+
     <section class="block-info bg-light pb-2 pt-4">
         <Info/>
     </section>
-    <section class="ftco-section bg-cc pb-4 mt-2 wow slideInUp">
-        <div class="container">
-            <div class="col-md-12 heading-section text-center mb-2">
-                <h2 class="mb-4">ESTADOS</h2>
-            </div>
-            <div class="row d-flex wow slideInUp">
-                <State 
-                    v-for="state in states"
-                    :key="state.id"
-                    :state="state"
-                />
-            </div>
-        </div>
-    </section>
-    <section class="ftco-section bg-light mb-4 wow slideInUp">
+
+
+ <section class="ftco-section bg-light mb-4 wow slideInUp" >
         <div class="container">
             <div class="row justify-content-center mb-2 pb-3">
                 <div class="col-md-7 heading-section text-center ftco-animate fadeInUp ftco-animated">
@@ -28,14 +25,110 @@
             
             <SectionLoader v-if="outstanding.length == 0"/>
             <div v-else class="row d-flex wow slideInUp">
-                <PropertyCard 
-                v-for="(item, i) in outstanding"
-                    :key="i"
-                    :item="item"
-                /> 
+
+                <div v-for="(item, i) in outstanding" :key="i"
+                    class="
+                    col-xl-3
+                    col-lg-4
+                    col-md-6
+                    col-sm-12
+                    d-flex
+                    align-self-stretch
+                    ftco-animate
+                    cardgeneral
+                    mb-3
+                    pb-3
+                    pt-3">  
+                    <PropertyCard 
+                        
+                        :item="item"
+                    /> 
+                </div>
             </div>
         </div>
+    </section> 
+
+    <!-- <section class="pb-2">
+        <PropertiesSliderHorizontal :title="'INMUEBLES EN VENTA EN'"/>
     </section>
+
+
+
+     <section class="pb-2">
+        <PropertiesSliderHorizontal :title="'DESARROLLOS EN'"/>
+    </section>
+ -->
+
+
+       
+
+    <div class="container container mt-4 pt-5 pb-4" >
+        <div class="row centrar" style="align-items: center;">
+            <div class="col-md-6 text-center">
+                <h4 class="mb-3" style="font-weight: bold;">AGENCIAS INMOBILIARIAS, BROKERS Y CLIENTES SATISFECHOS</h4>
+                <p>Ofreciendo siempre la mejor solución para nuestros diferentes tipos de clientes.</p>
+            </div>
+            <div class="col-md-6 text-center">
+
+                <video controls autoplay muted style="box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px, rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px;">
+                    <source src="@/static/video.mp4" type="video/mp4">
+                    Tu navegador no soporta este video.
+                </video>
+                <NuxtLink
+                  to="/register"
+                  class="btn btn-primary mt-3 p-2"
+                  style="box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px !important;">
+                  ¡Quiero publicar un anuncio! 
+                </NuxtLink>
+
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <div class=" mt-4 pt-5 pb-4" style="background-color: #FFFDF0">
+        <div class="container">
+
+        <div class="row centrar">
+            <div class="col-md-6 text-center">
+                <p style="font-weight: bold;">¡Accede a nuestros recursos gratuitos!<br>Encontrarás guías, checklist o ebooks para descargar 
+                que te ayudará para verder tu casa en el menor tiempo posible.</p>
+            </div>
+            <div class="col-md-6 text-center">
+                <button
+                  class="btn btn-primary">
+                  ¡Quiero saber más! 
+                </button>
+            </div>
+        </div>
+        </div>
+
+    </div>
+
+
+
+    <section class="p-0">
+        <Companies />
+    </section>
+
+
+    <section class="p-0">
+        <News />
+    </section>
+
+    <section class="p-0" id="contacto">
+        <ContactSection :v="$v" :form="form" />
+    </section> 
+   
+    <section class="ftco-section bg-cc pb-4 mt-2 wow slideInUp">
+        <StatesList />
+    </section>
+
+
+
+
 
     </main>
 </template>
@@ -43,21 +136,49 @@
 <script>
 
 import { mapGetters } from "vuex";
+import { required, email } from 'vuelidate/lib/validators' 
+
 
 export default {
   head: {
     titleTemplate: 'Clasificados Contacto | El buscador',
   },
   computed: {
-      ...mapGetters({ states: 'getStatesList',
-                    outstanding: 'getOutstanding' }),
+      ...mapGetters({ outstanding: 'getOutstanding'}),
   },
   created(){
-    this.$store.dispatch("getStates")
     this.$store.dispatch("getOutstanding")
   },
   mounted(){
-  }
+  },
+ data() {
+    return {
+      form: {
+          name: '',
+          email: '',
+          phone: '',
+          message: '',
+      },
+    }
+  },
+  validations: {
+      form: {
+          name: {
+              required,
+          },
+          email: {
+              required,
+              email,
+          },
+          phone: {
+              required,
+          },
+          message: {
+              required,
+          },
+      },
+  },
+  
 } 
 
 </script>
@@ -70,6 +191,15 @@ export default {
 
 .img-home{
 width: 100% !important;
+}
+
+
+.states-container {
+    justify-content: center;
+}
+
+video {
+    width: 100%;
 }
 
 </style>

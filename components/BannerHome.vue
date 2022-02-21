@@ -13,6 +13,7 @@
       <div class="container">
 
         <div class="row no-gutters slider-text align-items-center justify-content-center">
+          
           <div class="col-lg-8 col-md-12 col-sm-12 ftco-animate text-center">
                 <div class="d-block d-sm-block d-md-block d-lg-none ">
                     <img src="@/static/images/examples/sideimage.png" class="img-lone" alt="" />
@@ -22,15 +23,18 @@
               <div class="container">
                 <div class="row justify-content-center">
                   <div class="col-md-12 search-wrap p-0">
+                  
                     <SearchHome />
                   </div>
                 </div>
               </div>
             </section>
           </div>
+          
           <div class="col-lg-4 col-md-12 text-right d-none d-lg-block d-md-none ftco-animated fadeInRight">
             <img src="@/static/images/examples/sideimage.png" alt="" />
           </div>
+
         </div>
 
 
@@ -41,7 +45,22 @@
 
 
 <script>
+
+import { mapGetters } from 'vuex';
+
 export default {
+  computed: {
+      ...mapGetters({ userStateLocation: 'getUserStateLocation' }),
+  },
+  watch: {
+    'userStateLocation': {
+      async handler(newValue, oldValue) {
+        console.log('bambio el userlocation');
+        console.log(newValue);
+        console.log(oldValue);
+      }
+    }
+  }
 }
 </script>
 

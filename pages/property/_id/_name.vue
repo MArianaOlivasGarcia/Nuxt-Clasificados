@@ -21,7 +21,7 @@
                   <h1>{{property.productName}}</h1>
                   <span> <i class="icon-location"></i> {{property.city}} , {{property.state}} </span>
                 
-                  <h4>${{property.price}} {{property.currency}}</h4>
+                  <h4>$ {{Number(property.price).toLocaleString() }} {{property.currency}}</h4>
                 </div>
               </div>
             </div>
@@ -621,9 +621,6 @@ export default {
 .property-info img {
   width: 30% !important;
 }
-.property-info .bg-softcc {
-  border-radius: 15px;
-}
 .listings_details_features_list li {
   position: relative;
   display: block;
@@ -730,5 +727,11 @@ export default {
 }
 .descrip{
   font-size: 18px;
+}
+
+.contact-section {
+  background: #EEF1F5;
+  padding: 10px;
+  border-radius: 20px;
 }
 </style>

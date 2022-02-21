@@ -37,7 +37,7 @@
           </div>
           <div class="col-md-8">
             <div class="card-body no-gutters">
-              <h5 class="card-title">{{ item.name }}</h5>
+              <h5 class="card-title mt-0" style="text-align: justify;">{{ item.name.length > 220 ? item.name.substr(0, 220) + '...' : item.name }}</h5>
               <h6 class="card-subtitle mb-2 text-muted">
                 <i class="icon-location1"></i> {{ item.city }} , {{ item.state }}
               </h6>
@@ -111,11 +111,10 @@ export default {
 
       const { productoid, name } = this.item
 
-      this.$router.push({
-        name: 'property-id-name',
+       this.$router.push({
+        name: 'bienesraices-propiedad-id',
         params: {
-          id: productoid,
-          name: helpers.normalize( name )
+          id: `${helpers.normalize( name )}_${productoid}.html`
         } 
       });
 
