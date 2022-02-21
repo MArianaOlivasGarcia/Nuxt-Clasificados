@@ -54,7 +54,6 @@
 
 import { mapGetters } from 'vuex';
 import helpers from '@/helpers/helpers'
-import { watch } from 'vue-range-component';
 
 export default {
     head() {

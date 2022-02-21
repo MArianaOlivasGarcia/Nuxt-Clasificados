@@ -58,9 +58,7 @@ export default {
     { src: '~/plugins/VueGoogleMaps', ssr: false},
     { src: '~/plugins/VueGeolocationApi'},    
     { src: '~/plugins/VueGeolocation'},    
-    { src: '~/plugins/VueSliderHorizontal'},    
     { src: '~/plugins/VueRangeSlider.js', ssr: false },
-    { src: '~/plugins/VueSliderRange.js', ssr: false }
 
   ],
 
