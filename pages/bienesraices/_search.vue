@@ -94,8 +94,8 @@ export default {
         // EJEMPLO /buscar-por-casa-con-alberca.html?pagina=1
         const isGeneralSearch = search.split('-por-')[0];
         console.log(isGeneralSearch)
-        const keyword = search.split('-por-')[1].split('.')[0].replace(/-/g, ' ') 
        if( isGeneralSearch == 'buscar' ) {
+         const keyword = search.split('-por-')[1].split('.')[0].replace(/-/g, ' ') 
         const searchForm = {
           page: this.$route.query.pagina ? this.$route.query.pagina : 1,
           keyword
