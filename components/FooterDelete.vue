@@ -25,7 +25,7 @@
             <div class="row">
                 <div class="col-md-12 text-center">
                 <div class="copyrights">
-                    Clasificados Contacto<sup>&copy;</sup> {{ 'year' }}.
+                    Clasificados Contacto<sup>&copy;</sup> {{ '2022' }}.
                     <br />
                 </div>
                 </div>

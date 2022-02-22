@@ -116,10 +116,11 @@ export default {
         v: {
             type: Object,
             required: true
-        },
+        }
     },
     data() {
         return {
+            idProduct: '',
             isLoading: false,
             telProps: {
                 id: "phoneContact",
@@ -144,6 +145,9 @@ export default {
             },
         }
     },
+    created() {
+      this.idProduct = this.$route.params.id.split('.')[0].split('_')[1]
+    },
     methods: {
         async sendMain(){
 
@@ -153,9 +157,12 @@ export default {
             } 
 
             this.isLoading = true
-
-
-          const success = await this.$store.dispatch('sendMain', this.form)
+          
+          const data = {
+            ...this.form,
+            idProduct: this.idProduct
+          }
+          const success = await this.$store.dispatch('sendMain', data)
 
            if ( !success ){
             Swal.fire({

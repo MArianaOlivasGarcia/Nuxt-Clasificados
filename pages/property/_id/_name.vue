@@ -495,7 +495,7 @@
                 </div>
 
                 <div class="rounded">
-                  <ContactForm :v="$v" :form="form"/>
+                  <ContactForm :v="$v" :form="form" />
                 </div>
 
               </div>

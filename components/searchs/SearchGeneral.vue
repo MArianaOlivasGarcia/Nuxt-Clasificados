@@ -46,10 +46,9 @@ export default {
       }
 
       this.$router.push({
-        name: 'category',
-        query: {
-            keyword: this.keyword.trim(),
-            page: 1
+        name: 'bienesraices-search',
+        params: {
+          search: `buscar-por-${this.keyword.trim().replace(/ /g, '-')}.html`
         }
       });
 

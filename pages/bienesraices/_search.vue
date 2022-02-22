@@ -68,10 +68,14 @@ export default {
     },
     methods: {
       async getProperties() {
+
+
+
+
         /*
         * EJEMPLO: /casa_1-en-venta_1-en-quintana-roo_179-en-benito-juarez_129
         * -en-hacienda-real-caribe_1233-con-precio-minimo_10000-y-precio-maximo_100000-y
-        * -banos_2-y-cuartos_10-y-m2t_120-y-m2c_100.html
+        * -banos_2-y-cuartos_10-y-m2t_120-y-m2c_100-con-.html
         * 
         * ORDEN:
         * category
@@ -83,6 +87,32 @@ export default {
         console.log(this.$route)
 
         const { search } = this.$route.params
+
+
+        /// REMOVER COMENTARIO EN LO QUE NO HAY VEHICULOS
+        // Verificar que sea busqueda general
+        // EJEMPLO /buscar-por-casa-con-alberca.html?pagina=1
+        const isGeneralSearch = search.split('-por-')[0];
+        console.log(isGeneralSearch)
+        const keyword = search.split('-por-')[1].split('.')[0].replace(/-/g, ' ') 
+       if( isGeneralSearch == 'buscar' ) {
+        const searchForm = {
+          page: this.$route.query.pagina ? this.$route.query.pagina : 1,
+          keyword
+        }
+        console.log(searchForm)
+
+        const resp = await  this.$store.dispatch('searchProducts', searchForm )
+        this.totalResults = resp.xtr.result
+        return;
+       }
+
+
+        /// REMOVER FIN COMENTARIO EN LO QUE NO HAY VEHICULOS
+
+
+
+
         console.log(search.split('con'))
 
         // 1. cortar *con*

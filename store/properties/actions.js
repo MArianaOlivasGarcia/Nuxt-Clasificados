@@ -152,7 +152,7 @@ const actions = {
 
     async sendMain({commit, state}, form ) {
 
-        commit('setAPI_PARAMS', { body: `RDx_nombre=${form.name}&RDx_correo=${form.email}&RDx_message=${form.message}&RDx_telefono=${form.phone}&RDx_productid=${form.id}` } )
+        commit('setAPI_PARAMS', { body: `RDx_nombre=${form.name}&RDx_correo=${form.email}&RDx_message=${form.message}&RDx_telefono=${form.phone}&RDx_productid=${form.idProduct}` } )
       
 
         const config = state.API_PARAMS
