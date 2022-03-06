@@ -94,18 +94,18 @@ export default {
         // EJEMPLO /buscar-por-casa-con-alberca.html?pagina=1
         const isGeneralSearch = search.split('-por-')[0];
         console.log(isGeneralSearch)
-       if( isGeneralSearch == 'buscar' ) {
-         const keyword = search.split('-por-')[1].split('.')[0].replace(/-/g, ' ') 
-        const searchForm = {
-          page: this.$route.query.pagina ? this.$route.query.pagina : 1,
-          keyword
-        }
-        console.log(searchForm)
+        if( isGeneralSearch == 'buscar' ) {
+          const keyword = search.split('-por-')[1].split('.')[0].replace(/-/g, ' ') 
+          const searchForm = {
+            page: this.$route.query.pagina ? this.$route.query.pagina : 1,
+            keyword
+          }
+          console.log(searchForm)
 
-        const resp = await  this.$store.dispatch('searchProducts', searchForm )
-        this.totalResults = resp.xtr.result
-        return;
-       }
+          const resp = await  this.$store.dispatch('searchProducts', searchForm )
+          this.totalResults = resp.xtr.result
+          return;
+        }
 
 
         /// REMOVER FIN COMENTARIO EN LO QUE NO HAY VEHICULOS

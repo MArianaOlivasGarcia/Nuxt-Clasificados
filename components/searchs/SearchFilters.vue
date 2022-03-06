@@ -284,7 +284,7 @@
         </div>
 
 
-
+        <span class="text-danger" v-if="showError">Selecciona una operación.</span>
         <button 
           @click="goToResults"
           type="button"
@@ -306,6 +306,7 @@ export default {
     },
     data(){
         return {
+            showError: false,
             search: {},
             searchComplement: {},
             tags: [],
@@ -318,14 +319,50 @@ export default {
                         cities: 'getCitiesList', 
                         colonias: 'getColoniasList', 
                         categories: 'getPropertiesTypes',
-                        searchForm: 'getSearFormValues' })
+                        searchForm: 'getSearFormValues',
+                        userStateLocation: 'getUserStateLocation' })
     },
     created() {
 
       console.log('ON CREATED SEARCH FILTER');
-      console.log(this.searchForm.city)
 
-      const { category, operation, state, city, suburb } = this.searchForm
+       /// REMOVER COMENTARIO EN LO QUE NO HAY VEHICULOS
+        // EJEMPLO /buscar-por-casa-con-alberca.html?pagina=1
+        const { search } = this.$route.params
+
+        const isGeneralSearch = search.split('-por-')[0];
+        if( isGeneralSearch == 'buscar' ) {
+
+
+          // Obtener la ubicación del usuario (estado)
+          //const stateUser = this.$store.getters.getStateById( this.userStateLocation.folio );
+          
+
+          this.search = {
+            category: '',
+            operation: undefined,
+            state: this.userStateLocation.folio,
+            city: undefined,
+            suburb: undefined
+          }
+          this.searchComplement = {
+            bathroom: undefined,
+            bedroom: undefined,
+            pricemin: 0,
+            pricemax: 0,
+            m2c: '',
+            m2t: ''
+          }
+
+          return;
+        }
+
+
+        /// REMOVER FIN COMENTARIO EN LO QUE NO HAY VEHICULOS
+
+
+      // CARGAR LOS DATOS EN EL FORMULARIO DE LA BUSQUEDA QUE SE HIZO
+      const { category, operation, state, city, suburb, bathroom, bedroom, pricemin, pricemax, m2c, m2t } = this.searchForm
 
       this.search = {
         category,
@@ -334,11 +371,6 @@ export default {
         city,
         suburb
       }
-
-      console.log(this.search)
-
-      const { bathroom, bedroom, pricemin, pricemax, m2c, m2t } = this.searchForm
-
       this.searchComplement = {
         bathroom,
         bedroom,
@@ -348,27 +380,7 @@ export default {
         m2t
       }
       
-      console.log(this.searchComplement)
-
-      // this.search = {
-      //   ...this.searchForm,
-      //   ...this.$route.query
-      // }
-      //   for (const property in this.search) {
-      //       if ( this.search[property] || this.search[property] > 0 ) {
-
-      //         console.log( property );
-      //         if ( property == 'operation' ) {
-      //           if (this.search['operation'] == 1){
-      //             this.values = [100000, 100000000]
-      //           } 
-      //         }
-
-      //         if ( property != 'page' ) {
-      //           this.buildTags( property )
-      //         }
-      //       } 
-      //   }
+    
 
     },
     watch: {
@@ -411,6 +423,11 @@ export default {
         //   this.showQuestion = true;
         //   return;
         // }
+
+        if( this.search.operation == undefined ) {
+          this.showError = true;
+          return;
+        }
 
         const { category, operation, state, city, suburb } = this.search
         console.log({ category, operation, state, city, suburb })
@@ -460,17 +477,6 @@ export default {
         });
         
       },
-      buscarDatos() {
-         let datos = 'HOLA MUNDO DESDE EL HIJO'
-       
-        this.$router.push({
-          name: 'bienesraices-search',
-          params: {
-            search:  'casa_1-en-venta_1-en-quintana-roo_150-en-cozumel_1794.html'
-          }
-        });
-         //this.$emit('tengo_resultados', datos);
-      },
       changeOperation( operation ) {
         this.searchComplement.pricemin = 0;
         this.searchComplement.pricemax = 0;
@@ -481,7 +487,6 @@ export default {
         this.searchComplement.pricemax = e.values[1];
       },
     }
-    
 };
 </script>
 
@@ -609,11 +614,11 @@ button img.opt-diselected {
 
 
 .is-valid {
-  border: 1px solid #6FD18C !important;
+  border: 1.5px solid #6FD18C !important;
 }
 
 .is-invalid {
-  border: 1px solid #E9303D !important;
+  border: 1.5px solid #E9303D !important;
 }
 
 button i {

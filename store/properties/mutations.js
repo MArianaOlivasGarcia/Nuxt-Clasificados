@@ -2,6 +2,10 @@
 
 const mutations = {
 
+    setToken(state, token) {
+        state.token = token
+    },
+
     userStateLocation(state, element){
         state.userStateLocation = element
     },
@@ -51,8 +55,11 @@ const mutations = {
 
     resetSuburs( state, value ) {
         state.coloniasList = value
-    }
+    },
 
+    setCookiesAccepted( state, value ) {
+        state.coockiesAccepted = value
+    }
 }
 
 

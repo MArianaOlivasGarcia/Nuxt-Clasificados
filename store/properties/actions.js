@@ -1,5 +1,18 @@
 const actions = {
 
+    async renewToken({ commit, state }) {
+
+        const config = state.API_PARAMS
+
+        const resp = await fetch(state.API_URL + state.RENEW_TOKEN, config).then( resp => resp.json() )
+
+        if ( resp.status == 200 && resp.data.length > 0 ) {
+            commit('setToken', resp.data[0].token)
+
+            return resp.data[0].token
+        } 
+    },
+
     async getStates({ commit, state }) {
 
         const config = state.API_PARAMS
@@ -47,7 +60,9 @@ const actions = {
 
         if ( id == undefined ) return
 
-        commit('setAPI_PARAMS', { body: `folio=${ id }`})
+
+        // commit('setAPI_PARAMS', { body: `folio=${ id }&token=${ state.token }`})
+        commit('setAPI_PARAMS', { body: `folio=${ id }`});
         
         const config = state.API_PARAMS
 
@@ -97,7 +112,8 @@ const actions = {
         // establecer el formulario al state
         commit('setSearchFormValues', formData)
         // commit('setAPI_PARAMS', { body: ``})
-        commit('setAPI_PARAMS', { body: `ids=${ formData.ids ? formData.ids  : ''}&page=${ formData.page ? formData.page : '' }&state=${formData.state ? formData.state : ''}&keyword=${formData.keyword ? formData.keyword : ''}&municipality=${formData.city != undefined ? formData.city : ''}&category=${formData.category ? formData.category : ''}&limitProperties=${ formData.limit ? formData.limit : 20 }&m2t=${formData.m2t ? formData.m2t : ''}&m2c=${formData.m2c ? formData.m2c : ''}&bedroom=${formData.bedroom ? formData.bedroom : ''}&bathroom=${formData.bathroom ? formData.bathroom : ''}&pricemax=${formData.pricemax ? formData.pricemax : ''}&pricemin=${formData.pricemin ? formData.pricemin : ''}&type=${formData.category ? formData.category : ''}&operation=${formData.operation  ? formData.operation : ''}&folio=${formData.folio ? formData.folio : ''}&outstanding=${ formData.outstanding ? formData.outstanding : '' }&suburb=${ formData.suburb ? formData.suburb : '' }`})
+        
+        commit('setAPI_PARAMS', { body: `ids=${ formData.ids ? formData.ids  : ''}&page=${ formData.page ? formData.page : '' }&state=${formData.state ? formData.state : ''}&keyword=${formData.keyword ? formData.keyword : ''}&municipality=${formData.city != undefined ? formData.city : ''}&category=${formData.category ? formData.category : ''}&limitProperties=${ formData.limit ? formData.limit : 20 }&m2t=${formData.m2t ? formData.m2t : ''}&m2c=${formData.m2c ? formData.m2c : ''}&bedroom=${formData.bedroom ? formData.bedroom : ''}&bathroom=${formData.bathroom ? formData.bathroom : ''}&pricemax=${formData.pricemax ? formData.pricemax : ''}&pricemin=${formData.pricemin ? formData.pricemin : ''}&type=${formData.category ? formData.category : ''}&operation=${formData.operation  ? formData.operation : ''}&folio=${formData.folio ? formData.folio : ''}&outstanding=${ formData.outstanding ? formData.outstanding : '' }&suburb=${ formData.suburb ? formData.suburb : '' }&token=${ state.token }`})
 
 
         let config = state.API_PARAMS;

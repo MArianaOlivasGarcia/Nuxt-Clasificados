@@ -3,6 +3,9 @@
 
 const getters = {
     
+    getToken( state ) {
+        return state.token
+    },
     getUserStateLocation( state ) {
         return state.userStateLocation
     },
@@ -38,6 +41,9 @@ const getters = {
     },
     getShowSearchGeneral( state ) {
         return state.showSearchGeneral
+    },
+    getCookiesAccepted( state ) {
+        return state.coockiesAccepted
     },
 
 

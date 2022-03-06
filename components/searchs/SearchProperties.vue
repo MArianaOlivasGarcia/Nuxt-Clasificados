@@ -602,11 +602,11 @@ button img.opt-diselected {
 
 
 .is-valid {
-  border: 1px solid #6FD18C !important;
+  border: 1.5px solid #6FD18C !important;
 }
 
 .is-invalid {
-  border: 1px solid #E9303D !important;
+  border: 1.5px solid #E9303D !important;
 }
 
 

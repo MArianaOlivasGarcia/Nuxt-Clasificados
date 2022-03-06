@@ -22,7 +22,9 @@ const state = {
     VERIFICATE_PASS: '?site=RlhlaWptQy9wSU1oZFhTQU1RMTg4Z0F2VmdZMHRFWnhvL2ExZU1oeWZQYz0=',
     CHANGE_PASSWORD: '?site=c3ord1N0azN1MVlTSXl2SGRMZHZzVnFlKzZ1QnM3Qm9pNGVUS05MQUVPTT0=',
     GET_COLONIAS: '?site=ditYbW90MU1LRGp5OTlkTkpET3F1dz09',
+    RENEW_TOKEN:'?site=eWsySVBlWldtQW42Z3Y1c1lQYTVVZz09',
 
+    token: '',
     userStateLocation: {
         folio: "61",
         image: "https://www.clasificadoscontacto.com/view/assets/images/states/DF.jpg",
@@ -85,7 +87,8 @@ const state = {
     ],
     /* Folio del usuario logeado */
     userLogged: null,
-    showSearchGeneral: false
+    showSearchGeneral: false,
+    coockiesAccepted: true,
 
 }
 
