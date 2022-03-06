@@ -37,6 +37,7 @@
           </div>
           <div class="col-md-8">
             <div class="card-body no-gutters">
+              <div v-if="item.destacado == '1'" class="badge-destacado"><span>Destacado</span></div>
               <h5 class="card-title mt-0" style="text-align: justify;">{{ item.name.length > 220 ? item.name.substr(0, 220) + '...' : item.name }}</h5>
               <h6 class="card-subtitle mb-2 text-muted">
                 <i class="icon-location1"></i> {{ item.city }} , {{ item.state }}
@@ -224,6 +225,24 @@ small {
 
 img.card-img {
   height: 100% !important;
+}
+
+.card-body {
+  padding: 10px 20px !important;
+}
+
+
+.badge-destacado {
+  text-align: right;
+  padding-bottom: 5px;
+}
+
+.badge-destacado span {
+  font-size: 14px;
+  border: 1px solid #425b76;
+  border-radius: 10px;
+  padding: 2px 10px;
+  color: #425b76;
 }
 
 </style>
