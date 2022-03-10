@@ -183,23 +183,33 @@
 
                 </form>
 
-
+                <hr>
 
                 <div>
+                    <span style="color: #135da3; font-size: 14px"><strong>Instrucciones: </strong>Para añadir zonas personalizadas coloca y arrastra circulos en tus zona favorita. Después da clic en "Añadir zona personalizada".</span>
+
                     <gmap-map
                         class="map-container"
                         :center="center"
-                        :zoom="15" >
+                        :zoom="17" >
                         <GmapCircle
+                            @dragend="dragCircle"
+                            @radius_changed="radiusChanged" 
                             v-for="(pin, index) in markers"
                             :key="index"
                             :center="pin.position"
                             :radius="100"
                             :visible="true"
+                            :editable="true"
+                            :draggable="true"
                             :options="{fillColor:'#00569d',fillOpacity:.6}"
                         ></GmapCircle>
                     </gmap-map>
                 </div>
+
+                <div class="text-right mt-3">
+                        <button class="btn add-button">Añadir zona personalizada</button>
+                    </div>
 
 
             </div>
@@ -310,7 +320,7 @@ export default {
             zoom: 5,
             center: { lat: 21.1619184, lng: -86.8503969 },
             markers: [
-                { Id: 1, name: "Oslo", position: { lat: 21.1619184, lng: -86.8503969 }},
+                { Id: 1, position: { lat: 21.1619184, lng: -86.8503969 }},
             ],
             form: {
                 operation: 1
@@ -321,6 +331,13 @@ export default {
     methods: {
         changeTab( idTab ) {
             this.tabSelected = idTab;
+        },
+        dragCircle( value ) {
+            console.log(value)
+            console.log(value.latLng.lat())
+        },
+        radiusChanged( value ) {
+            console.log( value )
         }
     }
 
@@ -328,6 +345,7 @@ export default {
 </script>
 
 <style scoped>
+
 
 
 a.nav-link {

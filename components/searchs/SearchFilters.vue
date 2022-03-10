@@ -31,6 +31,8 @@
 
             </button>
           </div>
+
+          <p v-if="formEnter && !search.operation" class="m-0 text-danger" style="font-size: 14px">Seleccione un tipo de operación</p>
         
 
             <div class="col-sm-12 col-md-12 col-lg-12 pr-1 pl-1 pt-2">
@@ -105,7 +107,9 @@
               </select>
               <div class="icon"><i class="icon-address"></i></div>
             </div>
+            <p v-if="formEnter && !search.category" class="m-0 text-danger" style="font-size: 14px">Seleccione un tipo de inmueble</p>
           </div>
+
         </div>
 
 
@@ -284,7 +288,6 @@
         </div>
 
 
-        <span class="text-danger" v-if="showError">Selecciona una operación.</span>
         <button 
           @click="goToResults"
           type="button"
@@ -306,12 +309,13 @@ export default {
     },
     data(){
         return {
-            showError: false,
             search: {},
             searchComplement: {},
             tags: [],
             valuesVenta: [100000, 100000000],
             valuesRenta: [500, 500000],
+
+            formEnter: false
         }
     },
     computed: {
@@ -424,8 +428,9 @@ export default {
         //   return;
         // }
 
-        if( this.search.operation == undefined ) {
-          this.showError = true;
+        this.formEnter = true;
+
+        if ( !this.search.operation || !this.search.category  ) {
           return;
         }
 
@@ -475,6 +480,9 @@ export default {
             search:  urlSeach + `${ urlComplement.length > 0 ? `-con-${urlComplement}` : '' }` + '.html'
           }
         });
+
+        //this.formEnter = false;
+
         
       },
       changeOperation( operation ) {

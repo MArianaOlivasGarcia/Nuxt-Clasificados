@@ -2,7 +2,7 @@
 
 <template>
   <div class="adviser-container animate__animated animate__fadeInRight">
-                      <!-- <div style="text-align: right;"><span ><i class="fas fa-times"></i></span></div> -->
+         <div style="text-align: right;"><span ><i class="fas fa-times"></i></span></div>
         <div class="fist-message">
             <img src="https://img.icons8.com/emoji/2x/man-with-beard-light-skin-tone.png" alt="">
             <div class="message">
@@ -65,7 +65,7 @@ img {
     width: 50px;
     height: 50px;
     position: absolute;
-    top: 35px;
+    top: 55px;
     left: -50px;
 }
 
@@ -92,6 +92,8 @@ a.btn-primary:hover {
        color: #FED823 !important;
 }
 
-
+span i {
+    cursor: pointer;
+}
 
 </style>
