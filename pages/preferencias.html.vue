@@ -292,9 +292,75 @@
 
 
 
+            <label class="strong pb-2">¿Realizas/realizan las siguientes actividades?<span class="text-danger">*</span></label>
+            
             <div class="form-group pb-2">
-                <label class="strong">¿Realizas/realizan las siguientes actividades?<span class="text-danger">*</span></label>
-                
+                <label>1. ¿Fumar?<span class="text-danger"></span></label>
+                <br>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="inlineRadioOptions3" id="inlineRadio1" value="option1">
+                    <label class="form-check-label" for="inlineRadio1">No</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="inlineRadioOptions3" id="inlineRadio2" value="option2">
+                    <label class="form-check-label" for="inlineRadio2">Ocacionalmente</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="inlineRadioOptions3" id="inlineRadio3" value="option3">
+                    <label class="form-check-label" for="inlineRadio3">Si</label>
+                </div>
+            </div>
+
+            <div class="form-group pb-2">
+                <label>2. ¿Tocar instrumentos musicales?<span class="text-danger"></span></label>
+                <br>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio4" value="option4">
+                    <label class="form-check-label" for="inlineRadio4">No</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio5" value="option5">
+                    <label class="form-check-label" for="inlineRadio5">Ocacionalmente</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio6" value="option6">
+                    <label class="form-check-label" for="inlineRadio6">Si</label>
+                </div>
+            </div>
+
+            <div class="form-group pb-2">
+                <label>3. ¿Tener visitas?<span class="text-danger"></span></label>
+                <br>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="inlineRadioOptions2" id="inlineRadio7" value="option7">
+                    <label class="form-check-label" for="inlineRadio7">No</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="inlineRadioOptions2" id="inlineRadio8" value="option8">
+                    <label class="form-check-label" for="inlineRadio8">Ocacionalmente</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="inlineRadioOptions2" id="inlineRadio9" value="option9">
+                    <label class="form-check-label" for="inlineRadio9">Si</label>
+                </div>
+            </div>
+
+
+            <div class="form-group pb-2">
+                <label>4. ¿Organizar fiestas?<span class="text-danger"></span></label>
+                <br>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="inlineRadioOptions4" id="inlineRadio10" value="option7">
+                    <label class="form-check-label" for="inlineRadio10">No</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="inlineRadioOptions4" id="inlineRadio11" value="option8">
+                    <label class="form-check-label" for="inlineRadio11">Ocacionalmente</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="inlineRadioOptions4" id="inlineRadio12" value="option9">
+                    <label class="form-check-label" for="inlineRadio12">Si</label>
+                </div>
             </div>
 
             <div class="text-center mt-5">
