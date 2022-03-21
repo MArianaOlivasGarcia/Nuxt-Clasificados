@@ -48,7 +48,9 @@ const getters = {
     getShowIDI( state ) {
         return state.showIDI
     },
-
+    getShowWhatsForm( state ) {
+        return state.showWhatsForm
+    },
 
 
 

@@ -130,7 +130,7 @@ export default {
                 disabled: false,
                 disabledFormatting: true,
                 inputOptions: {
-                    placeholder: "9999-9999-999",
+                    placeholder: "(999)-999-9999",
                 },
                 required: false,
                 enabledCountryCode: true,
@@ -151,8 +151,8 @@ export default {
     methods: {
         async sendMain(){
 
-            if ( this.v.$invalid ) {
-                this.v.$touch()
+            if ( this.v.form.$invalid ) {
+                this.v.form.$touch()
                 return 
             } 
 

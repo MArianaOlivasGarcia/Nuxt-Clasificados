@@ -104,7 +104,7 @@ export default {
           message: {
               required,
           },
-      },
+    },
   },
 }
 </script>

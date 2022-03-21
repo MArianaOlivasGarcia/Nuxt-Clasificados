@@ -91,6 +91,7 @@ const state = {
     userLogged: null,
     showSearchGeneral: false,
     showIDI: false,
+    showWhatsForm: false,
     coockiesAccepted: true,
 
 }

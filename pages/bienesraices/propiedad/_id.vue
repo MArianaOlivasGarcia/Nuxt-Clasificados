@@ -4,7 +4,12 @@
 
     <client-only v-if="!isLoading" >
 
-      <Fab v-if="property.user.cellphone" :whatsApp="property.user.cellphone" :folioProperty="property.folio"/>
+      <Fab 
+        v-if="property.user.cellphone" 
+        :whatsApp="property.user.cellphone" 
+        :folioProperty="property.folio"
+        :whatsForm="whatsForm"
+        :v="$v"/>
       
 
       <!-- GENERAL CONTAINER -->
@@ -559,25 +564,29 @@ export default {
                 phone: '',
                 message: '',
             },
+            whatsForm: {
+                name: '',
+                whatsapp: '',
+                message: '',
+                email: '',
+            },
             url: '',
         }
     },
     validations: {
         form: {
-            name: {
-                required,
-            },
-            email: {
-                required,
-                email,
-            },
-            phone: {
-                required,
-            },
-            message: {
-                required,
-            },
+            name: { required },
+            email: { required, email },
+            phone: { required },
+            message: { required }
         },
+        whatsForm: {
+            name: { required },
+            whatsapp: { required },
+            message: { required },
+            email: { required, email }
+        },
+        
     },
     async created() {
 

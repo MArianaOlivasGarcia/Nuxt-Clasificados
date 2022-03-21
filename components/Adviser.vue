@@ -85,18 +85,17 @@ img {
 }
 
 
-a.btn-primary, 
-a.btn-primary:hover {
+button.btn-primary, 
+button.btn-primary:hover {
     background-color: #01569D !important;
     border-color: #01569D;
     padding: 10px;
-    width: 100% !important;
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px !important;
-    width: 100%;
+    width: 100% !important;
 }
 
 
-a.btn-primary:hover {
+button.btn-primary:hover {
        color: #FED823 !important;
 }
 

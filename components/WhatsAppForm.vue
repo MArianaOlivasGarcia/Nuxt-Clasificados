@@ -2,19 +2,24 @@
 
 
 <template>
-  <div class="adviser-container animate__animated animate__fadeInTop p-3">
+  <div class="adviser-container animate__animated animate__fadeInUp animate__faster p-3">
 
         <div class="mt-2">
             <h4 class="m-0">Completa tus datos</h4>
             <p class="mt-2">Te comunicaremos con uno de nuestros asesores.</p>
         </div> 
 
+        <form v-on:submit.prevent="startChat">
+
+        
         <div class="form-group  m-0">
             <label class="strong">Nombre<span class="text-danger">*</span></label>
             <input class="form-control"  
-                placeholder="Nombre completo"/>
+                placeholder="Nombre completo"
+                v-model="whatsForm.name"
+                @blur="v.whatsForm.name.$touch()"/>
             <small>
-                <span
+                <span v-if="!v.whatsForm.name.required  && v.whatsForm.name.$dirty"
                 class="text-danger">Tu nombre es requerido.</span>
             </small>
         </div>
@@ -22,10 +27,14 @@
 
         <div class="form-group  m-0">
             <label class="strong">Whatsapp<span class="text-danger">*</span></label>
-            <input class="form-control"  
-                placeholder="+52 (999) 999 9999"/>
+            <vue-tel-input
+                  class="form-control"
+                  v-bind="telProps"
+                  v-model="whatsForm.whatsapp"
+                @blur="v.whatsForm.whatsapp.$touch()"
+                ></vue-tel-input>
             <small>
-                <span
+                <span v-if="!v.whatsForm.whatsapp.required  && v.whatsForm.whatsapp.$dirty"
                 class="text-danger">Tu número telefónico es requerido.</span>
             </small>
         </div>
@@ -35,7 +44,8 @@
             <label class="strong">Correo electrónico</label>
             <input class="form-control"  
                 type="email"
-                placeholder="ejemplo@ejemplo.com"/>
+                placeholder="ejemplo@ejemplo.com"
+                v-model="whatsForm.email"/>
         </div>
  
 
@@ -43,22 +53,70 @@
             <label class="strong">Mensaje<span class="text-danger">*</span></label>
             <textarea class="form-control"  
                 rows="2"
-                placeholder="Escribe tu mensaje aquí"></textarea>
+                placeholder="Escribe tu mensaje aquí"
+                v-model="whatsForm.message"
+                @blur="v.whatsForm.message.$touch()"></textarea>
             <small>
-                <span
-                class="text-danger">Tu número telefónico es requerido.</span>
+                <span v-if="!v.whatsForm.message.required  && v.whatsForm.message.$dirty"
+                class="text-danger">Tu mensaje es requerido.</span>
             </small>
         </div>
 
         <div class="mt-3">
-            <button type="button" class="btn btn-primary">Iniciar Chat</button>
+            <button type="submit" class="btn btn-primary">Iniciar Chat</button>
         </div>
+
+        </form>
   </div>
 </template>
 
 <script>
 export default {
+    props: {
+        whatsForm: {
+            type: Object,
+            required: true
+        },
+        v: {
+            type: Object,
+            required: true
+        }
+    },
+    data() {
+        return {
+            telProps: {
+                id: "phoneContact",
+                mode: "international",
+                defaultCountry: "MX",
+                disabledFetchingCountry: false,
+                disabled: false,
+                disabledFormatting: true,
+                inputOptions: {
+                    placeholder: "(999)-999-9999",
+                },
+                required: false,
+                enabledCountryCode: true,
+                enabledFlags: true,
+                preferredCountries: ["MX"],
+                onlyCountries: [],
+                ignoredCountries: [],
+                autocomplete: "off",
+                name: "telephone",
+                maxLen: 18,
+                inputClasses: "form-control",
+            },
+        }
+    },
+    methods: {
+        startChat() {
+            if( this.v.whatsForm.$invalid ) {
+                this.v.whatsForm.$touch()
+            }
+            console.log('LISTO PARA ENVIAR')
 
+            console.log(this.whatsForm)
+        }
+    }
 }
 </script>
 
@@ -73,7 +131,7 @@ export default {
     margin: 0px;
     background: #EAF0F5;
     border-radius: 20px;
-    box-shadow: rgba(0, 0, 0, 0.09) 2.4px 2.4px 3.2px;
+    box-shadow: rgba(0, 0, 0, 0.09) 2.4px 2.4px 3.2px !important; 
 }
 
 p {
@@ -139,7 +197,7 @@ h4 {
 }
 
 
-input.form-control{
+input.form-control, .vue-tel-input{
     height: 30px !important;
     border: none !important;
     font-size: 14px !important;
