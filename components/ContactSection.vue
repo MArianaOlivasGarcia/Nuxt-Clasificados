@@ -36,13 +36,13 @@
                    <div class="row mb-3">
                        <span class="col-md-3" style="font-weight: bold; display: flex; align-items: center;">Teléfono</span>
                         <div class="col-md-9">
-                          <input
-                            type="text"
-                            placeholder="(999) 999 9999"
+                          
+                          <vue-tel-input
                             class="form-control"
+                            v-bind="telProps"
                             v-model="form.phone"
                             @blur="v.form.phone.$touch()"
-                          />
+                          ></vue-tel-input>
                            <small>
                             <span v-if=" !v.form.phone.required  &&
                                         v.form.phone.$dirty"
@@ -126,6 +126,27 @@ export default {
     data() {
       return {
         isLoading: false,
+        telProps: {
+            id: "phoneContact",
+            mode: "international",
+            defaultCountry: "MX",
+            disabledFetchingCountry: false,
+            disabled: false,
+            disabledFormatting: true,
+            inputOptions: {
+                placeholder: "(999)-999-9999",
+            },
+            required: false,
+            enabledCountryCode: true,
+            enabledFlags: true,
+            preferredCountries: ["MX"],
+            onlyCountries: [],
+            ignoredCountries: [],
+            autocomplete: "off",
+            name: "telephone",
+            maxLen: 18,
+            inputClasses: "form-control",
+        }
       }
     },
     methods: {
@@ -166,8 +187,15 @@ export default {
 
 <style scoped>
 
-.form-control {
+input.form-control {
   display: inline-block;
+  box-sizing: border-box;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px !important;
+}
+
+.vue-tel-input{
   box-sizing: border-box;
   border-radius: 10px;
   border: 1px solid rgba(255, 255, 255, 0.6);
@@ -184,5 +212,7 @@ export default {
     padding: 10px;
     border-radius: 100%;
 }
+
+
 
 </style>
