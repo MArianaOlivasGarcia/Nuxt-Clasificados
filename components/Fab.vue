@@ -2,12 +2,17 @@
 
 <template>
 
+  <div>
 
   	<a :href="`https://wa.me/+52${ this.number }?text=${ text }`" 
       class="fab shadow" target="_blank"> 
-      <i class="fab fa-whatsapp"></i>
+    
+      <!-- <i class="fab fa-whatsapp"></i> -->
+      <i class="fas fa-times"></i>
     </a> 
 
+    <WhatsAppForm />
+  </div>
 
 
 </template>

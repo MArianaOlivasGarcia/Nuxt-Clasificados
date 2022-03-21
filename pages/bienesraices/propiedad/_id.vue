@@ -5,7 +5,8 @@
     <client-only v-if="!isLoading" >
 
       <Fab v-if="property.user.cellphone" :whatsApp="property.user.cellphone" :folioProperty="property.folio"/>
-   
+      
+
       <!-- GENERAL CONTAINER -->
       <section class="ftco-section detail-section bg-light pb-5">
   
