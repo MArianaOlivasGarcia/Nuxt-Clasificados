@@ -12,7 +12,7 @@
             <FooterDelete /> 
         </template>
         <Cookies v-if="!cookiesAccepted"/>
-        <!-- <Adviser /> -->
+        <Adviser v-if="showIDI"/>
     </div>
 </template>
 
@@ -24,7 +24,7 @@ export default {
     data() {
         return {
             isLoading: true,
-            userStateFolioLocation: ''
+            userStateFolioLocation: '',
         }
     },
     created() {
@@ -50,12 +50,14 @@ export default {
         }
 
         this.initGeolocation();
-
+        this.initiIDI();
+        
        
 
     },
     computed: {
         ...mapGetters({ showSearchGeneral: 'getShowSearchGeneral',
+                        showIDI: 'getShowIDI',
                         cookiesAccepted : 'getCookiesAccepted'})
     },
     watch: {
@@ -63,9 +65,10 @@ export default {
             async handler( newValue, oldValue  ) {
                 if( newValue ) {
                     this.initGeolocation();
+                    this.initiIDI();
                 }
             }
-        }
+        },
     },
     methods: {
         isAcceptCookies() {
@@ -139,6 +142,13 @@ export default {
                     
                 }
             })
+        },
+        initiIDI() {
+            setTimeout(() => {
+                console.log("Mostrar a IDI");
+                this.$store.commit('setShowIDI', true)
+                console.log(first)
+            },7000);
         }
     }
 

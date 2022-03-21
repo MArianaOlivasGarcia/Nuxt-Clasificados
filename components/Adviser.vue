@@ -2,7 +2,7 @@
 
 <template>
   <div class="adviser-container animate__animated animate__fadeInRight">
-         <div style="text-align: right;"><span ><i class="fas fa-times"></i></span></div>
+         <div style="text-align: right;"><span @click="closeIDI()"><i class="fas fa-times"></i></span></div>
         <div class="fist-message">
             <img src="https://img.icons8.com/emoji/2x/man-with-beard-light-skin-tone.png" alt="">
             <div class="message">
@@ -17,7 +17,7 @@
         </div>    
 
         <div class="mt-3">
-            <NuxtLink class="btn btn-primary" to="/preferencias.html">¡Empezar ahora!</NuxtLink>
+            <button type="button" @click="start()" class="btn btn-primary">¡Empezar ahora!</button>
         </div>
   </div>
 </template>
@@ -25,6 +25,13 @@
 <script>
 export default {
     methods: {
+        closeIDI() {
+            this.$store.commit('setShowIDI', false)
+        },
+        start() {
+            this.$store.commit('setShowIDI', false)
+            this.$router.push('/preferencias.html')
+        }
     }
 }
 </script>
@@ -85,6 +92,7 @@ a.btn-primary:hover {
     padding: 10px;
     width: 100% !important;
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px !important;
+    width: 100%;
 }
 
 

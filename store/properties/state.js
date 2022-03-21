@@ -24,6 +24,8 @@ const state = {
     GET_COLONIAS: '?site=ditYbW90MU1LRGp5OTlkTkpET3F1dz09',
     RENEW_TOKEN:'?site=eWsySVBlWldtQW42Z3Y1c1lQYTVVZz09',
 
+    IDI: '?site=ODA1SmQ4U1RsMTczcjVnUThzNUQycTNwTGdaUVJ2enpmNDNaM0Q2cG5xbz0=',
+
     token: '',
     userStateLocation: {
         folio: "61",
@@ -88,6 +90,7 @@ const state = {
     /* Folio del usuario logeado */
     userLogged: null,
     showSearchGeneral: false,
+    showIDI: false,
     coockiesAccepted: true,
 
 }

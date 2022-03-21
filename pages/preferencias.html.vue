@@ -30,10 +30,10 @@
                     <button type="button" 
                         style="width: 80%; font-size: 16px !important" 
                         class="btn btn-opt"
-                        :class="{ 'btn-active': form.operation == 1 }"
+                        :class="{ 'btn-active': formOne.operation == 1 }"
                         @click="changeOperation( 1 )">
                         <span>Venta</span>
-                        <img class="opt-selected" v-if="form.operation == 1" style="width: 25px" src="https://img.icons8.com/material/72/ffffff/checkmark--v1.png" alt="">
+                        <img class="opt-selected" v-if="formOne.operation == 1" style="width: 25px" src="https://img.icons8.com/material/72/ffffff/checkmark--v1.png" alt="">
                         <img class="opt-diselected" v-else style="width: 25px" src="https://img.icons8.com/ios-glyphs/2x/ffffff/delete-sign.png" alt="">
                     </button>
                 </div>
@@ -41,10 +41,10 @@
                         <button type="button" 
                             style="width: 80%; font-size: 16px !important" 
                             class="btn btn-opt"
-                            :class="{ 'btn-active': form.operation == 2 }"
+                            :class="{ 'btn-active': formOne.operation == 2 }"
                             @click="changeOperation( 2 )">
                             <span>Renta</span>
-                            <img class="opt-selected" v-if="form.operation == 2" style="width: 25px" src="https://img.icons8.com/material/72/ffffff/checkmark--v1.png" alt="">
+                            <img class="opt-selected" v-if="formOne.operation == 2" style="width: 25px" src="https://img.icons8.com/material/72/ffffff/checkmark--v1.png" alt="">
                             <img class="opt-diselected" v-else style="width: 25px" src="https://img.icons8.com/ios-glyphs/2x/ffffff/delete-sign.png" alt="">
                     </button>
                 </div>
@@ -55,56 +55,119 @@
 
         <div class="form-group pb-3">
             <label class="strong">¿Qué tipo de inmueble?<span class="text-danger">*</span></label>
-            <select class="form-control">
-                <option>Casa</option>
-                <option>2</option>
-                <option>3</option>
-                <option>4</option>
-                <option>5</option>
+            <select 
+                v-model="formOne.type" 
+                class="form-control"
+                @blur="$v.formOne.type.$touch()">
+                <option :value="null">Seleccione una opción</option>
+                <option v-for="category in categories" 
+                    :key="category.value" 
+                    :value="category.value">{{ category.name }}</option>
             </select>
+            <small>
+                <span v-if="!$v.formOne.type.required  && $v.formOne.type.$dirty"
+                    class="text-danger">El tipo de inmueble es requerido.</span>
+            </small>
          </div>
 
          <div class="row ">
              <div class="col-md-4 form-group pb-3">
                 <label class="strong">No. Recámaras mínimas<span class="text-danger">*</span></label>
-                <select class="form-control">
-                    <option>1</option>
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4</option>
-                    <option>5</option>
+                <select 
+                    v-model="formOne.bedroom" 
+                    @blur="$v.formOne.bedroom.$touch()"
+                    class="form-control">
+                    <option :value="null">Seleccione una opción</option>
+                    <option :value="1">1</option>
+                    <option :value="2">2</option>
+                    <option :value="3">3</option>
+                    <option :value="4">4</option>
+                    <option :value="5">5</option>
+                    <option :value="6">6</option>
+                    <option :value="7">7</option>
+                    <option :value="8">8</option>
+                    <option :value="9">9</option>
+                    <option :value="10">10</option>
                 </select>
+                <small>
+                    <span v-if="!$v.formOne.bedroom.required  && $v.formOne.bedroom.$dirty"
+                        class="text-danger">El número de recámaras es requerido.</span>
+                </small>
             </div>
             <div class="col-md-4 form-group pb-3">
                 <label class="strong">No. Baños mínimos<span class="text-danger">*</span></label>
-                <select class="form-control" >
-                    <option>1</option>
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4</option>
-                    <option>5</option>
+                <select 
+                    v-model="formOne.bathroom" 
+                    @blur="$v.formOne.bathroom.$touch()"
+                    class="form-control" >
+                    <option :value="null">Seleccione una opción</option>
+                    <option :value="1">1</option>
+                    <option :value="2">2</option>
+                    <option :value="3">3</option>
+                    <option :value="4">4</option>
+                    <option :value="5">5</option>
+                    <option :value="6">6</option>
+                    <option :value="7">7</option>
+                    <option :value="8">8</option>
+                    <option :value="9">9</option>
+                    <option :value="10">10</option>
                 </select>
+                <small>
+                    <span v-if="!$v.formOne.bathroom.required  && $v.formOne.bathroom.$dirty"
+                        class="text-danger">El número de baños es requerido.</span>
+                </small>
             </div>
             <div class="col-md-4 form-group pb-3">
                 <label class="strong">Estacionamientos mínimos<span class="text-danger">*</span></label>
-                <select class="form-control" >
-                    <option>No requiero estacionamiento</option>
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4</option>
-                    <option>5</option>
+                <select 
+                    v-model="formOne.parking" 
+                    @blur="$v.formOne.parking.$touch()"
+                    class="form-control" >
+                    <option :value="null">Seleccione una opción</option>
+                    <option :value="0">No requiero estacionamiento</option>
+                    <option :value="1">1</option>
+                    <option :value="2">2</option>
+                    <option :value="3">3</option>
+                    <option :value="4">4</option>
+                    <option :value="5">5</option>
+                    <option :value="6">6</option>
+                    <option :value="7">7</option>
+                    <option :value="8">8</option>
+                    <option :value="9">9</option>
+                    <option :value="10">10</option>
                 </select>
+                <small>
+                    <span v-if="!$v.formOne.parking.required  && $v.formOne.parking.$dirty"
+                        class="text-danger">El número de estacionamientos es requerido.</span>
+                </small>
             </div>
          </div>
 
          <div class="row">
              <div class="col-md-6 form-group pb-3">
                     <label class="strong">m² de construcción<span class="text-danger">*</span></label>
-                    <input class="form-control" placeholder="m² de construcción" />
+                    <input 
+                        v-model="formOne.m2c" 
+                        @blur="$v.formOne.m2c.$touch()"
+                        type="number" 
+                        class="form-control" 
+                        placeholder="m² de construcción" />
+                    <small>
+                        <span v-if="!$v.formOne.m2c.required  && $v.formOne.m2c.$dirty"
+                        class="text-danger">La cantidad de m²c es requerida.</span>
+                    </small>
             </div>
             <div class="col-md-6 form-group pb-3">
                     <label class="strong">m² de terreno<span class="text-danger">*</span></label>
-                    <input class="form-control" placeholder="m² de terreno" />
+                    <input type="number" 
+                        class="form-control" 
+                        v-model="formOne.m2t" 
+                        @blur="$v.formOne.m2t.$touch()"
+                        placeholder="m² de terreno" />
+                    <small>
+                        <span v-if="!$v.formOne.m2t.required  && $v.formOne.m2t.$dirty"
+                        class="text-danger">La cantidad de m²t es requerida.</span>
+                    </small>
             </div>
          </div>
 
@@ -113,17 +176,35 @@
             <div class="row">
                 <div class="col-md-6 form-group pb-3">
                     <label>Mínimo</label>
-                    <input class="form-control" placeholder="Precio mínimo" />
+                    <input type="number" 
+                        v-model="formOne.pricemin" 
+                        @blur="$v.formOne.pricemin.$touch()"
+                        class="form-control" placeholder="Precio mínimo" />
+                    <small>
+                        <span v-if="!$v.formOne.pricemin.required  && $v.formOne.pricemin.$dirty"
+                        class="text-danger">El precio mínimo es requerido.</span>
+                    </small>
                 </div>
                 <div class="col-md-6 form-group pb-3">
                     <label>Máximo</label>
-                    <input class="form-control" placeholder="Precio máximo" />
+                    <input type="number" 
+                        v-model="formOne.pricemax" 
+                        @blur="$v.formOne.pricemax.$touch()"
+                        class="form-control" placeholder="Precio máximo" />
+                    <small>
+                        <span v-if="!$v.formOne.pricemax.required  && $v.formOne.pricemax.$dirty"
+                        class="text-danger">El precio máximo es requerido.</span>
+                    </small>
                 </div>
             </div>
          </div>
 
          <div class="text-center mt-5">
-             <button type="submit"  class="btn btn-primary" style="width: 40%; padding: 10px">Siguiente</button>
+             <button 
+                type="button"
+                class="btn btn-primary" 
+                style="width: 40%; padding: 10px"
+                @click="changeTab(2)">Siguiente</button>
          </div>
       </form>
   </div>
@@ -144,40 +225,63 @@
                 <form>
 
                     <div class="form-group">
-                        <label class="strong">Estado</label>
-                        <select class="form-control is-valid">
-                            <option>Quintana Roo</option>
-                            <option>2</option>
-                            <option>3</option>
-                            <option>4</option>
-                            <option>5</option>
+                        <label class="strong">Estado<span class="text-danger">*</span></label>
+                        <select 
+                            class="form-control is-valid"
+                            v-model="formTwo.state" 
+                            @blur="$v.formTwo.state.$touch()">
+                            <option :value="null">Seleccione un estado</option>
+                            <option v-for="state in states" 
+                                :key="state.folio"
+                                :value="state.folio">{{ state.name }}</option>
                         </select>
+                        <small>
+                            <span v-if="!$v.formTwo.state.required  && $v.formTwo.state.$dirty"
+                            class="text-danger">El Estado es requerido.</span>
+                        </small>
                     </div>
 
                     <div class="form-group">
                         <label class="strong">Municipio</label>
-                        <select class="form-control is-valid" >
-                            <option>Benito Júarez</option>
-                            <option>2</option>
-                            <option>3</option>
-                            <option>4</option>
-                            <option>5</option>
+                        <select 
+                            class="form-control is-valid"
+                            v-model="formTwo.city" >
+                            <option :value="null">Seleccione un municipio</option>
+                            <option
+                               v-for="city in cities"
+                               :key="city.id"
+                               :value="city.id">
+                               {{city.itemName}}
+                             </option>
                         </select>
+                        <!-- <small>
+                            <span v-if="!$v.formTwo.city.required  && $v.formTwo.city.$dirty"
+                            class="text-danger">El Municipio es requerido.</span>
+                        </small> -->
                     </div>
 
                     <div class="form-group">
                         <label class="strong">Colonia</label>
-                        <select class="form-control" >
-                            <option>Selecciona una colonia</option>
-                            <option>2</option>
-                            <option>3</option>
-                            <option>4</option>
-                            <option>5</option>
+                        <select class="form-control"
+                            v-model="formTwo.suburb" >
+                            <option :value="null">Selecciona una colonia</option>
+                            <option
+                                :key="colonia.id"
+                                v-for="colonia in colonias"
+                                :value="colonia.id">
+                                {{colonia.itemName}}
+                            </option>
                         </select>
+                        <!-- <small>
+                            <span v-if="!$v.formTwo.suburb.required  && $v.formTwo.suburb.$dirty"
+                            class="text-danger">La colonia es requerida.</span>
+                        </small> -->
                     </div>
 
                     <div class="text-right">
-                        <button class="btn add-button">Añadir</button>
+                        <button type="button"
+                            class="btn add-button"
+                            @click="addZonaIdeal( false )">Añadir</button>
                     </div>
                    
 
@@ -208,27 +312,47 @@
                 </div>
 
                 <div class="text-right mt-3">
-                        <button class="btn add-button">Añadir zona personalizada</button>
+                        <button 
+                            type="button"
+                            class="btn add-button"
+                            @click="addZonaIdeal( true )">Añadir zona personalizada</button>
                     </div>
 
 
             </div>
 
 
-            <div class="col-md-6">
-                <h4 style="font-size: 18px">Tus zonas ideales son:</h4>
+            <div class="col-md-6" >
 
-                <ul class="list-group list-group-flush">
-                    <li class="list-group-item">
-                        <div class="item-ubication"><span>Benito Júarez, Quintana Roo</span><span><i class="fas fa-trash-alt"></i></span></div>
-                    </li>
-                </ul>
+                <div v-if="zonasIdeales.length > 0">
+
+                    <h4 style="font-size: 18px">Tus zonas ideales son:</h4>
+
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item" 
+                            v-for="(item, i) in zonasIdeales"
+                            :key="i">
+                            <div class="item-ubication">
+                                <span v-if="item.coords">{{ `Zona Personalizada` }}</span>
+                                <span v-else-if="!item.city">{{ `${item.state.name}` }}</span>
+                                <span v-else-if="!item.suburb">{{ `${item.state.name}, ${item.city.itemName}` }}</span>
+                                <span v-else>{{ `${item.state.name}, ${item.city.itemName}, ${item.suburb.itemName}` }}</span>
+                                <span @click="removeZonaIdeal(i)"><i class="fas fa-trash-alt"></i></span>
+                            </div>
+                        </li>
+                    </ul>
+
+                </div>
+
+
             </div>
 
         </div>
 
         <div class="text-center mt-5">
-            <button class="btn btn-primary" style="width: 40%; padding: 10px">Siguiente</button>
+            <button class="btn btn-primary" 
+                style="width: 40%; padding: 10px"
+                @click="changeTab(3)">Siguiente</button>
         </div>
     </div>
 
@@ -238,28 +362,65 @@
     <div class="tab-pane container fade p-3 active show" id="menu2" v-if="tabSelected == 3">
         <span @click="changeTab( 2 )" style="cursor: pointer; font-size: 14px;"><i class="fas fa-angle-left"></i> Regresar</span>
 
-        <h3>Estas a un paso de encontrar el inmueble de tus sueños.<br>Necesitamos más información sobre ti.</h3>
+        <h3>Estás a un paso de encontrar el inmueble de tus sueños.<br>Necesitamos más información sobre ti.</h3>
 
 
         <form class="p-5  mx-5">
             <div class="form-group pb-2">
                 <label class="strong">¿Cúal es tu nombre?<span class="text-danger">*</span></label>
-                <input class="form-control" placeholder="Nombre completo" />
+                <input 
+                class="form-control" 
+                placeholder="Nombre completo"
+                v-model="formThree.name" 
+                @blur="$v.formThree.name.$touch()" />
+                <small>
+                    <span v-if="!$v.formThree.name.required  && $v.formThree.name.$dirty"
+                    class="text-danger">Tu nombre es requerido.</span>
+                </small>
             </div>
 
             <div class="form-group pb-2">
                 <label class="strong">¿Cúal es tu correo electrónico?<span class="text-danger">*</span></label>
-                <input class="form-control" type="email" placeholder="ejemplo@ejemplo.com" />
+                <input 
+                    class="form-control" 
+                    type="email" 
+                    placeholder="ejemplo@ejemplo.com" 
+                    v-model="formThree.email" 
+                    @blur="$v.formThree.email.$touch()" />
+                <small>
+                    <span v-if="!$v.formThree.email.required  && $v.formThree.email.$dirty"
+                    class="text-danger">Tu correo electrónico es requerido.</span>
+                </small>
+                <small>
+                <span v-if="!$v.formThree.email.email  &&
+                                  $v.formThree.email.$dirty"
+                    class="text-danger">Correo electrónico inválido.</span>
+                </small>
             </div>
 
             <div class="form-group pb-2">
                 <label class="strong">¿Cúal es número teléfonico?<span class="text-danger">*</span></label>
-                <input class="form-control"  placeholder="(999) 999 9999" />
+                <input class="form-control"  
+                    placeholder="(999) 999 9999"
+                    v-model="formThree.phone" 
+                    @blur="$v.formThree.phone.$touch()" />
+                <small>
+                    <span v-if="!$v.formThree.phone.required  && $v.formThree.phone.$dirty"
+                    class="text-danger">Tu número telefónico es requerido.</span>
+                </small>
             </div>
 
             <div class="form-group pb-2">
                 <label class="strong">¿Cúal es el nombre de tu negocio?<span class="text-danger">*</span></label>
-                <input class="form-control"  placeholder="Nombre del negocio" />
+                <input 
+                    class="form-control"
+                    placeholder="Nombre del negocio"
+                    v-model="formThree.businessName" 
+                    @blur="$v.formThree.businessName.$touch()" />
+                <small>
+                    <span v-if="!$v.formThree.businessName.required  && $v.formThree.businessName.$dirty"
+                    class="text-danger">El nombre de tu negocio es requerido.</span>
+                </small>
             </div>
 
 
@@ -364,7 +525,11 @@
             </div>
 
             <div class="text-center mt-5">
-                <button type="submit"  class="btn btn-primary" style="width: 40%; padding: 10px">Guardar</button>
+                <button 
+                    type="button"
+                    class="btn btn-primary" 
+                    style="width: 40%; padding: 10px"
+                    @click="submitForm()">Guardar</button>
             </div>
         </form>
 
@@ -379,33 +544,267 @@
 </template>
 
 <script>
-export default {
 
+import { required, email } from 'vuelidate/lib/validators' 
+import Swal from 'sweetalert2'
+import { mapGetters } from 'vuex';
+
+
+export default {
+    head: {
+        titleTemplate: 'Clasificados Contacto | Preferencias',
+    },
     data() {
         return {
             zoom: 5,
-            center: { lat: 21.1619184, lng: -86.8503969 },
+            center: { lat: 19.4311971, lng: -99.2047097 },
             markers: [
-                { Id: 1, position: { lat: 21.1619184, lng: -86.8503969 }},
+                { Id: 1, position: { lat: 19.4311971, lng: -99.2047097 }},
             ],
-            form: {
-                operation: 1
+            formOne: {
+                operation: 1,
+                type: null,
+                bedroom: null,
+                bathroom: null,
+                parking: null,
+                m2c: null,
+                m2t: null,
+                pricemin: null,
+                pricemax: null
             },
-            tabSelected: 1
+            formTwo: {
+                // country: null,
+                state: null,
+                city: null,
+                suburb: null,
+                municipality: null,
+            },
+            formThree: {
+                name: null,
+                email: null,
+                phone: null,
+                businessName: null
+            },
+            tabSelected: 1,
+
+            zonasIdeales: [],
+
+            mapData: {
+                coords: { lat: 19.4311971, lng: -99.2047097 },
+                radius: 100
+            }
         }
+    },
+    validations: {
+        formOne: {
+            type: { required },
+            bedroom: { required },
+            bathroom: { required },
+            parking: { required },
+            m2c: { required },
+            m2t: { required },
+            pricemin: { required },
+            pricemax: { required },
+        },
+        formTwo: {
+            // country: { required },
+            state: { required },
+            // city: { required },
+            // suburb: { required },
+        },
+        formThree: {
+            name: { required },
+            email: { required, email },
+            phone: { required },
+            businessName: { required }
+        },
+    },
+    created() {
+        this.formTwo.state = this.userStateLocation.folio
+        console.log(this.stateById('61'))
     },
     methods: {
         changeTab( idTab ) {
+
+
+            if ( idTab == 2 && this.$v.formOne.$invalid ) {
+                console.log('Es inválido el formulario de la TAB 1')
+                this.$v.formOne.$touch();
+                Swal.fire({
+                    icon: 'warning',
+                    title: '¡Hay datos requeridos que no has contestado!',
+                    text: `Para darte una mejor experiencia en tu búsqueda, es necesario que contestes los datos que son señalados con un asterisco *.`
+                })
+                return;
+            }
+
+
+            if ( idTab == 3 && this.zonasIdeales.length == 0 ) {
+                console.log('Es inválido el formulario de la TAB 2')
+                this.$v.formTwo.$touch();
+                Swal.fire({
+                    icon: 'warning',
+                    title: '¡Es necesario establecer almenos una zona!',
+                    text: `Por favor indicanos en que zona(s) te gustaría vivir.`
+                })
+                return;
+            }
+
             this.tabSelected = idTab;
         },
+        changeOperation( idOperation ) {
+            this.formOne.operation = idOperation;
+        },
         dragCircle( value ) {
-            console.log(value)
-            console.log(value.latLng.lat())
+            this.mapData.coords.lat = value.latLng.lat()
+            this.mapData.coords.lng = value.latLng.lng()
+            console.log(this.mapData)
         },
         radiusChanged( value ) {
-            console.log( value )
+            this.mapData.radius = value
+            console.log(this.mapData)
+        },
+        async submitForm(){
+            if ( this.$v.formThree.$invalid  ) {
+                this.$v.formThree.$touch()
+                Swal.fire({
+                    icon: 'warning',
+                    title: '¡Hay datos requeridos que no has contestado!',
+                    text: `Para darte una mejor experiencia en tu búsqueda, es necesario que contestes los datos que son señalados con un asterisco *.`
+                })
+                return 
+            } 
+
+             Swal.fire({
+                title: '¡Por favor espere!',
+                text: 'Estamos buscando el inmueble de tus sueños',
+                onBeforeOpen: () => {
+                    Swal.showLoading()
+                },
+                showLoading: true,
+                allowEscapeKey: false,
+                allowOutsideClick: false,
+                showConfirmButton: false
+            });
+
+            const states = this.zonasIdeales.filter( zona => zona.state != undefined ).map( zona => zona.state.folio )
+            const municipalities = this.zonasIdeales.filter( zona => zona.city != undefined ).map( zona => zona.city.id )
+            const suburbs = this.zonasIdeales.filter( zona => zona.suburb != undefined ).map( zona => zona.suburb.id )
+           
+         
+            const form = {
+                token: localStorage.getItem('token') || '',
+                ...this.formOne,
+                ...this.formTwo,
+                contact: {
+                    ...this.formThree
+                },
+                city: null,
+                municipality: municipalities.filter( (z, i) => municipalities.indexOf(z) === i).toString(),
+                state: states.filter( (z, i) => states.indexOf(z) === i).toString(),
+                suburb: suburbs.filter( (z, i) => suburbs.indexOf(z) === i).toString()
+            }
+
+           console.log(form)
+
+
+           const resp = await this.$store.dispatch('toIDI', form)
+
+            if ( !resp ) {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops!',
+                    text: 'Ocurrio un error.'
+                })
+                return;
+            }
+
+
+            if ( resp.data.length == 0 ){
+                Swal.fire({
+                    title: ':(',
+                    text: 'En este momento no tenemos inmuebles como los que buscas, pero nuestros Asesores Inmobiliarios se comunicarán contigo cuando tengan la mejor opción para ti.'
+                })
+            } else if ( resp.data.length > 0 ) {
+                Swal.fire({
+                    title: '¡Genial!',
+                    text: 'Estos son los inmuebles ideales para ti.'
+                })
+            }
+
+
+
+
+
+        },
+        addZonaIdeal( isPersonalizada ){
+            let data = {}
+            if ( isPersonalizada ) {
+                data = { ...this.mapData }
+            } else {
+
+                if ( this.$v.formTwo.$invalid  ) {
+
+                    Swal.fire({
+                        icon: 'warning',
+                        title: '¡Hay datos requeridos que no has contestado!',
+                        text: `Para darte una mejor experiencia en tu búsqueda, es necesario que contestes los datos que son señalados con un asterisco *.`
+                    })
+
+                    return;
+                }
+
+                data = { state: this.stateById(this.formTwo.state), city: this.municipalityById(this.formTwo.city), suburb: this.suburbById(this.formTwo.suburb) }
+            }
+            this.zonasIdeales.push( data )
+        },
+        removeZonaIdeal( index ){
+            this.zonasIdeales.splice( index, 1)
         }
-    }
+    },
+    computed: {
+        ...mapGetters({ states: 'getStatesList',
+                        cities: 'getCitiesList', 
+                        colonias: 'getColoniasList', 
+                        categories: 'getPropertiesTypes',
+                        userStateLocation: 'getUserStateLocation',
+                        stateById: 'getStateById',
+                        municipalityById: 'getMunicipalityById',
+                        suburbById: 'getSuburbById'})
+    },
+    watch: {
+      'formTwo.state': {
+        immediate: true,
+        async handler( newValue, oldValue  ) {
+          
+          await this.$store.dispatch('getCities', this.formTwo.state )
+          
+          if ( oldValue == null || oldValue == undefined ){
+            return;
+          }
+
+          this.formTwo.city = null;
+          this.formTwo.suburb = null;
+          this.$store.commit('resetSuburs', [])
+          
+        }
+      },
+      'formTwo.city': {
+        immediate: true,
+        async handler( newValue, oldValue  ) {
+          
+          await this.$store.dispatch('getColonias', this.formTwo.city )
+          
+          if ( oldValue == null || oldValue == undefined ){
+            return;
+          }
+
+          this.formTwo.suburb = null;
+
+          
+        }
+      }
+    },
 
 }
 </script>

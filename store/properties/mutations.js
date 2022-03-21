@@ -50,6 +50,9 @@ const mutations = {
     setShowSearchGeneral( state, value ) {
         state.showSearchGeneral = value
     },
+    setShowIDI( state, value ) {
+        state.showIDI = value
+    },
 
 
 

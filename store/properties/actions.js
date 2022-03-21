@@ -133,6 +133,25 @@ const actions = {
       },
 
 
+
+      async toIDI({ commit, state }, formData){
+
+        const config = state.API_PARAMS
+
+        commit('setAPI_PARAMS', { body: `state=${formData.state ? formData.state : ''}&municipality=${formData.municipality != undefined ? formData.municipality : ''}&category=${formData.category ? formData.category : ''}&m2t=${formData.m2t ? formData.m2t : ''}&m2c=${formData.m2c ? formData.m2c : ''}&bedroom=${formData.bedroom ? formData.bedroom : ''}&bathroom=${formData.bathroom ? formData.bathroom : ''}&pricemax=${formData.pricemax ? formData.pricemax : ''}&pricemin=${formData.pricemin ? formData.pricemin : ''}&type=${formData.category ? formData.category : ''}&operation=${formData.operation  ? formData.operation : ''}&suburb=${ formData.suburb ? formData.suburb : '' }&token=${ state.token }`})
+
+
+        const resp = await fetch(state.API_URL + state.IDI, config).then( resp => resp.json() )
+
+        console.log(resp)
+
+        if ( resp.status == 200  ) {
+            return resp.resp
+        } 
+        return null
+    },
+
+
       async login({ commit, state }, form ){
 
 

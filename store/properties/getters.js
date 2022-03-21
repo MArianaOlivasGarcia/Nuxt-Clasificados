@@ -45,6 +45,9 @@ const getters = {
     getCookiesAccepted( state ) {
         return state.coockiesAccepted
     },
+    getShowIDI( state ) {
+        return state.showIDI
+    },
 
 
 
