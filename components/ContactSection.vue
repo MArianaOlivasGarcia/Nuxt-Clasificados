@@ -187,7 +187,7 @@ export default {
 
 <style scoped>
 
-input.form-control {
+input.form-control, select.form-control, textarea.form-control{
   display: inline-block;
   box-sizing: border-box;
   border-radius: 10px;

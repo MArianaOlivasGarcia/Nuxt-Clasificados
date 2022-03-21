@@ -75,7 +75,7 @@
                     Tu navegador no soporta este video.
                 </video>
                 <NuxtLink
-                  to="/register"
+                  to="/registro.html"
                   class="btn btn-primary mt-3 p-2"
                   style="box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px !important;">
                   ¡Quiero publicar un anuncio! 
