@@ -45,26 +45,25 @@
                 </div>
 
                 <div class="form-group  text-left">
-                    <input  
+                    <!-- <input  
                         v-model="form.phone"
                         @blur="$v.form.phone.$touch()"
                         type="text" 
                         class="form-control item pl-4 mb-2 mt-3" 
-                        placeholder="Número teléfonico">
+                        placeholder="Número teléfonico"> -->
+
+                        <vue-tel-input
+                          class="form-control item pl-4 mb-2 mt-3"
+                          v-bind="telProps"
+                          v-model="form.phone"
+                          @blur="$v.form.phone.$touch()"
+                        ></vue-tel-input>
+
                     <small><span class="text-danger"
                         v-if="!$v.form.phone.required  && $v.form.phone.$dirty">El número teléfonico es requerido.</span></small>
                 </div>
 
-                <!-- <div class="form-group">
-                  <vue-tel-input
-                    class="form-control"
-                    required="required"
-                    placeholder="Teléfono *"  
-                    @blur="$v.newUser.RDx_number.$touch()" 
-                  ></vue-tel-input>
-                    <small><span v-if="!$v.newUser.RDx_number.required && $v.newUser.RDx_number.$dirty" class="text-danger">El número es requerido</span></small>
-                </div> -->
-
+               
                 <div class="form-group  text-left">
                     <input  
                         v-model="form.password"
@@ -140,7 +139,28 @@ export default {
                 phone: '',
                 company: ''
             },
-            isLoading: false
+            isLoading: false,
+            telProps: {
+                id: "phoneContact",
+                mode: "international",
+                defaultCountry: "MX",
+                disabledFetchingCountry: false,
+                disabled: false,
+                disabledFormatting: true,
+                inputOptions: {
+                    placeholder: "(999)-999-9999",
+                },
+                required: false,
+                enabledCountryCode: true,
+                enabledFlags: true,
+                preferredCountries: ["MX"],
+                onlyCountries: [],
+                ignoredCountries: [],
+                autocomplete: "off",
+                name: "telephone",
+                maxLen: 18,
+                inputClasses: "form-control",
+            }
         }
     },
     validations: {
