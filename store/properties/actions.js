@@ -58,6 +58,7 @@ const actions = {
 
     async getPropertyDetail({ commit, state }, id ){
 
+
         if ( id == undefined ) return
 
 

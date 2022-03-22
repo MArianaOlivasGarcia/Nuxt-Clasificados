@@ -529,8 +529,8 @@ import { required, email } from 'vuelidate/lib/validators'
 export default {
     async asyncData ({ params, store }) {
 
-      const id = params.id.split('.')[0].split('_')[1]
-      
+      const rutaCortada = params.id.split('_')
+      const id = rutaCortada[ rutaCortada.length - 1 ].split('.')[0]
       // fetch data from API
       try {
         const property = await store.dispatch('getPropertyDetail', id)
@@ -543,6 +543,12 @@ export default {
       }
     },
     head() {
+
+      if ( !this.property ) {
+        return {
+          title: 'Clasificados contacto | El buscador'
+        }
+      }
       const { title, description, image } = this.property.meta
 
       return {
