@@ -8,7 +8,7 @@
       class="fab shadow" target="_blank">  -->
     <button type="button" @click="openWhatsForm()" class="fab shadow" >
       <i v-if="!showWhatsForm" class="fab fa-whatsapp"></i>
-      <i v-else class="fas fa-times"></i>
+      <i style="font-size: 18px !important" v-else class="fas fa-times"></i>
     </button>
     <!-- </a>  -->
 
