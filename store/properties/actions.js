@@ -152,6 +152,27 @@ const actions = {
     },
 
 
+    async sendToWhatsApp({ commit, state }, formData){
+
+
+        const resp = await fetch(state.API_URL + state.WHATSFORM, 
+            {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8",
+                },
+                body: `RDx_nombre=${ formData.name }&RDx_correo=${ formData.email }&RDx_telefono=${ formData.whatsapp }&RDx_message=${ formData.message }&RDx_productid=${ formData.productId }`
+            },
+        ).then( resp => resp.json() )
+
+
+        if ( resp.status == 200  ) {
+            return resp
+        } 
+        return null
+    },
+
+
       async login({ commit, state }, form ){
 
 

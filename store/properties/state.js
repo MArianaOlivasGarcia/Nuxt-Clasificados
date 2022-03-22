@@ -25,6 +25,7 @@ const state = {
     RENEW_TOKEN:'?site=eWsySVBlWldtQW42Z3Y1c1lQYTVVZz09',
 
     IDI: '?site=ODA1SmQ4U1RsMTczcjVnUThzNUQycTNwTGdaUVJ2enpmNDNaM0Q2cG5xbz0=',
+    WHATSFORM: '?site=MWM2OW1oTWhXVG9JcnlNNThYL1gwSHlZRFEyTXRzZHFXeWYzT3QwR1BWRT0=',
 
     token: '',
     userStateLocation: {

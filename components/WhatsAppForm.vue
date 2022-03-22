@@ -71,6 +71,7 @@
 </template>
 
 <script>
+import Swal from 'sweetalert2'
 export default {
     props: {
         whatsForm: {
@@ -79,6 +80,11 @@ export default {
         },
         v: {
             type: Object,
+            required: true
+        },
+        // whats del que vende/renta
+        whatsappNumber: {
+            type: String,
             required: true
         }
     },
@@ -108,13 +114,31 @@ export default {
         }
     },
     methods: {
-        startChat() {
+        async startChat() {
             if( this.v.whatsForm.$invalid ) {
                 this.v.whatsForm.$touch()
             }
-            console.log('LISTO PARA ENVIAR')
 
-            console.log(this.whatsForm)
+            const rutaCortada = this.$route.path.split('_')
+            const productId = rutaCortada[ rutaCortada.length -1 ].split('.')[0]
+
+            const data = {
+                ...this.whatsForm,
+                productId
+            }
+
+            const resp = await this.$store.dispatch('sendToWhatsApp', data)
+            
+            if ( !resp ) {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops!',
+                    text: 'Ocurrio un error. Por favor inténtalo más tarde.'
+                })
+                return;
+            } 
+
+            window.open(`https://wa.me/+52${ this.whatsappNumber }?text=${ this.whatsForm.message  } - https://clasificadoscontacto.com${this.$route.path}`, '_blank');
         }
     }
 }

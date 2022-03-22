@@ -15,6 +15,7 @@
     <WhatsAppForm 
       v-if="showWhatsForm"
       :whatsForm="whatsForm"
+      :whatsappNumber="number"
       :v="v"/>
   </div>
 
