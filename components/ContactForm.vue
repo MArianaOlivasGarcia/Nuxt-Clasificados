@@ -146,7 +146,8 @@ export default {
         }
     },
     created() {
-      this.idProduct = this.$route.params.id.split('.')[0].split('_')[1]
+      const rutaCortada = this.$route.path.split('_')
+      this.idProduct = rutaCortada[ rutaCortada.length -1 ].split('.')[0]
     },
     methods: {
         async sendMain(){

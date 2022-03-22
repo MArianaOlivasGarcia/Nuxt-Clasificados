@@ -107,6 +107,9 @@ export default {
       noImage: false
     }
   },
+  created() {
+    console.log(this.item)
+  },
   methods: {
     goToProperty() {
 
