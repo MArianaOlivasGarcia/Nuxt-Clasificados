@@ -102,7 +102,7 @@
                   </div>
                     
                 </div>
-                <NuxtLink to="/session">¿Ya tienes cuenta?, <span style="color: #01569D;"> Inicia sesión </span> </NuxtLink>
+                <NuxtLink to="/sesion.html">¿Ya tienes cuenta?, <span style="color: #01569D;"> Inicia sesión </span> </NuxtLink>
               </div>
          </form>
         </div>
