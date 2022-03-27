@@ -120,8 +120,8 @@ export default {
   border-top-right-radius: 15px;
   border-bottom-right-radius: 15px;
   border-bottom-left-radius: 15px;
-  background: #FAE786;
-  box-shadow: rgb(100 100 111 / 20%) 0px 7px 29px 0px;
+  background: rgba( 255, 255, 255, 0.3 );
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 50px;
 }
 
 

@@ -10,7 +10,7 @@
     </section> -->
 
 
-    <section class="block-info bg-light pb-2 pt-4">
+    <section class="block-info bg-light pb-2">
         <Info/>
     </section>
 

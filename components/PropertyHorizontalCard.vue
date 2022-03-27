@@ -138,7 +138,7 @@ export default {
 <style scoped>
 #propImg {
   height: 250px;
-  width: 350px;
+  /* width: 350px; */
   max-height: 260px !important;
 }
 @media (max-width: 767px) {

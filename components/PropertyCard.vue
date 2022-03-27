@@ -130,7 +130,7 @@ export default {
 <style scoped>
 
 #propImg {
-  width: 100vw;
+  /* width: 100vw; */
   height: 240px;
 }
 @media (max-width: 767px) {
@@ -142,6 +142,7 @@ export default {
   color: #00569d;
 }
 .card {
+  width: 100%;
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
   border-radius: 1.25rem;
   top: 0px;

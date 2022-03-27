@@ -36,7 +36,7 @@
         </div>
 
 
-      <div :class=" !isGoogleSearch ? 'col-sm-12 col-md-3 col-lg-6 pr-1 pl-1' : 'col-sm-12 col-md-6 col-lg-6 pr-1 pl-1'  ">
+      <div class="col-sm-12 col-md-3 col-lg-6 pr-1 pl-1">
         
         <div class="form-group text-center text-md-left">
           <label>Tipo de inmueble</label>
@@ -55,10 +55,7 @@
 
       </div>
 
-
-    <template v-if="!isGoogleSearch">
-
-      <div class="col-sm-12 col-md-3 col-lg-6 pr-1 pl-1">
+      <div class="col-sm-12 col-md-3 col-lg-6 pr-1 pl-1" >
         
         
         <div class="form-group text-center text-md-left">
@@ -126,23 +123,8 @@
         </div>
       </div>
 
-    </template>
-
-        <!-- default-place="Singapore" -->
-
-        <div class="placeContainer col-12 pr-1 pl-1 mb-3">
-              <p class="m-0">{{ !isGoogleSearch ? 'Si lo prefieres, escribe una ubicación' : 'Ubicación'}}</p>
-          
-          <gmap-autocomplete 
-            @keyup="googleSearchChange" 
-            @place_changed="updatePlace" 
-            placeholder="Ingresa una ubicación" >
-          </gmap-autocomplete>
-            <!-- <gmap-place-input @keyup="googleSearchChange" @place_changed="updatePlace"></gmap-place-input> -->
-        </div>
 
 
-         
       
 
     <template v-if="showAvanzado">
@@ -351,7 +333,7 @@ export default {
         city: '',
         suburb: '',
        // type: null,
-      }, 
+      },
       searchComplement: {
         bathroom: '',
         bedroom: '',
@@ -361,24 +343,9 @@ export default {
         pricemin: null
       },
 
-
-      isGoogleSearch: false
     };
   },
   methods: {
-    googleSearchChange( event ){
-      if ( event.target.value === '' ) {
-        this.isGoogleSearch = false;
-      } else {
-        this.isGoogleSearch = true;
-      }
-    },
-    updatePlace( what ) {
-      this.search.keywordAddrs = what.formatted_address;
-      console.log(this.search.keywordAddrs)
-      // console.log(what.formatted_address)
-      console.log(what)
-    },
     sliderChange( e ){
       this.searchComplement.pricemin = e.values[0];
       this.searchComplement.pricemax = e.values[1];
@@ -662,17 +629,12 @@ button img.opt-diselected {
   background-color: #00569d !important;
 }
 
- .form-control {
+.form-control {
   display: inline-block;
   box-sizing: border-box;
   border-radius: 10px;
   border: 1px solid rgba(255, 255, 255, 0.6);
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px !important;
 }
-
-
-
-
-
 
 </style>

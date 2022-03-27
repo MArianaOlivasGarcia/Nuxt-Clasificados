@@ -1,16 +1,12 @@
 
 <template>
 
-    <section class="height-70 pt-2 pb-2 BannerHome" >
-
-      
-
-      <div class="sliderContainer">
-        <Slider />
-      </div>
-
-
-
+    <section class="height-70 bg-gradient pt-2 pb-2 BannerHome">
+    <img
+      src="@/static/images/examples/background-yellow.jpg"
+      alt="Image"
+      class="bg-image opacity-60"
+    />
     <div class="hero-wrap">
       <div class="overlay"></div>
 
@@ -19,11 +15,11 @@
         <div class="row no-gutters slider-text align-items-center justify-content-center">
           
           <div class="col-lg-8 col-md-12 col-sm-12 ftco-animate text-center">
-                <!-- <div class="d-block d-sm-block d-md-block d-lg-none ">
+                <div class="d-block d-sm-block d-md-block d-lg-none ">
                     <img src="@/static/images/examples/sideimage.png" class="img-lone" alt="" />
-                </div> -->
+                </div>
             <h1> En <b>Clasificados contacto</b>, lo buscas lo encuentras, lo anuncias lo <b>vendes</b> </h1>
-            <section class="ftco-search mt-2 pt-1">
+            <section class="ftco-search mt-2 mb-2 pt-1">
               <div class="container">
                 <div class="row justify-content-center">
                   <div class="col-md-12 search-wrap p-0">
@@ -35,18 +31,15 @@
             </section>
           </div>
           
-          <!-- <div class="col-lg-4 col-md-12 text-right d-none d-lg-block d-md-none ftco-animated fadeInRight">
+          <div class="col-lg-4 col-md-12 text-right d-none d-lg-block d-md-none ftco-animated fadeInRight">
             <img src="@/static/images/examples/sideimage.png" alt="" />
-          </div> -->
+          </div>
 
         </div>
 
 
       </div>
     </div>
-
-
-
   </section>
 </template>
 
@@ -56,15 +49,6 @@
 import { mapGetters } from 'vuex';
 
 export default {
-  data() {
-    return {
-      items: [
-        { title: "Item 0", content: "Content item with description" },
-        { title: "Item 1", content: "Content item with description" },
-        { title: "Item 2", content: "Content item with description" },
-      ],
-    }
-  },
   computed: {
       ...mapGetters({ userStateLocation: 'getUserStateLocation' }),
   },
@@ -101,7 +85,7 @@ export default {
 img {
   width: 100%;
 }
-/*  {
+/* .bg-gradient {
     background: linear-gradient(90deg, #0099FF 0%, #f2ba10 100%);
 } */
 .height-70 {
@@ -139,17 +123,7 @@ img {
 section {
   position: relative;
 }
-
-
-h1 {
-  font-size: 30px;
-}
-
-
-.sliderContainer {
-  position: absolute;
-  top: 0;
-  height: 60%;
-  width: 100%;
+section {
+  padding: 4.5rem 0;
 }
 </style>

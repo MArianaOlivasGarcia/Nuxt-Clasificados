@@ -47,6 +47,23 @@ export default {
     margin: 0px;
 }
 
+
+
+
+
+@media (max-width: 768px) { 
+    .adviser-container {
+        width: 40% !important;
+    }
+}
+
+@media (max-width: 576px) { 
+    .adviser-container {
+        width: 60% !important;
+    }
+}
+
+
 p {
     line-height: 1.3;
     font-size: 12px;
