@@ -108,7 +108,6 @@ export default {
     }
   },
   created() {
-    console.log(this.item)
   },
   methods: {
     goToProperty() {

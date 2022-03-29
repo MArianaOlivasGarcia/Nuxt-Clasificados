@@ -117,10 +117,10 @@ export default {
 
         // 1. cortar *con*
         const urlCortada = search.split('-con-')
-        const primeraUrl = urlCortada[0]?.split('.')[0] // Quitar el .html;
+        const primeraUrl = urlCortada[0]?.split('.html')[0] // Quitar el .html;
         console.log(primeraUrl)
 
-        const segundaUrl = urlCortada[1]?.split('.')[0] //Quitar el .html
+        const segundaUrl = urlCortada[1]?.split('.html')[0] //Quitar el .html
         console.log(segundaUrl)
 
         // Cortar las url
@@ -132,8 +132,14 @@ export default {
         let buscar2 = []
 
         // Agregar los valores del primer search
-        primerSearch.forEach(element => {
-          const param = element.split('_')[1]
+        let param;
+        primerSearch.forEach((element, index) => {
+          if ( index != 2 ){
+            param = element.split('_')[1]
+          } else {
+            param = element;
+          }
+          console.log(param)
           buscar.push(param)
         });
 
@@ -148,15 +154,16 @@ export default {
 
 
         console.log('BUSCAAAAR')
-        console.log(buscar2)
+        console.log(buscar)
 
         const searchForm = {
           page: this.$route.query.pagina ? this.$route.query.pagina : 1,
           category: buscar[0],
           operation: buscar[1],
-          state: buscar[2],
-          city: buscar[3],
-          suburb: buscar[4],
+          keywordAddrs: helpers.reverseNormalize(buscar[2]),
+          // state: buscar[2],
+          // city: buscar[3],
+          // suburb: buscar[4],
           bathroom: buscar2.find(e => e.key === 'banos')?.value,
           bedroom: buscar2.find(e => e.key === 'recamaras')?.value,
           pricemin: buscar2.find(e => e.key === 'minimo')?.value,
@@ -164,6 +171,8 @@ export default {
           m2t: buscar2.find(e => e.key === 'm2t')?.value,
           m2c: buscar2.find(e => e.key === 'm2c')?.value,
         }
+
+
 
 
         console.log(searchForm)

@@ -18,7 +18,7 @@
 
         <div class="row no-gutters slider-text align-items-center justify-content-center">
           
-          <div class="col-lg-8 col-md-12 col-sm-12 ftco-animate text-center">
+          <div class="col-lg-10 col-md-12 col-sm-12 ftco-animate text-center">
                 <!-- <div class="d-block d-sm-block d-md-block d-lg-none ">
                     <img src="@/static/images/examples/sideimage.png" class="img-lone" alt="" />
                 </div> -->

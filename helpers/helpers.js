@@ -33,6 +33,17 @@ helpers.normalize = ( str ) => {
 			.toLowerCase()
 }
 
+
+helpers.reverseNormalize = ( str ) => {
+	return str.trim()
+			.normalize('NFD')
+			.replace('', /[\u0300-\u036f]/g)
+			.replace('-', / /g)
+			.replace('', /:/g)
+			.toLowerCase()
+}
+
+
 helpers.fistLetterUpperCase = ( str ) => {
 	return str.split('_')[0]
 		.replace(/-/g, ' ')

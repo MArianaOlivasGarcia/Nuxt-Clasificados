@@ -36,7 +36,7 @@
         </div>
 
 
-      <div :class=" !isGoogleSearch ? 'col-sm-12 col-md-3 col-lg-6 pr-1 pl-1' : 'col-sm-12 col-md-6 col-lg-6 pr-1 pl-1'  ">
+      <div :class="'col-sm-12 col-md-4 col-lg-4 pr-1 pl-1'">
         
         <div class="form-group text-center text-md-left">
           <label>Tipo de inmueble</label>
@@ -56,9 +56,9 @@
       </div>
 
 
-    <template v-if="!isGoogleSearch">
+    <!-- <template v-if="!isGoogleSearch"> -->
 
-      <div class="col-sm-12 col-md-3 col-lg-6 pr-1 pl-1">
+      <!-- <div class="col-sm-12 col-md-3 col-lg-6 pr-1 pl-1">
         
         
         <div class="form-group text-center text-md-left">
@@ -79,10 +79,10 @@
         </div>
 
 
-      </div>
+      </div> -->
 
 
-      <div class="col-sm-12 col-md-3 col-lg-6 pr-1 pl-1">
+      <!-- <div class="col-sm-12 col-md-3 col-lg-6 pr-1 pl-1">
         <div class="form-group text-center text-md-left">
           <label>Municipio</label>
           <div class="form-field">
@@ -91,7 +91,6 @@
               :class="search.city == '' ? 'form-control is-invalid' : 'form-control is-valid'"
             >
             <option value="">Selecciona municipio</option>
-            <!-- TODO: Arreglar cuando ningua de las ciudades llegue en null -->
             <option       
               v-for="city in cities.filter( c => c )"
               :key="city.id"
@@ -101,11 +100,11 @@
             <div class="icon"><i class="icon-city"></i></div>
           </div>
         </div>
-      </div>
+      </div> -->
 
 
 
-      <div class="col-sm-12 col-md-3 col-lg-6 pr-1 pl-1">
+      <!-- <div class="col-sm-12 col-md-3 col-lg-6 pr-1 pl-1">
         <div class="form-group text-center text-md-left">
           <label>Colonia</label>
           <div class="form-field">
@@ -114,7 +113,6 @@
               :class="search.suburb == '' ? 'form-control is-invalid' : 'form-control is-valid'"
             >
             <option value="">Selecciona colonia</option>
-            <!-- TODO: Arreglar cuando ningua de las ciudades llegue en null -->
             <option       
               v-for="colonia in colonias.filter( c => c )"
               :key="colonia.id"
@@ -126,20 +124,33 @@
         </div>
       </div>
 
-    </template>
+    </template> -->
 
         <!-- default-place="Singapore" -->
 
-        <div class="placeContainer col-12 pr-1 pl-1 mb-3">
-              <p class="m-0">{{ !isGoogleSearch ? 'Si lo prefieres, escribe una ubicación' : 'Ubicación'}}</p>
-          
-          <gmap-autocomplete 
-            @keyup="googleSearchChange" 
-            @place_changed="updatePlace" 
-            placeholder="Ingresa una ubicación" >
-          </gmap-autocomplete>
-            <!-- <gmap-place-input @keyup="googleSearchChange" @place_changed="updatePlace"></gmap-place-input> -->
+        <div class="'col-sm-12 col-md-8 col-lg-8 pr-1 pl-1'">
+          <div class="form-group">
+            <div class="form-field" style="text-align: start;">
+
+
+              <p class="m-0">{{ 'Ubicación'}}</p>
+              <div class="placeContainer col-12 pr-1 pl-1 mb-3">
+                        
+                <gmap-autocomplete 
+                  @keyup="googleSearchChange" 
+                  @place_changed="updatePlace" 
+                  
+                  placeholder="Ingresa una ubicación" >
+                </gmap-autocomplete>
+                  <!-- <gmap-place-input @keyup="googleSearchChange" @place_changed="updatePlace"></gmap-place-input> -->
+              </div>
+
+
+            </div>
+          </div>
         </div>
+
+        
 
 
          
@@ -153,7 +164,7 @@
             <div class="select-wrap">
               <input
                 type="text"
-                :class="searchComplement.m2c == null || searchComplement.m2c == ''  ? 'form-control is-invalid' : 'form-control is-valid'"
+                :class="searchComplement.m2c == null || searchComplement.m2c == ''  ? 'form-control' : 'form-control is-valid'"
                 placeholder="m² construcción"
                 v-model="searchComplement.m2c"
               />
@@ -170,7 +181,7 @@
             <div class="select-wrap">
               <input
                 type="text"
-                :class="searchComplement.m2t == null || searchComplement.m2t == '' ? 'form-control is-invalid' : 'form-control is-valid'"
+                :class="searchComplement.m2t == null || searchComplement.m2t == '' ? 'form-control' : 'form-control is-valid'"
                 placeholder="m² terreno"
                 v-model="searchComplement.m2t"
               />
@@ -185,7 +196,7 @@
           <div class="form-field">
             <select
               v-model="searchComplement.bathroom"
-              :class="searchComplement.bathroom == null || searchComplement.bathroom == '' ? 'form-control is-invalid' : 'form-control is-valid'"
+              :class="searchComplement.bathroom == null || searchComplement.bathroom == '' ? 'form-control' : 'form-control is-valid'"
             >
             <option value="">Baños</option>
               <option value="1">1</option>
@@ -211,7 +222,7 @@
           <div class="form-field">
             <select
               v-model="searchComplement.bedroom"
-              :class="searchComplement.bedroom == null || searchComplement.bedroom == '' ? 'form-control is-invalid' : 'form-control is-valid'"
+              :class="searchComplement.bedroom == null || searchComplement.bedroom == '' ? 'form-control' : 'form-control is-valid'"
             >
             <option value="">Recámaras</option>
               <option value="1">1</option>
@@ -233,7 +244,7 @@
 
        
 
-            <div class="col-12" style="">
+            <div class="col-8" style="">
 
                   <div :class="{ 'd-none': search.operation != 1 }">
                   <veeno 
@@ -265,7 +276,7 @@
                   </div>
             </div>
 
-            <div class="col-12">
+            <div class="col-8">
               <div class="row">
                 <div class="col-md-6" style="font-size: 12px" >
                   <span>Precio Mínimo<br>$ {{ searchComplement.pricemin ? parseInt(searchComplement.pricemin).toLocaleString('es-MX') : 'Sin precio mínimo'  }}</span> 
@@ -351,6 +362,7 @@ export default {
         city: '',
         suburb: '',
        // type: null,
+       keywordAddrs: ''
       }, 
       searchComplement: {
         bathroom: '',
@@ -385,21 +397,22 @@ export default {
     },
     goToResults() {
     
-      if ( !this.showQuestion && this.search.city == '' ){
-        this.showQuestion = true;
-        return;
-      }
+      // if ( !this.showQuestion && this.search.city == '' ){
+      //   this.showQuestion = true;
+      //   return;
+      // }
 
 
 
-      const { category, operation, state, city, suburb } = this.search
+      const { category, operation, state, city, suburb, keywordAddrs} = this.search
       console.log(state)
 
       const urlSeach = `${helpers.normalize(this.$store.getters.getCategoryById(category).name)}_${category}` 
             + `-en-${ operation == 1 ? 'venta_1' : 'renta_2' }`
-            + `-en-${ helpers.normalize( this.$store.getters.getStateById(state).name ) }_${state}`
-            + `${ city != '' ? `-en-${ helpers.normalize( this.$store.getters.getMunicipalityById(city).itemName ) }_${city}` : '' }`
-            + `${ suburb != '' ? `-en-${ helpers.normalize( this.$store.getters.getSuburbById(suburb).itemName ) }_${suburb}` : '' }`
+            + `${ keywordAddrs != '' ? `-en-${ helpers.normalize( keywordAddrs ) }` : '' }`
+            //+ `-en-${ helpers.normalize( this.$store.getters.getStateById(state).name ) }_${state}`
+            // + `${ city != '' ? `-en-${ helpers.normalize( this.$store.getters.getMunicipalityById(city).itemName ) }_${city}` : '' }`
+            // + `${ suburb != '' ? `-en-${ helpers.normalize( this.$store.getters.getSuburbById(suburb).itemName ) }_${suburb}` : '' }`
             
 
       // Validar que en el searchComplement haya algun valor a buscar
@@ -671,7 +684,9 @@ button img.opt-diselected {
 }
 
 
-
+.placeContainer {
+  margin-top: 6px ;
+}
 
 
 
