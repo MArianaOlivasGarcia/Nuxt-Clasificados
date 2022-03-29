@@ -27,21 +27,27 @@ const helpers ={}
 helpers.normalize = ( str ) => {
 	return str.trim()
 			.normalize('NFD')
+			.replace(/,/g, '')
 			.replace(/[\u0300-\u036f]/g, '')
 			.replace(/ /g, '-')
 			.replace(/:/g, '')
+			.replace('.', '')
 			.toLowerCase()
 }
 
 
-helpers.reverseNormalize = ( str ) => {
+
+helpers.normalizeUbications = ( str ) => {
 	return str.trim()
 			.normalize('NFD')
-			.replace('', /[\u0300-\u036f]/g)
-			.replace('-', / /g)
-			.replace('', /:/g)
+			.replace(/,/g, '')
+			.replace(/[\u0300-\u036f]/g, '')
+			.replace(/ /g, '-')
+			.replace(/:/g, '')
+			.replace('.', '')
 			.toLowerCase()
 }
+
 
 
 helpers.fistLetterUpperCase = ( str ) => {

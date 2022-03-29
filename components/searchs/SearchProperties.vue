@@ -140,7 +140,7 @@
                   @keyup="googleSearchChange" 
                   @place_changed="updatePlace" 
                   
-                  placeholder="Ingresa una ubicación" >
+                  placeholder="Ej: Ciudad de México, CDMX, México" >
                 </gmap-autocomplete>
                   <!-- <gmap-place-input @keyup="googleSearchChange" @place_changed="updatePlace"></gmap-place-input> -->
               </div>
@@ -409,7 +409,7 @@ export default {
 
       const urlSeach = `${helpers.normalize(this.$store.getters.getCategoryById(category).name)}_${category}` 
             + `-en-${ operation == 1 ? 'venta_1' : 'renta_2' }`
-            + `${ keywordAddrs != '' ? `-en-${ helpers.normalize( keywordAddrs ) }` : '' }`
+            + `${ keywordAddrs != '' ? `-ubicado-en-${ helpers.normalizeUbications( keywordAddrs ) }` : '' }`
             //+ `-en-${ helpers.normalize( this.$store.getters.getStateById(state).name ) }_${state}`
             // + `${ city != '' ? `-en-${ helpers.normalize( this.$store.getters.getMunicipalityById(city).itemName ) }_${city}` : '' }`
             // + `${ suburb != '' ? `-en-${ helpers.normalize( this.$store.getters.getSuburbById(suburb).itemName ) }_${suburb}` : '' }`

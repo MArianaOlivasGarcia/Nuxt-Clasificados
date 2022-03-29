@@ -84,6 +84,7 @@ export default {
         * municipality/city
         * suburb/colony
         */
+        console.log(this.$route)
 
         const { search } = this.$route.params
 
@@ -92,7 +93,7 @@ export default {
         // Verificar que sea busqueda general
         // EJEMPLO /buscar-por-casa-con-alberca.html?pagina=1
         const isGeneralSearch = search.split('-por-')[0];
-
+        console.log(isGeneralSearch)
         if( isGeneralSearch == 'buscar' ) {
           const keyword = search.split('-por-')[1].split('.')[0].replace(/-/g, ' ') 
           const searchForm = {
@@ -109,44 +110,30 @@ export default {
 
         /// REMOVER FIN COMENTARIO EN LO QUE NO HAY VEHICULOS
 
-        
+
+
+
+        console.log(search.split('con'))
 
         // 1. cortar *con*
         const urlCortada = search.split('-con-')
-        let primeraUrl = urlCortada[0]?.split('.html')[0] // Quitar el .html;
+        const primeraUrl = urlCortada[0]?.split('.')[0] // Quitar el .html;
         console.log(primeraUrl)
 
-        const segundaUrl = urlCortada[1]?.split('.html')[0] //Quitar el .html
+        const segundaUrl = urlCortada[1]?.split('.')[0] //Quitar el .html
         console.log(segundaUrl)
 
         // Cortar las url
-        let primerSearch = primeraUrl.split('-en-')
+        const primerSearch = primeraUrl.split('-en-')
         const segundoSearch = segundaUrl?.split('-y-')
-        
-        let googlePlace = '';
-         // Verificar si viene ubicación con google
-        if ( search.includes('-ubicado-en-') ){
-          console.log('ES CON GOOGLE')
-          googlePlace = primeraUrl.split('-ubicado-en-')[1];
-          primerSearch = urlCortada[0]?.split('.html')[0].split('-ubicado-en-')[0].split('-en-')
-          console.log(primerSearch)
-        }
-
         
         // Crear arreglo con todos los valores que asignaremos a la busqueda
         let buscar = []
         let buscar2 = []
-        
-        let param = '';
-        // Agregar los valores del primer search
-        primerSearch.forEach((element, index) => {
-          // Si es una busqueda de google 
-          // if ( search.includes('-ubicado-en-') ){
-            param = element.split('_')[1]
 
-          // } else {
-            // param = element.split('_')[1]
-          // }
+        // Agregar los valores del primer search
+        primerSearch.forEach(element => {
+          const param = element.split('_')[1]
           buscar.push(param)
         });
 
@@ -155,16 +142,19 @@ export default {
             key: element.split('_')[1],
             value: element.split('_')[0]
           }
+          console.log(element)
           buscar2.push(param)
         });
 
+
+        console.log('BUSCAAAAR')
+        console.log(buscar2)
 
         const searchForm = {
           page: this.$route.query.pagina ? this.$route.query.pagina : 1,
           category: buscar[0],
           operation: buscar[1],
-          state: !search.includes('-ubicado-en-') ? buscar[2] : undefined,
-          keywordAddrs: search.includes('-ubicado-en-') ? googlePlace : undefined,
+          state: buscar[2],
           city: buscar[3],
           suburb: buscar[4],
           bathroom: buscar2.find(e => e.key === 'banos')?.value,
@@ -176,14 +166,18 @@ export default {
         }
 
 
+        console.log(searchForm)
         const resp = await  this.$store.dispatch('searchProducts', searchForm )
         this.totalResults = resp.xtr.result
       },
       onResultados(datos) {
+        console.log('TENGO DATOS DE MI HIJO')
+        console.log(datos)
       }
     },
     created() {
         this.getProperties();
+        console.log(this.$route)
     },
     computed: {
       ...mapGetters({ searchForm: 'getSearFormValues', 

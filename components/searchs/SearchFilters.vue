@@ -41,7 +41,7 @@
                     <select 
                         v-model="search.state"
                         :class="search.state != '' ? 'form-control is-valid' : 'form-control is-invalid'">
-                      <option :value="''">Seleccione un estado</option>
+                      <option :value="undefined">Seleccione un estado</option>
                       <option
                         v-for="state in states"
                         :key="state.folio"

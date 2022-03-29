@@ -411,21 +411,20 @@
             </div>
 
             <div class="form-group pb-2">
-                <label class="strong">¿Cúal es el nombre de tu negocio?<span class="text-danger">*</span></label>
+                <label class="strong">¿Cúal es el nombre de tu negocio?</label>
                 <input 
                     class="form-control"
                     placeholder="Nombre del negocio"
-                    v-model="formThree.businessName" 
-                    @blur="$v.formThree.businessName.$touch()" />
-                <small>
+                    v-model="formThree.businessName" />
+                <!-- <small>
                     <span v-if="!$v.formThree.businessName.required  && $v.formThree.businessName.$dirty"
                     class="text-danger">El nombre de tu negocio es requerido.</span>
-                </small>
+                </small> -->
             </div>
 
 
             <div class="form-group pb-2">
-                <label class="strong">¿Con quién te vas a mudar?<span class="text-danger">*</span></label>
+                <label class="strong">¿Con quién te vas a mudar?</label>
                 <div class="col d-flex" style="justify-content: space-around;">
                     <div class="form-check form-check-inline">
                         <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
@@ -453,7 +452,7 @@
 
 
 
-            <label class="strong pb-2">¿Realizas/realizan las siguientes actividades?<span class="text-danger">*</span></label>
+            <label class="strong pb-2">¿Realizas/realizan las siguientes actividades?</label>
             
             <div class="form-group pb-2">
                 <label>1. ¿Fumar?<span class="text-danger"></span></label>
@@ -616,7 +615,7 @@ export default {
             name: { required },
             email: { required, email },
             phone: { required },
-            businessName: { required }
+            // businessName: { required }
         },
     },
     created() {

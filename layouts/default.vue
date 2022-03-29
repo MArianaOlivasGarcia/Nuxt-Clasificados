@@ -147,7 +147,6 @@ export default {
             setTimeout(() => {
                 console.log("Mostrar a IDI");
                 this.$store.commit('setShowIDI', true)
-                console.log(first)
             },7000);
         }
     }
