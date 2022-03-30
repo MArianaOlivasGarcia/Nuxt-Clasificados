@@ -7,8 +7,8 @@
       <div class="row justify-content-center">
 
 
-      <p class="m-0">Selecciona una operación</p>
-      <div class="row pb-2" style="width: 100%; ">
+      <!-- <p class="m-0">Selecciona una operación</p> -->
+      <!-- <div class="row pb-2" style="width: 100%; ">
           <div class="col-6 p-1" >
               <button type="button" 
                   style="width: 80%; font-size: 16px !important" 
@@ -33,10 +33,32 @@
               </button>
             
           </div>
+        </div> -->
+
+
+    <div :class="'col-sm-12 col-md-6 col-lg-6 pr-1 pl-1'">
+        
+        <div class="form-group text-center text-md-left">
+          <label>Tipo de operación</label>
+          <div class="form-field">
+            <select
+              v-model="search.operation"
+              class="form-control is-valid"
+            >
+              <option  value="1">Venta</option>
+              <option  value="2">Renta</option>
+            </select>
+           
+            <!-- <div class="icon"><i class="icon-address"></i></div> -->
+          </div>
         </div>
 
 
-      <div :class="'col-sm-12 col-md-4 col-lg-4 pr-1 pl-1'">
+      </div>
+
+
+
+      <div :class="'col-sm-12 col-md-6 col-lg-6 pr-1 pl-1'">
         
         <div class="form-group text-center text-md-left">
           <label>Tipo de inmueble</label>
@@ -128,7 +150,7 @@
 
         <!-- default-place="Singapore" -->
 
-        <div class="'col-sm-12 col-md-8 col-lg-8 pr-1 pl-1'">
+        <div class="'col-sm-12 col-md-12 col-lg-12 pr-1 pl-1'">
           <div class="form-group">
             <div class="form-field" style="text-align: start;">
 
