@@ -60,7 +60,6 @@ export default {
     { src: '~/plugins/VueGeolocationApi'},    
     { src: '~/plugins/VueGeolocation'},    
     { src: '~/plugins/VueRangeSlider.js', ssr: false },
-
   ],
 
 

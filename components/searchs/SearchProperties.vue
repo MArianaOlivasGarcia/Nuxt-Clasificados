@@ -135,7 +135,7 @@
 
               <p class="m-0">{{ 'Ubicación'}}</p>
               <div class="placeContainer col-12 pr-1 pl-1 mb-3">
-                        
+                        <no-ssr>
                 <gmap-autocomplete 
                   @keyup="googleSearchChange" 
                   @place_changed="updatePlace" 
@@ -143,6 +143,7 @@
                   placeholder="Ej: Ciudad de México, CDMX, México" >
                 </gmap-autocomplete>
                   <!-- <gmap-place-input @keyup="googleSearchChange" @place_changed="updatePlace"></gmap-place-input> -->
+          </no-ssr>
               </div>
 
 
