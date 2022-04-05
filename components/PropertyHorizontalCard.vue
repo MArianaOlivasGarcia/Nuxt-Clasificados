@@ -232,6 +232,7 @@ export default {
   border-top-left-radius: 15px;
   border-top-right-radius: 0px;
   border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 0px
 }
 
 .property-hor .card-text {
