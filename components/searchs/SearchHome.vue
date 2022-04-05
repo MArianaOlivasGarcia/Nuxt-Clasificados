@@ -120,7 +120,7 @@ export default {
   border-top-right-radius: 15px;
   border-bottom-right-radius: 15px;
   border-bottom-left-radius: 15px;
-  background: rgba(250, 231, 134, 0.3);
+  background: rgba(242,225,21,0.56078);
   box-shadow: rgb(100 100 111 / 20%) 0px 7px 29px 0px;
 }
 
