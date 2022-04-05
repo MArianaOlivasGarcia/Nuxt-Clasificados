@@ -159,12 +159,27 @@ export default {
 
 <style scoped>
 
+
+@media (max-width: 767px) {
+  .adviser-container{
+      width: 50% !important;
+  }
+}
+
+@media (max-width: 576px) {
+  .adviser-container{
+      width: 60% !important;
+  }
+}
+
+
+
 .adviser-container {
     z-index: 99;
     position: fixed;
     bottom: 5%;
     right: 3%;
-    width: 25% !important;
+    width: 25%;
     margin: 0px;
     background: #EAF0F5;
     border-radius: 20px;
