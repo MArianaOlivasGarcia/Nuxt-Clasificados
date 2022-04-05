@@ -311,6 +311,7 @@ img.card-img {
   padding: 10px 20px !important;
   padding-bottom: 8px !important;
   display: flex;
+  height: 100%;
   flex-direction: column;
   justify-content: space-between;
 }
