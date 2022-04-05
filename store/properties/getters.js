@@ -48,6 +48,9 @@ const getters = {
     getShowIDI( state ) {
         return state.showIDI
     },
+    getWhatsContactValues( state ) {
+        return state.whatsContactValues
+    },
     getShowWhatsForm( state ) {
         return state.showWhatsForm
     },

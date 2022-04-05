@@ -15,9 +15,9 @@
     "
   >
     <div class="card">
-      <a @click="goToProperty()">
+      <a >
         <div class="row no-gutters">
-          <div class="col-md-4">
+          <div class="col-md-4" @click="goToProperty()">
             <!-- 
               :src="'https://www.clasificadoscontacto.com/'+item.image"
              -->
@@ -37,49 +37,80 @@
           </div>
           <div class="col-md-8">
             <div class="card-body no-gutters">
-              <div v-if="item.destacado == '1'"  class="badge-destacado"><span>Destacado</span> <i style="color: #e7b211 !important" class="fas fa-star"></i></div>
-              <h5 class="card-title mt-0" style="text-align: justify;">{{ item.name.length > 220 ? item.name.substr(0, 220) + '...' : item.name }}</h5>
-              <h6 class="card-subtitle mb-2 text-muted">
-                <i class="icon-location1"></i> {{ item.city }} , {{ item.state }}
-              </h6>
-              <!-- <p>
-                <i class="icon-location"></i>Av. Bonampak Mz. 10 L 5 Calle
-                Mar
-              </p> -->
-              <h4>$ {{ item.price }} {{ item.currency }}</h4>
-              <div class="postcard-bar"></div>
-              <!-- <p class="card-text">
-                Casa en venta en Isla Dorada (propiedad de prueba), Lorem ipsum
-                dolor sit amet,
-              </p> -->
-              <h6
-                class="card-subtitle mb-2 text-muted"
-                v-if="
-                  item.m2c != 0 ||
-                  item.mlot != 0 ||
-                  item.bedrooms != 0 ||
-                  item.bathrooms != 0
-                "
-              >
-                <small class="text-muted">
-                  <span
-                    v-if="item.bedrooms > 0"
-                    >
-                     <i class="icon-big-bed-with-one-pillow pr-2 pl-2 fa-2x"> </i> {{ item.bedrooms }} Rec. </span>
-                     <span
-                    v-if="item.bathrooms > 0"
-                  > <i class="icon-bath pr-2 pl-2 fa-2x"></i> {{ item.bathrooms }} baños</span>
-                  <span
-                    v-if="item.m2c > 0"
-                    > <i class="icon-ruler pr-2 pl-2 fa-2x"></i>
-                    {{ item.m2c }}m<sup>2</sup> </span>
-                  <span
-                    v-if="item.mlot > 0"
-                    >
-                     <i class="icon-text pr-2 pl-2 fa-2x"> </i>{{ item.mlot }}m<sup>2</sup>
-                    </span>
-                </small>
-              </h6>
+              <div @click="goToProperty()">
+                <div v-if="item.destacado == '1'"  class="badge-destacado"><span>Destacado</span> <i style="color: #e7b211 !important" class="fas fa-star"></i></div>
+                <h5 class="card-title mt-0" style="text-align: justify;">{{ item.name.length > 220 ? item.name.substr(0, 220) + '...' : item.name }}</h5>
+                <h6 class="card-subtitle mb-2 text-muted">
+                  <i class="icon-location1"></i> {{ item.city }} , {{ item.state }}
+                </h6>
+                <!-- <p>
+                  <i class="icon-location"></i>Av. Bonampak Mz. 10 L 5 Calle
+                  Mar
+                </p> -->
+                <h4>$ {{ item.price }} {{ item.currency }}</h4>
+                <div class="postcard-bar"></div>
+                <!-- <p class="card-text">
+                  Casa en venta en Isla Dorada (propiedad de prueba), Lorem ipsum
+                  dolor sit amet,
+                </p> -->
+                <h6
+                  class="card-subtitle mb-2 text-muted"
+                  v-if="
+                    item.m2c != 0 ||
+                    item.mlot != 0 ||
+                    item.bedrooms != 0 ||
+                    item.bathrooms != 0
+                  "
+                >
+                  <small class="text-muted">
+                    <span
+                      v-if="item.bedrooms > 0"
+                      >
+                      <i class="icon-big-bed-with-one-pillow pr-2 pl-2 fa-2x"> </i> {{ item.bedrooms }} Rec. </span>
+                      <span
+                      v-if="item.bathrooms > 0"
+                    > <i class="icon-bath pr-2 pl-2 fa-2x"></i> {{ item.bathrooms }} baños</span>
+                    <span
+                      v-if="item.m2c > 0"
+                      > <i class="icon-ruler pr-2 pl-2 fa-2x"></i>
+                      {{ item.m2c }}m<sup>2</sup> </span>
+                    <span
+                      v-if="item.mlot > 0"
+                      >
+                      <i class="icon-text pr-2 pl-2 fa-2x"> </i>{{ item.mlot }}m<sup>2</sup>
+                      </span>
+                  </small>
+                </h6>
+              </div>
+              <div class="contenedor-2">
+                <div>
+
+                <h4 class="m-0" style="font-size: 18px">Venta</h4>
+                <!-- <div class="postcard-bar"></div> -->
+                </div>
+
+
+                <div v-if="whatsNumber" @click="sendWhats()"
+                  style="display: flex;
+                      justify-content: center;
+                      align-items: end;">
+                  <span style="color: #3FC250; font-size: 12.5px;">Contacta al asesor</span>
+                  <img  class="whats-logo" src="https://img.icons8.com/color/344/whatsapp--v1.png" width="30" height="30">
+                </div>
+
+                <div v-if="nameInmo"
+                style="display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;">
+                  <img v-if="!item.userdata[0].image || item.userdata[0].image == '0'" style="border-radius: 100%" class="inmo-logo" 
+                    src="@/static/images/no-image.jpg"  width="45" height="45" alt="">
+                  <img v-else style="border-radius: 100%" class="inmo-logo" 
+                    :src="item.userdata[0].image"  width="45" height="45" alt="">
+                  <span style="font-size: 14px;">{{nameInmo}}</span>
+                </div>
+              
+              </div>
             </div>
           </div>
         </div>
@@ -104,12 +135,47 @@ export default {
   },
   data(){
     return {
-      noImage: false
+      noImage: false,
+      whatsNumber: '',
+      nameInmo: '',
     }
   },
   created() {
+
+    if ( !this.item.userdata  ) {
+      this.whatsNumber = null;
+      this.nameInmo = null;
+      return;
+    }
+
+    if ( !this.item.userdata[0]?.cellphone ) {
+      this.whatsNumber = null;
+    } else {
+        this.whatsNumber = this.item.userdata[0]?.cellphone.replace('(', '')
+          .replace(' ', '')
+          .replace(')', '')
+          .replace('-', '') 
+    }
+
+    if ( !this.item.userdata[0]?.name ){
+      this.nameInmo = null;
+    } else {
+      this.nameInmo = this.item.userdata[0]?.name.trim();
+    }
+
+    
+    
   },
   methods: {
+    sendWhats() {
+      this.$store.commit('setWhatsContactValues', {
+        whatsappInmo: this.whatsNumber,
+        nameInmo: this.nameInmo,
+        propertyId: this.item.productoid
+      })
+
+       this.$store.commit('setShowWhatsForm', !this.showWhatsForm)
+    },
     goToProperty() {
 
       const { productoid, name } = this.item
@@ -136,9 +202,8 @@ export default {
 
 <style scoped>
 #propImg {
-  height: 250px;
-  /* width: 350px; */
-  max-height: 260px !important;
+  height: 290px !important;
+
 }
 @media (max-width: 767px) {
   #contain_tarjet_property {
@@ -222,7 +287,8 @@ small {
 }
 
 .no-gutters {
-  min-height: 230px !important;
+  height: 290px !important;
+  
 }
 
 img.card-img {
@@ -231,6 +297,10 @@ img.card-img {
 
 .card-body {
   padding: 10px 20px !important;
+  padding-bottom: 8px !important;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 
@@ -247,4 +317,17 @@ img.card-img {
   color: #425b76;
 }
 
+
+.whats-logo{
+  width: 30px !important;
+}
+.inmo-logo {
+  width: 45px !important;
+}
+
+.contenedor-2 {
+  display: flex;
+    justify-content: space-between;
+    align-items: end;
+}
 </style>

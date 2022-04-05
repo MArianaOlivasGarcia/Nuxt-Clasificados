@@ -53,6 +53,9 @@ const mutations = {
     setShowIDI( state, value ) {
         state.showIDI = value
     },
+    setWhatsContactValues( state, value ) {
+        state.whatsContactValues = value
+    },
     setShowWhatsForm( state, value ) {
         state.showWhatsForm = value
     },

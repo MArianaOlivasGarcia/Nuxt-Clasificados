@@ -4,15 +4,18 @@
 <template>
   <div class="adviser-container animate__animated animate__fadeInUp animate__faster p-3">
 
+      <div style="text-align: end;">
+        <span @click="close()"><i class="fas fa-times"></i></span>
+      </div>
+
         <div class="mt-2">
             <h4 class="m-0">Completa tus datos</h4>
-            <p class="mt-2">Te comunicaremos con uno de nuestros asesores.</p>
+            <p class="mt-2">Te comunicaremos con <span style="font-weight: bold;">{{whatsContactValues.nameInmo.trim() }}</span>, tu asesor inmobiliario.</p>
         </div> 
 
         <form v-on:submit.prevent="startChat">
-
         
-        <div class="form-group  m-0">
+       <div class="form-group  m-0">
             <label class="strong">Nombre<span class="text-danger">*</span></label>
             <input class="form-control"  
                 placeholder="Nombre completo"
@@ -62,35 +65,29 @@
             </small>
         </div>
 
+
         <div class="mt-3">
             <button type="submit" class="btn btn-primary">Iniciar Chat</button>
         </div>
 
-        </form>
+        </form> 
   </div>
 </template>
 
 <script>
 import Swal from 'sweetalert2'
+import { mapGetters } from 'vuex';
+
 export default {
     props: {
-        text: {
-            type: String,
+       v: {
+            type: Object,
             required: true
         },
         whatsForm: {
             type: Object,
             required: true
         },
-        v: {
-            type: Object,
-            required: true
-        },
-        // whats del que vende/renta
-        whatsappNumber: {
-            type: String,
-            required: true
-        }
     },
     data() {
         return {
@@ -114,23 +111,27 @@ export default {
                 name: "telephone",
                 maxLen: 18,
                 inputClasses: "form-control",
-            },
+            }
+
         }
+    },
+    created() {
     },
     methods: {
         async startChat() {
             if( this.v.whatsForm.$invalid ) {
                 this.v.whatsForm.$touch()
-                return;
+                return
             }
 
-            const rutaCortada = this.$route.path.split('_')
-            const productId = rutaCortada[ rutaCortada.length -1 ].split('.')[0]
+            const { propertyId, whatsappInmo } = this.whatsContactValues
+
 
             const data = {
                 ...this.whatsForm,
-                productId
+                productId: propertyId
             }
+
 
             const resp = await this.$store.dispatch('sendToWhatsApp', data)
             
@@ -143,9 +144,16 @@ export default {
                 return;
             } 
 
-            window.open(`https://wa.me/+52${ this.whatsappNumber }?text=${ this.whatsForm.message  } - https://clasificadoscontacto.com${this.$route.path}`, '_blank');
+            window.open(`https://wa.me/+52${ whatsappInmo }?text=${ this.whatsForm.message  } - https://clasificadoscontacto.com${this.$route.path}`, '_blank');
+        },
+        close() {
+            this.$store.commit('setShowWhatsForm', false)
         }
-    }
+    },
+    computed: {
+      ...mapGetters({ whatsContactValues: 'getWhatsContactValues'}),
+    },
+    
 }
 </script>
 
@@ -160,6 +168,7 @@ export default {
     margin: 0px;
     background: #EAF0F5;
     border-radius: 20px;
+    padding-top: 2px !important;
     box-shadow: rgba(0, 0, 0, 0.09) 2.4px 2.4px 3.2px !important; 
 }
 

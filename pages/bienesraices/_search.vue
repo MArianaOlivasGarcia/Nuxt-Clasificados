@@ -46,6 +46,11 @@
         </template>
       </div>
     </div>
+
+    <WhatsAppFormV2
+    v-if="showWhatsForm"
+      :v="$v"
+      :whatsForm="whatsForm"/>
   </div>
 </template>
 
@@ -53,7 +58,7 @@
 <script>
 
 import { mapGetters } from 'vuex';
-import helpers from '@/helpers/helpers'
+import { required, email } from 'vuelidate/lib/validators' 
 
 export default {
     head() {
@@ -64,6 +69,12 @@ export default {
     data(){
       return {
         totalResults: 0,
+        whatsForm: {
+          name: '',
+          whatsapp: '',
+          message: '',
+          email: ''
+        }
       }
     },
     methods: {
@@ -184,12 +195,24 @@ export default {
     },
     created() {
         this.getProperties();
+
+    },
+    validations: {
+        whatsForm: {
+            name: { required },
+            whatsapp: { required },
+            message: { required },
+            email: { required, email }
+        }
     },
     computed: {
       ...mapGetters({ searchForm: 'getSearFormValues', 
                       isLoading: 'getIsLoading',
                       properties: 'getPropertiesList',
-                      states: 'getStatesList'}),
+                      states: 'getStatesList',
+                      whatsContactValues: 'getWhatsContactValues',
+                      showWhatsForm: 'getShowWhatsForm' }),
+                      
     },
     watch: {
       '$route.query.pagina': {
@@ -197,7 +220,9 @@ export default {
         async handler() {
           this.getProperties();
         }
-      }
+      },
+      
+      
     }
 }
 </script>

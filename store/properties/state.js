@@ -95,6 +95,12 @@ const state = {
     showWhatsForm: false,
     coockiesAccepted: true,
 
+    // Formulario de whats
+    whatsContactValues: {
+        nameInmo: '',
+        whatsappInmo: '',
+    },
+
 }
 
 

@@ -14,6 +14,7 @@
 
     <WhatsAppForm 
       v-if="showWhatsForm"
+      :text="'Te comunicaremos con uno de nuestros asesores.'"
       :whatsForm="whatsForm"
       :whatsappNumber="number"
       :v="v"/>
