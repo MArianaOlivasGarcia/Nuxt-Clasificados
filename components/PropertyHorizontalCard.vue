@@ -213,6 +213,17 @@ export default {
     width: 100%;
   }
 }
+
+
+@media (max-width: 576px) {
+
+  .contenedor-2 {
+    align-items: center !important;
+    flex-direction: column !important;
+  }
+}
+
+
 .property-hor .card-img {
   object-fit: cover;
   object-position: center;
@@ -286,10 +297,10 @@ small {
   font-size: 1.5em;
 }
 
-.no-gutters {
+/* .no-gutters {
   height: 290px !important;
   
-}
+} */
 
 img.card-img {
   height: 100% !important;
@@ -329,5 +340,7 @@ img.card-img {
   display: flex;
     justify-content: space-between;
     align-items: end;
+    flex-direction: row;
+
 }
 </style>
