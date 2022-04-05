@@ -76,7 +76,7 @@ export default {
 .home-search .nav-pills .nav-link{
   display: flex;
   flex-direction: column;
-  padding: 10px 15px !important;
+  padding: 4px 4px !important;
   margin: 0 !important;
   border-top-left-radius: 15px;
   border-top-right-radius: 15px;
@@ -120,14 +120,14 @@ export default {
   border-top-right-radius: 15px;
   border-bottom-right-radius: 15px;
   border-bottom-left-radius: 15px;
-  background: rgba(242,225,21,0.56078);
+  background: rgba(242,225,21,0.35);
   box-shadow: rgb(100 100 111 / 20%) 0px 7px 29px 0px;
 }
 
 
 .image-icon {
-  width: 50px;
-  height: 50px;
+  width: 30px;
+  height: 30px;
   
 }
 
