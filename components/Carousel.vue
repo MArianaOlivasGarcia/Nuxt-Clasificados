@@ -69,7 +69,7 @@ export default {
 
 
 
-<style >
+<style scoped>
 .lb-nav a.lb-next, .lb-nav a.lb-prev{
     opacity:1 !important;
 }
