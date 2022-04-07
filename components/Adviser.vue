@@ -1,7 +1,7 @@
 
 
 <template>
-  <div class="adviser-container animate__animated animate__fadeInRight">
+  <div class="adviser-container animate__animated animate__fadeInLeft">
          <div style="text-align: right;"><span @click="closeIDI()"><i class="fas fa-times"></i></span></div>
         <div class="fist-message">
             <img src="https://img.icons8.com/emoji/2x/man-with-beard-light-skin-tone.png" alt="">
@@ -42,7 +42,7 @@ export default {
     z-index: 99;
     position: fixed;
     bottom: 5%;
-    right: 2%;
+    left: 5%;
     width: 25% !important;
     margin: 0px;
 }

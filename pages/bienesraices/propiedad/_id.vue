@@ -101,12 +101,14 @@
                       </div>
                     </div>
                   </div>
+
                 </div>
               </div>
             </div>
           </div>
         </div>
       </section>
+
       <section class="property-info pt-3 pb-3">
         <div class="container">
           <div class="row">
@@ -470,6 +472,19 @@
 
             <!-- FORMULARIO AGENTE -->
             <div class="col-lg-4 bg-softcc">
+                  
+                <div class="text-center">
+
+                  <img src="https://www.crediteka.com/img/logo_color.png" alt="">
+                  <p style="font-weight: 500;
+    font-size: 19px;">¿Te interesa esta propiedad?</p>
+                  <a href="https://crediteka.com/precalificate" 
+                    type="button" 
+                    class="btn btn-primary mb-3 btn-cred"
+                    >Crédito pre autorizado</a>
+                
+                </div>
+
               <div class="ftco-section contact-section">
                 <div class="ml-1 mr-1 text-center">
                   <img
@@ -752,4 +767,22 @@ export default {
   padding: 10px;
   border-radius: 20px;
 }
+
+.btn-cred {
+  background: #FED823 !important;
+  border-color: #FED823 !important;
+  color: #01569D !important;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px !important; 
+}
+
+.btn-cred:hover {
+  background: rgb(250, 209, 5) !important;
+  border-color: rgb(250, 209, 5) !important;
+  color: #01569D !important;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px !important; 
+}
+
+
+
+
 </style>

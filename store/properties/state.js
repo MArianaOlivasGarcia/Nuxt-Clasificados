@@ -26,6 +26,7 @@ const state = {
 
     IDI: '?site=ODA1SmQ4U1RsMTczcjVnUThzNUQycTNwTGdaUVJ2enpmNDNaM0Q2cG5xbz0=',
     WHATSFORM: '?site=MWM2OW1oTWhXVG9JcnlNNThYL1gwSHlZRFEyTXRzZHFXeWYzT3QwR1BWRT0=',
+    SLIDERDESTACADOS: '?site=a0VmZ2hyUDBoZGxxRmt2RHJnNkl6UT09',
 
     token: '',
     userStateLocation: {

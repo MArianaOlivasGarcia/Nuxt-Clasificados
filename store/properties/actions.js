@@ -224,6 +224,23 @@ const actions = {
 
     },
 
+    async sliderDesarrollos({commit, state} ) {
+
+        commit('setAPI_PARAMS')
+    
+        const config = state.API_PARAMS
+
+        const resp = await fetch(state.API_URL + state.SLIDERDESTACADOS, config).then((res) => res.json())
+    
+        if ( resp.status == 200 ) {
+            return resp.resp
+        } else {
+            return null
+        }
+
+    },
+
+
     async getOutstanding({ commit, state } ){
       
         commit( 'setLoading', true )

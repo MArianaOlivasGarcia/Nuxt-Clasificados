@@ -22,8 +22,8 @@
                 <!-- <div class="d-block d-sm-block d-md-block d-lg-none ">
                     <img src="@/static/images/examples/sideimage.png" class="img-lone" alt="" />
                 </div> -->
-            <h1> En <b>Clasificados contacto</b>, lo buscas lo encuentras, lo anuncias lo <b>vendes</b> </h1>
-            <section class="ftco-search mt-2 pt-1">
+            <!-- <h1> En <b>Clasificados contacto</b>, lo buscas lo encuentras, lo anuncias lo <b>vendes</b> </h1> -->
+            <section class="ftco-search" style="margin-top: 10%;">
               <div class="container">
                 <div class="row justify-content-center">
                   <div class="col-md-12 search-wrap p-0">

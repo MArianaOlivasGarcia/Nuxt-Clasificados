@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <transition-group name="fade" tag="div">
+  <div >
+    <transition-group name="fades" tag="div" >
       <div v-for="i in [currentIndex]" :key="i">
         <img :src="currentImg" />
       </div>
@@ -17,8 +17,12 @@ export default {
   data() {
     return {
       images: [
-        "https://www.cancun.tecnm.mx/wp-content/themes/itcancun/img/docs/temp/banner1.jpg",
-        "https://www.cancun.tecnm.mx/wp-content/themes/itcancun/img/docs/temp/banner2.jpg",
+        'https://www.cancun.tecnm.mx/wp-content/themes/itcancun/img/docs/temp/opcion2.jpg',
+        'https://www.cancun.tecnm.mx/wp-content/themes/itcancun/img/docs/temp/opcion3.jpg',
+        'https://www.cancun.tecnm.mx/wp-content/themes/itcancun/img/docs/temp/opcion4.jpg',
+        'https://www.cancun.tecnm.mx/wp-content/themes/itcancun/img/docs/temp/opcion6.jpg',
+        'https://www.cancun.tecnm.mx/wp-content/themes/itcancun/img/docs/temp/opcion7.jpg',
+        'https://www.cancun.tecnm.mx/wp-content/themes/itcancun/img/docs/temp/opcion8.jpg',
       ],
       timer: null,
       currentIndex: 0
@@ -75,7 +79,7 @@ export default {
 img {
   height: 470px;
   width:100%;
-  opacity: 0.5;
+  /* opacity: 0.5; */
 }
 
 .prev, .next {
