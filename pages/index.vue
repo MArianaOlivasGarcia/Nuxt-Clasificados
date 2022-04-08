@@ -17,7 +17,7 @@
         <Info/>
     </section>
 
-        <div class="container">
+        <div class="">
             <div class="row justify-content-center mb-2 pb-3">
                 <div class="col-md-7 heading-section text-center ftco-animate fadeInUp ftco-animated">
                     <h2 class="mb-4">DESARROLLOS DESTACADOS</h2>

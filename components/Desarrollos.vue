@@ -148,7 +148,7 @@ a.prev, a.next {
     .description-content {
         position: absolute;
         bottom: 0;
-        width: 70%;
+        width: 60%;
         background-color: rgba(255,255,255,0.5);
         padding: 10px;
         padding-left: 5%;
