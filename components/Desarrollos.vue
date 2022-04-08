@@ -68,6 +68,7 @@ export default {
         },
         goTo() {
             console.log(this.currentObj.url)
+            this.$router.push(this.currentObj.url);
         }
     }
 }
