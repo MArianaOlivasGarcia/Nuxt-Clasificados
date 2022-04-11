@@ -4,10 +4,14 @@
     <section class="height-70 pt-2 pb-2 BannerHome" >
 
       
-
-      <div class="sliderContainer">
+      <!-- <div class="sliderContainer">
         <Slider />
-      </div>
+      </div> -->
+      <img
+      src="@/static/images/examples/background-yellow.jpg"
+      alt="Image"
+      class="bg-image opacity-60"
+    />
 
 
 
@@ -23,7 +27,7 @@
                     <img src="@/static/images/examples/sideimage.png" class="img-lone" alt="" />
                 </div> -->
             <!-- <h1> En <b>Clasificados contacto</b>, lo buscas lo encuentras, lo anuncias lo <b>vendes</b> </h1> -->
-            <section class="ftco-search" style="margin-top: 10%;">
+            <section class="ftco-search">
               <div class="container">
                 <div class="row justify-content-center">
                   <div class="col-md-12 search-wrap p-0">

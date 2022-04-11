@@ -478,7 +478,7 @@
                   <img src="https://www.crediteka.com/img/logo_color.png" alt="">
                   <p style="font-weight: 500;
     font-size: 19px;">¿Te interesa esta propiedad?</p>
-                  <a href="https://crediteka.com/precalificate" 
+                  <a href="https://crediteka.com/precalificate"  target="__blank"
                     type="button" 
                     class="btn btn-primary mb-3 btn-cred"
                     >Crédito pre autorizado</a>

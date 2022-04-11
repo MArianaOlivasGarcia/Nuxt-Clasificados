@@ -78,79 +78,33 @@
       </div>
 
 
-    <!-- <template v-if="!isGoogleSearch"> -->
 
-      <!-- <div class="col-sm-12 col-md-3 col-lg-6 pr-1 pl-1">
-        
+      <div :class="'col-sm-12 col-md-12 col-lg-12 pr-1 pl-1'">
         
         <div class="form-group text-center text-md-left">
-          <label>Estado</label>
+          <label>Ubicación</label>
           <div class="form-field">
-            <select
-              v-model="search.state"
-              class="form-control is-valid">
-
-              <option 
-              v-for="state in states"
-              :key="state.folio"
-              :item="state.name"
-              :value="state.folio">{{state.name}}</option>
-            </select>
-            <div class="icon"><i class="fas fa-map-marker-alt"></i></div>
+            
+               <client-only>
+                <gmap-autocomplete 
+                  @keyup="googleSearchChange" 
+                  @place_changed="updatePlace" 
+                  
+                  placeholder="Ej: Ciudad de México, CDMX, México" >
+                </gmap-autocomplete>
+                  <!-- <gmap-place-input @keyup="googleSearchChange" @place_changed="updatePlace"></gmap-place-input> -->
+              </client-only>
+           
           </div>
         </div>
 
 
-      </div> -->
-
-
-      <!-- <div class="col-sm-12 col-md-3 col-lg-6 pr-1 pl-1">
-        <div class="form-group text-center text-md-left">
-          <label>Municipio</label>
-          <div class="form-field">
-            <select
-              v-model="search.city"
-              :class="search.city == '' ? 'form-control is-invalid' : 'form-control is-valid'"
-            >
-            <option value="">Selecciona municipio</option>
-            <option       
-              v-for="city in cities.filter( c => c )"
-              :key="city.id"
-              :value="city.id">{{city.itemName}}</option>
-
-            </select>
-            <div class="icon"><i class="icon-city"></i></div>
-          </div>
-        </div>
-      </div> -->
-
-
-
-      <!-- <div class="col-sm-12 col-md-3 col-lg-6 pr-1 pl-1">
-        <div class="form-group text-center text-md-left">
-          <label>Colonia</label>
-          <div class="form-field">
-            <select
-              v-model="search.suburb"
-              :class="search.suburb == '' ? 'form-control is-invalid' : 'form-control is-valid'"
-            >
-            <option value="">Selecciona colonia</option>
-            <option       
-              v-for="colonia in colonias.filter( c => c )"
-              :key="colonia.id"
-              :value="colonia.id">{{colonia.itemName}}</option>
-
-            </select>
-            <div class="icon"><i class="icon-city"></i></div>
-          </div>
-        </div>
       </div>
 
-    </template> -->
 
-        <!-- default-place="Singapore" -->
 
-        <div class="'col-sm-12 col-md-12 col-lg-12 pr-1 pl-1'">
+
+        <!-- <div class="'col-sm-12 col-md-12 col-lg-12 pr-1 pl-1'">
           <div class="form-group">
             <div class="form-field" style="text-align: start;">
 
@@ -164,14 +118,13 @@
                   
                   placeholder="Ej: Ciudad de México, CDMX, México" >
                 </gmap-autocomplete>
-                  <!-- <gmap-place-input @keyup="googleSearchChange" @place_changed="updatePlace"></gmap-place-input> -->
               </client-only>
               </div>
 
 
             </div>
           </div>
-        </div>
+        </div> -->
 
         
 

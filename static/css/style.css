@@ -9699,3 +9699,50 @@ FIN DEL SCROLLBAR
   background-color: rgba(250, 231, 134, 0.3) !important;
 }
 
+
+
+
+
+
+/* AGILE */
+.agile__actions {
+  /* display: none !important; */
+}
+
+.agile__dots {
+  bottom: 10px !important;
+  flex-direction: column !important;
+  right: 30px !important;
+  position: absolute !important;
+  top: 67% !important;
+}
+
+.agile__dot {
+  margin: 5px 0 !important;
+}
+
+.agile__dot button{
+    background-color: transparent !important;
+    border: 1px solid #fff !important;
+    cursor: pointer !important; 
+    display: block !important;
+    height: 10px !important;
+    font-size: 0 !important;
+    line-height: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    transition-duration: .3s !important;
+    width: 10px !important;
+    border-radius: 100%;
+}
+
+.agile__dot.agile__dot--current button{
+  background-color: #fff !important;
+}
+
+
+.agile__dot button:hover{
+
+  background-color: #fff !important;
+}
+

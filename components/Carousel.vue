@@ -2,7 +2,7 @@
     <section class="pt-1 pb-1" id="detailCarousel">
         <client-only  v-if="items.length>0">
 
-        <VueAgile  ref="main" :fade="true" :dots="false" class="contain-slide" >
+        <VueAgile autoplay :autoplaySpeed="5000" :timing="'linear'"  ref="main" :fade="true" :dots="false" class="contain-slide" >
             <div v-for="(slide,i) in items" 
                 :key="i" 
                 class="slide">

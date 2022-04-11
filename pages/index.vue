@@ -1,5 +1,8 @@
 <template>
     <main class="clean">
+
+
+        <SliderAdds />
     
     <section class="p-0">
         <BannerHome/>
@@ -13,11 +16,11 @@
     
 
 
-    <section class="block-info bg-light pb-2">
+    <!-- <section class="block-info bg-light pb-2">
         <Info/>
-    </section>
+    </section> -->
 
-        <div class="">
+        <div class="pt-5">
             <div class="row justify-content-center mb-2 pb-3">
                 <div class="col-md-7 heading-section text-center ftco-animate fadeInUp ftco-animated">
                     <h2 class="mb-4">DESARROLLOS DESTACADOS</h2>
@@ -27,7 +30,7 @@
         </div>
 
 
- <section class="ftco-section bg-light mb-4 wow slideInUp" >
+ <section class="ftco-section bg-light mb-4 wow slideInUp pt-5" >
         <div class="container">
             <div class="row justify-content-center mb-2 pb-3">
                 <div class="col-md-7 heading-section text-center ftco-animate fadeInUp ftco-animated">
