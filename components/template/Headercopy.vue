@@ -1,12 +1,6 @@
 <template>
   <header>
-    <nav
-      class="
-        navbar navbar-expand-lg navbar-dark
-        ftco_navbar ftco-navbar-light
-        sleep"
-      id="ftco-navbar"
-    >
+    <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar ftco-navbar-light sleep" id="ftco-navbar">
       <div class="container p-0">
         <div class="col-5 col-md-3 col-lg-3 mb-2 mr-2">
           <NuxtLink to="/">
@@ -22,7 +16,7 @@
               v-on:click="openSearch()"
               height="28" 
               src="https://img.icons8.com/ios/2x/ffffff/search.png" alt="">
-          </div>
+        </div>
 
         
         <button

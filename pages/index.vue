@@ -4,78 +4,73 @@
 
         <SliderAdds />
     
-    <section class="p-0">
-        <BannerHome/>
+    <section class="searchContainer container mt-5 mb-5" >
+        <div class="col-md-5">
+            <h3>¿Qué deseas buscar?</h3>
+            <h4 class="text-justify">En <b>Clasificados contacto</b>, lo buscas lo encuentras, lo anuncias lo <b>vendes</b>. </h4>
+        </div>
+        <div class="col-md-7">
+            <Search />
+        </div>
     </section>
 
-    <!-- <section class="p-0" id="categories">
-        <Categories />
-    </section> -->
 
 
-    
+     <section class="text-center container mt-5 mb-5" >
+            <h3>¿Qué deseas buscar?</h3>
+            <div class="d-flex justify-content-center mt-4">
+            <SearchV2 />
+
+            </div>
+    </section>
 
 
-    <!-- <section class="block-info bg-light pb-2">
-        <Info/>
-    </section> -->
 
-        <div class="pt-5">
+    <section class="mt-5">
+        <div class="container">
             <div class="row justify-content-center mb-2 pb-3">
                 <div class="col-md-7 heading-section text-center ftco-animate fadeInUp ftco-animated">
                     <h2 class="mb-4">DESARROLLOS DESTACADOS</h2>
                 </div>
             </div>
-            <Desarrollos />
+
+            <SectionLoader v-if="desarrollos.length == 0"/>
+            
+            <div v-else class="card-columns">
+                    <DesarrolloCard 
+                        v-for="property in desarrollos" 
+                        :key="property.productid"
+                        :property="property"
+                    /> 
+            </div>
+
         </div>
+    </section>
 
 
- <section class="ftco-section bg-light mb-4 wow slideInUp pt-5" >
+
+    <section class="mt-5">
         <div class="container">
             <div class="row justify-content-center mb-2 pb-3">
                 <div class="col-md-7 heading-section text-center ftco-animate fadeInUp ftco-animated">
                     <h2 class="mb-4">PROPIEDADES DESTACADAS</h2>
                 </div>
             </div>
-            
+
             <SectionLoader v-if="outstanding.length == 0"/>
-            <div v-else class="row d-flex wow slideInUp">
-
-                <div v-for="(item, i) in outstanding" :key="i"
-                    class="
-                    col-xl-3
-                    col-lg-4
-                    col-md-6
-                    col-sm-12
-                    d-flex
-                    align-self-stretch
-                    ftco-animate
-                    cardgeneral
-                    mb-3
-                    pb-3
-                    pt-3">  
+            
+            <div v-else class="card-columns">
                     <PropertyCard 
-                        
-                        :item="item"
+                        v-for="property in outstanding" 
+                        :key="property.productid"
+                        :property="property"
                     /> 
-                </div>
             </div>
+
         </div>
-    </section> 
-
-    <!-- <section class="pb-2">
-        <PropertiesSliderHorizontal :title="'INMUEBLES EN VENTA EN'"/>
     </section>
 
 
-
-     <section class="pb-2">
-        <PropertiesSliderHorizontal :title="'DESARROLLOS EN'"/>
-    </section>
- -->
-
-
-       
 
     <div class="container container mt-4 pt-5 pb-4" >
         <div class="row centrar" style="align-items: center;">
@@ -155,28 +150,32 @@ import { required, email } from 'vuelidate/lib/validators'
 
 
 export default {
-  head: {
-    titleTemplate: 'Clasificados Contacto | El buscador',
-  },
-  computed: {
-      ...mapGetters({ outstanding: 'getOutstanding'}),
-  },
-  created(){
-    this.$store.dispatch("getOutstanding")
-  },
-  mounted(){
-  },
- data() {
-    return {
-      form: {
-          name: '',
-          email: '',
-          phone: '',
-          message: '',
-      },
-    }
-  },
-  validations: {
+    head: {
+      titleTemplate: 'Clasificados Contacto | El buscador',
+    },
+    computed: {
+        ...mapGetters({ outstanding: 'getOutstanding'}),
+    },
+    async created(){
+      this.$store.dispatch("getOutstanding")
+      const resp = await this.$store.dispatch('sliderDesarrollos')
+
+      for (const property in resp) {
+          this.desarrollos.push(resp[property][0])
+      }
+    },
+    data() {
+        return {
+            desarrollos: [],
+            form: {
+                name: '',
+                email: '',
+                phone: '',
+                message: '',
+            },
+        }
+    },
+    validations: {
       form: {
           name: {
               required,
@@ -201,7 +200,7 @@ export default {
 
 <style scoped>
 .clean{
-    background:#fff !important;
+    background: #FAFAFA !important;
 }
 
 .img-home{
@@ -215,6 +214,13 @@ width: 100% !important;
 
 video {
     width: 100%;
+}
+
+
+.searchContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 </style>

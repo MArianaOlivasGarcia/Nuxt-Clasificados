@@ -7,7 +7,7 @@
         </div> -->
         <SearchGeneral v-if="showSearchGeneral" />
         <template>
-            <Header />
+            <Headercopy />
             <Nuxt />
             <FooterDelete /> 
         </template>
