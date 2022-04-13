@@ -12,9 +12,8 @@
         </div>
 
          <div class="search-btn">
-            <img 
+            <img class="lupa-icon"
               v-on:click="openSearch()"
-              height="28" 
               src="https://img.icons8.com/ios/2x/ffffff/search.png" alt="">
         </div>
 
@@ -191,6 +190,11 @@ button.navbar-toggler span {
 .search-btn:hover {
 	-webkit-transform: rotate(0) scale(1);
 	transform: rotate(0) scale(1);
+}
+
+img.lupa-icon {
+  height: 28px;
+  width: 28px;
 }
 
 
