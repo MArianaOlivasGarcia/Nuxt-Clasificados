@@ -13,8 +13,10 @@ export default {
   data() {
     return {
       images: [
-        'https://http2.mlstatic.com/D_NQ_809590-MLA49570613371_042022-OO.webp',
-        'https://http2.mlstatic.com/D_NQ_809590-MLA49570613371_042022-OO.webp',
+        '/properties-1.jpg',
+        '/properties-2.jpg',
+        '/properties-3.jpg',
+        '/properties-4.jpg',
       ]
     }
   }
