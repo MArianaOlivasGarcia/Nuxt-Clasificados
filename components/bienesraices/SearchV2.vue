@@ -5,7 +5,7 @@
         <div class="form-row">
             <div class="form-group col-md-6">
                 <label>Tipo de operación</label>
-                <select class="form-select">
+                <select class="form-control">
                     <option value="">Tipo de operación</option>
                     <option value="">Venta</option>
                     <option value="">Renta</option>
@@ -13,7 +13,7 @@
             </div>
             <div class="form-group col-md-6">
                 <label>Tipo de inmueble</label>
-                <select class="form-select">
+                <select class="form-control">
                     <option value="">Tipo de inmueble</option>
                     <option value="">Venta</option>
                     <option value="">Renta</option>

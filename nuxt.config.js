@@ -20,8 +20,8 @@ export default {
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
       { rel: 'stylesheet', href:'https://fonts.googleapis.com/css?family=Poppins:100,300,400,500,600,700' },
       { rel: 'stylesheet', href:'https://use.fontawesome.com/releases/v5.7.0/css/all.css' },
-      // { rel: 'stylesheet', href:'https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css' },
-      { rel: 'stylesheet', href:'https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css' },
+      { rel: 'stylesheet', href:'https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css' },
+      // { rel: 'stylesheet', href:'https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css' },
       { rel: 'stylesheet', href: '/css/open-iconic-bootstrap.min.css'},
       { rel: 'stylesheet', href: '/css/animate.css'},
       { rel: 'stylesheet', href: '/css/owl.theme.default.min.css'},
@@ -40,9 +40,9 @@ export default {
       
     ],
     script: [
-      // { src: 'https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js' },
-      // { src: 'https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js' },
-      { src: 'https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js' },
+      { src: 'https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js' },
+      { src: 'https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js' },
+      // { src: 'https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js' },
       { src: 'https://apis.google.com/js/platform.js' },
     ]
 
