@@ -36,7 +36,7 @@
 
             <SectionLoader v-if="desarrollos.length == 0"/>
             
-            <div v-else class="card-columns">
+            <div v-else class="card-columns dev">
                     <DesarrolloCard 
                         v-for="property in desarrollos" 
                         :key="property.productid"
@@ -222,5 +222,13 @@ video {
     justify-content: center;
     align-items: center;
 }
+
+
+
+    @media (min-width: 576px){
+        .card-columns.dev{
+            column-count: 4 !important;
+        }
+    }
 
 </style>
