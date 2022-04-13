@@ -10,6 +10,7 @@
             />
           </NuxtLink>
         </div>
+        
 
          <div class="search-btn">
             <img class="lupa-icon"

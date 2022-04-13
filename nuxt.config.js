@@ -18,9 +18,9 @@ export default {
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
-      { rel: 'stylesheet', href:'https://fonts.googleapis.com/css?family=Poppins:100,300,400,500,600,700' },
+      // { rel: 'stylesheet', href:'https://fonts.googleapis.com/css?family=Poppins:100,300,400,500,600,700' },
+      { rel: 'stylesheet', href:'https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700;800' },
       { rel: 'stylesheet', href:'https://use.fontawesome.com/releases/v5.7.0/css/all.css' },
-      // { rel: 'stylesheet', href:'https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css' },
       { rel: 'stylesheet', href:'https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css' },
       { rel: 'stylesheet', href: '/css/open-iconic-bootstrap.min.css'},
       { rel: 'stylesheet', href: '/css/animate.css'},
@@ -40,9 +40,6 @@ export default {
       
     ],
     script: [
-      // { src: 'https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js' },
-      // { src: 'https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js' },
-
       { src: 'https://code.jquery.com/jquery-3.3.1.slim.min.js' },
       { src: 'https://cdn.jsdelivr.net/npm/popper.js@1.14.3/dist/umd/popper.min.js' },
       { src: 'https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js' },
