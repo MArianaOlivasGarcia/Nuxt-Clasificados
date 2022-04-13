@@ -75,7 +75,7 @@
                    <div class="row mb-3">
                        <span class="col-md-3" style="font-weight: bold; display: flex; align-items: center;">Asunto</span>
                         <div class="col-md-9">
-                          <select class="form-control">
+                          <select class="form-select">
                               <option value="Asesor inmobiliario">Asesor inmobiliario</option>
                               <option value="Desarrollador">Desarrollador</option>
                               <option value="Agencia inmobiliaria">Agencia inmobiliaria</option>
