@@ -5,7 +5,7 @@
         <SliderAdds />
     
     <section class="searchContainer container mt-5 mb-5" >
-        <div class="col-md-5">
+        <div class="titleContainer col-md-5">
             <h3>¿Qué deseas buscar?</h3>
             <h4 class="text-justify">En <b>Clasificados contacto</b>, lo buscas lo encuentras, lo anuncias lo <b>vendes</b>. </h4>
         </div>
@@ -199,35 +199,48 @@ export default {
 
 
 <style scoped>
-.clean{
-    background: #FAFAFA !important;
-}
 
-.img-home{
-width: 100% !important;
-}
+    .clean{
+        background: #FAFAFA !important;
+    }
 
-
-.states-container {
-    justify-content: center;
-}
-
-video {
-    width: 100%;
-}
+    .img-home{
+    width: 100% !important;
+    }
 
 
-.searchContainer {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
+    .states-container {
+        justify-content: center;
+    }
+
+    video {
+        width: 100%;
+    }
+
+
+    .searchContainer {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
 
 
 
     @media (min-width: 576px){
         .card-columns.dev{
             column-count: 4 !important;
+        }
+    }
+
+
+    @media (max-width: 576px) {
+        .searchContainer{
+            flex-direction: column;
+        }
+
+        .titleContainer {
+            text-align: center;
+            margin-bottom: 10px;
         }
     }
 
