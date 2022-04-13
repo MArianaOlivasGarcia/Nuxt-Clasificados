@@ -1,12 +1,10 @@
 <template>
-
   <client-only>
-  <agile autoplay :autoplaySpeed="6000" :timing="'linear'" :navButtons="false" >
-        <div v-for="(image, i) in images" class="slide" :key="i">
-            <img :src="image" alt="">
-        </div>
-  </agile>
-
+    <agile autoplay :autoplaySpeed="6000" :timing="'linear'" :navButtons="false" >
+          <div v-for="(image, i) in images" class="slide" :key="i">
+              <img class="image-slide" :src="image" :alt="image">
+          </div>
+    </agile>
   </client-only>
 </template>
 
@@ -23,6 +21,22 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 
+  .slide{
+    background: red;
+    height: 250px;
+  }
+  img.image-slide {
+    width: 100%;
+    height: 100%;
+    object-fit: fill;
+  }
+
+  @media (max-width: 576px) {
+    .slide{
+      background: red;
+      height: 200px;
+    }
+  }
 </style>
