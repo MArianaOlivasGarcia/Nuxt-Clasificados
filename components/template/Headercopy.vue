@@ -21,7 +21,7 @@
                 v-model="keyword"
                 placeholder="¿Qué deseas buscar?">
               <button class="btn btn-lupa"><img class="lupa-icon mr-1"
-                    v-on:click="openSearch()"
+                    type="submit"
                     src="https://img.icons8.com/ios/2x/01569D/search.png" alt=""></button>
         </form>
 
