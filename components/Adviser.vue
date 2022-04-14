@@ -65,7 +65,7 @@ export default {
 
 
 p {
-    line-height: 1.3;
+    line-height: 1.3 !important;
     font-size: 12px;
     color: #425b76;
     font-weight: 500;
@@ -96,7 +96,7 @@ img {
 .message {
     background-color: #EAF0F5;
     padding: 10px;
-    border-radius: 20px;
+    border-radius: 10px;
     width: 100%;
     box-shadow: rgba(0, 0, 0, 0.09) 2.4px 2.4px 3.2px;
 }
