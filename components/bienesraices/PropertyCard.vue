@@ -22,6 +22,7 @@
 
     <span class="operation">{{ property.operation }}</span>
   </NuxtLink>
+
 </template>
 
 <script>

@@ -12,10 +12,15 @@
         </div>
         
 
-         <div class="search-btn">
-            <img class="lupa-icon"
-              v-on:click="openSearch()"
-              src="https://img.icons8.com/ios/2x/ffffff/search.png" alt="">
+         <div class="search-btn d-flex">
+            
+              <input 
+                class="form-control search"
+                type="text" 
+                placeholder="¿Qué deseas buscar?">
+              <button class="btn btn-lupa"><img class="lupa-icon mr-1"
+                    v-on:click="openSearch()"
+                    src="https://img.icons8.com/ios/2x/01569D/search.png" alt=""></button>
         </div>
 
         
@@ -180,23 +185,36 @@ button.navbar-toggler span {
 
 
 .search-btn {
-  cursor: pointer; 
+  /* cursor: pointer; 
   -webkit-transform: rotate(15deg) scale(1.4);
 	transform: rotate(15deg) scale(1.4);
 	-webkit-transition: .3s ease-in-out;
-	transition: .3s ease-in-out;
-
+	transition: .3s ease-in-out; */
+  align-items: center;
 }
 
-.search-btn:hover {
-	-webkit-transform: rotate(0) scale(1);
-	transform: rotate(0) scale(1);
-}
+/* .search-btn:hover { */
+	/* -webkit-transform: rotate(0) scale(1);
+	transform: rotate(0) scale(1); */
+/* } */
 
 img.lupa-icon {
   height: 28px;
   width: 28px;
 }
 
+
+  button.btn-lupa {
+    background-color: #F0E36B !important;
+    border-top-left-radius: 0px !important ;
+    border-bottom-left-radius: 0px !important ;
+    border: none !important;
+  }
+
+
+  input.search {
+    border-top-right-radius: 0px !important ;
+    border-bottom-right-radius: 0px !important ;
+  }
 
 </style>

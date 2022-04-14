@@ -1,9 +1,10 @@
 <template>
-  <NuxtLink to="/" class="card">
-    <div class="imageContent">
-      <img src="https://www.clasificadoscontacto.com/views/users/3570/products/49777/images/WhatsApp%20Image%202022-03-17%20at%2012.32.58%20PM%20(1).jpeg" :alt="'dasd'">
-    </div>
-    <div class="card-body">
+
+  <div class="card">
+      <NuxtLink  to="/" class="imageContent">
+        <img src="https://www.clasificadoscontacto.com/views/users/3570/products/49777/images/WhatsApp%20Image%202022-03-17%20at%2012.32.58%20PM%20(1).jpeg" :alt="'dasd'">
+      </NuxtLink>
+    <NuxtLink to="/" class="card-body">
 
       <h5 class="pricecard m-0">$ {{ '250,000,000' }} {{ 'MXN' }}</h5>
       <div class="postcard-bar"></div>
@@ -20,13 +21,13 @@
     
 
     
-    </div>
+    </NuxtLink>
     <span class="operation">{{ 'Venta' }}</span>
     <span class="type">{{ 'Casa' }}</span>
     <span class="destacado">Destacado <i style="color: #e7b211 !important" class="fas fa-star"></i></span>
-    <div class="whats-contact"><span>Contactar al asesor</span> <img class="whats-logo" src="https://img.icons8.com/ios-filled/2x/ffffff/whatsapp.png" alt=""></div>
+    <div class="whats-contact"><span>Contactar al asesor</span><i class="fab fa-whatsapp ml-2"></i></div>
     <div class="user-info"><img class="user-image" src="@/static/images/no-image.jpg" alt=""> <span>NOMBRE INMOBILIARIA</span></div>
-  </NuxtLink>
+  </div>
 </template>
 
 <script>
@@ -127,9 +128,9 @@ export default {
     }
 
 
-    img.whats-logo{
-      height: 20px;
-      width: 20px;
+    i.fa-whatsapp{
+      font-size: 20px !important;
+      color: #fff;
     }
 
     img.user-image {
@@ -148,8 +149,25 @@ export default {
         font-size: 14px;
     }
 
+
+    div.whats-contact:hover {
+        background-color: #fff; 
+        border: 1px solid #3FC250;
+    }
+
+    
+    div.whats-contact:hover > i.fa-whatsapp {
+      color: #3FC250;
+    }
+
+
     div.whats-contact > span {
       color: white;
+      font-size: 12px;
+    }
+
+    div.whats-contact:hover > span {
+      color: #3FC250;
       font-size: 12px;
     }
 
