@@ -12,16 +12,18 @@
         </div>
         
 
-         <div class="search-btn d-flex">
+         <form v-on:submit.prevent="goToResults" class="search-btn d-flex">
             
               <input 
                 class="form-control search"
                 type="text" 
+                autocomplete="off"
+                v-model="keyword"
                 placeholder="¿Qué deseas buscar?">
               <button class="btn btn-lupa"><img class="lupa-icon mr-1"
                     v-on:click="openSearch()"
                     src="https://img.icons8.com/ios/2x/01569D/search.png" alt=""></button>
-        </div>
+        </form>
 
         
         <button
@@ -72,6 +74,11 @@ import { mapGetters } from 'vuex';
 
 
 export default {
+  data(){
+    return {
+      keyword: ''
+    }
+  },
   computed: {
     ...mapGetters({
       userLogged: 'getUserLogged',
@@ -81,6 +88,22 @@ export default {
   methods: {
     openSearch() {
       this.$store.commit('setShowSearchGeneral', true )
+    },
+    goToResults() {
+
+      if ( this.keyword.trim() == '' ) {
+        return;
+      }
+
+      this.$router.push({
+        name: 'bienesraices-search',
+        params: {
+          search: `buscar-por-${this.keyword.trim().toLowerCase().replace(/ /g, '-')}.html`
+        }
+      });
+
+      this.keyword = ''
+
     }
   }
 }
