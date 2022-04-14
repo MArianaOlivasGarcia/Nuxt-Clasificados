@@ -1,9 +1,9 @@
 <template>
-  <client-only>
+  <client-only v-if="data.length > 0">
     <agile autoplay :autoplaySpeed="6000" :timing="'linear'" :navButtons="false" >
-          <div v-for="(image, i) in images" class="slide" :key="i">
-              <img class="image-slide" :src="image" :alt="image">
-          </div>
+          <NuxtLink v-for="(d, i) in data" class="slide" :key="i" :to="d.url">
+              <img class="image-slide" :src="`https://clasificadoscontacto.com/${d.urlimage}`" :alt="d.urlimagen">
+          </NuxtLink>
     </agile>
   </client-only>
 </template>
@@ -12,21 +12,22 @@
 export default {
   data() {
     return {
-      images: [
-        '/properties-1.jpg',
-        '/properties-2.jpg',
-        '/properties-3.jpg',
-        '/properties-4.jpg',
-      ]
+      data: []
     }
-  }
+  },
+  async created() {
+      
+      const resp = await this.$store.dispatch('sliderDesarrollos')
+
+      this.data = resp;
+      console.log(resp)
+  } 
 }
 </script>
 
 <style scoped>
 
   .slide{
-    background: red;
     height: 250px;
   }
   img.image-slide {

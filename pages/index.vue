@@ -10,23 +10,15 @@
             <h4 class="text-justify">En <b>Clasificados contacto</b>, lo buscas lo encuentras, lo anuncias lo <b>vendes</b>. </h4>
         </div>
         <div class="col-md-7">
-            <Search />
+            <SearchV3 />
         </div>
     </section>
 
 
 
-     <section class="text-center container mt-5 mb-5" >
-            <h3>¿Qué deseas buscar?</h3>
-            <div class="d-flex justify-content-center mt-4">
-            <SearchV2 />
-
-            </div>
-    </section>
 
 
-
-    <section class="mt-5">
+    <!--<section class="mt-5">
         <div class="container">
             <div class="row justify-content-center mb-2 pb-3">
                 <div class="col-md-7 heading-section text-center ftco-animate fadeInUp ftco-animated">
@@ -34,7 +26,7 @@
                 </div>
             </div>
 
-            <SectionLoader v-if="desarrollos.length == 0"/>
+             <SectionLoader v-if="desarrollos.length == 0"/>
             
             <div v-else class="card-columns dev">
                     <DesarrolloCard 
@@ -42,10 +34,10 @@
                         :key="property.productid"
                         :property="property"
                     /> 
-            </div>
+            </div> 
 
         </div>
-    </section>
+    </section>-->
 
 
 
@@ -158,11 +150,13 @@ export default {
     },
     async created(){
       this.$store.dispatch("getOutstanding")
-      const resp = await this.$store.dispatch('sliderDesarrollos')
+    //   const resp = await this.$store.dispatch('sliderDesarrollos')
 
-      for (const property in resp) {
-          this.desarrollos.push(resp[property][0])
-      }
+    //   console.log(resp)
+
+    //   for (const property in resp) {
+    //       this.desarrollos.push(resp[property][0])
+    //   }
     },
     data() {
         return {
@@ -201,7 +195,7 @@ export default {
 <style scoped>
 
     .clean{
-        background: #FAFAFA !important;
+        background: #ebebeb !important;
     }
 
     .img-home{

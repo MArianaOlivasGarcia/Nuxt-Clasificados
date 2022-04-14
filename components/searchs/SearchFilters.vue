@@ -505,7 +505,7 @@ export default {
 .filter-search {
   background-color: #FAE786;
   box-shadow: rgb(99 99 99 / 20%) 0px 2px 8px 0px;
-  border-radius: 15px;
+  border-radius: 10px;
   padding: 15px 10px;
 }
 .postcard-bar {
@@ -576,19 +576,13 @@ span.result {
 
 
 .btn-opt {
-  /* background-color: #fff;
-  color: #00569d; */
   color: white !important;
   background-color: #043a68;
   border-radius: 20px ;
   height: 46px !important;
-  font-family: 'Poppins';
 }
 
 .btn-opt:hover {
-  /* color: white !important;
-  background-color: #043a68;
-  transition: 0.2s all ease-in; */
   background-color: #00569d !important;
   transition: 0.2s all ease-in;
   color: white !important;

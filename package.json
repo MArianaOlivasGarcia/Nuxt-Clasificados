@@ -12,6 +12,7 @@
     "heroku-postbuild": "npm run build"
   },
   "dependencies": {
+    "@morioh/v-lightbox": "^1.0.3",
     "bootstrap": "^4.6.1",
     "core-js": "^3.15.1",
     "jquery": "^3.6.0",

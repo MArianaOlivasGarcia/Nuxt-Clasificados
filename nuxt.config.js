@@ -60,6 +60,7 @@ export default {
     { src: '~/plugins/VueGoogleMaps', ssr: false},
     { src: '~/plugins/VueGeolocationApi'},    
     { src: '~/plugins/VueGeolocation'},    
+    { src: '~/plugins/VueLightbox',  ssr: false},    
     { src: '~/plugins/VueRangeSlider.js', ssr: false },
   ],
 
