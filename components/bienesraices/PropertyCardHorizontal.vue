@@ -101,7 +101,7 @@ export default {
         width: 100px;
     }
 
-     p {
+    p {
         text-align: justify;
         overflow: hidden;
         text-overflow: ellipsis;
@@ -179,5 +179,55 @@ export default {
         padding: 5px 10px;
         font-size: 12px;
     }
+
+
+
+    @media (max-width: 768px) {
+      .card {
+        flex-direction: column;
+        height: 480px !important;
+      }
+
+      .imageContent {
+        height: 210px;
+        width: 100%;
+      }
+
+      .imageContent > img{
+        height: 210px;
+        width: 100%;
+        object-fit: fill;
+      }
+
+      p {
+        text-align: justify;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 3; /* number of lines to show */
+           line-clamp: 3; 
+        -webkit-box-orient: vertical;
+      }
+
+      span.type {
+        top: 12.25rem;
+        bottom: auto;
+      }
+
+      div.user-info {
+        left: auto;
+      }
+
+      span.destacado {
+        top: 14rem;
+      }
+
+      span.destacado > i {
+        font-size: 14px;
+      }
+
+    }
+
+
 
 </style>
