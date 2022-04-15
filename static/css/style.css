@@ -9728,7 +9728,7 @@ FIN DEL SCROLLBAR
   flex-direction: column !important;
   right: 20px !important;
   position: absolute !important;
-  padding: 17px 0px !important;
+  padding: 50px 0px !important;
   top: 100% !important;
 }
 
@@ -9736,7 +9736,7 @@ FIN DEL SCROLLBAR
   margin: 5px 0 !important;
 }
 
-button.agile__nav-button {
+/* button.agile__nav-button {
   border-radius: 100% !important;
   border: none !important;
   width: 40px !important;
@@ -9745,10 +9745,40 @@ button.agile__nav-button {
   height: 40px !important;
 }
 
+*/
 
-button.agile__nav-button:hover {
-  background: rgba(255,255,255,0.8) !important;
+/* .agile__nav-button {
+  background: transparent !important;
+  border: none !important;
+  color: #fff !important;
   cursor: pointer !important;
+  font-size: 24px !important;
+  height: 100% !important;
+  position: absolute !important;
+  top: 0 !important;
+  transition-duration: .3s !important;
+  width: 80px !important;
+} */
+
+
+.agile__nav-button {
+  position: absolute !important;
+  top: 0 !important;
+  border-radius: 100% !important;
+  margin: 0px 10px;
+  border: none !important;
+  width: 40px !important;
+  color: #01569d !important;
+  background: rgba(255,255,255,0.7) !important;
+  height: 40px !important;
+}
+
+
+.agile__nav-button--prev {
+  left: 0 !important;
+}
+.agile__nav-button--next {
+  right: 0 !important;
 }
 
 
