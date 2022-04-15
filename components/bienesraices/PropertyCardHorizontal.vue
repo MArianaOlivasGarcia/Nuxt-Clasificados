@@ -11,7 +11,7 @@
       <div class="postcard-bar"></div>
       <p class="card-text"><small class="text-muted" style="font-size: 14px">{{ property.city }}, {{ property.state }}</small></p>
       <p class="card-text">{{ property.name }}</p>
-      <div class="text-center">
+      <div class="ani text-center">
         <span v-if="property.bedrooms > 0"><i class="icon-big-bed-with-one-pillow pl-2 pr-1"></i>{{ property.bedrooms }}</span>
         <span v-if="property.bathrooms > 0"><i class="icon-bath pl-2 pr-1"></i>{{ property.bathrooms }}</span>
         <span v-if="property.m2c > 0"><i class="icon-ruler pl-2 pr-1"></i>{{ property.m2c }} m<sup>2</sup></span>
@@ -277,14 +277,24 @@ export default {
       }
 
       div.user-info {
-        left: auto;
+        /* left: auto; */
+        display: none;
       }
 
       span.destacado {
-        top: 14rem;
+        /* top: 14rem; */
+        background-color: rgba(255,255,255,.6);
       }
 
       span.destacado > i {
+        font-size: 14px;
+      }
+
+      .ani i {
+        font-size: 20px;
+      }
+
+      .ani span {
         font-size: 14px;
       }
 
