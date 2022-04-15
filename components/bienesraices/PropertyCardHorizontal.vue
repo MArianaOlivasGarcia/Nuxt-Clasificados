@@ -27,7 +27,7 @@
     <span class="type">{{ property.tipo }}</span>
     <span v-if="property.destacado == '1'" class="destacado">Destacado <i style="color: #e7b211 !important" class="fas fa-star"></i></span>
     <div v-if="whatsNumber" @click="sendWhats()" class="whats-contact"><span>Contactar al asesor</span><i class="fab fa-whatsapp ml-2"></i></div>
-    <div class="user-info" v-if="property.userdata || propery.userdata != undefined">
+    <div class="user-info" v-if="property.userdata || property.userdata != undefined">
       <img v-if="!property.userdata[0].image || property.userdata[0].image == '0'" class="user-image" src="@/static/images/property-placeholder.jpeg" alt="">
       <img v-else class="user-image" :src="property.userdata[0].image" :alt="property.userdata[0].name.trim()">
       <span>{{ nameInmo }}</span></div>
