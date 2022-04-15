@@ -2,7 +2,7 @@
   <form
     v-on:submit.prevent="sendMain"
     role="form"
-    class="p-1 contact-form mt-0 mb-5 justify-content-center" >
+    class="p-1 contact-form mt-0 justify-content-center" >
     <div class="row form-group">
       <div class="col-md-12 mb-3">
         <input
@@ -61,7 +61,7 @@
       </div>
 
       <div
-        class="col-md-12 mb-5"
+        class="col-md-12 mb-2"
       >
         <textarea
           cols="30"
@@ -90,13 +90,13 @@
         </div> -->
       </div>
     </div>
-    <div class="text-center">
+    <!-- <div class="text-center">
       Este sitio está protegido por reCAPTCHA y Google
       <a href="https://policies.google.com/privacy">Política de privacidad</a>
       y Se aplican
       <a href="https://policies.google.com/terms">Términos de servicio</a>
       .
-    </div>
+    </div> -->
   </form>
 </template>
 
@@ -251,5 +251,8 @@ textarea {
 }
 sup {
   color: #ff0303;
+}
+button {
+  width: 100%;
 }
 </style>

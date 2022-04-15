@@ -73,6 +73,7 @@ body {
   text-align: left;
   padding: 0;
   width: 100vw;
+  overflow-x: hidden;
 }
 
 
@@ -9716,24 +9717,44 @@ FIN DEL SCROLLBAR
 
 /* AGILE */
 .agile__actions {
-  /* display: none !important; */
+  padding: 0px 10px !important;
+  position: absolute !important;
+  top: 40% !important;
+  width: 100vw !important;
 }
 
 .agile__dots {
   bottom: 10px !important;
   flex-direction: column !important;
-  right: 30px !important;
+  right: 20px !important;
   position: absolute !important;
-  top: 67% !important;
+  padding: 17px 0px !important;
+  top: 100% !important;
 }
 
 .agile__dot {
   margin: 5px 0 !important;
 }
 
+button.agile__nav-button {
+  border-radius: 100% !important;
+  border: none !important;
+  width: 40px !important;
+  color: #01569d !important;
+  background: rgba(255,255,255,0.7) !important;
+  height: 40px !important;
+}
+
+
+button.agile__nav-button:hover {
+  background: rgba(255,255,255,0.8) !important;
+  cursor: pointer !important;
+}
+
+
 .agile__dot button{
     background-color: transparent !important;
-    border: 1px solid #fff !important;
+    border: 1px solid rgba(255,255,255,0.7) !important;
     cursor: pointer !important; 
     display: block !important;
     height: 10px !important;
@@ -9747,12 +9768,12 @@ FIN DEL SCROLLBAR
 }
 
 .agile__dot.agile__dot--current button{
-  background-color: #fff !important;
+  background-color: rgba(255,255,255,0.7) !important;
 }
 
 
 .agile__dot button:hover{
 
-  background-color: #fff !important;
+  background-color: rgba(255,255,255,0.8) !important;
 }
 

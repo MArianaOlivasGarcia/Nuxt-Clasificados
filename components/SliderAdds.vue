@@ -1,6 +1,6 @@
 <template>
   <client-only v-if="data.length > 0">
-    <agile autoplay :autoplaySpeed="5000" :timing="'linear'" :navButtons="false" >
+    <agile autoplay :autoplaySpeed="5000" :timing="'linear'"  >
           <NuxtLink v-for="(d, i) in data" class="slide" :key="i" :to="d.url">
               <img class="image-slide" :src="`https://clasificadoscontacto.com/${d.urlimage}`" :alt="d.urlimagen">
           </NuxtLink>

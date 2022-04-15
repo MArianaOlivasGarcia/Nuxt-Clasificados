@@ -1,72 +1,202 @@
-<template>  
-    <client-only v-if="!isLoading">    
+<template>
 
-      <div class="container mt-4 mb-4" style="background-color: #fff; padding: 1.25rem;">
+     <main>
 
-        <Fab 
-          v-if="property.user.cellphone" 
-          :whatsApp="property.user.cellphone" 
-          :folioProperty="property.folio"
-          :whatsForm="whatsForm"
-          :v="$v"/>
+    <client-only v-if="!isLoading" >
 
-        <div class="row">
+      <Fab 
+        v-if="property.user.cellphone" 
+        :whatsApp="property.user.cellphone" 
+        :folioProperty="property.folio"
+        :whatsForm="whatsForm"
+        :v="$v"/>
+      
 
-          <div class="col-md-7 gallery-content ">
-            <lightbox :cells="4" :items="images"></lightbox>
+      <!-- GENERAL CONTAINER -->
+      <section class="ftco-section detail-section pb-5">
+  
+          <div class="container">
+           <lightbox style="width: 100%;" :items="images"></lightbox>
+              <!-- <Carousel :items="property.images" /> -->
           </div>
 
-          <div class="col-md-5 data-container">
-            
-            <div>
-              <h1>{{ property.productName }}</h1>
-              <p class="card-text text-muted">{{ property.city }}, {{ property.state }}</p>
-              <h4 class="price">$ {{ Number(property.price).toLocaleString()  }} {{ property.currency }}</h4>
-              <div class="postcard-bar"></div>
-              <div class="text-center">
-                  <span v-if="property.bedrooms > 0"><i class="icon-big-bed-with-one-pillow pl-2 pr-1"></i>{{ property.bedrooms }}</span>
-                  <span v-if="property.bathrooms > 0"><i class="icon-bath pl-2 pr-1"></i>{{ property.bathrooms }}</span>
-                  <span v-if="property.m2c > 0"><i class="icon-ruler pl-2 pr-1"></i>{{ property.m2c }} m<sup>2</sup></span>
-                  <span v-if="property.mlot > 0"><i class="icon-text  pl-2 pr-1"></i>{{ property.mlot }} m<sup>2</sup></span>
-              </div>
-            </div>
 
-            <div>
-                <div class="text-center"><span style="font-weight: bold;">Compartir</span></div>
-                <div class="d-flex justify-content-center mt-2">
-                  <a class="social" :href="`http://www.facebook.com/sharer.php?u=${ url }&t=${ property.description }`" target="_blank"><i class="fab fa-facebook"></i></a>
-                  <a class="social" to="/"><i class="fab fa-twitter"></i></a>
-                  <a class="social" to="/"><i class="fab fa-whatsapp"></i></a>
+        
+        <div class="container">
+          <div class="row">
+            <div class="col-md-5">
+              <div class="listing_details_top_left">
+                <div class="listing_details_top_title">
+                  <h1>{{property.productName}}</h1>
+                  <span> <i class="icon-location"></i> {{property.city}} , {{property.state}} </span>
+                
+                  <h4>$ {{Number(property.price).toLocaleString() }} {{property.currency}}</h4>
                 </div>
               </div>
+            </div>
+            <div class="col-md-7">
+              <div class="listing_details_top_right clearfix">
+                <div class="listing_details_top_product_list_box">
+                  <ul class="listing_details_top_product_list list-unstyled">
+                    <li>
+                      <div class="icon_box">
+                        <span class="icon-hashtag"></span>
+                      </div>
+                      <div class="text_box">
+                        <h5>Folio</h5>
+                        <p>{{property.folio}}</p>
+                      </div>
+                    </li>
+                    <li v-if="property.bedrooms > 0" >
+                      <div class="icon_box">
+                        <span class="icon-bed"></span>
+                      </div>
+                      <div class="text_box">
+                        <h5>{{property.bedrooms}}</h5>
+                        <p>recamaras</p>
+                      </div>
+                    </li>
+                    <li v-if="property.bathrooms > 0">
+                      <div class="icon_box">
+                        <span class="icon-bathtub"></span>
+                      </div>
+                      <div class="text_box">
+                        <h5>{{property.bathrooms}}</h5>
+                        <p>baños</p>
+                      </div>
+                    </li>
+                  </ul>
+                   <ul class="listing_details_top_product_list list-unstyled ">
+                    <li v-if="property.m2c > 0">
+                      <div class="icon_box">
+                        <span class="icon-house-size"></span>
+                      </div>
+                      <div class="text_box">
+                        <h5>{{property.m2c}}</h5>
+                        <p>m<sup>2</sup></p>
+                      </div>
+                    </li>
+                    <li v-if="property.mlot > 0">
+                      <div class="icon_box">
+                        <span class="icon-resize"></span>
+                      </div>
+                      <div class="text_box">
+                        <h5>{{property.mlot}}</h5>
+                        <p>m<sup>2</sup></p>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+                <div class="row">
+                  <div class="col-md-6 mt-3">
+                    <div class="share-property text-center">
+                      <a :href="`http://www.facebook.com/sharer.php?u=${ url }&t=${ property.description }`" target="_blank" class="pl-3 pr-3">
+                        <span class="icon-facebook"></span>
+                      </a>
+                      <a :href="`https://twitter.com/intent/tweet?url=${ url }&text=${ property.description }`" target="_blank" class="pl-3 pr-3">
+                        <span class="icon-twitter"></span>
+                      </a>
+                      <a :href="`https://api.whatsapp.com/send?text=${ property.description } ${url}`" target="_blank" class="pl-3 pr-3">
+                        <span class="icon-whatsapp"></span>
+                      </a>
+                      <div class="text-center mb-3">
+                        <p>COMPARTE</p>
+                      </div>
+                    </div>
+                  </div>
 
-            <div>
-              <span style="font-weight: bold;">Ubicación</span>
-              <GoogleMap 
-                style="width: 100%; height: 250px" 
-                :mapLat="property.latitude" 
-                :mapLng="property.longitude" 
-                :draggable="false"
-                :scaleControl="false"/>
+                </div>
+              </div>
             </div>
           </div>
-
         </div>
+      </section>
 
-        <div class="row mt-5">
-          <div class="col-md-7">
-            <div>
-              <span style="font-weight: bold;">Descripción</span>
-              <div style="font-size: 14px; text-align: justify; line-height:normal;" v-html="property.descriptionlong"></div>
-            </div>
+      <section class="property-info pt-3 pb-3">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-8">
+              <ul class="nav nav-tabs" id="myTab" role="tablist">
+                <li class="nav-item" role="presentation">
+                  <a
+                    class="nav-link active"
+                    id="home-tab"
+                    data-toggle="tab"
+                    href="#description"
+                    role="tab"
+                    aria-controls="home"
+                    aria-selected="true"
+                    >Descripción</a
+                  >
+                </li>
+                <li class="nav-item" role="presentation">
+                  <a
+                    class="nav-link"
+                    id="profile-tab"
+                    data-toggle="tab"
+                    href="#amenity"
+                    role="tab"
+                    aria-controls="profile"
+                    aria-selected="false"
+                    >Amenidades</a
+                  >
+                </li>
+              </ul>
+              <div class="tab-content mt-3 mb-3" id="myTabContent">
+                <!-- DESCRIPCION/UBICACION/VIDEO -->
+                <div
+                  class="tab-pane fade show active
+                      fadeInUp
+                      ftco-animated"
+                  id="description"
+                  role="tabpanel"
+                  aria-labelledby="description-tab"
+                >
+                  <div v-html="property.descriptionlong" class="col-md-12 mb-3 text-justify descrip">
+                  </div>
+                  <div>
+                    <div
+                      class="
+                        col-md-12
+                        ftco-animate
+                        fadeInUp
+                        ftco-animated
+                        pt-3
+                      "
+                    >
+                     <h2>UBICACIÓN</h2>
+                    </div>
+                   <div v-if="property.latitude || property.longitude" class="col-md-12 mb-3 pt-2">
+                      <div class="col-12">
+                        
+                        <GoogleMap :mapLat="property.latitude" :mapLng="property.longitude" />
+                      </div>
+                    </div>
+
+                  </div>
+                </div>
 
 
-            <div class="amenities mt-3">
-              <span style="font-weight: bold;">Amenidades</span>
-              
-              <div>
-                <h2>Interiores</h2>
-                <div class="container-fluid">
+                <!-- AMENIDADES -->
+                <div
+                  class="tab-pane fade"
+                  id="amenity"
+                  role="tabpanel"
+                  aria-labelledby="amenity-tab"
+                >
+                  <div
+                    class="
+                      amenities
+                      ftco-animate
+                      mb-5
+                      mt-4
+                      fadeInUp
+                      ftco-animated
+                    "
+                  >
+                    <h2 class="text-center">AMENIDADES</h2>
+                    <h2>Interiores</h2>
+                    <div class="container-fluid">
                     <ul>
                       <li v-if="property.amenities.interior[0].Amueblado">
                         <div class="listings_details_icon">
@@ -177,13 +307,8 @@
                         </div>
                       </li>
                     </ul>
-                    
-                </div>  
-              </div>
-
-
-              <div>
-                <h2>Exteriores</h2>
+                    </div>
+                    <h2>Exteriores</h2>
                     <div class="container-fluid">
                     <ul>
                       <li v-if="property.amenities.exterior[0].Balcon" >
@@ -339,57 +464,81 @@
                         </div>
                       </li>
                     </ul>
+                    </div>
+
                   </div>
+                </div>
+              
               </div>
-
-            </div>
-          </div>
-
-
-          <div class="col-md-5">
-
-            <div class="text-center">
-              <div style="justify-content: center;
-                  display: flex;
-                  align-items: center;">
-                <img class="logo-crediteka" src="https://www.crediteka.com/img/logo_color.png" alt="Logo Crediteka">
-                <p style="font-weight: 500; font-size: 18px;">¿Te interesa esta propiedad?</p>
-              </div>
-              <a href="https://crediteka.com/precalificate" target="__blank" class="btn btn-credi">Crédito pre autorizado</a>
             </div>
 
 
-
-
-            <div class="contact-form">
-              
-              
+            <!-- FORMULARIO AGENTE -->
+            <div class="col-lg-4 bg-softcc">
+                  
                 <div class="text-center">
+
+                  <img src="https://www.crediteka.com/img/logo_color.png" alt="">
+                  <p style="font-weight: 500;
+    font-size: 19px;">¿Te interesa esta propiedad?</p>
+                  <a href="https://crediteka.com/precalificate"  target="__blank"
+                    type="button" 
+                    class="btn btn-primary mb-3 btn-cred"
+                    >Crédito pre autorizado</a>
+                
+                </div>
+
+              <div class="ftco-section contact-section">
+                <div class="ml-1 mr-1 text-center">
                   <img
-                    class="img-inmo"
-                    src="@/static/images/property-placeholder.jpeg"
+                    class="img img-agent"
+                    width="50%"
+                    src="https://thumbs.dreamstime.com/b/default-avatar-profile-trendy-style-social-media-user-icon-187599373.jpg"
                   />
                   <p class="ml-2 pt-3 font-weight-bold text-left mb-1">
                     {{property.user.name}} {{property.user.lastname}}
                   </p>
-                  <p class="mb-0 pt-2 ml-2 text-left"><i class="icon-phone"></i> {{property.user.cellphone}}</p>
-                  <p class="mb-0 pt-2 ml-2 text-left"><i class="icon-mail-envelope-closed"></i> {{property.user.email}}</p>
-                
+                  <p class="mb-0 pt-2 ml-2 text-left">
+                    <b class="texto2"><i class="icon-phone"></i> </b>
+                    <a
+                      class="contact-links"
+                      data-toggle="tooltip"
+                      data-placement="top"
+                      title="Contactar en WhatsApp"
+                      target="_blank"
+                    >
+                      {{property.user.cellphone}}
+                    </a>
+                  </p>
+                  <p class="mb-1 ml-2 text-left">
+                    <b class="texto2"
+                      ><i class="icon-mail-envelope-closed"></i>
+                    </b>
+                    <a class="contact-links"> {{property.user.email}} </a>
+                  </p>
                 </div>
 
                 <div class="rounded">
                   <ContactForm :v="$v" :form="form"/>
                 </div>
 
-
-
+              </div>
             </div>
           </div>
         </div>
+      </section>
 
-      </div>
-    </client-only>
-</template> 
+      </client-only>
+
+    <Loader v-else/>
+
+
+
+  
+  </main>
+</template>
+
+
 
 
 
@@ -472,11 +621,13 @@ export default {
         const { fullPath } = this.$route
         this.url = `https://clasificadoscontacto.com${ fullPath }`
 
+        console.log( this.property.images)
 
         for (const property in this.property.images) {
           this.images.push(this.property.images[property]['largefile'])
         } 
 
+          console.log(this.images)
     },
     mounted(){
       if ( this.property ){
@@ -489,107 +640,11 @@ export default {
 
 
 
-
 <style scoped>
-  h1 {
-    font-size: 25px;
-    font-weight: 500;
-  }
-  h4.price {
-    font-size: 24px;
-    color: #00569d;
-    font-weight: 700;
-    line-height: 10px;
-  }
-
-  h2 {
-    font-size: 16px;
-    font-weight: 500;
-  }
-
-  .postcard-bar {
-    width: 50px;
-    height: 3px;
-    margin: 10px 0;
-    border-radius: 5px;
-    background-color: #f2e115;
-    transition: width 0.2s ease;
-  }
-
-  i {
-     color: #01569D;
-     font-size: 20px;
-  }
-
-
-  div.data-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-  }
-
-  div.gallery-content {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-  }
-
-
-  .social {
-    margin: 0px 10px;
-  }
-
-  .social > i{
-    font-size: 30px;
-  }
-  
-  i.fa-facebook {
-    color: #0D96F5;
-  }
-
-  i.fa-twitter {
-    color: #08A6E6;
-  }
-
-
-  i.fa-whatsapp {
-    color: #3FC250;
-  }
-
-  .contact-form {
-    background-color: #EBEBEB;
-    margin-top: 20px;
-    border-radius: 10px;
-    padding: 10px;
-  }
-
-
-  img.logo-crediteka {
-    width: 30%;
-  }
-
-
-  .btn-credi {
-    width: 100%;
-    padding: 15px;
-    background: #FED823;
-  }
-
-  .btn-credi:hover {
-    background: rgb(250, 209, 5);
-    box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px !important; 
-  }
-
-  img.img-inmo {
-    height: 180px;
-    width: 180px;
-    border-radius: 100%;
-  }
-
-
-
-
-  .amenities ul {
+.nav-tabs .nav-link {
+    border-color: #e9ecef #e9ecef #dee2e6;
+}
+.amenities ul {
   display: flex;
   list-style: none;
 }
@@ -598,8 +653,13 @@ export default {
   flex: auto;
 }
 
-
-
+.amenities span {
+  color: #00569d;
+  font-size: 35px;
+}
+.img-agent {
+  border-radius: 50% !important;
+}
 .listings_details_content p {
   font-size: 13px;
 }
@@ -616,10 +676,125 @@ export default {
   top: 0;
   left: 0;
 }
-
-
-.listings_details_icon > span::before {
-    color: #00569d;
-  font-size: 35px;
+.texto2 {
+  color: #00569d;
 }
+.detail-section h1 {
+  font-size: 30px !important;
+  font-weight: 600 !important;
+}
+.detail-section i {
+  color: #f2e21e;
+}
+.listing_details_top_title h4 {
+  font-size: 24px;
+  color: #00569d;
+  font-weight: 700;
+  line-height: 10px;
+}
+.detail-section h5 {
+  font-size: 18px !important;
+}
+.detail-section p {
+  font-size: 15px;
+  color: #717580;
+}
+.listing_details_top_product_list_box::before {
+  position: absolute;
+  top: 16px;
+  left: -30px;
+  bottom: 16px;
+  content: "";
+  width: 1px;
+  background: #e0e3eb;
+}
+.listing_details_top_product_list {
+  display: flex !important;
+  align-items: center;
+}
+.listing_details_top_product_list li {
+  display: flex;
+  align-items: center;
+}
+.property-info .nav-link{
+  font-size: 19px;
+}
+@media only screen and (max-width: 991px) {
+  .listing_details_top_product_list li {
+    flex-direction: column;
+    text-align: center;
+  }
+  .listing_details_top_product_list li .text_box p {
+    font-size: 12px;
+  }
+  .listing_details_top_product_list li .text_box h5 {
+    font-size: 14px;
+  }
+  .amenities ul {
+    display: inline-block;
+  }
+
+  .amenities li {
+    flex: inherit;
+  }
+}
+
+.listing_details_top_product_list li .icon_box {
+  height: 54px;
+  width: 54px;
+  border: 1px solid #e0e3eb;
+  border-radius: 50%;
+  color: #00569d;
+  font-size: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.listing_details_top_product_list li .text_box {
+  margin-left: 10px;
+  line-height: 0.5 !important;
+}
+.listing_details_top_product_list li .text_box1 {
+  margin-left: 10px;
+  line-height: 1.5;
+}
+.listing_details_top_product_list li + li {
+  margin-left: 30px;
+}
+.share-property span {
+  font-size: 23px;
+}
+.property-info .heading-section h2 {
+  font-size: 2rem;
+  font-weight: 600;
+  position: relative;
+}
+.descrip{
+  font-size: 18px;
+}
+
+.contact-section {
+  background: #EEF1F5;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.btn-cred {
+  background: #FED823 !important;
+  border-color: #FED823 !important;
+  color: #01569D !important;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px !important; 
+}
+
+.btn-cred:hover {
+  background: rgb(250, 209, 5) !important;
+  border-color: rgb(250, 209, 5) !important;
+  color: #01569D !important;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px !important; 
+}
+
+
+
+
 </style>

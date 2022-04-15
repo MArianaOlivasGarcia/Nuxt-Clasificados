@@ -122,12 +122,12 @@ const actions = {
         const resp = await fetch(state.API_URL + state.SEARCH_PROPERTIES, config).then((res) => res.json())
         
         console.log('SE LLAMO')
-        console.log(resp.resp)
+        console.log(resp.resp.data)
 
-        commit( 'setLoading', false )
-  
+        
         if ( resp.status == 200  ) {
             commit("setPropertiesList", resp.resp.data);
+            commit( 'setLoading', false )
             return resp.resp
         } 
   
@@ -252,11 +252,12 @@ const actions = {
       
         const resp = await fetch(state.API_URL + state.SEARCH_PROPERTIES, config).then((res) => res.json())
    
-        commit( 'setLoading', false )
-  
+        
         if ( resp.status == 200  ) {
             commit("setOutstanding", resp.resp.data);
+            return resp.resp.data
         } 
+        commit('setLoading', false )
   
       },
       async forgotPassword({commit, state}, form ) {

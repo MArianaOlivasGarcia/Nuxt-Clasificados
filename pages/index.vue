@@ -115,10 +115,10 @@
         <Companies />
     </section>
 
-
+<!-- 
     <section class="p-0">
         <News />
-    </section>
+    </section> -->
 
     <section class="p-0" id="contacto">
         <ContactSection :v="$v" :form="form" />
@@ -146,10 +146,14 @@ export default {
       titleTemplate: 'Clasificados Contacto | El buscador',
     },
     computed: {
-        ...mapGetters({ outstanding: 'getOutstanding'}),
+        ...mapGetters({ isLoading: 'getIsLoading'}),
     },
     async created(){
-      this.$store.dispatch("getOutstanding")
+
+        this.outstanding = [];
+        
+        this.outstanding = await this.$store.dispatch("getOutstanding")
+        console.log(this.outstanding)
     //   const resp = await this.$store.dispatch('sliderDesarrollos')
 
     //   console.log(resp)
@@ -161,6 +165,7 @@ export default {
     data() {
         return {
             desarrollos: [],
+            outstanding: [],
             form: {
                 name: '',
                 email: '',

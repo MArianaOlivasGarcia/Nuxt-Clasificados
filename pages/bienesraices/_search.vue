@@ -8,7 +8,6 @@
           <div class="row">
           <div class=" col-lg-3 col-md-12 pt-4 mt-2" v-if="states.length > 0">
             <SearchFilters 
-              v-on:tengo_resultados="onResultados"
               :states="states"/>
           </div>
           <div  v-if="isLoading"  class="loaderPadding col-lg-9 col-md-12 pr-0">
@@ -21,14 +20,12 @@
 
             <h5 class="mb-4" v-if="totalResults > 0">Total de resultados: <span>{{ totalResults.toLocaleString() }} propiedades.</span></h5>
 
-            <PropertyCardHorizontal />
+            <PropertyCardHorizontal 
+              v-for="property in properties"
+              :key="property.folio"
+              :property="property" />
 
-            <PropertyHorizontalCard 
-              v-for="item in properties"
-              :key="item.folio"
-              :name="item.folio"
-              :item="item"
-            /> 
+          
 
             <div v-if="properties.length == 0"  class="text-center mt-5 pt-5" >
             <h5>En este momento no hay propiedades como la que buscas.</h5>
@@ -70,6 +67,7 @@ export default {
     },
     data(){
       return {
+        properties: [],
         totalResults: 0,
         whatsForm: {
           name: '',
@@ -82,7 +80,7 @@ export default {
     methods: {
       async getProperties() {
 
-
+        this.properties = [];
 
 
         /*
@@ -112,10 +110,12 @@ export default {
             page: this.$route.query.pagina ? this.$route.query.pagina : 1,
             keyword
           }
-          console.log(searchForm)
 
           const resp = await  this.$store.dispatch('searchProducts', searchForm )
           this.totalResults = resp.xtr.result
+          this.properties = resp.data
+          console.log('SE ENCONTRO 1')
+          console.log(this.properties)
           return;
         }
 
@@ -127,10 +127,8 @@ export default {
         // 1. cortar *con*
         const urlCortada = search.split('-con-')
         let primeraUrl = urlCortada[0]?.split('.html')[0] // Quitar el .html;
-        console.log(primeraUrl)
 
         const segundaUrl = urlCortada[1]?.split('.html')[0] //Quitar el .html
-        console.log(segundaUrl)
 
         // Cortar las url
         let primerSearch = primeraUrl.split('-en-')
@@ -142,7 +140,6 @@ export default {
           console.log('ES CON GOOGLE')
           googlePlace = primeraUrl.split('-ubicado-en-')[1];
           primerSearch = urlCortada[0]?.split('.html')[0].split('-ubicado-en-')[0].split('-en-')
-          console.log(primerSearch)
         }
 
         
@@ -191,8 +188,11 @@ export default {
 
         const resp = await  this.$store.dispatch('searchProducts', searchForm )
         this.totalResults = resp.xtr.result
-      },
-      onResultados(datos) {
+        this.properties = resp.data
+
+        console.log('SE ENCONTRO')
+        console.log(this.properties)
+
       }
     },
     created() {
@@ -210,7 +210,7 @@ export default {
     computed: {
       ...mapGetters({ searchForm: 'getSearFormValues', 
                       isLoading: 'getIsLoading',
-                      properties: 'getPropertiesList',
+                      // properties: 'getPropertiesList',
                       states: 'getStatesList',
                       whatsContactValues: 'getWhatsContactValues',
                       showWhatsForm: 'getShowWhatsForm' }),
@@ -218,8 +218,10 @@ export default {
     },
     watch: {
       '$route.query.pagina': {
-        immediate: true,
-        async handler() {
+        // immediate: true,
+        async handler(newValue, oldValue) {
+
+          console.log({newValue, oldValue})
           this.getProperties();
         }
       },
