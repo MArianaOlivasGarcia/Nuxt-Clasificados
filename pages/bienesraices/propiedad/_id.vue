@@ -35,8 +35,8 @@
                 <div class="text-center"><span style="font-weight: bold;">Compartir</span></div>
                 <div class="d-flex justify-content-center mt-2">
                   <a class="social" :href="`http://www.facebook.com/sharer.php?u=${ url }&t=${ property.description }`" target="_blank"><i class="fab fa-facebook"></i></a>
-                  <a class="social" to="/"><i class="fab fa-twitter"></i></a>
-                  <a class="social" to="/"><i class="fab fa-whatsapp"></i></a>
+                  <a class="social" :href="`https://twitter.com/intent/tweet?url=${ url }&text=${ property.description }`" target="_blank"><i class="fab fa-twitter"></i></a>
+                  <a class="social" :href="`https://api.whatsapp.com/send?text=${ property.description } ${url}`" target="_blank"><i class="fab fa-whatsapp"></i></a>
                 </div>
               </div>
 
