@@ -71,7 +71,8 @@ export default {
       '~/components',
       '~/components/searchs/',
       '~/components/bienesraices/',
-      '~/components/template/'
+      '~/components/template/',
+      '~/components/vehiculos/'
     ]
   },
 

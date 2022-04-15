@@ -30,6 +30,7 @@
                 <gmap-autocomplete 
                     @keyup="googleSearchChange" 
                     @place_changed="updatePlace" 
+                    
                     placeholder="Ej: Ciudad de México, CDMX, México" >
                 </gmap-autocomplete>
               </client-only>
@@ -79,12 +80,15 @@ export default {
         },
         updatePlace( what ) {
             this.search.keywordAddrs = what.formatted_address;
-            console.log(this.search.keywordAddrs)
-            // console.log(what.formatted_address)
-            console.log(what)
+            if ( this.search.keywordAddrs == undefined ) {
+                this.search.keywordAddrs = what.name
+            }
         },
         goToResults() {
             const { category, operation, keywordAddrs} = this.search
+
+
+            console.log(keywordAddrs)
 
             const urlSeach = `${helpers.normalize(this.$store.getters.getCategoryById(category).name)}_${category}` 
                     + `-en-${ operation == 1 ? 'venta_1' : 'renta_2' }`
