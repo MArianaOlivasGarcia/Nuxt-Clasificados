@@ -440,7 +440,7 @@ export default {
        
         const urlSeach = `${helpers.normalize(this.$store.getters.getCategoryById(category)?.name)}_${category}` 
                + `-en-${ operation == 1 ? 'venta_1' : 'renta_2' }`
-               + `-en-${ helpers.normalize( this.$store.getters.getStateById(state)?.name ) }_${state}`
+               + `${ state != undefined ? `-en-${ helpers.normalize( this.$store.getters.getStateById(state)?.name ) }_${state}` : '' }`
                + `${ city != undefined ? `-en-${ helpers.normalize( this.$store.getters.getMunicipalityById(city)?.itemName ) }_${city}` : '' }`
                + `${ suburb != undefined ? `-en-${ helpers.normalize( this.$store.getters.getSuburbById(suburb)?.itemName ) }_${suburb}` : '' }`
      
