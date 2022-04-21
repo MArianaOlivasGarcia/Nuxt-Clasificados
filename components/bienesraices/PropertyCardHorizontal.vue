@@ -1,11 +1,11 @@
 <template>
 
   <div class="card">
-    <NuxtLink :to="route" class="imageContent">
+    <div @click="goTo"  class="myLink imageContent">
       <img v-if="!noImage" :src="property.image" :alt="property.name" @error="imageLoadError">
       <img v-else src="@/static/images/property-placeholder.jpeg" :alt="property.name">
-    </NuxtLink>
-    <NuxtLink :to="route" class="card-body">
+    </div>
+    <div @click="goTo" class="card-body">
 
       <h5 class="pricecard m-0">$ {{ property.price }} {{ property.currency }}</h5>
       <div class="postcard-bar"></div>
@@ -22,7 +22,7 @@
     
 
     
-    </NuxtLink>
+    </div>
     <span class="operation">{{ property.operation }}</span>
     <span class="type">{{ property.tipo }}</span>
     <span v-if="property.destacado == '1'" class="destacado">Destacado <i style="color: #e7b211 !important" class="fas fa-star"></i></span>
@@ -93,6 +93,9 @@ export default {
 
        this.$store.commit('setShowWhatsForm', !this.showWhatsForm)
     },
+    goTo() {
+      this.$router.push({ path: this.route });
+    }
   }
 }
 </script>

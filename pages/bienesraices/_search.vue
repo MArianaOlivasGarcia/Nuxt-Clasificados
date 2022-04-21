@@ -20,15 +20,15 @@
 
             <h5 class="mb-4" v-if="totalResults > 0">Total de resultados: <span>{{ totalResults.toLocaleString() }} propiedades.</span></h5>
 
-            <!-- <PropertyCardHorizontal 
+            <PropertyCardHorizontal 
               v-for="property in properties"
               :key="property.folio"
-              :property="property" /> -->
+              :property="property" />
 
-              <PropertyHorizontalTest
+              <!-- <PropertyHorizontalTest
               v-for="property in properties"
               :key="property.folio"
-              :item="property" /> 
+              :item="property" />  -->
 
 
           
