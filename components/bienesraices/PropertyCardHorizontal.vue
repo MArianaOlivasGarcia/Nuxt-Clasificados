@@ -117,7 +117,7 @@ export default {
 
      .imageContent > img{
       height: 280px;
-      width: 260px;
+      width: 243px;
       object-fit: cover;
     }
 
