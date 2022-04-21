@@ -117,8 +117,8 @@ export default {
 
      .imageContent > img{
       height: 280px;
-      width: 240px;
-      object-fit: fill;
+      width: 260px;
+      object-fit: cover;
     }
 
     .card:hover {
