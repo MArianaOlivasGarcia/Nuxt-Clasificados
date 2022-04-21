@@ -1,65 +1,65 @@
 <template>
-  <div>
+  <client-only  v-if="!loading">
 
     
     <div  class="mx-5 pl-1">
       <div class="mb-5">  
         <template>
           <div class="row">
-          <div class=" col-lg-3 col-md-12 pt-4 mt-2" v-if="states.length > 0">
-            <SearchFilters 
-              :states="states"/>
-          </div>
-          <div  v-if="isLoading"  class="loaderPadding col-lg-9 col-md-12 pr-0">
-            <Loader />
-          </div>
-
-          
-          
-          <div v-else class="pt-4 pt-md-0 col-lg-9 col-md-12 px-0 pl-md-4 mt-4" >
-
-            <h5 class="mb-4" v-if="totalResults > 0">Total de resultados: <span>{{ totalResults.toLocaleString() }} propiedades.</span></h5>
-
-            <PropertyCardHorizontal 
-              v-for="property in properties"
-              :key="property.folio"
-              :property="property" />
-
-              <!-- <PropertyHorizontalTest
-              v-for="property in properties"
-              :key="property.folio"
-              :item="property" />  -->
-
-
-          
-
-            <div v-if="properties.length == 0"  class="text-center mt-5 pt-5" >
-            <h5>En este momento no hay propiedades como la que buscas.</h5>
+            <div class=" col-lg-3 col-md-12 pt-4 mt-2" v-if="states.length > 0">
+              <SearchFilters 
+                :states="states"/>
+            </div>
+            <div  v-if="isLoading"  class="loaderPadding col-lg-9 col-md-12 pr-0">
+              <Loader />
             </div>
 
+            
+            
+            <div v-else class="pt-4 pt-md-0 col-lg-9 col-md-12 px-0 pl-md-4 mt-4" >
 
-          <div  v-if="totalResults > 20 " class="d-flex justify-content-center">
-            <Paginator :totalResults="totalResults"/>
-            <!-- <Paginator :totalResults="totalResults" :ids="ids"/> -->
+              <h5 class="mb-4" v-if="totalResults > 0">Total de resultados: <span>{{ totalResults.toLocaleString() }} propiedades.</span></h5>
+
+              <PropertyCardHorizontal 
+                v-for="property in properties"
+                :key="property.folio"
+                :property="property" />
+
+                <!-- <PropertyHorizontalTest
+                v-for="property in properties"
+                :key="property.folio"
+                :item="property" />  -->
+
+
+            
+
+              <div v-if="properties.length == 0"  class="text-center mt-5 pt-5" >
+              <h5>En este momento no hay propiedades como la que buscas.</h5>
+              </div>
+
+
+              <div  v-if="totalResults > 20 " class="d-flex justify-content-center">
+                <Paginator :totalResults="totalResults"/>
+                <!-- <Paginator :totalResults="totalResults" :ids="ids"/> -->
+              </div>
+
+            </div>
+
+            <WhatsAppFormV2
+              v-if="showWhatsForm"
+                :v="$v"
+                :whatsForm="whatsForm"/>
+
+          
+
           </div>
-
-          </div>
-
-          <WhatsAppFormV2
-            v-if="showWhatsForm"
-              :v="$v"
-              :whatsForm="whatsForm"/>
-
-         
-
-        </div>
         </template>
       </div>
       
     </div>
 
     
-  </div>
+  </client-only>
 </template>
 
 
@@ -83,9 +83,11 @@ export default {
           whatsapp: '',
           message: '',
           email: ''
-        }
+        },
+        loading: true
       }
     },
+   
     methods: {
       async getProperties() {
 
@@ -206,7 +208,9 @@ export default {
     },
     created() {
         this.getProperties();
-
+      this.$nextTick( function() {
+        this.loading = false
+      })
     },
     validations: {
         whatsForm: {
