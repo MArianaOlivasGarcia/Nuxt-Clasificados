@@ -9,8 +9,8 @@
 
       <h5 class="pricecard m-0">$ {{ property.price }} {{ property.currency }}</h5>
       <div class="postcard-bar"></div>
-      <p class="card-text"><small class="text-muted" style="font-size: 14px">{{ property.city }}, {{ property.state }}</small></p>
       <p class="card-text">{{ property.name }}</p>
+      <p class="card-text"><small class="text-muted" style="font-size: 14px">{{ property.city }}, {{ property.state }}</small></p>
       <div class="ani text-center">
         <span v-if="property.bedrooms > 0"><i class="icon-big-bed-with-one-pillow pl-2 pr-1"></i>{{ property.bedrooms }}</span>
         <span v-if="property.bathrooms > 0"><i class="icon-bath pl-2 pr-1"></i>{{ property.bathrooms }}</span>
