@@ -26,11 +26,11 @@
     <span class="operation">{{ property.operation }}</span>
     <span class="type">{{ property.tipo }}</span>
     <span v-if="property.destacado == '1'" class="destacado">Destacado <i style="color: #e7b211 !important" class="fas fa-star"></i></span>
-    <div v-if="whatsNumber" @click="sendWhats()" class="whats-contact"><span>Contactar al asesor</span><i class="fab fa-whatsapp ml-2"></i></div>
-    <div class="user-info" v-if="property.userdata || property.userdata != undefined">
+    <!-- <div v-if="whatsNumber" @click="sendWhats()" class="whats-contact"><span>Contactar al asesor</span><i class="fab fa-whatsapp ml-2"></i></div> -->
+    <!-- <div class="user-info" v-if="property.userdata || property.userdata != undefined">
       <img v-if="!property.userdata[0].image || property.userdata[0].image == '0'" class="user-image" src="@/static/images/property-placeholder.jpeg" alt="">
       <img v-else class="user-image" :src="property.userdata[0].image" :alt="property.userdata[0].name.trim()">
-      <span>{{ nameInmo }}</span></div>
+      <span>{{ nameInmo }}</span></div> -->
   </div>
 </template>
 
@@ -57,41 +57,41 @@ export default {
     console.log(this.property)
     this.route = `/bienesraices/propiedad/${helpers.normalize( this.property.name )}_${ this.property.productoid }.html`;
 
-    if ( !this.property.userdata  ) {
-      this.whatsNumber = null;
-      this.nameInmo = null;
-      return;
-    }
+    // if ( !this.property.userdata  ) {
+    //   this.whatsNumber = null;
+    //   this.nameInmo = null;
+    //   return;
+    // }
 
-    if ( !this.property.userdata[0]?.cellphone ) {
-      this.whatsNumber = null;
-    } else {
-        this.whatsNumber = this.property.userdata[0]?.cellphone.replace('(', '')
-          .replace(' ', '')
-          .replace(')', '')
-          .replace('-', '') 
-    }
+    // if ( !this.property.userdata[0]?.cellphone ) {
+    //   this.whatsNumber = null;
+    // } else {
+    //     this.whatsNumber = this.property.userdata[0]?.cellphone.replace('(', '')
+    //       .replace(' ', '')
+    //       .replace(')', '')
+    //       .replace('-', '') 
+    // }
 
-    if ( !this.property.userdata[0]?.name ){
-      this.nameInmo = null;
-    } else {
-      this.nameInmo = this.property.userdata[0]?.name.trim();
-    }
+    // if ( !this.property.userdata[0]?.name ){
+    //   this.nameInmo = null;
+    // } else {
+    //   this.nameInmo = this.property.userdata[0]?.name.trim();
+    // }
 
   },
   methods: {
     imageLoadError() {
         this.noImage = true;
     },
-    sendWhats() {
-      this.$store.commit('setWhatsContactValues', {
-        whatsappInmo: this.whatsNumber,
-        nameInmo: this.nameInmo,
-        propertyId: this.property.productoid
-      })
+    // sendWhats() {
+    //   this.$store.commit('setWhatsContactValues', {
+    //     whatsappInmo: this.whatsNumber,
+    //     nameInmo: this.nameInmo,
+    //     propertyId: this.property.productoid
+    //   })
 
-       this.$store.commit('setShowWhatsForm', !this.showWhatsForm)
-    },
+    //    this.$store.commit('setShowWhatsForm', !this.showWhatsForm)
+    // },
   }
 }
 </script>

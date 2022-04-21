@@ -38,11 +38,11 @@
           </div>
 
           </div>
-
+<!-- 
           <WhatsAppFormV2
             v-if="showWhatsForm"
               :v="$v"
-              :whatsForm="whatsForm"/>
+              :whatsForm="whatsForm"/> -->
 
          
 
