@@ -2,17 +2,34 @@
 <template>
   <NuxtLink :to="route" class="card">
     <div class="imageContent">
-      <img class="card-img-top" :src="'https://http2.mlstatic.com/D_NQ_NP_2X_720872-MLM49581896998_042022-F.webp'" :alt="'carro titulo'">
+      <img class="card-img-top" :src="vehiculo.image" :alt="vehiculo.name">
+      <span class="type">{{ vehiculo.category }}</span>
+      <span class="fav">
+          <i class="fas fa-heart"></i>
+          <i class="far fa-heart"></i>
+        </span>
     </div>
     <div class="card-body">
         <div>
-            <h5 class="card-title pricecard">$ {{ '100,000' }} {{ 'MXN' }}</h5>
+            <div style="display: flex;
+                justify-content: space-between;
+                align-items: center;">
+                <h5 class="card-title pricecard m-0">$ {{ vehiculo.price }} {{ vehiculo.currency }}</h5>
+                <span class="year">{{ vehiculo.year }}</span>
+            </div>
             <div class="postcard-bar"></div>
-            <p class="card-text"><small class="text-muted" style="font-size: 14px">{{ 'Cancún' }}, {{ 'Quintana Roo'}}</small></p>
-            <p class="card-text">{{ 'ajsdkjasdas' }}</p>
+            <p class="card-text"><small class="text-muted" style="font-size: 14px">{{ vehiculo.city }}, {{ vehiculo.state }}</small></p>
+            <h1 class="card-text">{{ vehiculo.name }}</h1>
         </div>
+        <div class="text-center">
+            <span v-if="vehiculo.category == 'Auto'"><i class="fas fa-car pl-2 pr-1"></i>{{ vehiculo.km }} km</span>
+            <span v-else><i class="fas fa-motorcycle pl-2 pr-1"></i>{{ vehiculo.km }} km</span>
+        </div>
+
+
         
     </div>
+    <span class="operation">{{ vehiculo.operation }}</span>
 
   </NuxtLink>
 
@@ -24,7 +41,12 @@ import helpers from '@/helpers/helpers'
 
 
 export default {
-    
+    props: {
+        vehiculo: {
+            type: Object,
+            required: true
+        }
+    },
     data() {
         return {
             route: ''
@@ -55,12 +77,12 @@ export default {
     }
     img {
         height: 100%;
-        object-fit: fill;
+        object-fit: cover;
     }
     h5 {
         margin-top: 0px !important;
     }
-    p {
+    h1 {
         text-align: justify;
         overflow: hidden;
         text-overflow: ellipsis;
@@ -68,6 +90,8 @@ export default {
         -webkit-line-clamp: 3; /* number of lines to show */
            line-clamp: 3; 
         -webkit-box-orient: vertical;
+        font-size: 16px;
+
     }
 
     span.operation {
@@ -107,6 +131,45 @@ export default {
     .pricecard {
       color: #01569D;
       font-weight: 500;
+    }
+
+    span.year {
+        border: 1px solid;
+        padding: 0 10px;
+        font-size: 13px;
+        color: #6c757d;
+    }
+
+
+
+
+    span.fav {
+        position: absolute;
+        right: 1.25rem;
+        top: 11rem;
+        padding: 8px 10px 5px 10px;
+        /* background-color: #f2e115; */
+        font-size: 14px;
+    }
+
+    i.fas.fa-heart {
+        display: none;
+    }
+
+
+    span.fav:hover > i.fas.fa-heart {
+        display: contents;
+        
+    }
+    span.fav:hover > i.far.fa-heart {
+        display: none;
+    }
+
+
+    i.fa-heart {
+        font-size: 24px;
+        /* color: #01569D; */
+        color: #f2e115;
     }
 
 </style>

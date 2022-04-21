@@ -1,16 +1,18 @@
 
 <template>
+
   <NuxtLink :to="route" class="card">
     <div class="imageContent">
       <img class="card-img-top" :src="property.image" :alt="property.name">
       <span class="type">{{ property.tipo }}</span>
+      
     </div>
     <div class="card-body">
         <div>
-            <h5 class="card-title pricecard">$ {{ property.price }} {{ property.currency }}</h5>
+            <h5 class="card-title pricecard m-0">$ {{ property.price }} {{ property.currency }}</h5>
             <div class="postcard-bar"></div>
             <p class="card-text"><small class="text-muted" style="font-size: 14px">{{ property.city }}, {{ property.state }}</small></p>
-            <p class="card-text">{{ property.name }}</p>
+            <h1 class="card-text">{{ property.name }}</h1>
         </div>
         <div class="text-center">
             <span v-if="property.bedrooms > 0"><i class="icon-big-bed-with-one-pillow pl-2 pr-1"></i>{{ property.bedrooms }}</span>
@@ -21,6 +23,10 @@
     </div>
 
     <span class="operation">{{ property.operation }}</span>
+    <span class="fav">
+          <i class="fas fa-heart"></i>
+          <i class="far fa-heart"></i>
+    </span>
   </NuxtLink>
 
 </template>
@@ -69,12 +75,10 @@ export default {
     }
     img {
         height: 100%;
-        object-fit: fill;
+        object-fit: cover;
     }
-    h5 {
-        margin-top: 0px !important;
-    }
-    p {
+
+    h1 {
         text-align: justify;
         overflow: hidden;
         text-overflow: ellipsis;
@@ -82,6 +86,7 @@ export default {
         -webkit-line-clamp: 3; /* number of lines to show */
            line-clamp: 3; 
         -webkit-box-orient: vertical;
+        font-size: 16px;
     }
 
     span.operation {
@@ -122,5 +127,37 @@ export default {
       color: #01569D;
       font-weight: 500;
     }
+
+
+
+    span.fav {
+        position: absolute;
+        right: 1.25rem;
+        top: 11rem;
+        padding: 8px 10px 5px 10px;
+        /* background-color: #f2e115; */
+        font-size: 14px;
+    }
+
+    i.fas.fa-heart {
+        display: none;
+    }
+
+
+    span.fav:hover > i.fas.fa-heart {
+        display: contents;
+        
+    }
+    span.fav:hover > i.far.fa-heart {
+        display: none;
+    }
+
+
+    i.fa-heart {
+        font-size: 24px;
+        /* color: #01569D; */
+        color: #f2e115;
+    }
+
 
 </style>

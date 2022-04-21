@@ -32,6 +32,7 @@ helpers.normalize = ( str ) => {
 			.replace(/ /g, '-')
 			.replace(/:/g, '')
 			.replace('.', '')
+			.replace('/', '')
 			.toLowerCase()
 }
 
@@ -44,6 +45,7 @@ helpers.normalizeUbications = ( str ) => {
 			.replace(/[\u0300-\u036f]/g, '')
 			.replace(/ /g, '-')
 			.replace(/:/g, '')
+			.replace('/', '')
 			.replace('.', '')
 			.toLowerCase()
 }

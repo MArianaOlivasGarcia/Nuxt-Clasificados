@@ -12,7 +12,10 @@
             <FooterDelete /> 
         </template>
         <Cookies v-if="!cookiesAccepted"/>
-        <Adviser v-if="showIDI"/>
+
+        
+        
+        <!-- <Adviser v-if="showIDI"/> -->
     </div>
 </template>
 
@@ -38,6 +41,7 @@ export default {
         this.$store.dispatch('getStates')
 
     },
+    
     async mounted() {
 
         this.verifyToken();
@@ -148,7 +152,8 @@ export default {
                 console.log("Mostrar a IDI");
                 this.$store.commit('setShowIDI', true)
             },7000);
-        }
+        },
+        
     }
 
 }
@@ -171,5 +176,11 @@ export default {
     justify-content: center;
     align-items: center;
 }
+
+
+
+
+
+
 </style>
 

@@ -39,17 +39,20 @@
 
           </div>
 
+          <WhatsAppFormV2
+            v-if="showWhatsForm"
+              :v="$v"
+              :whatsForm="whatsForm"/>
+
          
 
         </div>
         </template>
       </div>
+      
     </div>
 
-    <WhatsAppFormV2
-    v-if="showWhatsForm"
-      :v="$v"
-      :whatsForm="whatsForm"/>
+    
   </div>
 </template>
 

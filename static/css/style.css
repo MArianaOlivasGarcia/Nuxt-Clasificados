@@ -73,7 +73,7 @@ body {
   text-align: left;
   padding: 0;
   width: 100vw;
-  overflow-x: hidden;
+  overflow-x: hidden !important;
 }
 
 
@@ -472,8 +472,8 @@ pre {
 
 .pre-scrollable {
   max-height: 340px;
-  overflow-y: scroll; }
-
+  /* overflow-y: scroll;  */
+}
 .container {
   width: 100%;
   padding-right: 15px;
@@ -3215,7 +3215,7 @@ input[type="button"].btn-block {
     text-decoration: none; }
   .nav-link.disabled {
     color: #6c757d; }
-    .nav-item:after {
+    /* .nav-item:after {
       position: absolute;
       bottom: 2px;
       left: 0;
@@ -3226,7 +3226,7 @@ input[type="button"].btn-block {
       opacity: 0;
       transition: all 200ms linear;
       
-  }
+  } */
   .nav-item:hover::after {
     bottom: 0;
     opacity: 1;

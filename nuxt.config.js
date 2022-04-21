@@ -1,5 +1,5 @@
 export default {
-  /* target: 'static', */
+  //target: 'static',
   // Global page headers: https://go.nuxtjs.dev/config-head
   ssr: true, // Importante poner en true
   head: {
@@ -72,7 +72,9 @@ export default {
       '~/components/searchs/',
       '~/components/bienesraices/',
       '~/components/template/',
-      '~/components/vehiculos/'
+      '~/components/vehiculos/',
+      '~/components/general/',
+      '~/components/shared/',
     ]
   },
 
@@ -94,7 +96,7 @@ export default {
     ],
   },
   server: {
-   /*  host: '192.168.1.102', */ // default: localhost
+    // host: '192.168.1.66', // default: localhost
     port: 8080
   }
 }

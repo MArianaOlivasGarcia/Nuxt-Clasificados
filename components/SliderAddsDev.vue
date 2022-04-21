@@ -1,39 +1,26 @@
 <template>
-  <client-only v-if="adds.length > 0">
+  <client-only v-if="data.length > 0">
     <agile autoplay :autoplaySpeed="5000" :timing="'linear'"  >
-          <NuxtLink v-for="(add, i) in adds" class="slide" :key="i" :to="add.url">
-              <img class="image-slide" :src="`${add.image}`" :alt="add.image">
+          <NuxtLink v-for="(d, i) in data" class="slide" :key="i" :to="d.url">
+              <img class="image-slide" :src="`https://clasificadoscontacto.com/${d.urlimage}`" :alt="d.urlimagen">
           </NuxtLink>
     </agile>
   </client-only>
 </template>
 
 <script>
-/*
-
-  adds = [
-    {
-      image: 'path/name.png',
-      url: 'algunapagina.com'
-    }
-  ]
-
-
-*/
 export default {
-  props: {
-    adds: {
-      type: Array,
-      required: true
-    }
-  },
   data() {
     return {
+      data: []
     }
   },
   async created() {
-      console.log(this.adds)
       
+      const resp = await this.$store.dispatch('sliderDesarrollos')
+
+      this.data = resp;
+      console.log(resp)
   } 
 }
 </script>
