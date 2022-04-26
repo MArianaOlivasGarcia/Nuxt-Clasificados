@@ -1,11 +1,11 @@
 <template>
 
   <div class="card">
-    <div @click="goTo"  class="myLink imageContent">
+    <NuxtLink :to="route" class="myLink imageContent">
       <img v-if="!noImage" :src="property.image" :alt="property.name" @error="imageLoadError">
       <img v-else src="@/static/images/property-placeholder.jpeg" :alt="property.name">
-    </div>
-    <div @click="goTo" class="card-body">
+    </NuxtLink>
+    <NuxtLink :to="route" class="card-body">
 
       <h5 class="pricecard m-0">$ {{ property.price }} {{ property.currency }}</h5>
       <div class="postcard-bar"></div>
@@ -22,7 +22,7 @@
     
 
     
-    </div>
+    </NuxtLink>
     <span class="operation">{{ property.operation }}</span>
     <span class="type">{{ property.tipo }}</span>
     <span v-if="property.destacado == '1'" class="destacado">Destacado <i style="color: #e7b211 !important" class="fas fa-star"></i></span>

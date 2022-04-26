@@ -3,14 +3,14 @@
     <form class="search-property">
         
         <div class="row justify-content-center filter-search">
-
+          
           <h5>¿Que desea buscar?</h5>
 
           <p class="m-0 pt-2">Seleccione una operación</p>
           <div class="col-sm-12 col-md-6 col-lg-6 pr-1 pl-1" >
             <button type="button" 
                   style="width: 100%; font-size: 16px !important" 
-                  class="btn btn-opt"
+                  class="btn btn-opt mt-2"
                   :class="{ 'btn-active': search.operation == 1 }"
                   @click="changeOperation( 1 )">
                   <span>Venta</span>
@@ -22,7 +22,7 @@
           <div class="col-sm-12 col-md-6 col-lg-6 pr-1 pl-1 pb-2" >
             <button type="button" 
                   style="width: 100%; font-size: 16px !important" 
-                  class="btn btn-opt"
+                  class="btn btn-opt mt-2"
                   :class="{ 'btn-active': search.operation == 2 }"
                    @click="changeOperation( 2 )">
                    <span>Renta</span>
