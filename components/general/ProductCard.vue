@@ -1,5 +1,5 @@
 <template>
-    <NuxtLink to="/" class="card">
+    <NuxtLink :to="route" class="card">
     <div class="imageContent">
       <img class="card-img-top" :src="item.image" alt="foto">
       <span class="category">{{ item.category }}</span>
@@ -12,7 +12,7 @@
             <h5 class="card-title pricecard m-0">$ {{ item.price }} {{ item.currency }}</h5>
             <div class="postcard-bar"></div>
             <p class="card-text"><small class="text-muted" style="font-size: 14px">{{ item.city }}, {{ item.state }}</small></p>
-            <h1 class="card-text">{{ item.title }}</h1>
+            <h1 class="card-text">{{ item.name }}</h1>
             
         </div>
     </NuxtLink>
@@ -20,13 +20,14 @@
 </template>
 
 <script>
+import helpers from '@/helpers/helpers'
 
 /*
 
 data = [
     {
         id: '123'
-        title: 'Nissan Platina',
+        name: 'Nissan Platina',
         image: 'Nissan Platina',
         category: 'Vehiculos',
         price: '40,000.00',
@@ -43,6 +44,16 @@ export default {
             type: Object,
             required: true
         }
+    },
+    data() {
+        return {
+            route: ''
+        }
+    },
+    created() {
+        const category = this.item.category.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(' ', '');
+
+        this.route = `/${ category }/${ category == 'bienesraices' ? 'propiedad' : 'detalle' }/${helpers.normalize( this.item.name )}_${ this.item.productoid }.html`
     }
 }
 </script>

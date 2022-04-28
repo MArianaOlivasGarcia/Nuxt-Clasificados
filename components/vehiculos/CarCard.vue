@@ -52,7 +52,8 @@ export default {
             route: ''
         }
     },
-     created() {
+    created() {
+        this.route = `/vehiculos/detalle/${helpers.normalize( this.vehiculo.name )}_${ this.vehiculo.productoid }.html`
     },
 
 }

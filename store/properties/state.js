@@ -35,6 +35,7 @@ const state = {
     GET_MARCAS_VEHICULOS: '?site=SEhrRHYrMWJpY0ZMUlUzUlJKZWxEZz09',
     GET_TIPOS_VEHICULOS: '?site=eEd6YVBzY2MzRmM2NEhTbzQrbXp0c1dKczlyODZid3hyd1N2eE5adzdTOD0=',
     GET_MODELOS_VEHICULOS: '?site=MktPTjlBWnU1VXdEanRJUFdHbHZ6dz09',
+    GET_VEHICULO_BY_ID: '?site=TlQ1ZWVBRS9KZDh6SnNMdUlnYlJqMncwaUh4dTNQYkt2cFpQQU1QSmhpdz0=',
 
     token: '',
     userStateLocation: {

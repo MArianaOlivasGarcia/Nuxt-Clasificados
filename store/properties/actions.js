@@ -184,11 +184,32 @@ const actions = {
                 + `${ formData.pricemin != undefined ? `&pricemin=${formData.pricemin}` : '' }`
                 + `${ formData.pricemax != undefined ? `&pricemax=${formData.pricemax}` : '' }`
                 + `&limit=${ 20 }`
+                + `&token=${ state.token }`
         }).then((res) => res.json())
         // &type=${ formData.type }
         
         if ( resp.status == 200  ) {
             return resp.resp
+        } 
+  
+    },
+
+
+
+
+    async searchGeneral({ commit, state }, formData ){
+
+
+        const resp = await fetch(state.API_URL + state.SEARCH_GENERAL, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8",
+            },
+            body: `limit=${ formData.limit }`
+        }).then((res) => res.json())
+        
+        if ( resp.status == 200  ) {
+            return resp.resp.data
         } 
   
     },
@@ -329,7 +350,7 @@ const actions = {
             headers: {
                 "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8",
             },
-            body: `&limit=${ 20 }&outstanding=${ 1 }`
+            body: `limit=${ 20 }&outstanding=${ 1 }`
         }).then((res) => res.json())
    
         if ( resp.status == 200  ) {
@@ -337,6 +358,27 @@ const actions = {
         } 
   
       },
+
+
+      async getVehiculoById({ state }, folio ){
+      
+
+        const resp = await fetch(state.API_URL + state.GET_VEHICULO_BY_ID, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8",
+            },
+            body: `folio=${ folio }`
+        }).then((res) => res.json())
+        
+        if ( resp.status == 200  ) {
+            console.log(resp)
+            return resp
+        } 
+  
+      },
+
+
 
       async forgotPassword({commit, state}, form ) {
 

@@ -75,13 +75,13 @@
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <NuxtLink class="dropdown-item" to="/bienesraices">Inmuebles</NuxtLink>
                 <NuxtLink class="dropdown-item" to="/vehiculos">Vehículos</NuxtLink>
-                <a class="dropdown-item" href="#">Empleos</a>
+                <!-- <a class="dropdown-item" href="#">Empleos</a>
                 <a class="dropdown-item" href="#">Tecnología</a>
                 <a class="dropdown-item" href="#">Casa y Hogar</a>
                 <a class="dropdown-item" href="#">Mascotas</a>
                 <a class="dropdown-item" href="#">Viajes</a>
                 <a class="dropdown-item" href="#">Educación</a>
-                <a class="dropdown-item" href="#">Inversiones</a>
+                <a class="dropdown-item" href="#">Inversiones</a> -->
               </div>
             </li>
             <li class="nav-item">

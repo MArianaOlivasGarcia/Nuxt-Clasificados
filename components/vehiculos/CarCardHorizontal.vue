@@ -1,11 +1,11 @@
 <template>
 
   <div class="card">
-    <NuxtLink :to="'/'" class="imageContent">
+    <NuxtLink :to="route" class="imageContent">
       <img v-if="!noImage" :src="vehiculo.image" :alt="vehiculo.name" @error="imageLoadError">
       <img v-else src="@/static/images/auto-placeholder.jpeg" :alt="'TITULO'">
     </NuxtLink>
-    <NuxtLink :to="'/'" class="card-body">
+    <NuxtLink :to="route" class="card-body">
       <div class="d-flex" style="align-items: start">
          <span class="year mr-3">{{ vehiculo.year }}</span>
          <div>
@@ -57,8 +57,7 @@ export default {
       }
   },
   created() {
-    console.log(this.vehiculo)
-    this.route = `/vehiculos/producto/${helpers.normalize( this.vehiculo.name )}_${ this.vehiculo.id }.html`;
+      this.route = `/vehiculos/detalle/${helpers.normalize( this.vehiculo.name )}_${ this.vehiculo.productoid }.html`
 
     if ( !this.vehiculo.userdata  ) {
       this.whatsNumber = null;

@@ -18,7 +18,7 @@
 
 
 
-        <AddsList />
+        <!-- <AddsList /> -->
 
 
         <CategoriesList />

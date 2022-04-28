@@ -65,13 +65,13 @@ export default {
     }
 
     h1 {
-      font-size: 12px;
+      font-size: 16px;
       color: #01569d;
     }
 
     img {
-      height: 40px;
-      width: 40px;
+      height: 100px;
+      width: 100px;
     }
 
     .content {
