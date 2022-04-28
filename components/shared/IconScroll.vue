@@ -56,7 +56,7 @@ export default {
     width: 12px;
     height: 12px;
     position: absolute;
-    bottom: 40px;
+    top: 0px;
     left: 50%;
     transform: translateX(-50%);
     background-color: #333;
@@ -70,14 +70,14 @@ export default {
 @keyframes wheel {
   to {
     opacity: 0;
-    bottom: 70px;
+    top: 40px;
   }
 }
 
 @-webkit-keyframes wheel {
   to {
     opacity: 0;
-    bottom: 70px;
+    top: 40px;
   }
 }
 
