@@ -22,8 +22,8 @@
             <h1 class="card-text">{{ vehiculo.name }}</h1>
         </div>
         <div class="text-center">
-            <span v-if="vehiculo.category == 'Auto'"><i class="fas fa-car pl-2 pr-1"></i>{{ vehiculo.km }} km</span>
-            <span v-else><i class="fas fa-motorcycle pl-2 pr-1"></i>{{ vehiculo.km }} km</span>
+            <span ><i class="fas fa-car pl-2 pr-1"></i>{{ vehiculo.km }} km</span>
+            <!-- <span ><i class="fas fa-motorcycle pl-2 pr-1"></i>{{ vehiculo.km }} km</span> -->
         </div>
 
 
