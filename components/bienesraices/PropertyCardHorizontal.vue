@@ -79,6 +79,9 @@ export default {
       this.nameInmo = this.property.userdata[0]?.name.trim();
     }
 
+
+
+ 
   },
   methods: {
     imageLoadError() {

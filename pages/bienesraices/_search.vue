@@ -18,7 +18,7 @@
             
             <div v-else class="pt-4 pt-md-0 col-lg-9 col-md-12 px-0 pl-md-4 mt-4" >
 
-              <h5 class="mb-4" v-if="totalResults > 0">Total de resultados: <span>{{ totalResults.toLocaleString() }} propiedades.</span></h5>
+              <h5 class="mb-4" v-if="totalResults > 0">Total de resultados: <span>{{ totalResults.toLocaleString() }} {{ totalResults == 1 ? 'propiedad' : 'propiedades' }}.</span></h5>
 
               <PropertyCardHorizontal 
                 v-for="property in properties"

@@ -2,19 +2,19 @@
 
   <div class="card">
     <NuxtLink :to="'/'" class="imageContent">
-      <!-- <img v-if="!noImage" :src="property.image" :alt="property.name" @error="imageLoadError"> -->
-      <img src="@/static/images/auto-placeholder.jpeg" :alt="'TITULO'">
+      <img v-if="!noImage" :src="vehiculo.image" :alt="vehiculo.name" @error="imageLoadError">
+      <img v-else src="@/static/images/auto-placeholder.jpeg" :alt="'TITULO'">
     </NuxtLink>
     <NuxtLink :to="'/'" class="card-body">
       <div class="d-flex" style="align-items: start">
-         <span class="year mr-3">{{ '2006' }}</span>
+         <span class="year mr-3">{{ vehiculo.year }}</span>
          <div>
-            <h5 class="pricecard m-0">$ {{ '35,000' }} {{ 'MXN' }}</h5>
+            <h5 class="pricecard m-0">$ {{ vehiculo.price }} {{ vehiculo.currency }}</h5>
             <div class="postcard-bar"></div>
          </div>
       </div>
-      <p class="card-text"><small class="text-muted" style="font-size: 14px">{{ 'Cancún' }}, {{ 'Quintana Roo' }}</small></p>
-      <p class="card-text">{{ 'HERMOSO AUTO EN VENTA, NISSAN PLATINA 2016, TODO PAGADO, JALANDO AL 100.' }}</p>
+      <p class="card-text"><small class="text-muted" style="font-size: 14px">{{ vehiculo.city }}, {{ vehiculo.state }}</small></p>
+      <p class="card-text">{{ vehiculo.name }}</p>
       <div class="ani text-center">
         <span><i class="fas fa-motorcycle pl-2 pr-1"></i>{{ '160,000' }} km</span>
         <span><i class="fas fa-car pl-2 pr-1"></i>{{ '100,000' }} km</span>
@@ -27,12 +27,13 @@
     </NuxtLink>
     <span class="operation">{{ 'Venta' }}</span>
     <span class="type">{{ 'Auto' }}</span>
-    <span class="destacado">Destacado <i style="color: #e7b211 !important" class="fas fa-star"></i></span>
+    <span v-if="vehiculo.destacado == '1'" class="destacado">Destacado <i style="color: #e7b211 !important" class="fas fa-star"></i></span>
     <div class="whats-contact"><span>Contactar al asesor</span><i class="fab fa-whatsapp ml-2"></i></div>
     <div class="user-info">
-      <img class="user-image" src="@/static/images/auto-placeholder.jpeg" alt="">
-      <!-- <img v-else class="user-image" :src="property.userdata[0].image" :alt="property.userdata[0].name.trim()"> -->
-      <span>{{ 'NOMBRE VENDEDOR' }}</span></div>
+      <img v-if="!vehiculo.userdata[0].image || vehiculo.userdata[0].image == '0'" class="user-image" src="@/static/images/auto-placeholder.jpeg" alt="">
+      <img v-else class="user-image" :src="vehiculo.userdata[0].image" :alt="vehiculo.userdata[0].name.trim()">
+
+      <span>{{ nameVendedor }}</span></div>
   </div>
 </template>
 
@@ -42,7 +43,53 @@ import helpers from '@/helpers/helpers'
 
 
 export default {
-  
+  props:{
+      vehiculo: {
+          type: Object,
+          required: true
+      }
+  },
+  data() {
+      return {
+        noImage: false,
+        whatsNumber: '',
+        nameVendedor: '',
+      }
+  },
+  created() {
+    console.log(this.vehiculo)
+    this.route = `/vehiculos/producto/${helpers.normalize( this.vehiculo.name )}_${ this.vehiculo.id }.html`;
+
+    if ( !this.vehiculo.userdata  ) {
+      this.whatsNumber = null;
+      this.nameInmo = null;
+      return;
+    }
+
+    if ( !this.vehiculo.userdata[0]?.cellphone ) {
+      this.whatsNumber = null;
+    } else {
+        this.whatsNumber = this.vehiculo.userdata[0]?.cellphone.replace('(', '')
+          .replace(' ', '')
+          .replace(')', '')
+          .replace('-', '') 
+    }
+
+    if ( !this.vehiculo.userdata[0]?.name ){
+      this.nameVendedor = null;
+    } else {
+      this.nameVendedor = this.vehiculo.userdata[0]?.name.trim();
+    }
+
+
+
+ 
+  },
+  methods: {
+    imageLoadError() {
+        this.noImage = true;
+    },
+  }
 }
 </script>
 

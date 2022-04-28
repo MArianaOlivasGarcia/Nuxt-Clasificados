@@ -146,6 +146,10 @@ export default {
             }]
 
         }
+    },
+    async created() {
+        const resp = await this.$store.dispatch('getVehiculosOutstanding');
+        console.log(resp)
     }
 
 }

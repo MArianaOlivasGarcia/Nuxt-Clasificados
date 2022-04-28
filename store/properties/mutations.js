@@ -37,6 +37,12 @@ const mutations = {
             ...values
         }
     },
+    setSearchFormVehiculosValues(state, values){
+        state.searchFormVehiculos = {
+            ...state.searchFormVehiculos,
+            ...values
+        }
+    },
     setLoading(state, isLoading){
         state.isLoading = isLoading
     },
@@ -68,6 +74,17 @@ const mutations = {
 
     setCookiesAccepted( state, value ) {
         state.coockiesAccepted = value
+    },
+
+
+    setMarcasVehiculos( state, value ) {
+        state.marcasVehiculos = value
+    },
+    setTiposVehiculos( state, value ) {
+        state.tiposVehiculos = value
+    },
+    setModelosVehiculos( state, value ) {
+        state.modelosVehiculos = value
     }
 }
 

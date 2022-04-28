@@ -14,7 +14,9 @@ const state = {
     GET_CITIES: '?site=YkVKanNRdmE3U29DV09kVHJxdkVIT3pKNnRkVU0rQXJxRHVpQUFJTmdnZz0=',
     GET_PRODUCTSTYPE: '?site=UHZLWEF6Q2FtZjFjWHNrWDNORjNOQXpJaTRFNG9zOWtoTHNQczRXUW1GMD0=',
     GET_PROPERTYDETAIL: '?site=elBvMEtpVmt4Qjk1U3dhMXNENDZQZWpQSnJPNjBOM3FxL203d1VRQ2U2TT0=',
+    SEARCH_GENERAL: '?site=SExZaXRmb3lXMkhybEJWc1NnOWszb1MwUjFlS1ZQTTJicXdkWnM2eHI4RT0=',
     SEARCH_PROPERTIES: '?site=aHoxd1ZFOUdhYlRmNC9zMWRSNmdpTm15VVptaWE4aUhCaysraEk1ZFhJND0=',
+    SEARCH_VEHICULOS: '?site=dXVEcWRqeXhRckQrcDQvU3hJNzZ2cFkvM205WFNJTVBYeEYrMjJaZFl0dz0=',
     LOGIN_USER: '?site=a0VXNDI5SHhCSlljR1BXaThyL2kyQT09',
     REGISTER_USER: '?site=bERwdld0UGkwNU5iVmh4cDZzbU1BQT09',
     VISIT_CONTACT: '?site=VlRndFVwVVl2MExnVGtxVW4rZzhKZz09',
@@ -27,6 +29,12 @@ const state = {
     IDI: '?site=ODA1SmQ4U1RsMTczcjVnUThzNUQycTNwTGdaUVJ2enpmNDNaM0Q2cG5xbz0=',
     WHATSFORM: '?site=MWM2OW1oTWhXVG9JcnlNNThYL1gwSHlZRFEyTXRzZHFXeWYzT3QwR1BWRT0=',
     SLIDERDESTACADOS: '?site=a0VmZ2hyUDBoZGxxRmt2RHJnNkl6UT09',
+
+
+    // VEHÍCULOS
+    GET_MARCAS_VEHICULOS: '?site=SEhrRHYrMWJpY0ZMUlUzUlJKZWxEZz09',
+    GET_TIPOS_VEHICULOS: '?site=eEd6YVBzY2MzRmM2NEhTbzQrbXp0c1dKczlyODZid3hyd1N2eE5adzdTOD0=',
+    GET_MODELOS_VEHICULOS: '?site=MktPTjlBWnU1VXdEanRJUFdHbHZ6dz09',
 
     token: '',
     userStateLocation: {
@@ -62,6 +70,21 @@ const state = {
         operation: null, //1
         page: 1
     },
+     /* Formulario busqueda */
+    searchFormVehiculos: {
+        marca: undefined,
+        tipo: undefined,
+        modelo: undefined,
+        state: undefined,
+        state: undefined,
+        municipality: undefined,
+        colony: undefined,
+    },
+    marcasVehiculos: [],
+    tiposVehiculos: [],
+    modelosVehiculos: [],
+
+
     /* CARGANDO... */
     isLoading: true,
     /* Listado de propiedades */

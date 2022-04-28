@@ -27,6 +27,9 @@ const getters = {
     getSearFormValues( state ) {
         return state.searchForm
     },
+    getSearFormVehiculosValues( state ) {
+        return state.searchFormVehiculos
+    },
     getIsLoading( state ) {
         return state.isLoading
     },
@@ -70,7 +73,16 @@ const getters = {
 
     getSuburbById: (state) => (id) => {
         return state.coloniasList.find(c => c.id === id)
-    }
+    },
+    getMarcaVehiculoById: (state) => (id) => {
+        return state.marcasVehiculos.find(c => c.id == id)
+    },
+    getTipoVehiculoById: (state) => (id) => {
+        return state.tiposVehiculos.find(c => c.id == id)
+    },
+    getModeloVehiculoById: (state) => (id) => {
+        return state.modelosVehiculos.find(c => c.id == id)
+    },
 
 }
 

@@ -15,12 +15,16 @@ const actions = {
 
     async getStates({ commit, state }) {
 
-        const config = state.API_PARAMS
-
-        const resp = await fetch(state.API_URL + state.GET_STATES, config).then( resp => resp.json() )
+        const resp = await fetch(state.API_URL + state.GET_STATES, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8",
+            }
+        }).then( resp => resp.json() )
 
         if ( resp.status == 200 && resp.data.length > 0 ) {
             commit('setStatesList', resp.data)
+            // console.log(resp.data)
             return resp.data
         } 
     },
@@ -35,7 +39,7 @@ const actions = {
 
         if ( resp.status == 200 && resp.data.length > 0 ) {
             commit('setCitiesList', resp.data)
-            console.log(resp.data)
+            return resp.data;
         } 
         
 
@@ -48,7 +52,6 @@ const actions = {
         const config = state.API_PARAMS
 
         const resp = await fetch(state.API_URL + state.GET_COLONIAS, config).then( resp => resp.json() )
-        console.log(resp)
         if ( resp.status == 200 && resp.data.length > 0 ) {
             commit('setColoniasList', resp.data)
             console.log(resp)
@@ -131,11 +134,68 @@ const actions = {
             return resp.resp
         } 
   
-      },
+    },
 
 
 
-      async toIDI({ commit, state }, formData){
+    async searchVehiculos({ commit, state }, formData ){
+
+        // folio,
+        // country,
+        // city,
+        // pricemin,
+        // pricemax,
+        // outstanding,
+        // keyword,
+        // ids,
+        // token,
+        
+        // type,
+
+        // state,
+        // municipality,
+        // suburb,
+
+
+        // limit,
+        // operation,
+        console.log('FORMULARIO' )
+        console.log(formData )
+
+        commit('setSearchFormVehiculosValues', formData)
+
+
+        const resp = await fetch(state.API_URL + state.SEARCH_VEHICULOS, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8",
+            },
+            body: `page=${ formData.page }`
+                + `${ formData.operation != undefined ? `&operation=${formData.operation}` : '' }`
+                + `${ formData.subcat != undefined ? `&subcat=${formData.subcat}` : '' }`
+                + `${ formData.brand != undefined ? `&brand=${formData.brand}` : '' }`
+                + `${ formData.type != undefined ? `&type=${formData.type}` : '' }`
+                + `${ formData.state != undefined ? `&state=${formData.state}` : '' }`
+                + `${ formData.municipality != undefined ? `&municipality=${formData.municipality}` : '' }`
+                + `${ formData.suburb != undefined ? `&suburb=${formData.suburb}` : '' }`
+                + `${ formData.keywordAddrs != undefined ? `&keywordAddrs=${formData.keywordAddrs}` : '' }`
+                + `${ formData.year_from != undefined ? `&year_from=${formData.year_from}` : '' }`
+                + `${ formData.year_to != undefined ? `&year_to=${formData.year_to}` : '' }`
+                + `${ formData.pricemin != undefined ? `&pricemin=${formData.pricemin}` : '' }`
+                + `${ formData.pricemax != undefined ? `&pricemax=${formData.pricemax}` : '' }`
+                + `&limit=${ 20 }`
+        }).then((res) => res.json())
+        // &type=${ formData.type }
+        
+        if ( resp.status == 200  ) {
+            return resp.resp
+        } 
+  
+    },
+
+   
+    
+    async toIDI({ commit, state }, formData){
 
         const config = state.API_PARAMS
 
@@ -246,7 +306,7 @@ const actions = {
       
         commit( 'setLoading', true )
 
-        commit('setAPI_PARAMS', { body: `limitProperties=${ 20 }&outstanding=${ 1 }`})//&outstanding=${1}
+        commit('setAPI_PARAMS', { body: `limitProperties=${ 20 }&outstanding=${ 1 }`})
         
         let config = state.API_PARAMS;
       
@@ -260,6 +320,24 @@ const actions = {
         commit('setLoading', false )
   
       },
+
+
+      async getVehiculosOutstanding({ state } ){
+      
+        const resp = await fetch(state.API_URL + state.SEARCH_VEHICULOS, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8",
+            },
+            body: `&limit=${ 20 }&outstanding=${ 1 }`
+        }).then((res) => res.json())
+   
+        if ( resp.status == 200  ) {
+            return resp.resp.data
+        } 
+  
+      },
+
       async forgotPassword({commit, state}, form ) {
 
         commit('setAPI_PARAMS', { body: `email=${form.email}` } )
@@ -332,6 +410,62 @@ const actions = {
 
         
     },
+
+
+
+    
+    async getMarcasVehiculos({ commit, state } ){ 
+
+        const resp = await fetch(state.API_URL + state.GET_MARCAS_VEHICULOS, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8"
+            },
+            body: `category=2`
+        }).then((res) => res.json())
+        
+        if ( resp.status == 200 ) {
+            commit('setMarcasVehiculos', resp.data)
+            return resp.data
+        }
+  
+    },
+
+
+    async getTiposVehiculos({ commit, state }, brand ){ 
+
+        const resp = await fetch(state.API_URL + state.GET_TIPOS_VEHICULOS, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8"
+            },
+            body: `category=2&brand=${ brand }`
+        }).then((res) => res.json())
+        
+        if ( resp.status == 200 ) {
+            commit('setTiposVehiculos', resp.data)
+            return resp.data
+        }
+  
+    },
+
+    async getModelosVehiculos({ commit, state }, data ){ 
+
+        const resp = await fetch(state.API_URL + state.GET_MODELOS_VEHICULOS, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8"
+            },
+            body: `category=2&brand=${ data.brand }&subcategory=${ data.subcategory }`
+        }).then((res) => res.json())
+        
+        if ( resp.status == 200 ) {
+            commit('setModelosVehiculos', resp.data)
+            return resp.data
+        }
+  
+    },
+
 }
 
 
