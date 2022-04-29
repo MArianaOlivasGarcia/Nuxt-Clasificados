@@ -45,7 +45,7 @@ export default {
       { src: 'https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js' },
       { src: 'https://apis.google.com/js/platform.js' },
 
-      // { src: 'https://www.googletagmanager.com/gtag/js?id=AW-653666729', async: true },
+      { src: 'https://www.googletagmanager.com/gtag/js?id=AW-653666729', async: true },
       { src: 'https://www.googletagmanager.com/gtag/js?id=UA-162799894-1', async: true },
     ]
 

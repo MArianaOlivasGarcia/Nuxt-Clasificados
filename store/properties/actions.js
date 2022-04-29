@@ -363,17 +363,17 @@ const actions = {
       async getVehiculoById({ state }, folio ){
       
 
-        const resp = await fetch(state.API_URL + state.GET_VEHICULO_BY_ID, {
+        const resp = await fetch(state.API_URL + state.GET_VEHICULODETAIL, {
             method: "POST",
             headers: {
                 "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8",
             },
-            body: `folio=${ folio }`
+            body: `category=${2}&folio=${ folio }`
         }).then((res) => res.json())
         
         if ( resp.status == 200  ) {
             console.log(resp)
-            return resp
+            return resp.data
         } 
   
       },

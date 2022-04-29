@@ -1,6 +1,101 @@
 <template>  
     <client-only v-if="!isLoading">    
-<h1>Hola</h1>
+
+      <div class="container mt-4 mb-4" style="background-color: #fff; padding: 1.25rem;">
+
+        <Fab 
+          v-if="vehiculo.user.cellphone" 
+          :whatsApp="vehiculo.user.cellphone" 
+          :folioProperty="vehiculo.folio"
+          :whatsForm="whatsForm"
+          :v="$v"/>
+
+        <div class="row">
+
+          <div class="col-md-7 gallery-content ">
+            <lightbox :cells="4" :items="images"></lightbox>
+          </div>
+
+          <div class="col-md-5 data-container">
+            
+            <div>
+              <h1>{{ vehiculo.productName }}</h1>
+              <p class="card-text text-muted">{{ vehiculo.city }}, {{ vehiculo.state }}</p>
+              <h4 class="price">$ {{ Number(vehiculo.price).toLocaleString()  }} {{ vehiculo.currency }}</h4>
+              <div class="postcard-bar"></div>
+              <div class="text-center m-3">
+                  <span><i class="fas fa-car pl-2 pr-1"></i>{{ '000,000' }} {{ 'km' }}</span>
+              </div>
+            </div>
+
+            <div>
+                <div class="text-center"><span style="font-weight: bold;">Compartir</span></div>
+                <div class="d-flex justify-content-center mt-2">
+                  <a class="social" :href="`http://www.facebook.com/sharer.php?u=${ url }&t=${ vehiculo.description }`" target="_blank"><i class="fab fa-facebook"></i></a>
+                  <a class="social" :href="`https://twitter.com/intent/tweet?url=${ url }&text=${ vehiculo.description }`" target="_blank"><i class="fab fa-twitter"></i></a>
+                  <a class="social" :href="`https://api.whatsapp.com/send?text=${ vehiculo.description } ${url}`" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                </div>
+              </div>
+
+            <!-- <div>
+              <span style="font-weight: bold;">Ubicación</span>
+              <GoogleMap 
+                style="width: 100%; height: 250px" 
+                :mapLat="vehiculo.latitude" 
+                :mapLng="vehiculo.longitude" 
+                :draggable="false"
+                :scaleControl="false"/>
+            </div> -->
+          </div>
+
+        </div>
+
+        <div class="row mt-5">
+          <div class="col-md-7">
+            <div>
+              <span style="font-weight: bold;">Descripción</span>
+              <div style="font-size: 14px; text-align: justify; line-height:normal;" v-html="vehiculo.descriptionlong"></div>
+            </div>
+
+
+            
+          </div>
+
+
+          <div class="col-md-5">
+
+            
+
+            <div class="contact-form">
+              
+              
+                <div class="text-center">
+                  <img
+                    class="img-inmo"
+                    src="@/static/images/auto-placeholder.jpeg"
+                  />
+                  <p class="ml-2 pt-3 font-weight-bold text-left mb-1">
+                    {{vehiculo.user.name}} {{vehiculo.user.lastname}}
+                  </p>
+                  <p class="mb-0 pt-2 ml-2 text-left"><i class="icon-phone"></i> {{vehiculo.user.cellphone}}</p>
+                  <p class="mb-0 pt-2 ml-2 text-left"><i class="icon-mail-envelope-closed"></i> {{vehiculo.user.email}}</p>
+                
+                </div>
+
+                <div class="rounded">
+                  <ContactForm 
+                    :v="$v" 
+                    :form="form"
+                    :category="2"/>
+                </div>
+
+
+
+            </div>
+          </div>
+        </div>
+
+      </div>
     </client-only>
 </template> 
 
@@ -27,25 +122,25 @@ export default {
         // Redirect to error page or 404 depending on server response
       }
     },
-    // head() {
+    head() {
 
-    //   if ( !this.property ) {
-    //     return {
-    //       title: 'Clasificados contacto | El buscador'
-    //     }
-    //   }
-    //   const { title, description, image } = this.property.meta
+      if ( !this.vehiculo ) {
+        return {
+          title: 'Clasificados contacto | El buscador'
+        }
+      }
+      const { title, description, image } = this.vehiculo.meta
 
-    //   return {
-    //     title: title,
-    //     meta: [
-    //       { hid:'description', name:'description', content: description},
-    //       { hid: 'og-title', property: 'og:title', content: title },
-    //       { hid: 'og-description', property: 'og:description', content: description },
-    //       { hid: 'og-image', property: 'og:image', content: image }
-    //     ] 
-    //   } 
-    // },
+      return {
+        title: title,
+        meta: [
+          { hid:'description', name:'description', content: description},
+          { hid: 'og-title', vehiculo: 'og:title', content: title },
+          { hid: 'og-description', vehiculo: 'og:description', content: description },
+          { hid: 'og-image', vehiculo: 'og:image', content: image }
+        ] 
+      } 
+    },
     data() {
         return {
             isLoading: true,
@@ -83,20 +178,22 @@ export default {
     async created() {
 
         console.log(this.vehiculo)
-        // const { fullPath } = this.$route
-        // this.url = `https://clasificadoscontacto.com${ fullPath }`
+        const { fullPath } = this.$route
+        this.url = `https://clasificadoscontacto.com${ fullPath }`
+        console.log(this.url)
 
-
-        // for (const property in this.property.images) {
-        //   this.images.push(this.property.images[property]['largefile'])
-        // } 
+        
 
     },
     mounted(){
-      // if ( this.property ){
-      //   console.log(this.property)
-      //   this.isLoading = false
-      // }
+      if ( this.vehiculo ){
+        this.isLoading = false
+        
+        for (const vehiculo in this.vehiculo.images) {
+          this.images.push(this.vehiculo.images[vehiculo]['largefile'])
+        } 
+      }
+
     }
 }
 </script>
@@ -139,7 +236,7 @@ export default {
   div.data-container {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    /* justify-content: space-between; */
   }
 
   div.gallery-content {

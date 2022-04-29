@@ -17,7 +17,10 @@
 
             <h5 class="mb-4">Total de resultados: <span>{{ totalResults.toLocaleString() }} {{ totalResults == 1 ? ' vehículo' : 'vehículos' }}.</span></h5>
 
+            <SectionLoader v-if="isLoadingData"/>
+
             <CarCardHorizontal 
+                v-else
                 v-for="vehiculo in vehiculos"
                 :key="vehiculo.id"
                 :vehiculo="vehiculo" />
@@ -37,6 +40,10 @@
 
           </div>
 
+        <WhatsAppFormV2
+              v-if="showWhatsForm"
+                :v="$v"
+                :whatsForm="whatsForm"/>
          
 
         </div>
@@ -49,6 +56,11 @@
 </template>
 
 <script>
+
+import { mapGetters } from 'vuex';
+import { required, email } from 'vuelidate/lib/validators' 
+
+
 export default {
   head() {
       return {
@@ -59,7 +71,14 @@ export default {
     return {
       vehiculos: [],
       totalResults: 0,
-      loading: true
+      loading: true,
+      isLoadingData: true,
+      whatsForm: {
+          name: '',
+          whatsapp: '',
+          message: '',
+          email: ''
+        },
     }
   },
   created() {
@@ -69,10 +88,22 @@ export default {
         this.loading = false
     })
   },
+  computed: {
+      ...mapGetters({ showWhatsForm: 'getShowWhatsForm' }),                  
+  },
+  validations: {
+        whatsForm: {
+            name: { required },
+            whatsapp: { required },
+            message: { required },
+            email: { required, email }
+        }
+    },
   methods: {
     async getVehiculos() {
 
       this.vehiculos = [];
+      this.isLoadingData = true;
 
       /*
       * EJEMPLO: /auto_1-en-venta_1-en-quintana-roo_179-en-benito-juarez_129
@@ -175,6 +206,7 @@ export default {
         this.totalResults = resp.xtr.result
         this.vehiculos = resp.data
 
+        this.isLoadingData = false;
         // console.log('SE ENCONTRO')
         // console.log(this.vehiculos)
 

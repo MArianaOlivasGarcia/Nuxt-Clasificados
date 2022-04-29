@@ -32,7 +32,7 @@
             </div>
 
             <div>
-                <div class="text-center"><span style="font-weight: bold;">Compartir</span></div>
+              <div class="text-center"><span style="font-weight: bold;">Compartir</span></div>
                 <div class="d-flex justify-content-center mt-2">
                   <a class="social" :href="`http://www.facebook.com/sharer.php?u=${ url }&t=${ property.description }`" target="_blank"><i class="fab fa-facebook"></i></a>
                   <a class="social" :href="`https://twitter.com/intent/tweet?url=${ url }&text=${ property.description }`" target="_blank"><i class="fab fa-twitter"></i></a>
@@ -378,7 +378,10 @@
                 </div>
 
                 <div class="rounded">
-                  <ContactForm :v="$v" :form="form"/>
+                  <ContactForm 
+                    :v="$v" 
+                    :form="form"
+                    :category="1" />
                 </div>
 
 

@@ -41,13 +41,20 @@ export default {
         this.$store.dispatch('getStates')
 
 
-        // if (process.browser){
-        //     window.dataLayer = window.dataLayer || [];
-        //     function gtag(){dataLayer.push(arguments);}
-        //     gtag('js', new Date());
+        if (process.browser){
 
-        //     gtag('config', 'UA-162799894-1');
-        // }
+            // GOOGLE ANALYTICS
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'UA-162799894-1');
+
+            // VISITA PAGINA, FORMULARIO CONTACTO
+            // window.dataLayer = window.dataLayer || [];
+            // function gtag(){dataLayer.push(arguments);}
+            // gtag('js', new Date()); 
+            // gtag('config', 'AW-653666729');
+        }
     },
     
     async mounted() {

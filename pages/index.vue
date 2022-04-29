@@ -43,7 +43,16 @@ export default {
     data() {
         return {
         }
-    }
+    },
+    // head() {
+    //     if (process.browser){
+    //         function gtag(){dataLayer.push(arguments);}
+
+    //         gtag('event', 'conversion', {'send_to': 'AW-653666729/6vYNCLC94LYDEKnT2LcC'});
+
+    //     }
+
+    // }
   
 } 
 

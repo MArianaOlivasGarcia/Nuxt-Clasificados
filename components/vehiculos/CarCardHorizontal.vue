@@ -28,7 +28,7 @@
     <span class="operation">{{ 'Venta' }}</span>
     <span class="type">{{ 'Auto' }}</span>
     <span v-if="vehiculo.destacado == '1'" class="destacado">Destacado <i style="color: #e7b211 !important" class="fas fa-star"></i></span>
-    <div class="whats-contact"><span>Contactar al asesor</span><i class="fab fa-whatsapp ml-2"></i></div>
+    <div v-if="whatsNumber" @click="sendWhats()" class="whats-contact"><span>Contactar al asesor</span><i class="fab fa-whatsapp ml-2"></i></div>
     <div class="user-info">
       <img v-if="!vehiculo.userdata[0].image || vehiculo.userdata[0].image == '0'" class="user-image" src="@/static/images/auto-placeholder.jpeg" alt="">
       <img v-else class="user-image" :src="vehiculo.userdata[0].image" :alt="vehiculo.userdata[0].name.trim()">
@@ -40,6 +40,7 @@
 <script>
 
 import helpers from '@/helpers/helpers'
+import { mapGetters } from 'vuex';
 
 
 export default {
@@ -88,7 +89,19 @@ export default {
     imageLoadError() {
         this.noImage = true;
     },
-  }
+    sendWhats() {
+      this.$store.commit('setWhatsContactValues', {
+        whatsappInmo: this.whatsNumber,
+        nameInmo: this.nameVendedor,
+        propertyId: this.vehiculo.productoid
+      })
+
+       this.$store.commit('setShowWhatsForm', !this.showWhatsForm)
+    },
+  },
+  computed: {
+      ...mapGetters({ showWhatsForm: 'getShowWhatsForm' }),                  
+  },
 }
 </script>
 

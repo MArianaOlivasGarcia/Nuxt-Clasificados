@@ -38,6 +38,7 @@
 <script>
 
 import helpers from '@/helpers/helpers'
+import { mapGetters } from 'vuex';
 
 
 export default {
@@ -55,7 +56,6 @@ export default {
       }
   },
    created() {
-    console.log(this.property)
     this.route = `/bienesraices/propiedad/${helpers.normalize( this.property.name )}_${ this.property.productoid }.html`;
 
     if ( !this.property.userdata  ) {
@@ -99,7 +99,10 @@ export default {
     goTo() {
       this.$router.push({ path: this.route });
     }
-  }
+  },
+  computed: {
+      ...mapGetters({ showWhatsForm: 'getShowWhatsForm' }),                  
+  },
 }
 </script>
 

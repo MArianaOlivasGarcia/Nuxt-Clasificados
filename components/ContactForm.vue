@@ -116,7 +116,11 @@ export default {
         v: {
             type: Object,
             required: true
-        }
+        },
+        category: {
+          type: Number,
+          required: true
+        },
     },
     data() {
         return {
@@ -163,6 +167,7 @@ export default {
             ...this.form,
             idProduct: this.idProduct
           }
+
           const success = await this.$store.dispatch('sendMain', data)
 
            if ( !success ){
