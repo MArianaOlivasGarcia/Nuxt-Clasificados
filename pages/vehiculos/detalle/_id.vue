@@ -25,6 +25,8 @@
               <div class="postcard-bar"></div>
               <div class="text-center m-3">
                   <span><i class="fas fa-car pl-2 pr-1"></i>{{ Number(vehiculo.usename.split(' ')[0]).toLocaleString() }} {{ vehiculo.usename.split(' ')[1] }}</span>
+                  <br>
+                  <span style="font-size: 18px;"><strong style="color: #00569d;">Año:</strong> {{ vehiculo.year }}</span>
               </div>
             </div>
 
