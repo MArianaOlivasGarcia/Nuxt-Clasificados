@@ -37,6 +37,7 @@ const state = {
     GET_MODELOS_VEHICULOS: '?site=MktPTjlBWnU1VXdEanRJUFdHbHZ6dz09',
     GET_VEHICULODETAIL: '?site=R25EbUlHWFZWeWFsUjNnSDFQeU1wUUVaRFRpTEJTQ1ZlbXJmai9sbG1DST0=',
 
+    
     token: '',
     userStateLocation: {
         folio: "61",

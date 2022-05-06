@@ -2,7 +2,7 @@
     <main class="clean">
 
 
-        <SliderAddsDev />
+        <SliderAddsDev :category="'1'"/>
     
     <section class="searchContainer container mt-5 mb-5" >
         <div class="titleContainer col-md-5">

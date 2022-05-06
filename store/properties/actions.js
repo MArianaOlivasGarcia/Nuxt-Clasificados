@@ -305,9 +305,9 @@ const actions = {
 
     },
 
-    async sliderDesarrollos({commit, state} ) {
+    async getSliders({commit, state}, category = 1 ) {
 
-        commit('setAPI_PARAMS', { body: `category=1` } )
+        commit('setAPI_PARAMS', { body: `category=${ category }` } )
 
     
         const config = state.API_PARAMS

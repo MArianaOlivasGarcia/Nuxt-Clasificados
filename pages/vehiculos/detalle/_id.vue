@@ -111,10 +111,10 @@ export default {
 
       const rutaCortada = params.id.split('_')
       const id = rutaCortada[ rutaCortada.length - 1 ].split('.')[0]
+      console.log('ID:', id)
       // fetch data from API
       try {
         const vehiculo = await store.dispatch('getVehiculoById', id)
-
         return {
             vehiculo,
         }
@@ -177,7 +177,7 @@ export default {
     },
     async created() {
 
-        console.log(this.vehiculo)
+        console.log('VEHCIULO:' ,this.vehiculo)
         const { fullPath } = this.$route
         this.url = `https://clasificadoscontacto.com${ fullPath }`
         console.log(this.url)

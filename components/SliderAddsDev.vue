@@ -1,7 +1,7 @@
 <template>
   <client-only v-if="data.length > 0">
     <agile autoplay :autoplaySpeed="5000" :timing="'linear'"  >
-          <NuxtLink v-for="(d, i) in data" class="slide" :key="i" :to="d.url">
+          <NuxtLink  v-for="(d, i) in data" class="slide" :key="i" :to="d.url ? d.url : ''">
               <img class="image-slide" :src="`https://clasificadoscontacto.com/${d.urlimage}`" :alt="d.urlimagen">
           </NuxtLink>
     </agile>
@@ -10,14 +10,21 @@
 
 <script>
 export default {
+  props: {
+    category: {
+      type: String
+    }
+  },
   data() {
     return {
       data: []
     }
   },
   async created() {
+
+    console.log(this.category)
       
-      const resp = await this.$store.dispatch('sliderDesarrollos')
+      const resp = await this.$store.dispatch('getSliders', this.category )
 
       this.data = resp;
       console.log(resp)

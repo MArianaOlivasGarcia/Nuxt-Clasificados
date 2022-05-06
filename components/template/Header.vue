@@ -49,25 +49,6 @@
             <li class="nav-item">
                   <NuxtLink to="/" class="link">Inicio</NuxtLink>
             </li>
-            <li class="nav-item" v-if="!userLogged">
-                  <NuxtLink to="/registro.html" class="link">Registrate</NuxtLink>
-            </li>
-            <li class="nav-item" v-if="!userLogged">
-                  <NuxtLink to="/sesion.html" class="link">Iniciar sesión</NuxtLink>
-            </li>
-            <li class="nav-item">
-                  <NuxtLink to="/#contacto" class="link "><i class="icon-headset"></i> Contacto</NuxtLink>
-            </li>
-            <li class="nav-item" v-if="userLogged">
-              <a class="link icon-top" href="https://www.clasificadoscontacto.com/panel"><i class="fas fa-user-plus"></i>Mi cuenta</a>
-            </li>
-          </ul>
-
-          </div>
-
-          <div class="" style="width: 100%;">
-<!-- style="width: 100%; display: flex; justify-content: space-between;"  -->
-          <ul class="navbar-nav header"  >
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Categorías
@@ -84,21 +65,58 @@
                 <a class="dropdown-item" href="#">Inversiones</a> -->
               </div>
             </li>
-            <li class="nav-item">
-                  <NuxtLink to="/favoritos" class="link ">Favoritos</NuxtLink>
+            <li class="nav-item" v-if="!userLogged">
+                  <NuxtLink to="/registro.html" class="link">Registrate</NuxtLink>
+            </li>
+            <li class="nav-item" v-if="!userLogged">
+                  <NuxtLink to="/sesion.html" class="link">Iniciar sesión</NuxtLink>
             </li>
             <li class="nav-item">
-                  <NuxtLink to="/ofertas" class="link">Ofertas</NuxtLink>
+                  <NuxtLink to="/#contacto" class="link "><i class="icon-headset"></i> Contacto</NuxtLink>
             </li>
-            <li class="nav-item">
-                  <NuxtLink to="/idi" class="link">Inteligencia Digital Contacto</NuxtLink>
-            </li>
-            <li class="nav-item">
-                  <NuxtLink to="/vender" class="link">Vender</NuxtLink>
+            <li class="nav-item" v-if="userLogged">
+              <a class="link icon-top" href="https://www.clasificadoscontacto.com/panel"><i class="fas fa-user-plus"></i>Mi cuenta</a>
             </li>
           </ul>
 
           </div>
+
+
+
+
+
+          <!-- <div class="" style="width: 100%;">
+            <ul class="navbar-nav header"  >
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Categorías
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <NuxtLink class="dropdown-item" to="/bienesraices">Inmuebles</NuxtLink>
+                  <NuxtLink class="dropdown-item" to="/vehiculos">Vehículos</NuxtLink>
+                  <a class="dropdown-item" href="#">Empleos</a>
+                  <a class="dropdown-item" href="#">Tecnología</a>
+                  <a class="dropdown-item" href="#">Casa y Hogar</a>
+                  <a class="dropdown-item" href="#">Mascotas</a>
+                  <a class="dropdown-item" href="#">Viajes</a>
+                  <a class="dropdown-item" href="#">Educación</a>
+                  <a class="dropdown-item" href="#">Inversiones</a>
+                </div>
+              </li>
+              <li class="nav-item">
+                    <NuxtLink to="/favoritos" class="link ">Favoritos</NuxtLink>
+              </li>
+              <li class="nav-item">
+                    <NuxtLink to="/ofertas" class="link">Ofertas</NuxtLink>
+              </li>
+              <li class="nav-item">
+                    <NuxtLink to="/idi" class="link">Inteligencia Digital Contacto</NuxtLink>
+              </li>
+              <li class="nav-item">
+                    <NuxtLink to="/vender" class="link">Vender</NuxtLink>
+              </li>
+            </ul>
+          </div> -->
 
          
         </div>

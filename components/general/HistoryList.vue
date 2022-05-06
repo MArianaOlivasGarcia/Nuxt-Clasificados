@@ -5,7 +5,7 @@
         <div class="container">
             <div class="row justify-content-center mb-2 pb-3">
                 <div class="col-md-7 heading-section text-center ftco-animate fadeInUp ftco-animated">
-                    <h2 class="mb-4">BASADO EN TUS FAVORITOS</h2>
+                    <h2 class="mb-4">LO MÁS BUSCADO</h2>
                 </div>
             </div>
 

@@ -4,13 +4,25 @@
 
         <SliderAdds :adds="
             [{
-                image: 'https://http2.mlstatic.com/D_NQ_883539-MLA49499729246_032022-OO.webp',
-                url: 'https://http2.mlstatic.com/D_NQ_883539-MLA49499729246_032022-OO.webp'
+                image: 'https://clasificadoscontacto.com/views/images/banners/banner_cc.jpg',
+                url: '#'
             },
             {
-                image: 'https://http2.mlstatic.com/D_NQ_735309-MLA49634844915_042022-OO.webp',
-                url: 'https://http2.mlstatic.com/D_NQ_735309-MLA49634844915_042022-OO.webp'
-            }]" />
+                image: 'https://clasificadoscontacto.com/views/images/banners/banner_3.png',
+                url: 'https://clasificadoscontacto.com/bienesraices/propiedad/terenos-en-venta-en-san-miguel-de-allende_51033.html'
+            },
+            {
+                image: 'https://clasificadoscontacto.com/views/images/banners/banner_2.png',
+                url: 'https://clasificadoscontacto.com/bienesraices/propiedad/departamentos-en-venta-en-la-vista-residencial_51030.html'
+            },
+            {
+                image: 'https://clasificadoscontacto.com/views/images/banners/banner_1.png',
+                url: 'https://clasificadoscontacto.com/bienesraices/propiedad/departamentos-en-venta-en-corregidora_51032.html'
+            },
+            {
+                image: 'https://clasificadoscontacto.com/views/images/banners/auto_1.png',
+                url: '#'
+            },]" />
     
 
         <HistoryList />

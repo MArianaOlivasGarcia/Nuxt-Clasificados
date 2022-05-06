@@ -1,8 +1,9 @@
 <template>
     <main class="clean">
 
+        <SliderAddsDev :category="'2'"/>
 
-        <SliderAdds :adds="adds" />
+        <!-- <SliderAdds :adds="adds" /> -->
     
     <section class="searchContainer container mt-5 mb-5" >
         
@@ -41,14 +42,6 @@ export default {
     },
     data() {
         return {
-            adds: [{
-                image: 'https://www.seminuevosalonso.com.mx/sites/default/files/styles/destacada/public/destacada/2018-07/slide_comonuevos.png?itok=RnRizcWV',
-                url: 'https://www.seminuevosalonso.com.mx/sites/default/files/styles/destacada/public/destacada/2018-07/slide_comonuevos.png?itok=RnRizcWV'
-            },
-            {
-                image: 'https://mye.cl/upload/paginas/archivos/22-09-2020-07-38-37_banner2.jpg',
-                url: 'https://mye.cl/upload/paginas/archivos/22-09-2020-07-38-37_banner2.jpg'
-            }]
         }
     }
   
