@@ -53,6 +53,7 @@ export default {
         }
     },
     created() {
+        console.log(this.vehiculo)
         this.route = `/vehiculos/detalle/${helpers.normalize( this.vehiculo.name )}_${ this.vehiculo.productoid }.html`
     },
 

@@ -16,8 +16,8 @@
       <p class="card-text"><small class="text-muted" style="font-size: 14px">{{ vehiculo.city }}, {{ vehiculo.state }}</small></p>
       <p class="card-text">{{ vehiculo.name }}</p>
       <div class="ani text-center">
-        <span><i class="fas fa-motorcycle pl-2 pr-1"></i>{{ '160,000' }} km</span>
-        <span><i class="fas fa-car pl-2 pr-1"></i>{{ '100,000' }} km</span>
+        <span><i class="fas fas fa-car pl-2 pr-1"></i>{{ Number(vehiculo.usename.split(' ')[0]).toLocaleString() }} {{ vehiculo.usename.split(' ')[1] }}</span>
+        <!-- <span><i class="fas fa-motorcycle pl-2 pr-1"></i>{{ '100,000' }} km</span> -->
       </div>
 
       <div style="width: 100%; height: 20px;"></div>
