@@ -24,7 +24,7 @@
               <h4 class="price">$ {{ Number(vehiculo.price).toLocaleString()  }} {{ vehiculo.currency }}</h4>
               <div class="postcard-bar"></div>
               <div class="text-center m-3">
-                  <span><i class="fas fa-car pl-2 pr-1"></i>{{ '000,000' }} {{ 'km' }}</span>
+                  <span><i class="fas fa-car pl-2 pr-1"></i>{{ Number(vehiculo.usename.split(' ')[0]).toLocaleString() }} {{ vehiculo.usename.split(' ')[1] }}</span>
               </div>
             </div>
 

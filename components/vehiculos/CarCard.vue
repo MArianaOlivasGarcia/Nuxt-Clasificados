@@ -22,7 +22,7 @@
             <h1 class="card-text">{{ vehiculo.name }}</h1>
         </div>
         <div class="text-center">
-            <span ><i class="fas fa-car pl-2 pr-1"></i>{{ vehiculo.km }} km</span>
+            <span ><i class="fas fa-car pl-2 pr-1"></i>{{ Number(vehiculo.usename.split(' ')[0]).toLocaleString() }} {{ vehiculo.usename.split(' ')[1] }}</span>
             <!-- <span ><i class="fas fa-motorcycle pl-2 pr-1"></i>{{ vehiculo.km }} km</span> -->
         </div>
 
