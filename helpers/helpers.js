@@ -33,6 +33,7 @@ helpers.normalize = ( str ) => {
 			.replace(/:/g, '')
 			.replace('.', '')
 			.replace('/', '')
+			.replace(/[/]/g, '')
 			.toLowerCase()
 }
 

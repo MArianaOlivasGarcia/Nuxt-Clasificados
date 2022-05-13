@@ -56,6 +56,7 @@ export default {
       }
   },
    created() {
+// console.log(  `/bienesraices/propiedad/${helpers.normalize( 'ocal-en-renta--plaza/-centrum/frente-a-plaza-del-/parque-queretaro_13647' )} `);
     this.route = `/bienesraices/propiedad/${helpers.normalize( this.property.name )}_${ this.property.productoid }.html`;
 
     if ( !this.property.userdata  ) {
