@@ -88,7 +88,7 @@ export default {
             const { category, operation, keywordAddrs} = this.search
 
 
-            console.log(keywordAddrs)
+            // console.log(keywordAddrs)
 
             const urlSeach = `${helpers.normalize(this.$store.getters.getCategoryById(category).name)}_${category}` 
                     + `-en-${ operation == 1 ? 'venta_1' : 'renta_2' }`
@@ -108,8 +108,8 @@ export default {
                 }
             }
 
-            console.log('DATAAAA')
-            console.log(data)
+            // console.log('DATAAAA')
+            // console.log(data)
 
             let urlComplement = ''
             data.forEach( (element, index) => {
@@ -120,7 +120,7 @@ export default {
             // Quitar el ultimo -y-
             urlComplement = urlComplement.substr(0, urlComplement.length - 3)
 
-            console.log(urlComplement)
+            // console.log(urlComplement)
 
             this.$router.push({
                 name: 'bienesraices-search',

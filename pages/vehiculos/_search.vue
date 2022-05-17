@@ -21,8 +21,8 @@
 
             <CarCardHorizontal 
                 v-else
-                v-for="vehiculo in vehiculos"
-                :key="vehiculo.id"
+                v-for="(vehiculo, i) in vehiculos"
+                :key="vehiculo.id + i"
                 :vehiculo="vehiculo" />
 
           
@@ -198,10 +198,10 @@ export default {
           pricemax: buscar3.find(e => e.key === 'maximo')?.value,
         }
 
-        console.log(searchForm)
+        // console.log(searchForm)
 
         const resp = await  this.$store.dispatch('searchVehiculos', searchForm )
-        console.log('RESPUESTA')
+        // console.log('RESPUESTA')
         console.log(resp)
         this.totalResults = resp.xtr.result
         this.vehiculos = resp.data
@@ -211,8 +211,21 @@ export default {
         // console.log(this.vehiculos)
 
 
+    },
+    
+  },
+  watch: {
+      '$route.query.pagina': {
+        // immediate: true,
+        async handler(newValue, oldValue) {
+
+          console.log({newValue, oldValue})
+          this.getVehiculos();
+        }
+      },
+      
+      
     }
-  }
 }
 </script>
 

@@ -124,9 +124,6 @@ const actions = {
       
         const resp = await fetch(state.API_URL + state.SEARCH_PROPERTIES, config).then((res) => res.json())
         
-        console.log('SE LLAMO')
-        console.log(resp.resp.data)
-
         
         if ( resp.status == 200  ) {
             commit("setPropertiesList", resp.resp.data);

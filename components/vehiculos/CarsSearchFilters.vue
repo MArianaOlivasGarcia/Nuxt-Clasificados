@@ -187,7 +187,7 @@ export default {
     },
     methods: {
         goToResults() {
-            console.log('BUSCAR')
+            // console.log('BUSCAR')
 
             const { 
                 brand,
@@ -208,7 +208,7 @@ export default {
                + `${ municipality != undefined ? `-en-${ helpers.normalize( this.$store.getters.getMunicipalityById(municipality)?.itemName ) }_${municipality}` : '' }`
                + `${ suburb != undefined ? `-en-${ helpers.normalize( this.$store.getters.getSuburbById(suburb)?.itemName ) }_${suburb}` : '' }`;
      
-            console.log(urlSearch)
+            // console.log(urlSearch)
 
 
             let data = []
@@ -233,7 +233,7 @@ export default {
                 // Quitar el ultimo -y-
                 urlComplement = urlComplement.substr(0, urlComplement.length - 3)
 
-                console.log(urlComplement)
+                // console.log(urlComplement)
 
 
             this.$router.push({
@@ -249,7 +249,6 @@ export default {
         async getMarcas() {
             const resp = await this.$store.dispatch('getMarcasVehiculos');
             this.marcas = resp;
-            console.log(this.marcas)
         }, 
         async getTipos( brand ) {
             const resp = await this.$store.dispatch('getTiposVehiculos', brand);

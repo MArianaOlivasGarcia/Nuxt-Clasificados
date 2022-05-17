@@ -30,7 +30,9 @@ export default {
             totalPages: 0,
             lastPage: 0, // Puede ser el totalPages tambien
             /* Arreglo de paginas */
-            pages: []
+            pages: [],
+
+            nameRoute: '',
         }
     },
     created(){
@@ -46,14 +48,14 @@ export default {
             this.pages.push(i)
         }
 
-        // console.log(this.ids)
+        this.nameRoute = this.$route.name;
     },
     methods: {
         changePage( page ){
           this.currentPage = page
           
           this.$router.push({
-              name: 'bienesraices-search',
+              name: this.nameRoute,
               params: this.$route.params,
               query: {
                   pagina: this.currentPage,
