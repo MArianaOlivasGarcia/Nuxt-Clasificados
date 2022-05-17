@@ -1,7 +1,9 @@
 
 
 <template>
-    <form v-on:submit.prevent="goToResults" 
+    <!-- v-on:submit.prevent="goToResults"  -->
+    <form 
+        v-on:submit.prevent
         class="p-2" 
         style="background-color: rgba(242, 225, 19, 0.7)">
         <div class="form-row">
@@ -37,7 +39,10 @@
         </div>
 
           
-        <button type="submit" class="btn btn-primary mt-2">Buscar <i class="fas fa-search"></i></button>
+        <button 
+            type="button" 
+            @click="goToResults"
+            class="btn btn-primary mt-2">Buscar <i class="fas fa-search"></i></button>
     </form>
 </template>
 
