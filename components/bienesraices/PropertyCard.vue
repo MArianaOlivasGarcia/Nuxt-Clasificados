@@ -49,7 +49,7 @@ export default {
         }
     },
      created() {
-         console.log(this.property)
+        //  console.log(this.property)
 
         this.route = `/bienesraices/propiedad/${helpers.normalize( this.property.name )}_${ this.property.productoid }.html`
     },
