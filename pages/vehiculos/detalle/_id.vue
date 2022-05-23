@@ -22,9 +22,9 @@
               <h1>{{ vehiculo.productName }}</h1>
               <p class="card-text text-muted">{{ vehiculo.city }}, {{ vehiculo.state }}</p>
               <h4 class="price">$ {{ Number(vehiculo.price).toLocaleString()  }} {{ vehiculo.currency }}</h4>
-              <div class="postcard-bar"></div>
+              <!-- <div class="postcard-bar"></div> -->
               <div class="text-center m-3">
-                  <span><i class="fas fa-car pl-2 pr-1"></i>{{ Number(vehiculo.usename.split(' ')[0]).toLocaleString() }} {{ vehiculo.usename.split(' ')[1] }}</span>
+                  <span v-if="vehiculo.usename"><i class="fas fa-car pl-2 pr-1"></i>{{ Number(vehiculo.usename.split(' ')[0]).toLocaleString() }} {{ vehiculo.usename.split(' ')[1] }}</span>
                   <br>
                   <span style="font-size: 18px;"><strong style="color: #00569d;">Año:</strong> {{ vehiculo.year }}</span>
               </div>
@@ -53,11 +53,188 @@
         </div>
 
         <div class="row mt-5">
+
+
           <div class="col-md-7">
-            <div>
-              <span style="font-weight: bold;">Descripción</span>
-              <div style="font-size: 14px; text-align: justify; line-height:normal;" v-html="vehiculo.descriptionlong"></div>
+
+
+            <div class="row">
+              <div class="col">
+                <h5 style="font-weight: bold;">Descripción</h5>
+                <div class="postcard-bar"></div>
+
+                <div style="font-size: 14px; text-align: justify; line-height:normal;" v-html="vehiculo.descriptionlong"></div>
+              </div>
             </div>
+
+             
+             
+             <div class="row mt-3">
+              <div class="col">
+                <h5 style="font-weight: bold;">Ficha Técnica</h5>
+                <div class="postcard-bar"></div>
+
+
+                <div class="row mt-3">
+
+
+                  <div v-if="vehiculo.folio" class="col-md-4 d-flex align-items-center">
+                    <i class="fas fa-angle-right mr-2"></i>
+                    <p class="m-0 d-flex" style="flex-direction: column;">
+                      <small>Publicación</small>
+                      <span># {{ vehiculo.folio }}</span>
+                    </p>
+                  </div>
+
+                  <div v-if="vehiculo.marca" class="col-md-4 d-flex align-items-center">
+                    <i class="fas fa-angle-right mr-2"></i>
+                    <p class="m-0 d-flex" style="flex-direction: column;">
+                      <small>Marca</small>
+                      <span>{{ vehiculo.marca }}</span>
+                    </p>
+                  </div>
+
+                  <div v-if="vehiculo.modelo" class="col-md-4 d-flex align-items-center">
+                    <i class="fas fa-angle-right mr-2"></i>
+                    <p class="m-0 d-flex" style="flex-direction: column;">
+                      <small>Modelo</small>
+                      <span>{{ vehiculo.modelo }}</span>
+                    </p>
+                  </div>
+
+
+                </div>
+
+                <div class="row mt-3">
+
+
+                  <div v-if="vehiculo.tipo" class="col-md-4 d-flex align-items-center">
+                    <i class="fas fa-angle-right mr-2"></i>
+                    <p class="m-0 d-flex" style="flex-direction: column;">
+                      <small>Tipo</small>
+                      <span>{{ vehiculo.tipo }}</span>
+                    </p>
+                  </div>
+
+                  <div v-if="vehiculo.usename" class="col-md-4 d-flex align-items-center">
+                    <i class="fas fa-angle-right mr-2"></i>
+                    <p class="m-0 d-flex" style="flex-direction: column;">
+                      <small>Recorrido</small>
+                      <span>{{  vehiculo.usename ? Number(vehiculo.usename.split(' ')[0]).toLocaleString() +' ' + vehiculo.usename.split(' ')[1] : 0 + ' km' }}</span>
+                    </p>
+                  </div>
+
+                  <div v-if="vehiculo.ac" class="col-md-4 d-flex align-items-center">
+                    <i class="fas fa-angle-right mr-2"></i>
+                    <p class="m-0 d-flex" style="flex-direction: column;">
+                      <small>A/C</small>
+                      <span>{{ vehiculo.ac }}</span>
+                    </p>
+                  </div>
+
+
+                </div>
+
+
+
+                <div class="row mt-3">
+
+
+                  <div v-if="vehiculo.traction" class="col-md-4 d-flex align-items-center">
+                    <i class="fas fa-angle-right mr-2"></i>
+                    <p class="m-0 d-flex" style="flex-direction: column;">
+                      <small>Tracción</small>
+                      <span>{{ vehiculo.traction }}</span>
+                    </p>
+                  </div>
+
+                  <div v-if="vehiculo.glasses" class="col-md-4 d-flex align-items-center">
+                    <i class="fas fa-angle-right mr-2"></i>
+                    <p class="m-0 d-flex" style="flex-direction: column;">
+                      <small>Vidrios</small>
+                      <span>{{ vehiculo.glasses }}</span>
+                    </p>
+                  </div>
+
+                  <div  v-if="vehiculo.transmission"  class="col-md-4 d-flex align-items-center">
+                    <i class="fas fa-angle-right mr-2"></i>
+                    <p class="m-0 d-flex" style="flex-direction: column;">
+                      <small>Transmisión</small>
+                      <span>{{ vehiculo.transmission }}</span>
+                    </p>
+                  </div>
+
+
+                </div>
+
+
+
+                <div class="row mt-3">
+
+
+                  <div  v-if="vehiculo.motor"  class="col-md-4 d-flex align-items-center">
+                    <i class="fas fa-angle-right mr-2"></i>
+                    <p class="m-0 d-flex" style="flex-direction: column;">
+                      <small>Motor</small>
+                      <span>{{ vehiculo.motor }}</span>
+                    </p>
+                  </div>
+
+                  <div  v-if="vehiculo.interior"  class="col-md-4 d-flex align-items-center">
+                    <i class="fas fa-angle-right mr-2"></i>
+                    <p class="m-0 d-flex" style="flex-direction: column;">
+                      <small>Interiores</small>
+                      <span>{{ vehiculo.interior }}</span>
+                    </p>
+                  </div>
+
+                  <div  v-if="vehiculo.fuel"  class="col-md-4 d-flex align-items-center">
+                    <i class="fas fa-angle-right mr-2"></i>
+                    <p class="m-0 d-flex" style="flex-direction: column;">
+                      <small>Combustible</small>
+                      <span>{{ vehiculo.fuel }}</span>
+                    </p>
+                  </div>
+
+
+                </div>
+
+
+
+
+                <div class="row mt-3">
+
+
+                  <div  v-if="vehiculo.direction"  class="col-md-4 d-flex align-items-center">
+                    <i class="fas fa-angle-right mr-2"></i>
+                    <p class="m-0 d-flex" style="flex-direction: column;">
+                      <small>Dirección</small>
+                      <span>{{ vehiculo.direction }}</span>
+                    </p>
+                  </div>
+
+                
+
+                </div>
+
+
+
+
+
+              </div>
+            </div>
+
+
+            <!-- <div class="row mt-3">
+              <div class="col">
+                <h5 style="font-weight: bold;">Equipamiento</h5>
+                <div class="postcard-bar"></div>
+
+
+                
+
+              </div>
+            </div> -->
 
 
             
@@ -218,6 +395,12 @@ export default {
   h2 {
     font-size: 16px;
     font-weight: 500;
+  }
+
+
+  h5 {
+    color: #00569d;
+    font-size: 18px;
   }
 
   .postcard-bar {
