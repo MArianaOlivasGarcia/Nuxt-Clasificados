@@ -37,6 +37,10 @@ const state = {
     GET_MODELOS_VEHICULOS: '?site=MktPTjlBWnU1VXdEanRJUFdHbHZ6dz09',
     GET_VEHICULODETAIL: '?site=R25EbUlHWFZWeWFsUjNnSDFQeU1wUUVaRFRpTEJTQ1ZlbXJmai9sbG1DST0=',
 
+
+    // NUEVA BUSQUEDA
+    GETTOTALS: '?site=VFp2ckNTNmhjUGdNYk93UythUHJxSTVMdktETC9YaG9tTWIyTDlPWCtZaz0=',
+    SEARCH: '?site=cU5OVVhzSUpoMjZhdSs5YTJyaTRPK3FNamZ0YVBnSnpQbDJ6M1Z3OTcrND0=',
     
     token: '',
     userStateLocation: {

@@ -10,7 +10,7 @@
               <SearchFilters 
                 :states="states"/>
             </div>
-            <div  v-if="loadingProperties"  class="loaderPadding col-lg-9 col-md-12 pr-0">
+            <div  v-if="isLoading"  class="loaderPadding col-lg-9 col-md-12 pr-0">
               <Loader />
             </div>
 
@@ -84,14 +84,13 @@ export default {
           message: '',
           email: ''
         },
-        loading: true,
-        loadingProperties: true
+        loading: true
       }
     },
    
     methods: {
       async getProperties() {
-        this.loadingProperties = true;
+
         this.properties = [];
 
 
@@ -120,18 +119,14 @@ export default {
           const keyword = search.split('-por-')[1].split('.')[0].replace(/-/g, ' ') 
           const searchForm = {
             page: this.$route.query.pagina ? this.$route.query.pagina : 1,
-            keyword,
-            category: 1
+            keyword
           }
 
-
-          const resp = await  this.$store.dispatch('search', searchForm )
-          const respTotal = await  this.$store.dispatch('getTotalsSearch', searchForm )
-          this.totalResults = Number(respTotal);
+          const resp = await  this.$store.dispatch('searchProducts', searchForm )
+          this.totalResults = resp.xtr.result
           this.properties = resp.data
-
-          this.loadingProperties = false;
-
+          console.log('SE ENCONTRO 1')
+          console.log(this.properties)
           return;
         }
 
@@ -184,6 +179,7 @@ export default {
           buscar2.push(param)
         });
 
+
         const searchForm = {
           page: this.$route.query.pagina ? this.$route.query.pagina : 1,
           category: buscar[0],
@@ -201,22 +197,20 @@ export default {
         }
 
 
-        const resp = await  this.$store.dispatch('search', searchForm )
-        const respTotal = await  this.$store.dispatch('getTotalsSearch', searchForm )
-        this.totalResults = Number(respTotal);
+        const resp = await  this.$store.dispatch('searchProducts', searchForm )
+        this.totalResults = resp.xtr.result
         this.properties = resp.data
 
-        // console.log(this.properties)
-
-        this.loadingProperties = false;
+        console.log('SE ENCONTRO')
+        console.log(this.properties)
 
       }
     },
     created() {
         this.getProperties();
-        this.$nextTick( function() {
-          this.loading = false
-        })
+      this.$nextTick( function() {
+        this.loading = false
+      })
     },
     validations: {
         whatsForm: {
@@ -228,7 +222,7 @@ export default {
     },
     computed: {
       ...mapGetters({ searchForm: 'getSearFormValues', 
-                      // isLoading: 'getIsLoading',
+                      isLoading: 'getIsLoading',
                       // properties: 'getPropertiesList',
                       states: 'getStatesList',
                       whatsContactValues: 'getWhatsContactValues',

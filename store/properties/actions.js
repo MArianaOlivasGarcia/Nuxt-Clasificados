@@ -505,6 +505,51 @@ const actions = {
   
     },
 
+
+
+
+    // NUEVO BUSCADOR
+    async getTotalsSearch({ commit, state }, formData ){
+
+            console.log(formData)
+        const resp = await fetch(state.API_URL + state.GETTOTALS, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8",
+            },
+            body: `ids=${ formData.ids ? formData.ids  : ''}&page=${ formData.page ? formData.page : '' }&state=${formData.state ? formData.state : ''}&keyword=${formData.keyword ? formData.keyword : ''}&municipality=${formData.city != undefined ? formData.city : ''}&category=${formData.category ? formData.category : ''}&limit=${ formData.limit ? formData.limit : 20 }&m2t=${formData.m2t ? formData.m2t : ''}&m2c=${formData.m2c ? formData.m2c : ''}&bedroom=${formData.bedroom ? formData.bedroom : ''}&bathroom=${formData.bathroom ? formData.bathroom : ''}&pricemax=${formData.pricemax ? formData.pricemax : ''}&pricemin=${formData.pricemin ? formData.pricemin : ''}&type=${formData.category ? formData.category : ''}&operation=${formData.operation  ? formData.operation : ''}&folio=${formData.folio ? formData.folio : ''}&outstanding=${ formData.outstanding ? formData.outstanding : '' }&suburb=${ formData.suburb ? formData.suburb : '' }&keywordAddrs=${ formData.keywordAddrs ? formData.keywordAddrs : '' }&token=${ state.token }`
+        }).then((res) => res.json())
+        // &type=${ formData.type }
+        
+        if ( resp.status == 200  ) {
+            return resp.resp[0].total;
+        }  
+  
+    },
+
+    async search({ commit, state }, formData ){
+
+        console.log(formData)
+        commit( 'setLoading', true )
+        commit('setSearchFormValues', formData)
+
+        const resp = await fetch(state.API_URL + state.SEARCH, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8",
+            },
+            body: `ids=${ formData.ids ? formData.ids  : ''}&page=${ formData.page ? formData.page : '' }&state=${formData.state ? formData.state : ''}&keyword=${formData.keyword ? formData.keyword : ''}&municipality=${formData.city != undefined ? formData.city : ''}&category=${formData.category ? formData.category : ''}&limit=${ formData.limit ? formData.limit : 20 }&m2t=${formData.m2t ? formData.m2t : ''}&m2c=${formData.m2c ? formData.m2c : ''}&bedroom=${formData.bedroom ? formData.bedroom : ''}&bathroom=${formData.bathroom ? formData.bathroom : ''}&pricemax=${formData.pricemax ? formData.pricemax : ''}&pricemin=${formData.pricemin ? formData.pricemin : ''}&type=${formData.category ? formData.category : ''}&operation=${formData.operation  ? formData.operation : ''}&folio=${formData.folio ? formData.folio : ''}&outstanding=${ formData.outstanding ? formData.outstanding : '' }&suburb=${ formData.suburb ? formData.suburb : '' }&keywordAddrs=${ formData.keywordAddrs ? formData.keywordAddrs : '' }&token=${ state.token }`
+        }).then((res) => res.json())
+        // &type=${ formData.type }
+        
+        if ( resp.status == 200  ) {
+            commit("setPropertiesList", resp.resp.data);
+            commit( 'setLoading', false )
+            return resp.resp
+        }  
+  
+    },
+
 }
 
 
