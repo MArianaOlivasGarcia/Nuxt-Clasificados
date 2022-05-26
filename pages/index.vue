@@ -9,19 +9,19 @@
             },
             {
                 image: 'https://clasificadoscontacto.com/views/images/banners/banner_3.png',
-                url: '#'
+                url: 'bienesraices/propiedad/terenos-en-venta-en-san-miguel-de-allende_51033.html'
             },
             {
                 image: 'https://clasificadoscontacto.com/views/images/banners/banner_2.png',
-                url: '#'
+                url: 'bienesraices/propiedad/departamentos-en-venta-en-la-vista-residencial_51030.html'
             },
             {
                 image: 'https://clasificadoscontacto.com/views/images/banners/banner_1.png',
-                url: '#'
+                url: 'bienesraices/propiedad/departamentos-en-venta-en-corregidora_51032.html'
             },
             {
                 image: 'https://clasificadoscontacto.com/views/images/banners/auto_1.png',
-                url: '#'
+                url: 'vehiculos'
             },]" />
     
 
