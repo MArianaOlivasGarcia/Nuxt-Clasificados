@@ -20,7 +20,7 @@
             
             <div>
               <h1>{{ property.productName }}</h1>
-              <p class="card-text text-muted">{{ property.city }}, {{ property.state }}</p>
+              <p class="card-text text-muted">{{ property.colonia }}, {{ property.municipio }}, {{ property.state }}</p>
               <h4 class="price">$ {{ Number(property.price).toLocaleString()  }} {{ property.currency }}</h4>
               <div class="postcard-bar"></div>
               <div class="text-center">
