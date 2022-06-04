@@ -150,18 +150,9 @@ export default {
         ...mapGetters({ isLoading: 'getIsLoading'}),
     },
     async created(){
-
         this.outstanding = [];
-        
         this.outstanding = await this.$store.dispatch("getOutstanding")
-        console.log(this.outstanding)
-    //   const resp = await this.$store.dispatch('sliderDesarrollos')
-
-    //   console.log(resp)
-
-    //   for (const property in resp) {
-    //       this.desarrollos.push(resp[property][0])
-    //   }
+    
     },
     data() {
         return {

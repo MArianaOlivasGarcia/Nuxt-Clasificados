@@ -78,6 +78,7 @@ export default {
       '~/components/vehiculos/',
       '~/components/general/',
       '~/components/shared/',
+      '~/components/products/',
     ]
   },
 

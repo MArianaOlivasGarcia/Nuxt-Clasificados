@@ -21,13 +21,8 @@ export default {
     }
   },
   async created() {
-
-    console.log(this.category)
-      
       const resp = await this.$store.dispatch('getSliders', this.category )
-
       this.data = resp;
-      console.log(resp)
   } 
 }
 </script>

@@ -31,8 +31,6 @@ export default {
         }
     },
     created() {
-        console.log('LAYOUT CREATED')
-        console.log(this.$route)
         
         // Obtener todas las categorias de propiedades
         //this.$store.dispatch('') En este momento estan directas en el state
@@ -63,7 +61,6 @@ export default {
 
 
         if( !this.isAcceptCookies() ) {
-            console.log('No ha aceptado las cookies')
             this.$store.commit('setCookiesAccepted', false)
             return;
         }
@@ -107,23 +104,15 @@ export default {
             
             this.$getLocation({})
                 .catch( err => {
-                    console.log('No acepto la geolocalización');
                 })
                 .then( async coords => {
 
-                    console.log(coords);
                     const result = await navigator?.permissions.query({name:'geolocation'})
-                    console.log(result);
-
-                    
-                
                     
                     if ( result.state == 'denied') {
-                        console.log('PERMISO DENEGADO');
                         this.isLoading = false
                         return
                     } else if( result.state == 'prompt' ) {
-                        console.log('esperando que acepte ubicación....');
                         this.isLoading = false
                         
                     }  else if ( result.state == 'granted' ) {
@@ -140,10 +129,8 @@ export default {
                                 // lng : -101.2928997
                             }, }, async (results, status) => {
                         if (status === 'OK') {
-                                console.log(results);
                                 // const state = results[8].address_components[0].long_name;
                                 let state = results[ results.length - 2 ].address_components[0].long_name;
-                                console.log(state);
 
                                 const states = await this.$store.dispatch('getStates')
                                 
@@ -164,7 +151,6 @@ export default {
         },
         initiIDI() {
             setTimeout(() => {
-                console.log("Mostrar a IDI");
                 this.$store.commit('setShowIDI', true)
             },7000);
         },

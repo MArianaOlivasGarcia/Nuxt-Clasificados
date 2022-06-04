@@ -157,7 +157,7 @@ export default {
       }
 
       this.$router.push({
-        name: 'bienesraices-search',
+        name: 'busqueda-general-search',
         params: {
           search: `buscar-por-${this.keyword.trim().toLowerCase().replace(/ /g, '-')}.html`
         }

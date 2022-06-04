@@ -11,7 +11,7 @@
         <div>
             <h5 class="card-title pricecard m-0">$ {{ property.price }} {{ property.currency }}</h5>
             <div class="postcard-bar"></div>
-            <p class="card-text"><small class="text-muted" style="font-size: 14px">{{ property.city }}, {{ property.state }}</small></p>
+            <p class="card-text"><small class="text-muted" style="font-size: 14px">{{ property.colonia }}, {{ property.municipio }}, {{ property.state }}</small></p>
             <h1 class="card-text">{{ property.name }}</h1>
         </div>
         <div class="text-center">
@@ -49,7 +49,7 @@ export default {
         }
     },
      created() {
-        //  console.log(this.property)
+        console.log(this.property)
 
         this.route = `/bienesraices/propiedad/${helpers.normalize( this.property.name )}_${ this.property.productoid }.html`
     },

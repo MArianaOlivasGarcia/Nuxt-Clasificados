@@ -30,11 +30,7 @@ export default {
   data() {
     return {
     }
-  },
-  async created() {
-      console.log(this.adds)
-      
-  } 
+  }
 }
 </script>
 
