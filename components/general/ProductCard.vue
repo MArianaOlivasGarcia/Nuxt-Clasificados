@@ -51,9 +51,9 @@ export default {
         }
     },
     created() {
-        //const category = this.item.category.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(' ', '');
-//
-        //this.route = `/${ category }/${ category == 'bienesraices' ? 'propiedad' : 'detalle' }/${helpers.normalize( this.item.name )}_${ this.item.productoid }.html`
+        const category = this.item.category.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(' ', '');
+
+        this.route = `/${ category }/${ category == 'bienesraices' ? 'propiedad' : 'detalle' }/${helpers.normalize( this.item.name )}_${ this.item.productoid }.html`
     }
 }
 </script>
