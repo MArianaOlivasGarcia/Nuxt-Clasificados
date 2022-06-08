@@ -1,4 +1,5 @@
 <template>
+<div>
   <client-only v-if="!isLoading">
     <section class="ftco-section ResetP pb-5 pt-5 mt-5 mb-5">
       <div class="container">
@@ -58,6 +59,10 @@
       </div>
     </section>
   </client-only>
+    <div v-else>
+      <Loader />
+    </div>
+  </div>
 </template>
 
 <script>
