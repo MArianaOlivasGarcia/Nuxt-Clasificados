@@ -125,13 +125,14 @@ export default {
           }
 
 
-          const [resp, respTotal ] = await Promise.all([
-            this.$store.dispatch('search', searchForm ),
-            this.$store.dispatch('getTotalsSearch', searchForm )
-          ])
+          // const [resp, respTotal ] = await Promise.all([
+          //   this.$store.dispatch('search', searchForm ),
+          //   this.$store.dispatch('getTotalsSearch', searchForm )
+          // ])
+          
 
-          // const resp = await  this.$store.dispatch('search', searchForm )
-          // const respTotal = await  this.$store.dispatch('getTotalsSearch', searchForm )
+          const resp = await  this.$store.dispatch('search', searchForm )
+          const respTotal = await  this.$store.dispatch('getTotalsSearch', searchForm )
           this.totalResults = Number(respTotal);
           this.properties = resp.data
 
@@ -206,10 +207,12 @@ export default {
         }
 
 
-        const [resp, respTotal ] = await Promise.all([
-            this.$store.dispatch('search', searchForm ),
-            this.$store.dispatch('getTotalsSearch', searchForm )
-        ])
+        // const [resp, respTotal ] = await Promise.all([
+        //     this.$store.dispatch('search', searchForm ),
+        //     this.$store.dispatch('getTotalsSearch', searchForm )
+        // ])
+           const resp = await  this.$store.dispatch('search', searchForm )
+          const respTotal = await  this.$store.dispatch('getTotalsSearch', searchForm )
         this.totalResults = Number(respTotal);
         this.properties = resp.data
 
