@@ -9,16 +9,25 @@
         <p>Codigo de error: <span>404</span></p>
 
         <p>Aquí tienes unos enlaces que pueden servirte de ayuda:</p>
+        <NuxtLink to="/">Ir a la pagina principal</NuxtLink>
+
 
     </div>
-    <h1 v-else>An error occurred</h1>
-    <NuxtLink to="/">Home page</NuxtLink>
+
+    <div v-else>
+      <h1 >A ocurrido un error</h1>
+      <NuxtLink to="/">Ir a la pagina principal</NuxtLink>
+    </div>
+    
   </div>
 </template>
 
 <script>
   export default {
     props: ['error'],
-    layout: 'error' // you can set a custom layout for the error page
+    layout: 'error',
+    created() { 
+      console.log(error)
+    }
   }
 </script>

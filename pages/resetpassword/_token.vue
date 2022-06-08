@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <client-only v-if="!isLoading">
     <section class="ftco-section ResetP pb-5 pt-5 mt-5 mb-5">
       <div class="container">
         <div class="row justify-content-center">
@@ -57,7 +57,7 @@
         </div>
       </div>
     </section>
-  </div>
+  </client-only>
 </template>
 
 <script>
@@ -74,7 +74,8 @@ export default {
       password: '',
       password2: '',
       disabled: false,
-      showMessage: false
+      showMessage: false,
+      isLoading: true
     };
   },
   async created()  {
@@ -84,9 +85,13 @@ export default {
   
     const { status } = await this.$store.dispatch('verifyToken', this.token)
 
+    console.log(status)
+
     if ( status != 200 ) {
       this.$router.push('/');
     }
+
+    this.isLoading = false;
 
   },
   methods: {
