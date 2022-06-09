@@ -2,7 +2,7 @@
     <NuxtLink :to="route" class="card">
     <div class="imageContent">
       <img class="card-img-top" :src="item.image" alt="foto">
-      <span class="category">{{ item.category }}</span>
+      <span class="category">{{ item.category ? item.category : 'Bienes Raíces'  }}</span>
       <span class="fav">
           <i class="fas fa-heart"></i>
           <i class="far fa-heart"></i>
@@ -47,11 +47,16 @@ export default {
     },
     data() {
         return {
-            route: ''
+            route: '',
+            // TODO: QUITAR CUANDO YA TRAIGA CATEGORY
         }
     },
     created() {
-        const category = this.item.category.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(' ', '');
+
+        const hasCategory = this.item.category ?? 'Bienes Raíces' ;
+
+
+        const category = hasCategory.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(' ', '');
 
         this.route = `/${ category }/${ category == 'bienesraices' ? 'propiedad' : 'detalle' }/${helpers.normalize( this.item.name )}_${ this.item.productoid }.html`
     }
