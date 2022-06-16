@@ -71,15 +71,15 @@ export default {
           const searchForm = {
             page: this.$route.query.pagina ? this.$route.query.pagina : 1,
             keyword: this.keyword,
-            category: 1
+            category: undefined
           }
 
-          // const [resp, respTotal ] = await Promise.all([
-          //   this.$store.dispatch('search', searchForm ),
-          //   this.$store.dispatch('getTotalsSearch', searchForm )
-          // ])
-          const resp = await  this.$store.dispatch('search', searchForm )
-          const respTotal = await  this.$store.dispatch('getTotalsSearch', searchForm )
+          const [resp, respTotal ] = await Promise.all([
+            this.$store.dispatch('search', searchForm ),
+            this.$store.dispatch('getTotalsSearch', searchForm )
+          ])
+          // const resp = await  this.$store.dispatch('search', searchForm )
+          // const respTotal = await  this.$store.dispatch('getTotalsSearch', searchForm )
 
           console.log(resp)
           console.log(respTotal)
