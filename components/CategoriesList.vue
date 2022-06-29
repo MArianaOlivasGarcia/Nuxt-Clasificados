@@ -35,6 +35,12 @@ export default {
             },
             {
                 id: '2',
+                title: 'Desarrollos',
+                image: 'https://img.icons8.com/dotty/344/01569d/city.png',
+                url: '/desarrollos'
+            },
+            {
+                id: '3',
                 title: 'Vehículos',
                 image: 'https://img.icons8.com/dotty/344/01569d/fiat-500.png',
                 url: '/vehiculos'

@@ -55,6 +55,7 @@
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <NuxtLink class="dropdown-item" to="/bienesraices">Inmuebles</NuxtLink>
+                <NuxtLink class="dropdown-item" to="/desarrollos">Desarrollos</NuxtLink>
                 <NuxtLink class="dropdown-item" to="/vehiculos">Vehículos</NuxtLink>
                 <!-- <a class="dropdown-item" href="#">Empleos</a>
                 <a class="dropdown-item" href="#">Tecnología</a>

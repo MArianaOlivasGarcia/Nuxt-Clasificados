@@ -74,6 +74,7 @@ export default {
       '~/components',
       '~/components/searchs/',
       '~/components/bienesraices/',
+      '~/components/desarrollos/',
       '~/components/template/',
       '~/components/vehiculos/',
       '~/components/general/',
