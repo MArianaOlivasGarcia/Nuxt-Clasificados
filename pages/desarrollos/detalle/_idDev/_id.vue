@@ -1,5 +1,7 @@
-<template>  
-    <client-only v-if="!isLoading">    
+
+
+<template>
+  <client-only v-if="!isLoading">    
 
       <div class="container mt-4 mb-4" style="background-color: #fff; padding: 1.25rem;">
 <!-- 
@@ -19,34 +21,36 @@
           <div class="col-md-5 data-container">
             
             <div>
-              <h1>{{ dev.name }}</h1>
-              <p class="card-text text-muted">{{ dev.state }}, {{ dev.city }}</p>
-              <h4 class="price">Desde $ {{ Number(dev.precmin).toLocaleString() }} {{ dev.currency }} <br> Hasta $ {{ Number(dev.precmax).toLocaleString() }} {{ dev.currency }}</h4>
+              <h1>{{ prototype.name }}</h1>
+              <p class="card-text text-muted">{{ prototype.state && prototype.state + ',' }} {{ prototype.city && prototype.city }}</p>
+              <h4 class="price">Venta $ {{ Number(prototype.price).toLocaleString() }} {{ prototype.currency }} <br> Renta $ {{ Number(prototype.pricer).toLocaleString() }} {{ prototype.currencyr }}</h4>
               <div class="postcard-bar"></div>
-              <div class=" d-flex flex-column m-3">
-                  <p class="text-primary">Número de pisos: {{ dev.floors }}</p>
-                  <span v-if="dev.roomsmin"><i class="icon-big-bed-with-one-pillow pl-2 pr-1"></i>Desde {{ dev.roomsmin }} hasta {{ dev.roomsmax }}. </span>
-                  <span v-if="dev.bathroomsmin"><i class="icon-bath pl-2 pr-1"></i>Desde {{ dev.bathroomsmin }} hasta {{ dev.bathroomsmax }}.</span>
-                  <span v-if="dev.m2cmin"><i class="icon-ruler pl-2 pr-1"></i>Desde {{ dev.m2cmin }} m<sup>2</sup> hasta {{ dev.m2cmax }} m<sup>2</sup>.</span>
-                  <span v-if="dev.m2lotmin"><i class="icon-text  pl-2 pr-1"></i>Desde {{dev.m2lotmin}} m<sup>2</sup> hasta {{ dev.m2lotmax }} m<sup>2</sup>.</span>
+              <div class=" d-flex flex-column align-items-center m-3">
+                  <p v-if="prototype.type"><span style="color: #01569D;">Tipo:</span> {{ prototype.type }}</p>
+                  <p><span style="color: #01569D;">Total de unidades:</span> {{ prototype.totalunit }}</p>
+                  <span v-if="prototype.bedrooms"><i class="icon-big-bed-with-one-pillow pl-2 pr-1"></i> {{ prototype.bedrooms }}</span>
+                  <span v-if="prototype.bathrooms"><i class="icon-bath pl-2 pr-1"></i> {{ prototype.bathrooms }} </span>
+                  <span v-if="prototype.m2c"><i class="icon-ruler pl-2 pr-1"></i> {{ prototype.m2c }} m<sup>2</sup></span>
+                  <span v-if="prototype.mlot"><i class="icon-text  pl-2 pr-1"></i> {{prototype.mlot}} m<sup>2</sup></span>
+                  <p><span style="color: #01569D;">Estacionamiento:</span> {{prototype.parkingplace ? prototype.parkingplace : 'NO'}}</p>
               </div>
             </div>
 
             <div>
               <div class="text-center"><span style="font-weight: bold;">Compartir</span></div>
                 <div class="d-flex justify-content-center mt-2">
-                  <a class="social" :href="`http://www.facebook.com/sharer.php?u=${ url }&t=${ dev.name }`" target="_blank"><i class="fab fa-facebook"></i></a>
-                  <a class="social" :href="`https://twitter.com/intent/tweet?url=${ url }&text=${ dev.name }`" target="_blank"><i class="fab fa-twitter"></i></a>
-                  <a class="social" :href="`https://api.whatsapp.com/send?text=${ dev.name } ${url}`" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                  <a class="social" :href="`http://www.facebook.com/sharer.php?u=${ url }&t=${ prototype.name }`" target="_blank"><i class="fab fa-facebook"></i></a>
+                  <a class="social" :href="`https://twitter.com/intent/tweet?url=${ url }&text=${ prototype.name }`" target="_blank"><i class="fab fa-twitter"></i></a>
+                  <a class="social" :href="`https://api.whatsapp.com/send?text=${ prototype.name } ${url}`" target="_blank"><i class="fab fa-whatsapp"></i></a>
                 </div>
               </div>
 
-            <div v-if="dev.latitude && dev.longitude">
+            <div v-if="prototype.latitude && prototype.longitude">
               <span style="font-weight: bold;">Ubicación</span>
               <GoogleMap 
                 style="width: 100%; height: 250px" 
-                :mapLat="dev.latitude" 
-                :mapLng="dev.longitude" 
+                :mapLat="prototype.latitude" 
+                :mapLng="prototype.longitude" 
                 :draggable="false"
                 :scaleControl="false"/>
             </div>
@@ -59,23 +63,15 @@
 
             <div class="row flex-column"> 
               <span style="font-weight: bold;">Descripción</span>
-              <div style="font-size: 14px; text-align: justify; line-height:normal;" v-html="dev.descriptionlong"></div>
+              <div style="font-size: 14px; text-align: justify; line-height:normal;" v-html="prototype.description"></div>
             </div>
 
             <div class="row mt-4">
-              <span style="font-weight: bold;">Explora los prototipos de {{ dev.name }}</span>
+              <span style="font-weight: bold;">Explora las unidades disponibles</span>
             </div>
 
-            <div class="row justify-content-center" v-if="dev.prototipos.length == 0">
-              <p class="text-muted mt-3" style="font-size: 14px">De momento no hay prototipos.</p>
-            </div>
-
-            <div class="row" v-else>
-              <PrototypeCard 
-                v-for="(prop, idx) in dev.prototipos"
-                :key="idx"
-                :prototype="prop"
-              />
+            <div class="row justify-content-center">
+              <p class="text-muted mt-3" style="font-size: 14px">De momento no hay unidades.</p>
             </div>
 
             
@@ -106,10 +102,10 @@
                     src="@/static/images/property-placeholder.jpeg"
                   />
                   <p class="ml-2 pt-3 font-weight-bold text-left mb-1">
-                    {{ dev.user.name }} {{ dev.user.lastname }}
+                    {{ prototype.user.name }} {{ prototype.user.lastname }}
                   </p>
-                  <p class="mb-0 pt-2 ml-2 text-left"><i class="icon-phone"></i> {{ dev.user.cellphone }}</p>
-                  <p class="mb-0 pt-2 ml-2 text-left"><i class="icon-mail-envelope-closed"></i> {{ dev.user.email }}</p>
+                  <p class="mb-0 pt-2 ml-2 text-left"><i class="icon-phone"></i> {{ prototype.user.cellphone }}</p>
+                  <p class="mb-0 pt-2 ml-2 text-left"><i class="icon-mail-envelope-closed"></i> {{ prototype.user.email }}</p>
                 
                 </div>
 
@@ -117,26 +113,27 @@
                   <ContactForm 
                     :v="$v" 
                     :form="form"
-                    :productid="dev.productid"
+                    :productid="prototype.productid"
                     :category="1" />
                 </div>
 
 
 
             </div>
+            
           </div>
+
+          
         </div>
 
       </div> 
     </client-only>
-</template> 
-
-
-
+</template>
 
 <script>
 
 import { required, email } from 'vuelidate/lib/validators' 
+
 
 export default {
     async asyncData ({ params, store }) {
@@ -145,10 +142,10 @@ export default {
       const id = rutaCortada[ rutaCortada.length - 1 ].split('.')[0]
       // fetch data from API
       try {
-        const dev = await store.dispatch('getDevById', id)
-
+        const prototype = await store.dispatch('getPrototypeById', id)
+        console.log(prototype)
         return {
-            dev,
+            prototype
         }
       } catch (error) {
         // Redirect to error page or 404 depending on server response
@@ -156,20 +153,20 @@ export default {
     },
     head() {
 
-      if ( !this.dev ) {
+      if ( !this.prototype ) {
         return {
           title: 'Clasificados contacto | El buscador'
         }
       }
 
-      const { name, descriptionlong, image } = this.dev.meta
+      const { name, description, image } = this.prototype.meta
 
       return {
         title: name,
         meta: [
-          { hid:'description', name:'description', content: descriptionlong},
+          { hid:'description', name:'description', content: description},
           { hid: 'og-title', property: 'og:title', content: name },
-          { hid: 'og-description', property: 'og:description', content: descriptionlong },
+          { hid: 'og-description', property: 'og:description', content: description },
           { hid: 'og-image', property: 'og:image', content: 'https://clasificadoscontacto.com/' + image }
         ] 
       } 
@@ -213,21 +210,20 @@ export default {
         const { fullPath } = this.$route
         this.url = `https://clasificadoscontacto.com${ fullPath }`
 
-
-        for (const property in this.dev.images) {
-          this.images.push('https://clasificadoscontacto.com/' + this.dev.images[property]['image'])
+        for (const property in this.prototype.images) {
+          this.images.push('https://clasificadoscontacto.com/' + this.prototype.images[property]['image'])
         } 
+
+        console.log(this.images)
 
     },
     mounted(){
-      if ( this.dev ){
+      if ( this.prototype ){
         this.isLoading = false
       }
     }
 }
 </script>
-
-
 
 
 <style scoped>

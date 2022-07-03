@@ -539,6 +539,22 @@ const actions = {
   
     },
 
+    async getPrototypeById({ commit, state }, id ){ 
+
+        const resp = await fetch(state.API_URL + state.GET_DEVDETAIL, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8"
+            },
+            body: `tipo=4&searchid=${id}`
+        }).then((res) => res.json())
+        
+        if ( resp.status == 200 ) {
+            return resp.resp.data
+        }
+  
+    },
+
 
 
     // NUEVO BUSCADOR

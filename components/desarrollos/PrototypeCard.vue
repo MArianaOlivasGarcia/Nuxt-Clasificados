@@ -2,7 +2,7 @@
 
 <template>
     <div class="col-md-6 p-0 pr-3">
-      <NuxtLink to="/">
+      <NuxtLink :to="route">
           <div class="card my-2">
             <div class="imageContent">
               <img v-if="prototype.image" :src="'https://clasificadoscontacto.com/' + prototype.image" :alt="prototype.name">
@@ -23,6 +23,9 @@
 </template>
 
 <script>
+
+import helpers from '@/helpers/helpers'
+
 export default {
     props: {
         prototype: {
@@ -30,8 +33,14 @@ export default {
             required: true
         }
     },
+    data() {
+      return {
+        route: ''
+      }
+    },
     created() {
-        console.log(this.prototype)
+        const { fullPath } = this.$route;
+        this.route = fullPath.split('.')[0] + '/' + helpers.normalize( this.prototype.name ) + '_'  + this.prototype.prototypeid + '.html';
     }
 }
 </script>
@@ -41,6 +50,7 @@ export default {
 <style scoped>
   .card {
       height: 375px;
+      border-radius: 0px;
   }
   .card:hover {
     cursor: pointer;
