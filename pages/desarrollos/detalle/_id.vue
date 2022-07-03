@@ -2,13 +2,13 @@
     <client-only v-if="!isLoading">    
 
       <div class="container mt-4 mb-4" style="background-color: #fff; padding: 1.25rem;">
-
+<!-- 
         <Fab 
           v-if="property.user.cellphone" 
           :whatsApp="property.user.cellphone" 
           :folioProperty="property.folio"
           :whatsForm="whatsForm"
-          :v="$v"/>
+          :v="$v"/> -->
 
         <div class="row">
 
@@ -19,33 +19,34 @@
           <div class="col-md-5 data-container">
             
             <div>
-              <h1>{{ property.productName }}</h1>
-              <p class="card-text text-muted">{{ property.colonia }}, {{ property.municipio }}, {{ property.state }}</p>
-              <h4 class="price">$ {{ Number(property.price).toLocaleString()  }} {{ property.currency }}</h4>
+              <h1>{{ dev.name }}</h1>
+              <p class="card-text text-muted">{{ dev.state }}, {{ dev.city }}</p>
+              <h4 class="price">Desde $ {{ Number(dev.precmin).toLocaleString() }} {{ dev.currency }} <br> Hasta $ {{ Number(dev.precmax).toLocaleString() }} {{ dev.currency }}</h4>
               <div class="postcard-bar"></div>
-              <div class="text-center">
-                  <span v-if="property.bedrooms > 0"><i class="icon-big-bed-with-one-pillow pl-2 pr-1"></i>{{ property.bedrooms }}</span>
-                  <span v-if="property.bathrooms > 0"><i class="icon-bath pl-2 pr-1"></i>{{ property.bathrooms }}</span>
-                  <span v-if="property.m2c > 0"><i class="icon-ruler pl-2 pr-1"></i>{{ property.m2c }} m<sup>2</sup></span>
-                  <span v-if="property.mlot > 0"><i class="icon-text  pl-2 pr-1"></i>{{ property.mlot }} m<sup>2</sup></span>
+              <div class=" d-flex flex-column m-3">
+                  <p class="text-primary">Número de pisos: {{ dev.floors }}</p>
+                  <span v-if="dev.roomsmin"><i class="icon-big-bed-with-one-pillow pl-2 pr-1"></i>Desde {{ dev.roomsmin }} hasta {{ dev.roomsmax }}. </span>
+                  <span v-if="dev.bathroomsmin"><i class="icon-bath pl-2 pr-1"></i>Desde {{ dev.bathroomsmin }} hasta {{ dev.bathroomsmax }}.</span>
+                  <span v-if="dev.m2cmin"><i class="icon-ruler pl-2 pr-1"></i>Desde {{ dev.m2cmin }} m<sup>2</sup> hasta {{ dev.m2cmax }} m<sup>2</sup>.</span>
+                  <span v-if="dev.m2lotmin"><i class="icon-text  pl-2 pr-1"></i>Desde {{dev.m2lotmin}} m<sup>2</sup> hasta {{ dev.m2lotmax }} m<sup>2</sup>.</span>
               </div>
             </div>
 
             <div>
               <div class="text-center"><span style="font-weight: bold;">Compartir</span></div>
                 <div class="d-flex justify-content-center mt-2">
-                  <a class="social" :href="`http://www.facebook.com/sharer.php?u=${ url }&t=${ property.description }`" target="_blank"><i class="fab fa-facebook"></i></a>
-                  <a class="social" :href="`https://twitter.com/intent/tweet?url=${ url }&text=${ property.description }`" target="_blank"><i class="fab fa-twitter"></i></a>
-                  <a class="social" :href="`https://api.whatsapp.com/send?text=${ property.description } ${url}`" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                  <a class="social" :href="`http://www.facebook.com/sharer.php?u=${ url }&t=${ dev.name }`" target="_blank"><i class="fab fa-facebook"></i></a>
+                  <a class="social" :href="`https://twitter.com/intent/tweet?url=${ url }&text=${ dev.name }`" target="_blank"><i class="fab fa-twitter"></i></a>
+                  <a class="social" :href="`https://api.whatsapp.com/send?text=${ dev.name } ${url}`" target="_blank"><i class="fab fa-whatsapp"></i></a>
                 </div>
               </div>
 
-            <div>
+            <div v-if="dev.latitude && dev.longitude">
               <span style="font-weight: bold;">Ubicación</span>
               <GoogleMap 
                 style="width: 100%; height: 250px" 
-                :mapLat="property.latitude" 
-                :mapLng="property.longitude" 
+                :mapLat="dev.latitude" 
+                :mapLng="dev.longitude" 
                 :draggable="false"
                 :scaleControl="false"/>
             </div>
@@ -53,300 +54,35 @@
 
         </div>
 
-        <div class="row mt-5">
-          <div class="col-md-7">
-            <div>
+        <div class="row mt-5 px-3">
+          <div class="col-md-8">
+
+            <div class="row flex-column"> 
               <span style="font-weight: bold;">Descripción</span>
-              <div style="font-size: 14px; text-align: justify; line-height:normal;" v-html="property.descriptionlong"></div>
+              <div style="font-size: 14px; text-align: justify; line-height:normal;" v-html="dev.descriptionlong"></div>
             </div>
 
-
-            <div class="amenities mt-3">
-              <span style="font-weight: bold;">Amenidades</span>
-              
-              <div>
-                <h2>Interiores</h2>
-                <div class="container-fluid">
-                    <ul>
-                      <li v-if="property.amenities.interior[0].Amueblado">
-                        <div class="listings_details_icon">
-                          <span class=" icon-armchair"></span>
-                        </div>
-                        <div class="listings_details_content">
-                          <p>Amueblado</p>
-                        </div>
-                      </li>
-                      <li v-if="property.amenities.interior[1].Aire_acondicionado" >
-                        <div class="listings_details_icon">
-                          <span class="icon-air-conditioner"></span>
-                        </div>
-                        <div class="listings_details_content">
-                          <p>Aire acondicionado</p>
-                        </div>
-                      </li>
-                      <li v-if="property.amenities.interior[2].Mini_split" >
-                        <div class="listings_details_icon">
-                          <span class="icon-aire"></span>
-                        </div>
-                        <div class="listings_details_content">
-                          <p>Mini split</p>
-                        </div>
-                      </li>
-                      <li v-if="property.amenities.interior[3].Sala">
-                        <div class="listings_details_icon">
-                          <span class="icon-living-room"></span>
-                        </div>
-                        <div class="listings_details_content">
-                          <p>Sala</p>
-                        </div>
-                      </li>
-                    </ul>
-                    <ul>
-                      <li v-if="property.amenities.interior[4].Cuarto_con_television" >
-                        <div class="listings_details_icon">
-                          <span class="icon-television"></span>
-                        </div>
-                        <div class="listings_details_content">
-                          <p>Cuarto con televisión</p>
-                        </div>
-                      </li>
-                      <li v-if="property.amenities.interior[5].Cuarto_de_lavado">
-                        <div class="listings_details_icon">
-                          <span class="icon-washing-machine"></span>
-                        </div>
-                        <div class="listings_details_content">
-                          <p>Cuarto de lavado</p>
-                        </div>
-                      </li>
-                      <li v-if="property.amenities.interior[6].Cocina">
-                        <div class="listings_details_icon">
-                          <span class="icon-kitchen"></span>
-                        </div>
-                        <div class="listings_details_content">
-                          <p>Cocina</p>
-                        </div>
-                      </li>
-                      <li v-if="property.amenities.interior[7].Casa_inteligente" >
-                        <div class="listings_details_icon">
-                          <span class="icon-smart-home"></span>
-                        </div>
-                        <div class="listings_details_content">
-                          <p>Casa inteligente</p>
-                        </div>
-                      </li>
-                    </ul>
-                    <ul>
-                      <li v-if="property.amenities.interior[8].Lavadero" >
-                        <div class="listings_details_icon">
-                          <span class="icon-washing-machine"></span>
-                        </div>
-                        <div class="listings_details_content">
-                          <p>Lavadero</p>
-                        </div>
-                      </li>
-                      <li v-if="property.amenities.interior[9].Comedor">
-                        <div class="listings_details_icon">
-                          <span class="icon-mesa"></span>
-                        </div>
-                        <div class="listings_details_content">
-                          <p>Comedor</p>
-                        </div>
-                      </li>
-                      <li v-if="property.amenities.interior[10].Lavavajillas">
-                        <div class="listings_details_icon">
-                          <span class="icon-lavavajillas"></span>
-                        </div>
-                        <div class="listings_details_content">
-                          <p>Lavavajillas</p>
-                        </div>
-                      </li>
-                      <li v-if="property.amenities.interior[11].Ventilacion">
-                        <div class="listings_details_icon">
-                          <span class="icon-ventilacion"></span>
-                        </div>
-                        <div class="listings_details_content">
-                          <p>Ventilación</p>
-                        </div>
-                      </li>
-                      <li v-if="property.amenities.interior[12].Estacionamiento_interior" >
-                        <div class="listings_details_icon">
-                          <span class="icon-garage"></span>
-                        </div>
-                        <div class="listings_details_content">
-                          <p>Estacionamiento interior</p>
-                        </div>
-                      </li>
-                    </ul>
-                    
-                </div>  
-              </div>
-
-
-              <div>
-                <h2>Exteriores</h2>
-                    <div class="container-fluid">
-                    <ul>
-                      <li v-if="property.amenities.exterior[0].Balcon" >
-                        <div class="listings_details_icon">
-                          <span class="icon-balcon"></span>
-                        </div>
-                        <div class="listings_details_content">
-                          <p>Balcón</p>
-                        </div>
-                      </li>
-                      <li v-if="property.amenities.exterior[1].Terraza">
-                        <div class="listings_details_icon">
-                          <span class="icon-terraza"></span>
-                        </div>
-                        <div class="listings_details_content">
-                          <p>Terraza</p>
-                        </div>
-                      </li>
-                      <li v-if="property.amenities.exterior[2].Jardin" >
-                        <div class="listings_details_icon">
-                          <span class="icon-jardin"></span>
-                        </div>
-                        <div class="listings_details_content">
-                          <p>Jardín</p>
-                        </div>
-                      </li>
-                      <li v-if="property.amenities.exterior[3].Piscina" >
-                        <div class="listings_details_icon">
-                          <span class="icon-piscina"></span>
-                        </div>
-                        <div class="listings_details_content">
-                          <p>Piscina</p>
-                        </div>
-                      </li>
-                    </ul>
-                    <ul>
-                      <li v-if="property.amenities.exterior[4].Ascensor">
-                        <div class="listings_details_icon">
-                          <span class="icon-elevator"></span>
-                        </div>
-                        <div class="listings_details_content">
-                          <p>Ascensor</p>
-                        </div>
-                      </li>
-                      <li v-if="property.amenities.exterior[5].Cajon_Exterior">
-                        <div class="listings_details_icon">
-                          <span class="icon-persianas"></span>
-                        </div>
-                        <div class="listings_details_content">
-                          <p>Cajón exterior</p>
-                        </div>
-                      </li>
-                      <li v-if="property.amenities.exterior[6].BBq">
-                        <div class="listings_details_icon">
-                          <span class="icon-grill"></span>
-                        </div>
-                        <div class="listings_details_content">
-                          <p>BBq</p>
-                        </div>
-                      </li>
-                      <li v-if="property.amenities.exterior[7].Bar">
-                        <div class="listings_details_icon">
-                          <span class="icon-cocktail"></span>
-                        </div>
-                        <div class="listings_details_content">
-                          <p>Bar</p>
-                        </div>
-                      </li>
-                    </ul>
-                    <ul>
-                      <li v-if="property.amenities.exterior[8].Gym" >
-                        <div class="listings_details_icon">
-                          <span class="icon-weightlifter"></span>
-                        </div>
-                        <div class="listings_details_content">
-                          <p>Gym</p>
-                        </div>
-                      </li>
-                      <li v-if="property.amenities.exterior[9].Muelle">
-                        <div class="listings_details_icon">
-                          <span class="icon-muelle"></span>
-                        </div>
-                        <div class="listings_details_content">
-                          <p>Muelle</p>
-                        </div>
-                      </li>
-                      <li v-if="property.amenities.exterior[10].Cortina_anticiclonica">
-                        <div class="listings_details_icon">
-                          <span class="icon-cyclone"></span>
-                        </div>
-                        <div class="listings_details_content">
-                          <p>Cortina anticiclónica</p>
-                        </div>
-                      </li>
-                      <li v-if="property.amenities.exterior[11].Zona_de_maniobras">
-                        <div class="listings_details_icon">
-                          <span class="icon-trasvolar"></span>
-                        </div>
-                        <div class="listings_details_content">
-                          <p>Zona de maniobras</p>
-                        </div>
-                      </li>
-                    </ul>
-                    <ul>
-                      <li v-if="property.amenities.exterior[12].Area_de_descargo">
-                        <div class="listings_details_icon">
-                          <span class="icon-discharge"></span>
-                        </div>
-                        <div class="listings_details_content">
-                          <p>Área de descargo</p>
-                        </div>
-                      </li>
-                      <li v-if="property.amenities.exterior[13].Stand">
-                        <div class="listings_details_icon">
-                          <span class="icon-food-stand"></span>
-                        </div>
-                        <div class="listings_details_content">
-                          <p>Stand</p>
-                        </div>
-                      </li>
-                      <li v-if="property.amenities.exterior[14].Cortina_de_metal">
-                        <div class="listings_details_icon">
-                          <span class="icon-blinds"></span>
-                        </div>
-                        <div class="listings_details_content">
-                          <p>Cortina de metal</p>
-                        </div>
-                      </li>
-                      <li v-if="property.amenities.exterior[15].Congelador">
-                        <div class="listings_details_icon">
-                          <span class="icon-freezer"></span>
-                        </div>
-                        <div class="listings_details_content">
-                          <p>Congelador</p>
-                        </div>
-                      </li>
-                    </ul>
-                    <ul>
-                      <li v-if="property.amenities.exterior[16].Estacionamiento_exterior">
-                        <div class="listings_details_icon">
-                          <span class="icon-parking-area"></span>
-                        </div>
-                        <div class="listings_details_content">
-                          <p>Estacionamiento exterior</p>
-                        </div>
-                      </li>
-                      <li v-if="property.amenities.exterior[17].Cisterna">
-                        <div class="listings_details_icon">
-                          <span class="icon-water-tank"></span>
-                        </div>
-                        <div class="listings_details_content">
-                          <p>Cisterna</p>
-                        </div>
-                      </li>
-                    </ul>
-                  </div>
-              </div>
-
+            <div class="row mt-4">
+              <span style="font-weight: bold;">Explora los prototipos de {{ dev.name }}</span>
             </div>
+
+            <div class="row justify-content-center" v-if="dev.prototipos.length == 0">
+              <p class="text-muted mt-3" style="font-size: 14px">De momento no hay prototipos.</p>
+            </div>
+
+            <div class="row" v-else>
+              <PrototypeCard 
+                v-for="(prop, idx) in dev.prototipos"
+                :key="idx"
+                :prototype="prop"
+              />
+            </div>
+
+            
           </div>
 
 
-          <div class="col-md-5">
+          <div class="col-md-4">
 
             <div class="text-center">
               <div style="justify-content: center;
@@ -370,19 +106,19 @@
                     src="@/static/images/property-placeholder.jpeg"
                   />
                   <p class="ml-2 pt-3 font-weight-bold text-left mb-1">
-                    {{property.user.name}} {{property.user.lastname}}
+                    {{'property.user.name'}} {{'property.user.lastname'}}
                   </p>
-                  <p class="mb-0 pt-2 ml-2 text-left"><i class="icon-phone"></i> {{property.user.cellphone}}</p>
-                  <p class="mb-0 pt-2 ml-2 text-left"><i class="icon-mail-envelope-closed"></i> {{property.user.email}}</p>
+                  <p class="mb-0 pt-2 ml-2 text-left"><i class="icon-phone"></i> {{'property.user.cellphone'}}</p>
+                  <p class="mb-0 pt-2 ml-2 text-left"><i class="icon-mail-envelope-closed"></i> {{'property.user.email'}}</p>
                 
                 </div>
 
-                <div class="rounded">
+                <!-- <div class="rounded">
                   <ContactForm 
                     :v="$v" 
                     :form="form"
                     :category="1" />
-                </div>
+                </div> -->
 
 
 
@@ -390,7 +126,7 @@
           </div>
         </div>
 
-      </div>
+      </div> 
     </client-only>
 </template> 
 
@@ -408,10 +144,10 @@ export default {
       const id = rutaCortada[ rutaCortada.length - 1 ].split('.')[0]
       // fetch data from API
       try {
-        const property = await store.dispatch('getPropertyDetail', id)
+        const dev = await store.dispatch('getDevById', id)
 
         return {
-            property,
+            dev,
         }
       } catch (error) {
         // Redirect to error page or 404 depending on server response
@@ -419,20 +155,21 @@ export default {
     },
     head() {
 
-      if ( !this.property ) {
+      if ( !this.dev ) {
         return {
           title: 'Clasificados contacto | El buscador'
         }
       }
-      const { title, description, image } = this.property.meta
+
+      const { name, descriptionlong, image } = this.dev.meta
 
       return {
-        title: title,
+        title: name,
         meta: [
-          { hid:'description', name:'description', content: description},
-          { hid: 'og-title', property: 'og:title', content: title },
-          { hid: 'og-description', property: 'og:description', content: description },
-          { hid: 'og-image', property: 'og:image', content: image }
+          { hid:'description', name:'description', content: descriptionlong},
+          { hid: 'og-title', property: 'og:title', content: name },
+          { hid: 'og-description', property: 'og:description', content: descriptionlong },
+          { hid: 'og-image', property: 'og:image', content: 'https://clasificadoscontacto.com/' + image }
         ] 
       } 
     },
@@ -476,14 +213,16 @@ export default {
         this.url = `https://clasificadoscontacto.com${ fullPath }`
 
 
-        for (const property in this.property.images) {
-          this.images.push(this.property.images[property]['largefile'])
+        for (const property in this.dev.images) {
+          this.images.push('https://clasificadoscontacto.com/' + this.dev.images[property]['image'])
         } 
+
+        console.log(this.images)
 
     },
     mounted(){
-      if ( this.property ){
-        console.log(this.property)
+      if ( this.dev ){
+        console.log(this.dev)
         this.isLoading = false
       }
     }
@@ -502,7 +241,7 @@ export default {
     font-size: 24px;
     color: #00569d;
     font-weight: 700;
-    line-height: 10px;
+    line-height: 30px;
   }
 
   h2 {

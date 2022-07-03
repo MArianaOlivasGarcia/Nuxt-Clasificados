@@ -1,36 +1,35 @@
 
 <template>
+
   <NuxtLink :to="route" class="card">
     <div class="imageContent">
-      <img class="card-img-top" :src="vehiculo.image" :alt="vehiculo.name">
-      <span class="type">{{ vehiculo.category }}</span>
-      <span class="fav">
-          <i class="fas fa-heart"></i>
-          <i class="far fa-heart"></i>
-        </span>
+      <img class="card-img-top" :src="dev.image" :alt="dev.name">
+      <!-- <span class="type">{{ property.tipo }}</span> -->
+      
     </div>
     <div class="card-body">
         <div>
-            <div style="display: flex;
-                justify-content: space-between;
-                align-items: center;">
-                <h5 class="card-title pricecard m-0">$ {{ vehiculo.price }} {{ vehiculo.currency }}</h5>
-                <span class="year">{{ vehiculo.year }}</span>
-            </div>
+            <h6 class="card-title pricecard m-0">Desde $ {{ dev.precmin ? Number(dev.precmin).toLocaleString() : '-'  }} hasta {{ dev.precmax ? Number(dev.precmax).toLocaleString() : '-'  }}</h6>
             <div class="postcard-bar"></div>
-            <p class="card-text"><small class="text-muted" style="font-size: 14px">{{ vehiculo.city }}, {{ vehiculo.state }}</small></p>
-            <h2 class="card-text">{{ vehiculo.name }}</h2>
+            <p class="card-text"><small class="text-muted" style="font-size: 14px">{{ dev.state }}, {{ dev.city }}</small></p>
+            <h1 class="card-text">{{ dev.name }}</h1>
+            <!-- <p class="text-description">{{ dev.descriptionlong }}</p> -->
+            <p class="text-description">{{ text.length > 90 ? text.substring(0, 90) + '...' : text  }}</p>
+            <p class="text-description"></p>
         </div>
-        <div class="text-center">
-            <span ><i class="fas fa-car pl-2 pr-1"></i>{{vehiculo.usename ? Number(vehiculo.usename.split(' ')[0]).toLocaleString() : NaN}} {{ vehiculo.usename && vehiculo.usename.split(' ')[1] }}</span>
-            <!-- <span ><i class="fas fa-motorcycle pl-2 pr-1"></i>{{ vehiculo.km }} km</span> -->
-        </div>
-
-
-        
+        <!-- <div class="text-center"> -->
+            <!-- <span v-if="property.bedrooms > 0"><i class="icon-big-bed-with-one-pillow pl-2 pr-1"></i>{{ property.bedrooms }}</span>
+            <span v-if="property.bathrooms > 0"><i class="icon-bath pl-2 pr-1"></i>{{ property.bathrooms }}</span>
+            <span v-if="property.m2c > 0"><i class="icon-ruler pl-2 pr-1"></i>{{ property.m2c }} m<sup>2</sup></span>
+            <span v-if="property.mlot > 0"><i class="icon-text  pl-2 pr-1"></i>{{ property.mlot }} m<sup>2</sup></span> -->
+        <!-- </div> -->
     </div>
-    <span class="operation">{{ vehiculo.operation }}</span>
 
+    <!-- <span class="operation">{{ property.operation }}</span> -->
+    <!-- <span class="fav">
+          <i class="fas fa-heart"></i>
+          <i class="far fa-heart"></i>
+    </span> -->
   </NuxtLink>
 
 </template>
@@ -41,20 +40,22 @@ import helpers from '@/helpers/helpers'
 
 
 export default {
-    props: {
-        vehiculo: {
+    props:{
+        dev: {
             type: Object,
             required: true
         }
     },
     data() {
         return {
-            route: ''
+            route: '',
+            text: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ea, delectus quis hic magnam inventore excepturi maiores reiciendis temporibus quos. Expedita ullam quod aliquam enim veniam provident id reiciendis ea perferendis.'
         }
     },
-    created() {
-        // console.log(this.vehiculo)
-        this.route = `/vehiculos/detalle/${helpers.normalize( this.vehiculo.name )}_${ this.vehiculo.productoid }.html`
+     created() {
+        // console.log(this.dev)
+        this.route = `/desarrollos/detalle/${helpers.normalize( this.dev.name )}_${ this.dev.developmentid }.html`
+        // console.log(this.route)
     },
 
 }
@@ -81,10 +82,8 @@ export default {
         height: 100%;
         object-fit: cover;
     }
-    h5 {
-        margin-top: 0px !important;
-    }
-    h2 {
+
+    h1 {
         text-align: justify;
         overflow: hidden;
         text-overflow: ellipsis;
@@ -93,7 +92,6 @@ export default {
            line-clamp: 3; 
         -webkit-box-orient: vertical;
         font-size: 16px;
-
     }
 
     span.operation {
@@ -135,14 +133,6 @@ export default {
       font-weight: 500;
     }
 
-    span.year {
-        border: 1px solid;
-        padding: 0 10px;
-        font-size: 13px;
-        color: #6c757d;
-    }
-
-
 
 
     span.fav {
@@ -172,6 +162,11 @@ export default {
         font-size: 24px;
         /* color: #01569D; */
         color: #f2e115;
+    }
+
+    .text-description{
+        font-size: 14px;
+        text-align: justify;
     }
 
 </style>

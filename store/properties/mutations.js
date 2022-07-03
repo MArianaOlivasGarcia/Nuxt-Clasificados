@@ -85,6 +85,9 @@ const mutations = {
     },
     setModelosVehiculos( state, value ) {
         state.modelosVehiculos = value
+    },
+    setDevs( state, value ) {
+        state.devsList = value
     }
 }
 

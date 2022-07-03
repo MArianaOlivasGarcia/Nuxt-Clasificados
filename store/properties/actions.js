@@ -506,6 +506,39 @@ const actions = {
     },
 
 
+    async getDevs({ commit, state } ){ 
+
+        const resp = await fetch(state.API_URL + state.GET_DEVS, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8"
+            },
+            body: `tipo=1`
+        }).then((res) => res.json())
+        
+        if ( resp.status == 200 ) {
+            commit('setDevs', resp.resp.data)
+            return resp.resp.data
+        }
+  
+    },
+
+    async getDevById({ commit, state }, idDev ){ 
+
+        const resp = await fetch(state.API_URL + state.GET_DEVDETAIL, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8"
+            },
+            body: `tipo=3&searchid=${idDev}`
+        }).then((res) => res.json())
+        
+        if ( resp.status == 200 ) {
+            return resp.resp.data
+        }
+  
+    },
+
 
 
     // NUEVO BUSCADOR
@@ -548,6 +581,7 @@ const actions = {
         }  
   
     },
+
 
 }
 

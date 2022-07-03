@@ -37,6 +37,9 @@ const state = {
     GET_MODELOS_VEHICULOS: '?site=MktPTjlBWnU1VXdEanRJUFdHbHZ6dz09',
     GET_VEHICULODETAIL: '?site=R25EbUlHWFZWeWFsUjNnSDFQeU1wUUVaRFRpTEJTQ1ZlbXJmai9sbG1DST0=',
 
+    // DESARROLLOS
+    GET_DEVS: '?site=a1BoT2JmNmxvL1dRcit0VmIwbkRzSTI1NWVsbXF6UDdLYitTVlVadG5LMD0=',
+    GET_DEVDETAIL: '?site=a1BoT2JmNmxvL1dRcit0VmIwbkRzSTI1NWVsbXF6UDdLYitTVlVadG5LMD0=',
 
     // NUEVA BUSQUEDA
     GETTOTALS: '?site=VFp2ckNTNmhjUGdNYk93UythUHJxSTVMdktETC9YaG9tTWIyTDlPWCtZaz0=',
@@ -130,7 +133,8 @@ const state = {
         nameInmo: '',
         whatsappInmo: '',
     },
-
+    // DEVS
+    devsList: []
 }
 
 
