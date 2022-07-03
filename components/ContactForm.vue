@@ -121,6 +121,7 @@ export default {
           type: Number,
           required: true
         },
+        productid: String
     },
     data() {
         return {
@@ -151,7 +152,14 @@ export default {
     },
     created() {
       const rutaCortada = this.$route.path.split('_')
-      this.idProduct = rutaCortada[ rutaCortada.length -1 ].split('.')[0]
+
+      if ( !this.productid ) {
+        console.log('No se mando el productid')
+        this.idProduct = rutaCortada[ rutaCortada.length -1 ].split('.')[0]
+      } else  {
+        this.idProduct = this.productid;
+      }
+
     },
     methods: {
         async sendMain(){
@@ -167,6 +175,7 @@ export default {
             ...this.form,
             idProduct: this.idProduct
           }
+
 
           const success = await this.$store.dispatch('sendMain', data)
 

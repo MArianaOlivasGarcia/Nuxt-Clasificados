@@ -106,19 +106,20 @@
                     src="@/static/images/property-placeholder.jpeg"
                   />
                   <p class="ml-2 pt-3 font-weight-bold text-left mb-1">
-                    {{'property.user.name'}} {{'property.user.lastname'}}
+                    {{ dev.user.name }} {{ dev.user.lastname }}
                   </p>
-                  <p class="mb-0 pt-2 ml-2 text-left"><i class="icon-phone"></i> {{'property.user.cellphone'}}</p>
-                  <p class="mb-0 pt-2 ml-2 text-left"><i class="icon-mail-envelope-closed"></i> {{'property.user.email'}}</p>
+                  <p class="mb-0 pt-2 ml-2 text-left"><i class="icon-phone"></i> {{ dev.user.cellphone }}</p>
+                  <p class="mb-0 pt-2 ml-2 text-left"><i class="icon-mail-envelope-closed"></i> {{ dev.user.email }}</p>
                 
                 </div>
 
-                <!-- <div class="rounded">
+                <div class="rounded">
                   <ContactForm 
                     :v="$v" 
                     :form="form"
+                    :productid="dev.productid"
                     :category="1" />
-                </div> -->
+                </div>
 
 
 
