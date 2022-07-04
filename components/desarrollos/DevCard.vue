@@ -14,7 +14,7 @@
             <p class="card-text"><small class="text-muted" style="font-size: 14px">{{ dev.state }}, {{ dev.city }}</small></p>
             <h1 class="card-text">{{ dev.name }}</h1>
             <!-- <p class="text-description">{{ dev.descriptionlong }}</p> -->
-            <p class="text-description">{{ text.length > 90 ? text.substring(0, 90) + '...' : text  }}</p>
+            <p class="text-description">{{ dev.descriptionlong.length > 90 ? dev.descriptionlong.substring(0, 90) + '...' : dev.descriptionlong  }}</p>
             <p class="text-description"></p>
         </div>
         <!-- <div class="text-center"> -->
