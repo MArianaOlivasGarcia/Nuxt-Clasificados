@@ -193,6 +193,11 @@ export default {
 
             this.isLoading = true;
 
+            const data = {
+              ...this.form,
+              phone: this.form.phone.slice(4).replace(/ /g, ''),
+            }
+
             const { folio, message }  = await this.$store.dispatch('register', this.form)
             
             if ( folio == '0' ) {

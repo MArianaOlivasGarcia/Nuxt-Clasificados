@@ -271,7 +271,7 @@ const actions = {
     async register({ commit, state }, form ){
 
 
-        commit('setAPI_PARAMS', { body: `RDx_nombre=${form.name}&RDx_correo=${form.email}&RDx_contra=${form.password}&SDx_empresa=${form.company}` } )
+        commit('setAPI_PARAMS', { body: `RDx_nombre=${form.name}&RDx_correo=${form.email}&RDx_contra=${form.password}&SDx_empresa=${form.company}&SDx_celular=${form.phone}` } )
 
         const config = state.API_PARAMS
 
