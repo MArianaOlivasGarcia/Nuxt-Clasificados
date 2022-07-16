@@ -14,7 +14,33 @@
         </div>
     </section> -->
 
+    <section class="mt-5">
+        <div class="container">
+            <div class="row justify-content-center mb-2 pb-3">
+                <div class="col-md-7 heading-section text-center ftco-animate fadeInUp ftco-animated">
+                    <h2 class="mb-4">DESARROLLOS EN</h2>
+                </div>
+            </div>
 
+             <client-only>
+
+            <VueHorizontalList
+                :items="items"
+                :options="options"
+                >
+                <template v-slot:default="{item}">
+                    <div class="item" :style="`brackground-image: url( ${ item.Photo } );`">
+                        <div style="width: 100%; height: 14rem; position: relative;">
+                            <img :src="`https://clasificadoscontacto.com`+ item.Photo" :alt="item.Municipio" style="height: 100%; border-radius: 20px;">
+                            <div style="width: 100%; height: 14rem; background-color: red; position: absolute; top: 0; border-radius: 20px; background-color: rgba(1, 86, 159, 0.4);"></div>
+                            <h5 style="position: absolute; top: 5%; left: 10%; font-weight: bold; color: white;">{{item.Municipio}}</h5>
+                        </div>
+                    </div>
+                </template>
+            </VueHorizontalList>
+            </client-only>
+        </div>
+    </section>
 
 
 
@@ -56,23 +82,58 @@
 
 import { mapGetters } from "vuex";
 import { required, email } from 'vuelidate/lib/validators' 
-
+import VueHorizontalList from 'vue-horizontal-list'
 
 export default {
     head: {
       titleTemplate: 'Clasificados Contacto | El buscador',
+    },
+    components: {
+        VueHorizontalList,
     },
     computed: {
         ...mapGetters({ isLoading: 'getIsLoading'}),
     },
     async created(){
         this.devs = [];
+        this.items = await this.$store.dispatch("getDevsMunicipalities")
         this.devs = await this.$store.dispatch("getDevs")
+        console.log(this.items)
         console.log(this.devs)
     },
     data() {
         return {
-            devs: []
+            devs: [],
+            municipalities: [],
+            options: {
+        responsive: [
+          { end: 576, size: 1 },
+          { start: 576, end: 768, size: 2 },
+          { start: 768, end: 992, size: 3 },
+          { size: 4 },
+        ],
+        list: {
+          // 1200 because @media (min-width: 1200px) and therefore I want to switch to windowed mode
+          windowed: 1200,
+
+          // Because: #app {padding: 80px 24px;}
+          padding: 24,
+        },
+        position: {
+          start: 2,
+        },
+        autoplay: { play: true, repeat: true, speed: 2500 },
+      },
+      items: [
+        { title: "Item 0", content: "Content item with description" },
+        { title: "Item 1", content: "Content item with description" },
+        { title: "Item 2", content: "Content item with description" },
+        { title: "Item 2", content: "Content item with description" },
+        { title: "Item 2", content: "Content item with description" },
+        { title: "Item 2", content: "Content item with description" },
+        { title: "Item 2", content: "Content item with description" },
+      ],
+    
         }
     },
     validations: {

@@ -3,8 +3,8 @@
 
   <NuxtLink :to="route" class="card">
     <div class="imageContent">
-      <img class="card-img-top" :src="dev.image" :alt="dev.name">
-      <!-- <span class="type">{{ property.tipo }}</span> -->
+      <img v-if="dev.image" class="card-img-top" :src="dev.image" :alt="dev.name">
+      <img v-else class="card-img-top" src="@/static/images/property-placeholder.jpeg" :alt="dev.name">
       
     </div>
     <div class="card-body">
@@ -14,7 +14,7 @@
             <p class="card-text"><small class="text-muted" style="font-size: 14px">{{ dev.state }}, {{ dev.city }}</small></p>
             <h1 class="card-text">{{ dev.name }}</h1>
             <!-- <p class="text-description">{{ dev.descriptionlong }}</p> -->
-            <p class="text-description">{{ dev.descriptionlong.length > 90 ? dev.descriptionlong.substring(0, 90) + '...' : dev.descriptionlong  }}</p>
+            <p v-if="dev.descriptionlong" class="text-description">{{ dev.descriptionlong.length > 90 ? dev.descriptionlong.substring(0, 90) + '...' : dev.descriptionlong  }}</p>
             <p class="text-description"></p>
         </div>
         <!-- <div class="text-center"> -->
