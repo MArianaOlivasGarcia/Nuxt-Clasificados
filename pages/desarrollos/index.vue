@@ -29,13 +29,13 @@
                 :options="options"
                 >
                 <template v-slot:default="{item}">
-                    <div class="item" :style="`brackground-image: url( ${ item.Photo } );`">
+                    <a href="/desarrollos" class="item">
                         <div style="width: 100%; height: 14rem; position: relative;">
                             <img :src="`https://clasificadoscontacto.com`+ item.Photo" :alt="item.Municipio" style="height: 100%; border-radius: 20px;">
                             <div style="width: 100%; height: 14rem; background-color: red; position: absolute; top: 0; border-radius: 20px; background-color: rgba(1, 86, 159, 0.4);"></div>
                             <h5 style="position: absolute; top: 5%; left: 10%; font-weight: bold; color: white;">{{item.Municipio}}</h5>
                         </div>
-                    </div>
+                    </a>
                 </template>
             </VueHorizontalList>
             </client-only>
