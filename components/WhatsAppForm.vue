@@ -151,29 +151,33 @@ export default {
 
 <style scoped>
 
-@media (max-width: 767px) {
-  .adviser-container{
-      width: 50% !important;
-  }
-}
-
-@media (max-width: 576px) {
-  .adviser-container{
-      width: 60% !important;
-  }
-}
 
 .adviser-container {
     z-index: 99;
     position: fixed;
     bottom: 5%;
     right: 3%;
-    width: 25% !important;
+    width: 25% ;
     margin: 0px;
     background: #EAF0F5;
     border-radius: 10px;
     box-shadow: rgba(0, 0, 0, 0.09) 2.4px 2.4px 3.2px !important; 
 }
+
+@media (max-width: 576px) {
+  .adviser-container{
+        width: 70% !important;
+  }
+}
+
+
+@media (max-width: 768px) {
+  .adviser-container{
+        width: 50%;
+  }
+}
+
+
 
 p {
     line-height: 1.3;
