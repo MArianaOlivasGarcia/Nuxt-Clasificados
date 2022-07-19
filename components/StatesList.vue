@@ -18,15 +18,17 @@
 
 <script>
 
-import { mapGetters } from "vuex";
 
 
 export default {
-    computed: {
-      ...mapGetters({ states: 'getStatesList'}),
-  },
+    props: {
+        states: {
+            type: Array,
+            required: true,
+        }
+    },
   created(){
-    //this.$store.dispatch("getStates")
+    console.log(this.states)
   },
   mounted(){
   },

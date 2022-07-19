@@ -1,5 +1,5 @@
 export default {
-  //target: 'static',
+  // target: 'static',
   // Global page headers: https://go.nuxtjs.dev/config-head
   ssr: true, // Importante poner en true
   head: {
@@ -13,8 +13,6 @@ export default {
       { hid: 'description', name: 'description', content: '' },
       { name: 'format-detection', content: 'telephone=no' },
       { name: 'google-signin-client_id', content: '855212464867-dbmnlv1mtfm7ratcr00h7lk706027u30.apps.googleusercontent.com' },
-
-
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
@@ -102,6 +100,7 @@ export default {
   },
   server: {
     // host: '192.168.1.66', // default: localhost
-    port: 8080
+    host: 'localhost', // default: localhost
+    port: 3000
   }
 }

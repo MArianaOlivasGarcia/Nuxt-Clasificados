@@ -125,7 +125,7 @@
     </section> 
    
     <section class="ftco-section bg-cc pb-4 mt-2 wow slideInUp">
-        <StatesList />
+        <StatesList :states="states" />
     </section>
 
 
@@ -143,6 +143,18 @@ import { required, email } from 'vuelidate/lib/validators'
 
 
 export default {
+    async asyncData ({ params, store }) {
+
+      // fetch data from API
+      try {
+        const states = await store.dispatch('getStates')
+        return {
+            states,
+        }
+      } catch (error) {
+        // Redirect to error page or 404 depending on server response
+      }
+    },
     head: {
       titleTemplate: 'Clasificados Contacto | El buscador',
     },
