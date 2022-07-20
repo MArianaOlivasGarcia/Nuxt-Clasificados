@@ -25,7 +25,7 @@
             },]" />
     
 
-        <HistoryList />
+        <HistoryList :data="data"/>
 
 
 
@@ -46,6 +46,19 @@
 
 
 export default {
+     async asyncData ({ params, store }) {
+
+      // fetch data from API
+      try {
+        const data = await store.dispatch('searchGeneral', { limit: 12 });
+
+        return {
+            data,
+        }
+      } catch (error) {
+        // Redirect to error page or 404 depending on server response
+      }
+    },
     head: {
       titleTemplate: 'Clasificados Contacto | El buscador',
     },

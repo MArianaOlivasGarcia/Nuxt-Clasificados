@@ -27,14 +27,19 @@
 <script>
 export default {
 
+    props: {
+        data: {
+            type: Array,
+            required: true
+        }
+    },
     data() {
         return {
             isLoading: true,
-            data: []
         }
     },
     async created() {
-        this.data = await this.$store.dispatch('searchGeneral', { limit: 12 });
+        // console.log(this.data)
         this.isLoading = false;
     }
 

@@ -24,16 +24,18 @@
 
 <script>
 export default {
-
+    props: {
+        vehiculos: {
+            type: Array,
+            required: true
+        }
+    },
     data() {
         return {
             isLoading: true,
-            vehiculos: []
-
         }
     },
     async created() {
-        this.vehiculos = await this.$store.dispatch('getVehiculosOutstanding');
         this.isLoading = false;
     }
 

@@ -147,9 +147,13 @@ export default {
 
       // fetch data from API
       try {
-        const states = await store.dispatch('getStates')
+        const states = await store.dispatch('getStates');
+        const outstanding = await store.dispatch("getOutstanding")
+    
+
         return {
             states,
+            outstanding
         }
       } catch (error) {
         // Redirect to error page or 404 depending on server response
@@ -162,9 +166,7 @@ export default {
         ...mapGetters({ isLoading: 'getIsLoading'}),
     },
     async created(){
-        this.outstanding = [];
-        this.outstanding = await this.$store.dispatch("getOutstanding")
-    
+        
     },
     data() {
         return {

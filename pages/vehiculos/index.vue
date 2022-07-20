@@ -20,7 +20,7 @@
 
 
 
-    <CarsList />
+    <CarsList :vehiculos="vehiculos"/>
 
 
 
@@ -33,6 +33,20 @@
 <script>
 
 export default {
+
+    async asyncData ({ params, store }) {
+
+      // fetch data from API
+      try {
+        const vehiculos = await store.dispatch("getVehiculosOutstanding")
+
+        return {
+            vehiculos
+        }
+      } catch (error) {
+        // Redirect to error page or 404 depending on server response
+      }
+    },
     head: {
       titleTemplate: 'Clasificados Contacto | Vehículos',
     },

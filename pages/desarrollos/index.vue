@@ -85,6 +85,21 @@ import { required, email } from 'vuelidate/lib/validators'
 import VueHorizontalList from 'vue-horizontal-list'
 
 export default {
+    async asyncData ({ params, store }) {
+
+      // fetch data from API
+      try {
+        const municipalities = await store.dispatch("getDevsMunicipalities")
+        const devs = await store.dispatch("getDevs")
+
+        return {
+            municipalities,
+            devs
+        }
+      } catch (error) {
+        // Redirect to error page or 404 depending on server response
+      }
+    },
     head: {
       titleTemplate: 'Clasificados Contacto | El buscador',
     },
@@ -95,17 +110,13 @@ export default {
         ...mapGetters({ isLoading: 'getIsLoading'}),
     },
     async created(){
-        this.devs = [];
-        this.items = await this.$store.dispatch("getDevsMunicipalities")
-        this.devs = await this.$store.dispatch("getDevs")
+        this.items = this.municipalities;
         console.log(this.items)
         console.log(this.devs)
     },
     data() {
         return {
-            devs: [],
-            municipalities: [],
-            options: {
+        options: {
         responsive: [
           { end: 576, size: 1 },
           { start: 576, end: 768, size: 2 },
