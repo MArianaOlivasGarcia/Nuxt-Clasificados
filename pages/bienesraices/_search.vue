@@ -69,14 +69,97 @@ import { mapGetters } from 'vuex';
 import { required, email } from 'vuelidate/lib/validators' 
 
 export default {
-  async asyncData ({ params, store }) {
+  async asyncData ({ params, store, query }) {
+
+
+      try {
+
+
+      let loadingProperties = true;
+      let totalResults = 0;
+      let properties = [];
+
+      const { search } = params;
+
+      // 1. cortar *con*
+      const urlCortada = search.split('-con-')
+      let primeraUrl = urlCortada[0]?.split('.html')[0] // Quitar el .html;
+      const segundaUrl = urlCortada[1]?.split('.html')[0] //Quitar el .html
+      // Cortar las url
+      let primerSearch = primeraUrl.split('-en-')
+      const segundoSearch = segundaUrl?.split('-y-')
+      
+      let googlePlace = '';
+      if ( search.includes('-ubicado-en-') ){
+          console.log('ES CON GOOGLE')
+          googlePlace = primeraUrl.split('-ubicado-en-')[1];
+          primerSearch = urlCortada[0]?.split('.html')[0].split('-ubicado-en-')[0].split('-en-')
+      }
+
+      // Crear arreglo con todos los valores que asignaremos a la busqueda
+        let buscar = []
+        let buscar2 = []
+        
+        let param = '';
+        // Agregar los valores del primer search
+        primerSearch.forEach((element, index) => {
+          // Si es una busqueda de google 
+          // if ( search.includes('-ubicado-en-') ){
+            param = element.split('_')[1]
+
+          // } else {
+            // param = element.split('_')[1]
+          // }
+          buscar.push(param)
+        });
+
+        segundoSearch?.forEach(element => {
+          const param = {
+            key: element.split('_')[1],
+            value: element.split('_')[0]
+          }
+          buscar2.push(param)
+        });
+
+        const searchForm = {
+          page: query.pagina ? query.pagina : 1,
+          category: buscar[0],
+          operation: buscar[1],
+          state: !search.includes('-ubicado-en-') ? buscar[2] : undefined,
+          keywordAddrs: search.includes('-ubicado-en-') ? googlePlace : undefined,
+          city: buscar[3],
+          suburb: buscar[4],
+          bathroom: buscar2.find(e => e.key === 'banos')?.value,
+          bedroom: buscar2.find(e => e.key === 'recamaras')?.value,
+          pricemin: buscar2.find(e => e.key === 'minimo')?.value,
+          pricemax: buscar2.find(e => e.key === 'maximo')?.value,
+          m2t: buscar2.find(e => e.key === 'm2t')?.value,
+          m2c: buscar2.find(e => e.key === 'm2c')?.value,
+        }
+
+
+        console.log(searchForm)
+
+
+        const [resp, respTotal] = await Promise.all([
+            store.dispatch('search', searchForm ),
+            store.dispatch('getTotalsSearch', searchForm )
+        ])
+
+        totalResults = Number(respTotal);
+        properties = resp.data
+
+        loadingProperties = false;
+
+
+
 
       // fetch data from API
-      try {
-        const data = await store.dispatch('searchGeneral', { limit: 12 });
 
         return {
-            data,
+          loadingProperties,
+          totalResults,
+          properties
         }
       } catch (error) {
         // Redirect to error page or 404 depending on server response
@@ -89,8 +172,8 @@ export default {
     },
     data(){
       return {
-        properties: [],
-        totalResults: 0,
+        // properties: [],
+        // totalResults: 0,
         whatsForm: {
           name: '',
           whatsapp: '',
@@ -98,7 +181,7 @@ export default {
           email: ''
         },
         loading: true,
-        loadingProperties: true
+        // loadingProperties: true
       }
     },
    
@@ -122,41 +205,6 @@ export default {
         */
 
         const { search } = this.$route.params
-
-
-        /// REMOVER COMENTARIO EN LO QUE NO HAY VEHICULOS
-        // Verificar que sea busqueda general
-        // EJEMPLO /buscar-por-casa-con-alberca.html?pagina=1
-        const isGeneralSearch = search.split('-por-')[0];
-
-        if( isGeneralSearch == 'buscar' ) {
-          const keyword = search.split('-por-')[1].split('.')[0].replace(/-/g, ' ') 
-          const searchForm = {
-            page: this.$route.query.pagina ? this.$route.query.pagina : 1,
-            keyword,
-            category: 1
-          }
-
-
-          const [resp, respTotal ] = await Promise.all([
-            this.$store.dispatch('search', searchForm ),
-            this.$store.dispatch('getTotalsSearch', searchForm )
-          ])
-          
-
-          // const resp = await  this.$store.dispatch('search', searchForm )
-          // const respTotal = await  this.$store.dispatch('getTotalsSearch', searchForm )
-          this.totalResults = Number(respTotal);
-          this.properties = resp.data
-
-          this.loadingProperties = false;
-
-          return;
-        }
-
-
-        /// REMOVER FIN COMENTARIO EN LO QUE NO HAY VEHICULOS
-
         
 
         // 1. cortar *con*
@@ -236,7 +284,7 @@ export default {
       }
     },
     created() {
-        this.getProperties();
+        // this.getProperties();
         this.$nextTick( function() {
           this.loading = false
         })
