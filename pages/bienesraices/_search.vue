@@ -121,9 +121,13 @@ export default {
           buscar2.push(param)
         });
 
+        console.log('AQUIII')
+        console.log(buscar[0])
+
         const searchForm = {
           page: query.pagina ? query.pagina : 1,
-          category: buscar[0],
+          category: 1,
+          type: buscar[0],
           operation: buscar[1],
           state: !search.includes('-ubicado-en-') ? buscar[2] : undefined,
           keywordAddrs: search.includes('-ubicado-en-') ? googlePlace : undefined,
