@@ -560,7 +560,6 @@ const actions = {
     // NUEVO BUSCADOR
     async getTotalsSearch({ commit, state }, formData ){
 
-            console.log(formData)
         const resp = await fetch(state.API_URL + state.GETTOTALS, {
             method: "POST",
             headers: {
@@ -578,7 +577,6 @@ const actions = {
 
     async search({ commit, state }, formData ){
 
-        console.log(formData)
         commit( 'setLoading', true )
         commit('setSearchFormValues', formData)
 
