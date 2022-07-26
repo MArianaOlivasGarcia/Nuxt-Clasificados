@@ -49,7 +49,7 @@
             <li class="nav-item">
                   <NuxtLink to="/" class="link">Inicio</NuxtLink>
             </li>
-            <li class="nav-item dropdown">
+            <li class="nav-item dropdown flex-column">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Categorías
               </a>
@@ -330,7 +330,7 @@ img.lupa-icon {
   }
 
 
-@media (max-width: 768px) {
+@media (max-width: 992px) {
   .content1 {
     flex-direction: column;
   }
