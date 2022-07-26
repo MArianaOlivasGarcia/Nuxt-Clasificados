@@ -129,10 +129,10 @@ export default {
 
             const data = {
                 ...this.whatsForm,
-                productId
+                productId,
+                email: this.whatsForm.email ?? 'Sin email'
             }
-
-            const resp = await this.$store.dispatch('sendToWhatsApp', data)
+        const resp = await this.$store.dispatch('sendToWhatsApp', data)
             
             if ( !resp ) {
                 Swal.fire({
@@ -142,6 +142,7 @@ export default {
                 })
                 return;
             } 
+
 
             window.open(`https://wa.me/+52${ this.whatsappNumber }?text=${ this.whatsForm.message  } - https://clasificadoscontacto.com${this.$route.path}`, '_blank');
         }

@@ -466,7 +466,7 @@ export default {
             name: { required },
             whatsapp: { required },
             message: { required },
-            email: { required, email }
+            email: { email }
         },
         
     },

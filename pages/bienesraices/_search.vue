@@ -121,8 +121,6 @@ export default {
           buscar2.push(param)
         });
 
-        console.log('AQUIII')
-        console.log(buscar[0])
 
         const searchForm = {
           page: query.pagina ? query.pagina : 1,
@@ -142,9 +140,6 @@ export default {
         }
 
 
-        console.log(searchForm)
-
-
         const [resp, respTotal] = await Promise.all([
             store.dispatch('search', searchForm ),
             store.dispatch('getTotalsSearch', searchForm )
@@ -154,8 +149,6 @@ export default {
         properties = resp.data
 
         loadingProperties = false;
-
-
 
 
       // fetch data from API
@@ -284,6 +277,12 @@ export default {
         // console.log(this.properties)
 
         this.loadingProperties = false;
+
+
+
+        console.log('PRIMERA VEZ AQUI')
+        console.log(this.totalResults)
+        console.log(this.properties)
 
       }
     },

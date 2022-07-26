@@ -51,7 +51,7 @@ export default {
   },
   created() {
     this.number = this.whatsApp.replace('(', '')
-                             .replace(' ', '')
+                             .replace(/ /g, '')
                              .replace(')', '')
                              .replace('-', '');
     this.text = `Me gustaría tener más información sobre esta propiedad. https://clasificadoscontacto.com${this.$route.path}` ;
@@ -61,6 +61,7 @@ export default {
   },
   methods: {
     openWhatsForm() {
+
       this.$store.commit('setShowWhatsForm', !this.showWhatsForm)
     }
   }
