@@ -185,6 +185,8 @@ export default {
                 title: 'Oops',
                 text: `No se pudo enviar el mensaje.`
             })
+            this.isLoading = false
+            return;
            } 
 
            const { name } = success
