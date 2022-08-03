@@ -1,5 +1,4 @@
 <template>  
-    <client-only v-if="!isLoading">    
 
       <div class="container mt-4 mb-4" style="background-color: #fff; padding: 1.25rem;">
 
@@ -391,7 +390,6 @@
         </div>
 
       </div>
-    </client-only>
 </template> 
 
 
