@@ -121,7 +121,10 @@ export default {
           type: Number,
           required: true
         },
-        productid: String
+        productid: {
+          type: String,
+          required: true
+        }
     },
     data() {
         return {

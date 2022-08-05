@@ -3,7 +3,7 @@ export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
   ssr: true, // Importante poner en true
   head: {
-    title: 'clasificados',
+    title: 'Clasificados Contacto',
     htmlAttrs: {
       lang: 'en'
     },

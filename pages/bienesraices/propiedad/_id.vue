@@ -11,9 +11,11 @@
 
         <div class="row">
 
-          <div class="col-md-7 gallery-content ">
-            <lightbox :cells="4" :items="images"></lightbox>
-          </div>
+          <client-only>
+            <div class="col-md-7 gallery-content ">
+              <lightbox :cells="4" :items="images"></lightbox>
+            </div>
+          </client-only>
 
           <div class="col-md-5 data-container">
             
@@ -41,12 +43,15 @@
 
             <div>
               <span style="font-weight: bold;">Ubicación</span>
-              <GoogleMap 
-                style="width: 100%; height: 250px" 
-                :mapLat="property.latitude" 
-                :mapLng="property.longitude" 
-                :draggable="false"
-                :scaleControl="false"/>
+              <client-only>
+
+                <GoogleMap 
+                  style="width: 100%; height: 250px" 
+                  :mapLat="property.latitude" 
+                  :mapLng="property.longitude" 
+                  :draggable="false"
+                  :scaleControl="false"/>
+              </client-only>
             </div>
           </div>
 
@@ -380,6 +385,7 @@
                   <ContactForm 
                     :v="$v" 
                     :form="form"
+                    :productid="property.folio"
                     :category="1" />
                 </div>
 
@@ -436,7 +442,6 @@ export default {
     },
     data() {
         return {
-            isLoading: true,
             form: {
                 name: '',
                 email: '',
@@ -480,10 +485,6 @@ export default {
 
     },
     mounted(){
-      if ( this.property ){
-        console.log(this.property)
-        this.isLoading = false
-      }
     }
 }
 </script>

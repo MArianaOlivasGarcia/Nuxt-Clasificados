@@ -127,9 +127,24 @@ import { required, email } from 'vuelidate/lib/validators'
 import Swal from 'sweetalert2'
 
 export default {
-    head: {
-      titleTemplate: 'Clasificados Contacto | Registrate',
+    head() {
+
+        const description = `Ingresa a Clasificados contacto, registra tus datos y forma parte del portal más grande en el Bajío. ¡Anunciate ya, recibe más clientes y vende más! Lo buscas lo encuentras, lo anuncias lo vendes. `;
+        const title = 'Clasificados Contacto';
+        const keywords = 'Clasificados, Contacto, portal, bajío, anunciate, clientes, vende';
+        
+        return {
+            title: 'Clasificados Contacto',
+            meta: [
+            { hid:'description', name:'description', content: description},
+            { hid: 'og-title', property: 'og:title', content: title },
+            { hid: 'og-description', property: 'og:description', content: description },
+            { hid: 'og-image', property: 'og:image', content: 'https://clasificadoscontacto.com/_nuxt/img/clasificados-logo-blanco.0c970fd.png' },
+            { hid: 'keywords', property: 'keywords', content: keywords}
+            ] 
+        } 
     },
+
     data() {
         return {
             form: {

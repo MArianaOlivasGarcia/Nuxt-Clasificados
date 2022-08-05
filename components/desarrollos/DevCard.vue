@@ -1,7 +1,7 @@
 
 <template>
 
-  <NuxtLink :to="route" class="card">
+  <a :href="route" class="card">
     <div class="imageContent">
       <img v-if="dev.image" class="card-img-top" :src="dev.image" :alt="dev.name">
       <img v-else class="card-img-top" src="@/static/images/property-placeholder.jpeg" :alt="dev.name">
@@ -30,7 +30,7 @@
           <i class="fas fa-heart"></i>
           <i class="far fa-heart"></i>
     </span> -->
-  </NuxtLink>
+  </a>
 
 </template>
 
@@ -54,7 +54,7 @@ export default {
     },
      created() {
         // console.log(this.dev)
-        this.route = `/desarrollos/detalle/${helpers.normalize( this.dev.name )}_${ this.dev.developmentid }.html`
+        this.route = `https://clasificadoscontacto.com/desarrollo/${helpers.normalize( this.dev.name )}_${ this.dev.developmentid }.html`
         // console.log(this.route)
     },
 

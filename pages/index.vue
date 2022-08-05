@@ -59,8 +59,22 @@ export default {
         // Redirect to error page or 404 depending on server response
       }
     },
-    head: {
-      titleTemplate: 'Clasificados Contacto | El buscador',
+    head() {
+
+        const description = `Propiedades inmobiliarias: Casas, departamentos, terrenos, bodegas y oficinas. Desarrollos inmobiliarios en preventa, venta y renta. ¡Las mejores oportunidades de inversión patrimonial! Zonas de alta Plusvalía y seguridad.`;
+        const title = 'Clasificados Contacto';
+        const keywords = 'preventas, desarrollos, inversión, patrimonial, departamentos, casas, terrenos, zonas, plusvalía, seguridad, compra, venta, renta';
+        
+        return {
+            title: 'Clasificados Contacto',
+            meta: [
+            { hid:'description', name:'description', content: description},
+            { hid: 'og-title', property: 'og:title', content: title },
+            { hid: 'og-description', property: 'og:description', content: description },
+            { hid: 'og-image', property: 'og:image', content: 'https://clasificadoscontacto.com/_nuxt/img/clasificados-logo-blanco.0c970fd.png' },
+            { hid: 'keywords', property: 'keywords', content: keywords}
+            ] 
+        } 
     },
     async created(){
     

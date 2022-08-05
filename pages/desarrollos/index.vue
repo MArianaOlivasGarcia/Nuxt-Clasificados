@@ -100,8 +100,22 @@ export default {
         // Redirect to error page or 404 depending on server response
       }
     },
-    head: {
-      titleTemplate: 'Clasificados Contacto | El buscador',
+    head() {
+
+        const description = `Preventas Exclusivas: Accede y encuentra la propiedad ideal en Querétaro y México, las mejores oportunidades de Inversión en inmuebles. Asegura tu patrimonio con inversiones con alta rentabilidad y plusvalía`;
+        const title = 'Clasificados Contacto';
+        const keywords = 'preventa, propiedad, Querétaro, México, oportunidad, inversión, Inmuebles, patrimonio, Asegura, rentabilidad, plusvalía';
+        
+        return {
+            title: 'Clasificados Contacto',
+            meta: [
+            { hid:'description', name:'description', content: description},
+            { hid: 'og-title', property: 'og:title', content: title },
+            { hid: 'og-description', property: 'og:description', content: description },
+            { hid: 'og-image', property: 'og:image', content: 'https://clasificadoscontacto.com/_nuxt/img/clasificados-logo-blanco.0c970fd.png' },
+            { hid: 'keywords', property: 'keywords', content: keywords}
+            ] 
+        } 
     },
     components: {
         VueHorizontalList,

@@ -47,8 +47,22 @@ export default {
         // Redirect to error page or 404 depending on server response
       }
     },
-    head: {
-      titleTemplate: 'Clasificados Contacto | Vehículos',
+    head() {
+
+        const description = `Compra o Vende  autos usados o seminuevos en México. Lo buscas, lo encuentras en clasificados contacto`;
+        const title = 'Clasificados Contacto';
+        const keywords = 'Compra, vende, autos, usados, seminuevos, encuentras, clasificados, contacto';
+        
+        return {
+            title: 'Clasificados Contacto',
+            meta: [
+            { hid:'description', name:'description', content: description},
+            { hid: 'og-title', property: 'og:title', content: title },
+            { hid: 'og-description', property: 'og:description', content: description },
+            { hid: 'og-image', property: 'og:image', content: 'https://clasificadoscontacto.com/_nuxt/img/clasificados-logo-blanco.0c970fd.png' },
+            { hid: 'keywords', property: 'keywords', content: keywords}
+            ] 
+        } 
     },
     async created(){
 

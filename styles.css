@@ -1,0 +1,265 @@
+
+
+.iscSite {
+    padding: 20px 80px;
+}
+
+@media (max-width: 576px) { 
+    
+    .iscSite {
+        padding: 10px;
+    }
+ 
+}
+
+.mCardContainer {
+    display: flex;
+    justify-content: center;
+    margin-top: 3rem;
+}
+
+.mMaincontainer
+{
+    width: 302px;
+    height: 299px;
+    margin: 10px;
+    float: left; /* stack each div horizontally */
+}
+
+
+.back p
+{
+    top: 50px;
+    font-size: 15px;
+}
+
+.front {
+    border-radius: 10px;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+
+.front h2
+{
+    padding: 10px;
+    top: 200px;
+    color: #000;
+}
+
+
+.cardFirst {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0 10px;
+}
+
+/* style the mMaincontainer class with all child div's of class .front */
+.mMaincontainer > .front
+{
+    position: absolute;
+    transform: perspective(600px) rotateY(0deg);
+    
+    width: 302px;
+    height: 290px;
+    
+    backface-visibility: hidden; /* cant see the backside elements as theyre turning around */
+    transition: transform .5s linear 0s;
+}
+
+/* style the mMaincontainer class with all child div's of class .back */
+.mMaincontainer > .back
+{
+    position: absolute;
+    transform: perspective(600px) rotateY(180deg);
+    text-align: center;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    width: 302px;
+    height: 290px;
+    border-radius: 10px;
+    padding: 5px;
+    backface-visibility: hidden; /* cant see the backside elements as theyre turning around */
+    transition: transform .5s linear 0s;
+}
+
+.mMaincontainer:hover > .front
+{
+    transform: perspective(600px) rotateY(-180deg);
+}
+
+.mMaincontainer:hover > .back
+{
+    transform: perspective(600px) rotateY(0deg);
+}
+
+
+
+
+
+/*  Reticula */
+img.mReticulaImage {
+    width: 80vw;
+    border: 1px solid;
+}
+
+.mButton {
+    background-color: #1e3c6b; /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 1rem;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+
+.mButton:hover {
+    cursor: pointer;
+}
+
+
+
+
+/* ACORDIONES */
+/* Style the buttons that are used to open and close the accordion panel */
+.mAccordion {
+    background-color: #E0E3F3;
+    color: #444;
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    text-align: left;
+    border: none;
+    outline: none;
+    transition: 0.4s;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+
+  .mAccordion span {
+    font-weight: bold; 
+    color: #0b4690;
+  }
+  
+  /* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
+  .mActive, .mAccordion:hover {
+    background-color: #d2d8f2;
+  }
+  
+  /* Style the accordion panel. Note: hidden by default */
+  .mPanel {
+    padding: 0 18px;
+    background-color: white;
+    display: none;
+    overflow: hidden;
+    margin-bottom: 10px;
+  }
+
+
+  p.mTextMuted {
+    color: silver;
+  }
+
+
+  .mPDDContainer {
+    display: flex;
+    justify-content: space-evenly;
+  }
+
+
+  .mPDD {
+    width: 30%;
+    display: flex;
+    justify-content: center;
+    margin: 20px 10px;
+    padding: 20px;
+    border: 1px solid #1E3C6B;
+    background-color: #E0E3F3;
+    border-radius: 10px;
+    text-decoration: none;
+    color: #1E3C6B;
+  }
+
+  .mPDD:hover {
+    cursor: pointer;
+    background-color: #D2D8F2;
+  }
+
+   
+/* 
+
+PLANES DE ESTUDIO
+
+
+*/
+
+@media (max-width: 576px) { 
+    
+    .mRow {
+        flex-direction: column;
+    }
+    .mCol {
+        width: 100%;
+    }
+ 
+}
+
+@media (max-width: 576px) { 
+    
+    .mPlanContainer {
+        width: 100% !important;
+    }
+ 
+}
+
+
+.mRow {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.mCol {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.mCol ul {
+    list-style: none;
+    padding: 0;
+    text-align: center;
+}
+
+.mCol ul li {
+	text-align: center;
+}
+
+.mCol p {
+    color: #1E3C6B;
+    margin-top: 30px;
+    margin-bottom: 15px;
+}
+
+.mCol a {
+    text-decoration: none;
+    color: #000;
+}
+
+.mCol a:hover {
+    color: #1E3C6B;
+}
+
+
+.mPlanContainer {
+    border-radius: 10px;
+    border: 1px solid #1E3C6B;
+    width: 70%;
+}
