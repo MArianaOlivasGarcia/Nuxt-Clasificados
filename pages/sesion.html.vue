@@ -191,7 +191,6 @@ export default {
         (googleUser) => {
 
           const token = googleUser.getAuthResponse().id_token;
-          console.log(token);
 
         }, (error) => {
           alert(JSON.stringify(error, undefined, 2));

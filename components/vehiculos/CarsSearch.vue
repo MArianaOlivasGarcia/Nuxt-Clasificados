@@ -94,7 +94,6 @@ export default {
             }
         },
         goToResults() {
-            // console.log(this.search)
             const { brand, subcat, type, operation, state, municipality, suburb } = this.search
 
 
@@ -118,7 +117,6 @@ export default {
         async getMarcas() {
             const resp = await this.$store.dispatch('getMarcasVehiculos');
             this.marcas = resp;
-            // console.log(this.marcas)
         }, 
         async getTipos( brand ) {
             const resp = await this.$store.dispatch('getTiposVehiculos', brand);

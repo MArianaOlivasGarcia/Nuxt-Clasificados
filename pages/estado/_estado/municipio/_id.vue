@@ -127,7 +127,6 @@ export default {
       },
       goTocategory( id ){
 
-        console.log( this.$store.getters.getCategoryById(id).name )
 
 
         this.$router.push({
@@ -152,11 +151,9 @@ export default {
 
       const municipality = this.$route.params.id.split('_')
       this.cityselected = municipality[1].split('.')[0]
-      console.log(this.cityselected)
 
       // Obtener el municipio correspondiente al id
       const m = this.$store.getters.getMunicipalityById(this.cityselected);
-      console.log(m)
       this.$store.dispatch("getProductsTypeByCityName", m.itemName)
 
       this.isLoading = false;

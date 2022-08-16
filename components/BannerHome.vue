@@ -75,9 +75,6 @@ export default {
   watch: {
     'userStateLocation': {
       async handler(newValue, oldValue) {
-        console.log('bambio el userlocation');
-        console.log(newValue);
-        console.log(oldValue);
       }
     }
   }

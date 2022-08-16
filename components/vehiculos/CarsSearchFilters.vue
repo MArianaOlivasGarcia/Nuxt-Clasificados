@@ -187,7 +187,6 @@ export default {
     },
     methods: {
         goToResults() {
-            // console.log('BUSCAR')
 
             const { 
                 brand,
@@ -208,7 +207,6 @@ export default {
                + `${ municipality != undefined ? `-en-${ helpers.normalize( this.$store.getters.getMunicipalityById(municipality)?.itemName ) }_${municipality}` : '' }`
                + `${ suburb != undefined ? `-en-${ helpers.normalize( this.$store.getters.getSuburbById(suburb)?.itemName ) }_${suburb}` : '' }`;
      
-            // console.log(urlSearch)
 
 
             let data = []
@@ -233,7 +231,6 @@ export default {
                 // Quitar el ultimo -y-
                 urlComplement = urlComplement.substr(0, urlComplement.length - 3)
 
-                // console.log(urlComplement)
 
 
             this.$router.push({
@@ -306,7 +303,6 @@ export default {
       },
       'search.state': {
         async handler( newValue, oldValue  ) {
-            console.log({newValue, oldValue})
             if ( newValue == undefined ){ return;}
 
           

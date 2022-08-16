@@ -37,7 +37,6 @@ export default {
     },
     created() {
         this.route = this.property.url
-        console.log(this.property)
     }
 
 }

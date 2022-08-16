@@ -81,9 +81,6 @@ export default {
           // const resp = await  this.$store.dispatch('search', searchForm )
           // const respTotal = await  this.$store.dispatch('getTotalsSearch', searchForm )
 
-          console.log(resp)
-          console.log(respTotal)
-
           this.totalResults = Number(respTotal);
           this.products = resp.data
 
@@ -95,8 +92,6 @@ export default {
       '$route.query.pagina': {
         // immediate: true,
         async handler(newValue, oldValue) {
-
-          console.log({newValue, oldValue})
           this.getSearchResults();
         }
       },

@@ -91,7 +91,6 @@ export default {
       
       let googlePlace = '';
       if ( search.includes('-ubicado-en-') ){
-          console.log('ES CON GOOGLE')
           googlePlace = primeraUrl.split('-ubicado-en-')[1];
           primerSearch = urlCortada[0]?.split('.html')[0].split('-ubicado-en-')[0].split('-en-')
       }
@@ -217,7 +216,6 @@ export default {
         let googlePlace = '';
          // Verificar si viene ubicación con google
         if ( search.includes('-ubicado-en-') ){
-          console.log('ES CON GOOGLE')
           googlePlace = primeraUrl.split('-ubicado-en-')[1];
           primerSearch = urlCortada[0]?.split('.html')[0].split('-ubicado-en-')[0].split('-en-')
         }
@@ -274,15 +272,9 @@ export default {
         this.totalResults = Number(respTotal);
         this.properties = resp.data
 
-        // console.log(this.properties)
 
         this.loadingProperties = false;
 
-
-
-        console.log('PRIMERA VEZ AQUI')
-        console.log(this.totalResults)
-        console.log(this.properties)
 
       }
     },
@@ -314,7 +306,6 @@ export default {
         // immediate: true,
         async handler(newValue, oldValue) {
 
-          console.log({newValue, oldValue})
           this.getProperties();
         }
       },

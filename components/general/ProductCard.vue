@@ -3,12 +3,13 @@
     <div class="imageContent">
       <img class="card-img-top" :src="item.image" alt="foto">
       <span class="category">{{ item.category ? item.category : 'Bienes Raíces'  }}</span>
-      <span class="fav">
+      <!-- <span class="fav">
           <i class="fas fa-heart"></i>
           <i class="far fa-heart"></i>
-        </span>
+        </span> -->
     </div>
         <div class="card-body">
+            <span class="destacado" v-if="item.destacado == '1'">Destacado <i style="color: #e7b211;" class="fa-solid fa-star fa-2xs"></i></span>
             <h5 class="card-title pricecard m-0">$ {{ item.price }} {{ item.currency }}</h5>
             <div class="postcard-bar"></div>
             <p class="card-text"><small class="text-muted" style="font-size: 14px">{{ item.city }}, {{ item.state }}</small></p>
@@ -144,6 +145,26 @@ export default {
         font-size: 24px;
         /* color: #01569D; */
         color: #f2e115;
+    }
+
+
+    span.destacado {
+        position: absolute;
+        left: 1.25rem;
+        top: 1.25rem;
+        padding: 0px 10px;
+        border-radius: 10px;
+        background: white;
+        border: 1px solid black;
+        font-size: 14px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+
+    span.destacado i {
+        font-size: 0.9rem;
     }
 
 </style>

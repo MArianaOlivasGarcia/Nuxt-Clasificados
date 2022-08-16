@@ -53,9 +53,7 @@ export default {
         }
     },
      created() {
-        // console.log(this.dev)
         this.route = `https://clasificadoscontacto.com/desarrollo/${helpers.normalize( this.dev.name )}_${ this.dev.developmentid }.html`
-        // console.log(this.route)
     },
 
 }

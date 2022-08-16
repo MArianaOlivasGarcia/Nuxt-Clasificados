@@ -39,7 +39,6 @@ export default {
         }
     },
     async created() {
-        // console.log(this.data)
         this.isLoading = false;
     }
 

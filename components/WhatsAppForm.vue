@@ -63,7 +63,7 @@
         </div>
 
         <div class="mt-3">
-            <button type="submit" class="btn btn-primary">Iniciar Chat</button>
+            <button :disabled="isLoading" type="submit" class="btn btn-primary">{{ isLoading ? 'Cargando...' : 'Iniciar Chat' }}</button>
         </div>
 
         </form>
@@ -94,6 +94,7 @@ export default {
     },
     data() {
         return {
+            isLoading: false,
             telProps: {
                 id: "phoneContact",
                 mode: "international",
@@ -119,6 +120,9 @@ export default {
     },
     methods: {
         async startChat() {
+
+            this.isLoading = true;
+
             if( this.v.whatsForm.$invalid ) {
                 this.v.whatsForm.$touch()
                 return;
@@ -132,7 +136,8 @@ export default {
                 productId,
                 email: this.whatsForm.email ?? 'Sin email'
             }
-        const resp = await this.$store.dispatch('sendToWhatsApp', data)
+        
+            const resp = await this.$store.dispatch('sendToWhatsApp', data)
             
             if ( !resp ) {
                 Swal.fire({
@@ -145,6 +150,8 @@ export default {
 
 
             window.open(`https://wa.me/+52${ this.whatsappNumber }?text=${ this.whatsForm.message  } - https://clasificadoscontacto.com${this.$route.path}`, '_blank');
+            this.isLoading = false;
+
         }
     }
 }

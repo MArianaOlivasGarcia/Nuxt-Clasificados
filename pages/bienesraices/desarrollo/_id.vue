@@ -614,12 +614,9 @@ export default {
         const { fullPath } = this.$route
         this.url = `https://clasificadoscontacto.com${ fullPath }`
 
-        console.log(this.$route)
-
     },
     mounted(){
       if ( this.property ){
-        console.log(this.property)
         this.isLoading = false
       }
     }

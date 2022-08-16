@@ -85,12 +85,10 @@ export default {
   },
   async created()  {
 
-    console.log( this.$route.params.token);
     this.token = this.$route.params.token;
   
     const { status } = await this.$store.dispatch('verifyToken', this.token)
 
-    console.log(status)
 
     if ( status != 200 ) {
       this.$router.push('/');

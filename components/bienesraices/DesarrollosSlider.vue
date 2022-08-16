@@ -75,9 +75,6 @@ export default {
             this.desarrollos.push(resp[property][0])
         }
 
-        console.log(this.desarrollos)
-        console.log(this.currentObj)
-
         this.startSlide();
     },
     mounted() {
@@ -99,7 +96,6 @@ export default {
           this.currentIndex -= 1;
         },
         goTo() {
-            console.log(this.currentObj.url)
             this.$router.push(this.currentObj.url);
         }
     }

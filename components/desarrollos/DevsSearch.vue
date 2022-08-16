@@ -93,9 +93,6 @@ export default {
             const { category, operation, keywordAddrs} = this.search
 
 
-
-            console.log({ category, operation, keywordAddrs});
-
             return;
 
             const urlSeach = `${helpers.normalize(this.$store.getters.getCategoryById(category).name)}_${category}` 
@@ -116,8 +113,6 @@ export default {
                 }
             }
 
-            // console.log('DATAAAA')
-            // console.log(data)
 
             let urlComplement = ''
             data.forEach( (element, index) => {
@@ -128,7 +123,6 @@ export default {
             // Quitar el ultimo -y-
             urlComplement = urlComplement.substr(0, urlComplement.length - 3)
 
-            // console.log(urlComplement)
 
             this.$router.push({
                 name: 'bienesraices-search',

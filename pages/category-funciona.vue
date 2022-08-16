@@ -82,7 +82,6 @@ export default {
     },
     created() {
         this.$store.dispatch('getStates');
-        console.log(this.$route)
         this.getProperties();
     },
     computed: {

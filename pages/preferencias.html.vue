@@ -620,14 +620,12 @@ export default {
     },
     created() {
         this.formTwo.state = this.userStateLocation.folio
-        console.log(this.stateById('61'))
     },
     methods: {
         changeTab( idTab ) {
 
 
             if ( idTab == 2 && this.$v.formOne.$invalid ) {
-                console.log('Es inválido el formulario de la TAB 1')
                 this.$v.formOne.$touch();
                 Swal.fire({
                     icon: 'warning',
@@ -639,7 +637,6 @@ export default {
 
 
             if ( idTab == 3 && this.zonasIdeales.length == 0 ) {
-                console.log('Es inválido el formulario de la TAB 2')
                 this.$v.formTwo.$touch();
                 Swal.fire({
                     icon: 'warning',
@@ -657,11 +654,9 @@ export default {
         dragCircle( value ) {
             this.mapData.coords.lat = value.latLng.lat()
             this.mapData.coords.lng = value.latLng.lng()
-            console.log(this.mapData)
         },
         radiusChanged( value ) {
             this.mapData.radius = value
-            console.log(this.mapData)
         },
         async submitForm(){
             if ( this.$v.formThree.$invalid  ) {
@@ -703,8 +698,6 @@ export default {
                 state: states.filter( (z, i) => states.indexOf(z) === i).toString(),
                 suburb: suburbs.filter( (z, i) => suburbs.indexOf(z) === i).toString()
             }
-
-           console.log(form)
 
 
            const resp = await this.$store.dispatch('toIDI', form)

@@ -125,8 +125,6 @@ export default {
     },
     async created(){
         this.items = this.municipalities;
-        console.log(this.items)
-        console.log(this.devs)
     },
     data() {
         return {

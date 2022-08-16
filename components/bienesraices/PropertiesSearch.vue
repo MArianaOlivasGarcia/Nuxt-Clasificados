@@ -92,9 +92,6 @@ export default {
         goToResults() {
             const { category, operation, keywordAddrs} = this.search
 
-
-            // console.log(keywordAddrs)
-
             const urlSeach = `${helpers.normalize(this.$store.getters.getCategoryById(category).name)}_${category}` 
                     + `-en-${ operation == 1 ? 'venta_1' : 'renta_2' }`
                     + `${ keywordAddrs != '' ? `-ubicado-en-${ helpers.normalizeUbications( keywordAddrs ) }` : '' }`
@@ -113,9 +110,6 @@ export default {
                 }
             }
 
-            // console.log('DATAAAA')
-            // console.log(data)
-
             let urlComplement = ''
             data.forEach( (element, index) => {
                 if ( element != ':)' ) {
@@ -125,7 +119,6 @@ export default {
             // Quitar el ultimo -y-
             urlComplement = urlComplement.substr(0, urlComplement.length - 3)
 
-            // console.log(urlComplement)
 
             this.$router.push({
                 name: 'bienesraices-search',

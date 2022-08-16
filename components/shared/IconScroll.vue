@@ -20,7 +20,6 @@ export default {
     },
     methods: {
         handleScroll( ) {
-            // console.log( scrollY )
 
             if ( scrollY > 130 ) {
                 this.showScrollIcon = false;
