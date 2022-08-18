@@ -82,5 +82,8 @@ padding-left: 50px; }
 .hov-icon:hover span{
     color:#00569f!important;
 }
+
+
+
 </style>
 

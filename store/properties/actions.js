@@ -252,6 +252,28 @@ const actions = {
     },
 
 
+    async getUrlsFooter({ commit, state }){
+
+
+        const resp = await fetch(state.API_URL + state.GET_URLS, 
+            {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8",
+                },
+                body: ``
+            },
+        ).then( resp => resp.json() )
+
+
+        if ( resp.status == 200  ) {
+            return resp
+        } 
+        return null
+    },
+
+
+
       async login({ commit, state }, form ){
 
 

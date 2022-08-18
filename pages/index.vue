@@ -48,6 +48,7 @@
 export default {
      async asyncData ({ params, store }) {
 
+        console.log('HOLA MARIANA')
       // fetch data from API
       try {
         const data = await store.dispatch('searchGeneral', { limit: 12 });

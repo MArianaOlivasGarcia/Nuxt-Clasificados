@@ -45,6 +45,10 @@ const state = {
     // NUEVA BUSQUEDA
     GETTOTALS: '?site=VFp2ckNTNmhjUGdNYk93UythUHJxSTVMdktETC9YaG9tTWIyTDlPWCtZaz0=',
     SEARCH: '?site=cU5OVVhzSUpoMjZhdSs5YTJyaTRPK3FNamZ0YVBnSnpQbDJ6M1Z3OTcrND0=',
+
+    // FOOTER
+    GET_URLS: '?site=aS9aQzRTZkY3QkpvRjIvUXBUNVBHZz09',
+
     
     token: '',
     userStateLocation: {
@@ -135,7 +139,11 @@ const state = {
         whatsappInmo: '',
     },
     // DEVS
-    devsList: []
+    devsList: [],
+
+
+    // FOOTER 
+
 }
 
 
