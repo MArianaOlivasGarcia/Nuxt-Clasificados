@@ -1,5 +1,5 @@
 <template>
-    <div class=" pt-4 pb-3">
+    <div class="bg-white mt-4 pt-4 pb-3">
         <div class="container">
             
             <div class="row urlContained">
