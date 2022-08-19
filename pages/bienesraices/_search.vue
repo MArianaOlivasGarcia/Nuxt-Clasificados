@@ -147,6 +147,8 @@ export default {
         totalResults = Number(respTotal);
         properties = resp.data
 
+        console.log({totalResults, length: properties.length})
+
         loadingProperties = false;
 
 

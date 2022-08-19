@@ -52,7 +52,7 @@ h3{
 }
 
 a {
-    color: #145CA2;
+    color: #5e5e5e;
     font-size: 14px;
 }
 
