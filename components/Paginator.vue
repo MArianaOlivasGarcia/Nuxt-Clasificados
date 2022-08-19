@@ -1,15 +1,24 @@
 
 <template>
-    <div class="pagination">
-      <a  v-if="currentPage != 1"
-        @click="changePage( currentPage - 1)"><i class="fas fa-chevron-left"></i></a>
-      <a  v-for="page in  (currentPage <= 2) ? pages.slice( 0, currentPage+4 ) : pages.slice( currentPage-3, currentPage+2 )" 
+    <!-- <div class="pagination"> -->
+      <div>
+
+      <a :href="urlTo" v-if="currentPage != 1"><i class="fas fa-chevron-left"></i></a>
+      <!-- <a  v-if="currentPage != 1"
+        @click="changePage( currentPage - 1)"><i class="fas fa-chevron-left"></i></a> -->
+      <!-- <a  v-for="page in  (currentPage <= 2) ? pages.slice( 0, currentPage+4 ) : pages.slice( currentPage-3, currentPage+2 )" 
         :key="page"
         :class="(currentPage == page ) ? 'active' : null"
-        @click="changePage( page )"><span>{{ page }}</span></a>
-      <a  v-if="currentPage != lastPage"
-        @click="changePage( currentPage + 1 )"><i class="fas fa-chevron-right"></i></a>
-    </div>
+        @click="changePage( page )"><span>{{ page }}</span></a> -->
+        <select class="paginatorSelect mx-3" v-model="currentPage"  @change="onChange($event)">
+          <option v-for="page in pages" :key="page" :value="page">Página {{ page }} de {{ lastPage }}</option>
+        </select>
+      <!-- <a  v-if="currentPage != lastPage"
+        @click="changePage( currentPage + 1 )"><i class="fas fa-chevron-right"></i></a> -->
+        <a v-if="currentPage != lastPage" :href="urlTo"><i class="fas fa-chevron-right"></i></a>
+      </div>
+
+    <!-- </div> -->
 </template>
 
 <script>
@@ -31,8 +40,11 @@ export default {
             lastPage: 0, // Puede ser el totalPages tambien
             /* Arreglo de paginas */
             pages: [],
-
+    
             nameRoute: '',
+
+            urlTo: '',
+            urlBack: '',
         }
     },
     created(){
@@ -49,11 +61,32 @@ export default {
         }
 
         this.nameRoute = this.$route.name;
+
+        this.urlTo = `/bienesraices/${this.$route.params.search}?pagina=${this.currentPage + 1}`;
+        this.urlBack = `/bienesraices/${this.$route.params.search}?pagina=${this.currentPage - 1}`;
+
     },
     methods: {
         changePage( page ){
           this.currentPage = page
+          const urlTo = `/bienesraices/${this.$route.params.search}?pagina=${this.currentPage}`;
+          console.log(urlTo)
+
+          return;
           
+          // this.$router.push({
+          //     name: this.nameRoute,
+          //     params: this.$route.params,
+          //     query: {
+          //         pagina: this.currentPage,
+          //     }
+          // })
+    
+          window.scroll(0,0)
+
+        },
+        onChange( event ) {
+          // console.log(event.target.value)
           this.$router.push({
               name: this.nameRoute,
               params: this.$route.params,
@@ -61,12 +94,12 @@ export default {
                   pagina: this.currentPage,
               }
           })
-    
           window.scroll(0,0)
 
         }
 
     }
+    
 }
 
 </script>
@@ -97,9 +130,15 @@ export default {
 }
 
 .pagination i{
-  color: #232323;
+  color: #0B5DA3;
 }
 
 .pagination a:hover:not(.active) {background-color: #ddd;}
+
+
+select.paginatorSelect {
+  border: 0px;
+  background: transparent;
+}
 
 </style>
