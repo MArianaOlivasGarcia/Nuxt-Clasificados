@@ -65,6 +65,8 @@ export default {
     { src: '~/plugins/VueGeolocation'},    
     { src: '~/plugins/VueLightbox',  ssr: false},    
     { src: '~/plugins/VueRangeSlider.js', ssr: false },
+    { src: '~/plugins/vue-gallery.client.js'},
+    { src: '~/plugins/VueCoolLightBox'},
   ],
 
 
@@ -72,14 +74,12 @@ export default {
   components: {
     dirs: [
       '~/components',
-      '~/components/searchs/',
       '~/components/bienesraices/',
       '~/components/desarrollos/',
       '~/components/template/',
       '~/components/vehiculos/',
       '~/components/general/',
       '~/components/shared/',
-      '~/components/products/',
     ]
   },
 

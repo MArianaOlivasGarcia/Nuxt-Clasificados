@@ -1,5 +1,4 @@
 <template>  
-    <client-only v-if="!isLoading">    
 
       <div class="container mt-4 mb-4" style="background-color: #fff; padding: 1.25rem;">
 
@@ -12,9 +11,14 @@
 
         <div class="row">
 
-          <div class="col-md-7 gallery-content ">
+          <!-- <div class="col-md-7 gallery-content ">
             <lightbox :cells="4" :items="images"></lightbox>
+          </div> -->
+
+          <div class="col-md-7">
+            <Gallery :items="images"/>
           </div>
+
 
           <div class="col-md-5 data-container">
             
@@ -265,6 +269,7 @@
                   <ContactForm 
                     :v="$v" 
                     :form="form"
+                    :productid="vehiculo.folio"
                     :category="2"/>
                 </div>
 
@@ -275,7 +280,6 @@
         </div>
 
       </div>
-    </client-only>
 </template> 
 
 
@@ -294,8 +298,16 @@ export default {
       // fetch data from API
       try {
         const vehiculo = await store.dispatch('getVehiculoById', id)
+
+        let images = [];
+        for (const v in vehiculo.images) {
+          images.push(vehiculo.images[v]['largefile'])
+        } 
+
+
         return {
             vehiculo,
+            images
         }
       } catch (error) {
         // Redirect to error page or 404 depending on server response
@@ -336,7 +348,7 @@ export default {
                 email: '',
             },
             url: '',
-            images: [],
+            // images: [],
         }
     },
     validations: {
@@ -365,13 +377,13 @@ export default {
 
     },
     mounted(){
-      if ( this.vehiculo ){
-        this.isLoading = false
+      // if ( this.vehiculo ){
+      //   this.isLoading = false
         
-        for (const vehiculo in this.vehiculo.images) {
-          this.images.push(this.vehiculo.images[vehiculo]['largefile'])
-        } 
-      }
+      //   for (const vehiculo in this.vehiculo.images) {
+      //     this.images.push(this.vehiculo.images[vehiculo]['largefile'])
+      //   } 
+      // }
 
     }
 }

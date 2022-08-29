@@ -10,12 +10,17 @@
           :v="$v"/>
 
         <div class="row">
+          
+          <div class="col-md-7">
+            <Gallery :items="images"/>
+          </div>
 
-          <client-only>
+          <!-- <client-only>
             <div class="col-md-7 gallery-content ">
               <lightbox :cells="4" :items="images"></lightbox>
             </div>
-          </client-only>
+          </client-only> -->
+
 
           <div class="col-md-5 data-container">
             
@@ -403,60 +408,58 @@
 
 <script>
 
-import { required, email } from 'vuelidate/lib/validators' 
+import { required, email } from 'vuelidate/lib/validators'
+import Gallery from '~/components/Gallery.vue' 
 
 export default {
-    async asyncData ({ params, store }) {
-
-      const rutaCortada = params.id.split('_')
-      const id = rutaCortada[ rutaCortada.length - 1 ].split('.')[0]
-      // fetch data from API
-      try {
-        const property = await store.dispatch('getPropertyDetail', id)
-
-        return {
-            property,
+    async asyncData({ params, store }) {
+        const rutaCortada = params.id.split("_");
+        const id = rutaCortada[rutaCortada.length - 1].split(".")[0];
+        // fetch data from API
+        try {
+            const property = await store.dispatch("getPropertyDetail", id);
+            return {
+                property,
+            };
         }
-      } catch (error) {
-        // Redirect to error page or 404 depending on server response
-      }
+        catch (error) {
+            // Redirect to error page or 404 depending on server response
+        }
     },
     head() {
-
-      if ( !this.property ) {
-        return {
-          title: 'Clasificados contacto | El buscador'
+        if (!this.property) {
+            return {
+                title: "Clasificados contacto | El buscador"
+            };
         }
-      }
-      const { title, description, image } = this.property.meta
-
-      return {
-        title: title,
-        meta: [
-          { hid:'description', name:'description', content: description},
-          { hid: 'og-title', property: 'og:title', content: title },
-          { hid: 'og-description', property: 'og:description', content: description },
-          { hid: 'og-image', property: 'og:image', content: image }
-        ] 
-      } 
+        const { title, description, image } = this.property.meta;
+        return {
+            title: title,
+            meta: [
+                { hid: "description", name: "description", content: description },
+                { hid: "og-title", property: "og:title", content: title },
+                { hid: "og-description", property: "og:description", content: description },
+                { hid: "og-image", property: "og:image", content: image }
+            ]
+        };
     },
     data() {
         return {
             form: {
-                name: '',
-                email: '',
-                phone: '',
-                message: '',
+                name: "",
+                email: "",
+                phone: "",
+                message: "",
             },
             whatsForm: {
-                name: '',
-                whatsapp: '',
-                message: '',
-                email: '',
+                name: "",
+                whatsapp: "",
+                message: "",
+                email: "",
             },
-            url: '',
+            url: "",
             images: [],
-        }
+        };
     },
     validations: {
         form: {
@@ -471,21 +474,15 @@ export default {
             message: { required },
             email: { email }
         },
-        
     },
     async created() {
-
-        const { fullPath } = this.$route
-        this.url = `https://clasificadoscontacto.com${ fullPath }`
-
-
+        const { fullPath } = this.$route;
+        this.url = `https://clasificadoscontacto.com${fullPath}`;
         for (const property in this.property.images) {
-          this.images.push(this.property.images[property]['largefile'])
-        } 
-
+            this.images.push(this.property.images[property]["largefile"]);
+        }
     },
-    mounted(){
-    }
+    components: { Gallery }
 }
 </script>
 
