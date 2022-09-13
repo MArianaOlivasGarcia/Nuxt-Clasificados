@@ -62,7 +62,6 @@ export default {
       };
     },
     created() {
-      console.log(this.items.length)
 
       if ( this.items.length > 4 ) {
         this.totalPermit = 4;
