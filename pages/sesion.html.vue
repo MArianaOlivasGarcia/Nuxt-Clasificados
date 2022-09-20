@@ -160,7 +160,7 @@ export default {
 
         this.$store.commit('setUserLogged', folio)
         localStorage.setItem('folio', folio)
-        window.location.href = 'https://www.clasificadoscontacto.com/panel/#/dashboard'
+        window.location.href = 'https://www.sandbox.clasificadoscontacto.com/panel/#/dashboard'
         //window.open()
         
 
