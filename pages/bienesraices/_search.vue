@@ -25,14 +25,6 @@
                 :key="property.folio"
                 :property="property" />
 
-                <!-- <PropertyHorizontalTest
-                v-for="property in properties"
-                :key="property.folio"
-                :item="property" />  -->
-
-
-            
-
               <div v-if="properties.length == 0"  class="text-center mt-5 pt-5" >
               <h5>En este momento no hay propiedades como la que buscas.</h5>
               </div>
@@ -40,7 +32,6 @@
 
               <div  v-if="totalResults > 20 " class="d-flex justify-content-center">
                 <Paginator :totalResults="totalResults"/>
-                <!-- <Paginator :totalResults="totalResults" :ids="ids"/> -->
               </div>
 
             </div>
@@ -72,12 +63,11 @@ export default {
   async asyncData ({ params, store, query }) {
 
 
-      try {
-
-
       let loadingProperties = true;
       let totalResults = 0;
       let properties = [];
+
+      try {
 
       const { search } = params;
 
@@ -154,14 +144,17 @@ export default {
 
       // fetch data from API
 
-        return {
+       
+      } catch (error) {
+        // Redirect to error page or 404 depending on server response
+        console.log(error)
+      }
+
+      return {
           loadingProperties,
           totalResults,
           properties
         }
-      } catch (error) {
-        // Redirect to error page or 404 depending on server response
-      }
     },
     head() {
       return {
@@ -280,11 +273,19 @@ export default {
 
       }
     },
-    created() {
+    async created() {
         // this.getProperties();
         this.$nextTick( function() {
           this.loading = false
         })
+
+        //TODO: Quitar
+        try {
+          await this.getProperties();
+        } catch (error) {
+          console.log(error)
+        }
+
     },
     validations: {
         whatsForm: {

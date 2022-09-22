@@ -65,6 +65,11 @@ export default {
         };
     },
     async created() {
+        try {
+            await store.dispatch("searchGeneral", { limit: 12 });
+        } catch (error) {
+            console.log(error)
+        }
     },
     data() {
         return {

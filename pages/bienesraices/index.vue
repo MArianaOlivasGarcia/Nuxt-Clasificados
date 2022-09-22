@@ -1,8 +1,7 @@
 <template>
     <main class="clean">
 
-
-        <SliderAddsDev :category="'1'"/>
+    <SliderAddsDev :category="'1'"/>
     
     <section class="searchContainer container mt-5 mb-5" >
         <div class="titleContainer col-md-5">
@@ -166,7 +165,13 @@ export default {
         ...mapGetters({ isLoading: 'getIsLoading'}),
     },
     async created(){
-        
+        // TODO: Quitar
+        try {
+            
+            await store.dispatch("getOutstanding")
+        } catch (error) {
+            console.log(error)
+        }
     },
     data() {
         return {
