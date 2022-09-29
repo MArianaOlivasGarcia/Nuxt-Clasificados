@@ -14,7 +14,8 @@
             <div style="display: flex;
                 justify-content: space-between;
                 align-items: center;">
-                <h5 class="card-title pricecard m-0">$ {{ vehiculo.price }} {{ vehiculo.currency }}</h5>
+                <h5 v-if="vehiculo.price" class="card-title pricecard m-0">$ {{ vehiculo.price }} {{ vehiculo.currency }}</h5>
+                <h5 v-if="!vehiculo.price" class="card-title pricecard m-0">Consultar el precio</h5>
                 <span class="year">{{ vehiculo.year }}</span>
             </div>
             <div class="postcard-bar"></div>

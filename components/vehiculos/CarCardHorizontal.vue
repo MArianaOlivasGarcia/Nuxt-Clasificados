@@ -9,7 +9,8 @@
       <div class="d-flex" style="align-items: start">
          <span class="year mr-3">{{ vehiculo.year }}</span>
          <div>
-            <h5 class="pricecard m-0">$ {{ vehiculo.price }} {{ vehiculo.currency }}</h5>
+            <h5 v-if="vehiculo.price" class="pricecard m-0">$ {{ vehiculo.price }} {{ vehiculo.currency }}</h5>
+            <h5 v-if="!vehiculo.price" class="pricecard m-0">Consultar el precio</h5>
             <div class="postcard-bar"></div>
          </div>
       </div>

@@ -7,7 +7,8 @@
     </NuxtLink>
     <NuxtLink :to="route" class="card-body">
 
-      <h5 class="pricecard m-0">$ {{ property.price }} {{ property.currency }}</h5>
+      <h5 v-if="property.price" class="pricecard m-0">$ {{ property.price }} {{ property.currency }}</h5>
+      <h5 v-if="!property.price" class="pricecard m-0">Consultar el precio</h5>
       <div class="postcard-bar"></div>
       <p class="card-text">{{ property.name }}</p>
       <p class="card-text"><small class="text-muted" style="font-size: 14px">{{ property.colonia }}, {{ property.municipio }}, {{ property.state }}</small></p>
