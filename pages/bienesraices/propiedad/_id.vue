@@ -27,7 +27,8 @@
             <div>
               <h1>{{ property.productName }}</h1>
               <p class="card-text text-muted">{{ property.colonia }}, {{ property.municipio }}, {{ property.state }}</p>
-              <h4 class="price">$ {{ Number(property.price).toLocaleString()  }} {{ property.currency }}</h4>
+              <h4 class="price" v-if="property.price">$ {{ Number(property.price).toLocaleString()  }} {{ property.currency }}</h4>
+              <h4 class="price" v-if="!property.price">Consultar el precio</h4>
               <div class="postcard-bar"></div>
               <div class="text-center">
                   <span v-if="property.bedrooms > 0"><i class="icon-big-bed-with-one-pillow pl-2 pr-1"></i>{{ property.bedrooms }}</span>

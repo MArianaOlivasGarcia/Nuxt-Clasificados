@@ -65,11 +65,12 @@ export default {
         };
     },
     async created() {
-        try {
-            await store.dispatch("searchGeneral", { limit: 12 });
-        } catch (error) {
-            console.log(error)
-        }
+        console.log(this.$store)
+        // try {
+        //     await this.$store.dispatch("searchGeneral", { limit: 12 });
+        // } catch (error) {
+        //     console.log(error)
+        // }
     },
     data() {
         return {

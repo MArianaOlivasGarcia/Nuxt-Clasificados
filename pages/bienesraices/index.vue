@@ -168,7 +168,7 @@ export default {
         // TODO: Quitar
         try {
             
-            await store.dispatch("getOutstanding")
+            await this.$store.dispatch("getOutstanding")
         } catch (error) {
             console.log(error)
         }
