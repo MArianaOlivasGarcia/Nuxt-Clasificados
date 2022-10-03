@@ -25,7 +25,9 @@
             <div>
               <h1>{{ vehiculo.productName }}</h1>
               <p class="card-text text-muted">{{ vehiculo.city }}, {{ vehiculo.state }}</p>
-              <h4 class="price">$ {{ Number(vehiculo.price).toLocaleString()  }} {{ vehiculo.currency }}</h4>
+              <h4 class="price" v-if="vehiculo.price">$ {{ Number(vehiculo.price).toLocaleString()  }} {{ vehiculo.currency }}</h4>
+              <h5 v-if="!vehiculo.price" class="card-title pricecard m-0">Consultar el precio</h5>
+
               <!-- <div class="postcard-bar"></div> -->
               <div class="text-center m-3">
                   <span v-if="vehiculo.usename"><i class="fas fa-car pl-2 pr-1"></i>{{ Number(vehiculo.usename.split(' ')[0]).toLocaleString() }} {{ vehiculo.usename.split(' ')[1] }}</span>
