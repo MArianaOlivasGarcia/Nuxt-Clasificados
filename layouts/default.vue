@@ -27,6 +27,7 @@ import HeaderUrls from '~/components/shared/HeaderUrls.vue';
 export default {
     async fetch() {
         this.urls = await this.$store.dispatch('getUrlsFooter');
+        console.log({urls})
     },
     data() {
         return {

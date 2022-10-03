@@ -65,7 +65,6 @@ export default {
         };
     },
     async created() {
-        console.log(this.$store)
         // try {
         //     await this.$store.dispatch("searchGeneral", { limit: 12 });
         // } catch (error) {
