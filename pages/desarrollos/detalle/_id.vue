@@ -128,6 +128,7 @@
         </div>
 
       </div> 
+   
     </client-only>
 </template> 
 
@@ -223,6 +224,9 @@ export default {
       if ( this.dev ){
         this.isLoading = false
       }
+    },
+    methods: {
+      
     }
 }
 </script>

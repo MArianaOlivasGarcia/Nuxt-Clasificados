@@ -67,6 +67,7 @@ export default {
     { src: '~/plugins/VueRangeSlider.js', ssr: false },
     { src: '~/plugins/vue-gallery.client.js'},
     { src: '~/plugins/VueCoolLightBox'},
+    { src: '~/plugins/VueMq'},
   ],
 
 
@@ -99,6 +100,7 @@ export default {
     vendor: [
       'vue-range-component'
     ],
+    publicPath: 'mariana/'
   },
   server: {
     // host: '192.168.1.66', // default: localhost

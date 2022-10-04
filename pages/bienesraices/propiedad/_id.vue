@@ -476,6 +476,7 @@ export default {
             email: { email }
         },
     },
+ 
     async created() {
       console.log(this.property)
         const { fullPath } = this.$route;
@@ -484,7 +485,8 @@ export default {
             this.images.push(this.property.images[property]["largefile"]);
         }
     },
-    components: { Gallery }
+    components: { Gallery },
+    
 }
 </script>
 
