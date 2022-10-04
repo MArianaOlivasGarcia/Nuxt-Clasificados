@@ -17,7 +17,7 @@
 
 
 
-    <!--<section class="mt-5">
+    <section class="mt-5">
         <div class="container">
             <div class="row justify-content-center mb-2 pb-3">
                 <div class="col-md-7 heading-section text-center ftco-animate fadeInUp ftco-animated">
@@ -36,7 +36,7 @@
             </div> 
 
         </div>
-    </section>-->
+    </section>
 
 
 
@@ -114,16 +114,11 @@
         <Companies />
     </section>
 
-<!-- 
-    <section class="p-0">
-        <News />
-    </section> -->
-
     <section class="p-0" id="contacto">
         <ContactSection :v="$v" :form="form" />
     </section> 
    
-    <section class="ftco-section bg-cc pb-4 mt-2 wow slideInUp">
+    <section v-if="states.length > 0" class="ftco-section bg-cc pb-4 mt-2 wow slideInUp">
         <StatesList :states="states" />
     </section>
 
@@ -144,19 +139,24 @@ import { required, email } from 'vuelidate/lib/validators'
 export default {
     async asyncData ({ params, store }) {
 
+        const states = [];
+        const outstanding = [];
       // fetch data from API
       try {
-        const states = await store.dispatch('getStates');
-        const outstanding = await store.dispatch("getOutstanding")
+        states = await store.dispatch('getStates');
+        outstanding = await store.dispatch("getOutstanding")
     
+
+        
+      } catch (error) {
+        // Redirect to error page or 404 depending on server response
+       
+      }
 
         return {
             states,
             outstanding
         }
-      } catch (error) {
-        // Redirect to error page or 404 depending on server response
-      }
     },
     head: {
       titleTemplate: 'Clasificados Contacto | El buscador',
@@ -166,17 +166,16 @@ export default {
     },
     async created(){
         // TODO: Quitar
-        try {
+        // try {
             
-            await this.$store.dispatch("getOutstanding")
-        } catch (error) {
-            console.log(error)
-        }
+        //     await this.$store.dispatch("getOutstanding")
+        // } catch (error) {
+        //     console.log(error)
+        // }
     },
     data() {
         return {
             desarrollos: [],
-            outstanding: [],
             form: {
                 name: '',
                 email: '',

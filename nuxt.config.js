@@ -105,6 +105,6 @@ export default {
   server: {
     // host: '192.168.1.66', // default: localhost
     host: 'localhost', // default: localhost
-    port: 3001
+    port: 3000
   }
 }

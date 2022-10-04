@@ -196,7 +196,6 @@ const actions = {
 
     async searchGeneral({ commit, state }, formData ){
 
-
         const resp = await fetch(state.API_URL + state.SEARCH_GENERAL, {
             method: "POST",
             headers: {
@@ -206,6 +205,7 @@ const actions = {
         }).then((res) => res.json())
         
         if ( resp.status == 200  ) {
+
             return resp.resp.data
         } 
   

@@ -33,6 +33,7 @@ export default {
     async asyncData({ params, store }) {
         try {
             const data = await store.dispatch("searchGeneral", { limit: 12 });
+            console.log(data)
             return {
                 data,
                 items: [

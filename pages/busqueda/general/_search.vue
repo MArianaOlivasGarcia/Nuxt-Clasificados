@@ -74,12 +74,14 @@ export default {
             category: undefined
           }
 
-          const [resp, respTotal ] = await Promise.all([
-            this.$store.dispatch('search', searchForm ),
-            this.$store.dispatch('getTotalsSearch', searchForm )
-          ])
-          // const resp = await  this.$store.dispatch('search', searchForm )
-          // const respTotal = await  this.$store.dispatch('getTotalsSearch', searchForm )
+          // const [resp, respTotal ] = await Promise.all([
+          //   this.$store.dispatch('search', searchForm ),
+          //   this.$store.dispatch('getTotalsSearch', searchForm )
+          // ])
+          const resp = await  this.$store.dispatch('search', searchForm )
+          const respTotal = await  this.$store.dispatch('getTotalsSearch', searchForm )
+          console.log(resp)
+          console.log(respTotal)
 
           this.totalResults = Number(respTotal);
           this.products = resp.data
