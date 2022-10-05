@@ -255,10 +255,19 @@
               
               
                 <div class="text-center">
+
                   <img
+                    v-if="vehiculo.user.image && vehiculo.user.image == '0'"
                     class="img-inmo"
                     src="@/static/images/auto-placeholder.jpeg"
                   />
+                  <img
+                    v-if="vehiculo.user.image && vehiculo.user.image != '0'"
+                    class="img-inmo"
+                    :src="vehiculo.user.image"
+                  />
+
+                 
                   <p class="ml-2 pt-3 font-weight-bold text-left mb-1">
                     {{vehiculo.user.name}} {{vehiculo.user.lastname}}
                   </p>
