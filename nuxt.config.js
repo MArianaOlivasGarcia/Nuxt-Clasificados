@@ -100,7 +100,7 @@ export default {
     vendor: [
       'vue-range-component'
     ],
-    publicPath: 'mariana/'
+    // publicPath: 'mariana/'
   },
   server: {
     // host: '192.168.1.66', // default: localhost

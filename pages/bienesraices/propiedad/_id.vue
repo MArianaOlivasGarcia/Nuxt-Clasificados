@@ -376,8 +376,14 @@
               
                 <div class="text-center">
                   <img
+                    v-if="property.user.image && property.user.image == '0'"
                     class="img-inmo"
                     src="@/static/images/property-placeholder.jpeg"
+                  />
+                  <img
+                    v-if="property.user.image && property.user.image != '0'"
+                    class="img-inmo"
+                    :src="property.user.image"
                   />
                   <p class="ml-2 pt-3 font-weight-bold text-left mb-1">
                     {{property.user.name}} {{property.user.lastname}}
@@ -484,6 +490,8 @@ export default {
         for (const property in this.property.images) {
             this.images.push(this.property.images[property]["largefile"]);
         }
+
+        console.log(this.property)
     },
     components: { Gallery },
     
