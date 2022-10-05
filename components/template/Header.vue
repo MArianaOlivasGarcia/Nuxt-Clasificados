@@ -160,7 +160,7 @@ export default {
       this.$router.push({
         name: 'busqueda-general-search',
         params: {
-          search: `buscar-por-${this.keyword.trim().toLowerCase().replace(/ /g, '-')}.html`
+          search: `buscar-por-${this.keyword.replace('.','').trim().toLowerCase().replace(/ /g, '-')}.html`
         }
       });
 
