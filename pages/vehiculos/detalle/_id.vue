@@ -69,7 +69,8 @@
                 <h5 style="font-weight: bold;">Descripción</h5>
                 <div class="postcard-bar"></div>
 
-                <div style="font-size: 14px; text-align: justify; line-height:normal;" v-html="vehiculo.descriptionlong"></div>
+                <div style="font-size: 14px; text-align: justify; line-height:normal;" 
+                  v-html="vehiculo.descriptionlong"></div>
               </div>
             </div>
 
@@ -379,12 +380,9 @@ export default {
     },
     async created() {
 
-        console.log('VEHCIULO:' ,this.vehiculo)
         const { fullPath } = this.$route
         this.url = `https://clasificadoscontacto.com${ fullPath }`
-        console.log(this.url)
 
-        
 
     },
     mounted(){

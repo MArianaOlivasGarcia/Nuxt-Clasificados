@@ -3,7 +3,7 @@
       <div class="container mt-4 mb-4" style="background-color: #fff; padding: 1.25rem;">
 
         <Fab 
-          v-if="property.user.cellphone" 
+          v-if="property && property.user.cellphone" 
           :whatsApp="property.user.cellphone" 
           :folioProperty="property.folio"
           :whatsForm="whatsForm"
@@ -68,6 +68,7 @@
             <div>
               <span style="font-weight: bold;">Descripción</span>
               <div style="font-size: 14px; text-align: justify; line-height:normal;" v-html="property.descriptionlong"></div>
+              
             </div>
 
 
@@ -425,6 +426,13 @@ export default {
         // fetch data from API
         try {
             const property = await store.dispatch("getPropertyDetail", id);
+
+            if ( property.descriptionlong ) {
+              property.descriptionlong = property.descriptionlong
+                // .replace(/\r\n\r\n/g, '<br><br>')
+                .replace(/\r\n/g, '<br>');
+            }
+
             return {
                 property,
             };
@@ -440,6 +448,7 @@ export default {
             };
         }
         const { title, description, image } = this.property.meta;
+
         return {
             title: title,
             meta: [
@@ -491,7 +500,6 @@ export default {
             this.images.push(this.property.images[property]["largefile"]);
         }
 
-        console.log(this.property)
     },
     components: { Gallery },
     
