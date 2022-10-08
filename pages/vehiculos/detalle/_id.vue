@@ -333,6 +333,7 @@ export default {
         }
       }
       const { title, description, image } = this.vehiculo.meta
+      const { keywords } = this.vehiculo
 
       return {
         title: title,
@@ -340,7 +341,9 @@ export default {
           { hid:'description', name:'description', content: description},
           { hid: 'og-title', vehiculo: 'og:title', content: title },
           { hid: 'og-description', vehiculo: 'og:description', content: description },
-          { hid: 'og-image', vehiculo: 'og:image', content: image }
+          { hid: 'og-image', vehiculo: 'og:image', content: image },
+          { name: "keywords", content: keywords ? keywords : 'vehiculo' },
+
         ] 
       } 
     },

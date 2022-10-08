@@ -448,6 +448,7 @@ export default {
             };
         }
         const { title, description, image } = this.property.meta;
+        const { keywords } = this.property;
 
         return {
             title: title,
@@ -455,7 +456,9 @@ export default {
                 { hid: "description", name: "description", content: description },
                 { hid: "og-title", property: "og:title", content: title },
                 { hid: "og-description", property: "og:description", content: description },
-                { hid: "og-image", property: "og:image", content: image }
+                { hid: "og-image", property: "og:image", content: image },
+                { name: "keywords", content: keywords ? keywords : 'propiedad' },
+
             ]
         };
     },
