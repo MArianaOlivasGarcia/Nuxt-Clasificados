@@ -3,14 +3,16 @@
 <template>
   <section >
         <div class="container">
-    
-            <div class="card-columns">
-              <ProductCard
-                v-for="product in products"
-                :key="product.id"
-                :item="product" />
-            </div>
 
+            <div class="row m-0">
+
+                
+                    <ProductCard
+                    v-for="product in products"
+                    :key="product.id"
+                    :item="product" />
+                
+            </div>
         </div>
     </section>
 </template>

@@ -1,23 +1,26 @@
 <template>
-    <NuxtLink :to="route" class="card">
-    <div class="imageContent">
-      <img class="card-img-top" :src="item.image" alt="foto">
-      <span class="category">{{ item.category ? item.category : 'Bienes Raíces'  }}</span>
-      <!-- <span class="fav">
-          <i class="fas fa-heart"></i>
-          <i class="far fa-heart"></i>
-        </span> -->
+    <div class=" col-md-4 mb-3">
+
+        <NuxtLink :to="route" class="card">
+            <div class="imageContent">
+                <img class="card-img-top" :src="item.image" alt="foto">
+                <span class="category">{{ item.category ? item.category : 'Bienes Raíces'  }}</span>
+                <!-- <span class="fav">
+                    <i class="fas fa-heart"></i>
+                    <i class="far fa-heart"></i>
+                </span> -->
+            </div>
+            <div class="card-body">
+                <span class="destacado" v-if="item.destacado == '1'">Destacado <i style="color: #e7b211;" class="fa-solid fa-star fa-2xs"></i></span>
+                <h5 v-if="item.price" class="card-title pricecard m-0">$ {{ item.price }} {{ item.currency }}</h5>
+                <h5 v-else class="card-title pricecard m-0">Consultar precio</h5>
+                <div class="postcard-bar"></div>
+                <p class="card-text"><small class="text-muted" style="font-size: 14px">{{ item.city }}, {{ item.state }}</small></p>
+                <h1 class="card-text">{{ item.name }}</h1>
+                
+            </div>
+        </NuxtLink>
     </div>
-        <div class="card-body">
-            <span class="destacado" v-if="item.destacado == '1'">Destacado <i style="color: #e7b211;" class="fa-solid fa-star fa-2xs"></i></span>
-            <h5 v-if="item.price" class="card-title pricecard m-0">$ {{ item.price }} {{ item.currency }}</h5>
-            <h5 v-else class="card-title pricecard m-0">Consultar precio</h5>
-            <div class="postcard-bar"></div>
-            <p class="card-text"><small class="text-muted" style="font-size: 14px">{{ item.city }}, {{ item.state }}</small></p>
-            <h1 class="card-text">{{ item.name }}</h1>
-            
-        </div>
-    </NuxtLink>
 
 </template>
 
