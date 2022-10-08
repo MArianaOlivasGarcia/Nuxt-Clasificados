@@ -11,7 +11,7 @@
 
             <SectionLoader v-if="isLoading"/>
             
-            <div v-else class="card-columns">
+            <div v-else class="row">
                     <ProductCard 
                         v-for="item in data" 
                         :key="item.id"
