@@ -157,7 +157,6 @@ export default {
       const rutaCortada = this.$route.path.split('_')
 
       if ( !this.productid ) {
-        console.log('No se mando el productid')
         this.idProduct = rutaCortada[ rutaCortada.length -1 ].split('.')[0]
       } else  {
         this.idProduct = this.productid;

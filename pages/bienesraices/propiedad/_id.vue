@@ -496,7 +496,6 @@ export default {
     },
  
     async created() {
-      console.log(this.property)
         const { fullPath } = this.$route;
         this.url = `https://clasificadoscontacto.com${fullPath}`;
         for (const property in this.property.images) {

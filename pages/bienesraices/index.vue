@@ -17,7 +17,7 @@
 
 
 
-    <section class="mt-5">
+    <!-- <section class="mt-5">
         <div class="container">
             <div class="row justify-content-center mb-2 pb-3">
                 <div class="col-md-7 heading-section text-center ftco-animate fadeInUp ftco-animated">
@@ -36,7 +36,7 @@
             </div> 
 
         </div>
-    </section>
+    </section> -->
 
 
 
@@ -139,24 +139,27 @@ import { required, email } from 'vuelidate/lib/validators'
 export default {
     async asyncData ({ params, store }) {
 
-        const states = [];
-        const outstanding = [];
+        
       // fetch data from API
       try {
+        let states = [];
+        let outstanding = [];
+
         states = await store.dispatch('getStates');
         outstanding = await store.dispatch("getOutstanding")
     
-
-        
-      } catch (error) {
-        // Redirect to error page or 404 depending on server response
-       
-      }
-
         return {
             states,
             outstanding
         }
+        
+      } catch (error) {
+        return {
+            states: [],
+            outstanding: []
+        }
+      }
+
     },
     head: {
       titleTemplate: 'Clasificados Contacto | El buscador',

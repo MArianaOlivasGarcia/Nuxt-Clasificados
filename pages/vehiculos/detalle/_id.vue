@@ -306,7 +306,6 @@ export default {
 
       const rutaCortada = params.id.split('_')
       const id = rutaCortada[ rutaCortada.length - 1 ].split('.')[0]
-      console.log('ID:', id)
       // fetch data from API
       try {
         const vehiculo = await store.dispatch('getVehiculoById', id)

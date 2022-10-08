@@ -24,7 +24,6 @@ const actions = {
 
         if ( resp.status == 200 && resp.data.length > 0 ) {
             commit('setStatesList', resp.data)
-            // console.log(resp.data)
             return resp.data
         } 
     },
@@ -54,7 +53,6 @@ const actions = {
         const resp = await fetch(state.API_URL + state.GET_COLONIAS, config).then( resp => resp.json() )
         if ( resp.status == 200 && resp.data.length > 0 ) {
             commit('setColoniasList', resp.data)
-            console.log(resp)
             return resp.data
         } 
     },
@@ -77,7 +75,6 @@ const actions = {
                 return resp.data
             } 
         } catch( err ){
-            console.log(err)
         }
 
         
@@ -103,7 +100,6 @@ const actions = {
 
         if ( resp.status == 200) {
             commit('setProductsTypeByCityName', resp.data)
-            console.log(resp.data)
         }
 
     },
@@ -112,7 +108,6 @@ const actions = {
       
         commit( 'setLoading', true )
 
-        console.log(formData)
         // establecer el formulario al state
         commit('setSearchFormValues', formData)
         // commit('setAPI_PARAMS', { body: ``})
@@ -156,8 +151,6 @@ const actions = {
 
         // limit,
         // operation,
-        console.log('FORMULARIO' )
-        console.log(formData )
 
         commit('setSearchFormVehiculosValues', formData)
 
@@ -222,7 +215,6 @@ const actions = {
 
         const resp = await fetch(state.API_URL + state.IDI, config).then( resp => resp.json() )
 
-        console.log(resp)
 
         if ( resp.status == 200  ) {
             return resp.resp
@@ -351,7 +343,6 @@ const actions = {
         let config = state.API_PARAMS;
       
         const resp = await fetch(state.API_URL + state.SEARCH_PROPERTIES, config).then((res) => res.json())
-   
         
         if ( resp.status == 200  ) {
             commit("setOutstanding", resp.resp.data);
@@ -391,7 +382,6 @@ const actions = {
         }).then((res) => res.json())
         
         if ( resp.status == 200  ) {
-            console.log(resp)
             return resp.data
         } 
   
@@ -462,7 +452,6 @@ const actions = {
                 'x-api-key': '8ju2OkZitjD-igaZTJ99_51lRRgBsQS9Vmq50FkAD_c'
             }
         }).then( resp => resp.json() )
-        // console.log(resp.articles)
         if ( resp.status == 'error'){
             return null;
         } else {

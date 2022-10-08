@@ -1,15 +1,11 @@
 <template>
     <div class="default">
-        <!-- <div v-if="isLoading"  class="loading-container" >
-            <div class="spinner-border text-warning" role="status">
-                <span class="sr-only">Cargando...</span>
-            </div>
-        </div> -->
+
         <SearchGeneral v-if="showSearchGeneral" />
         <template>
             <Header />
             <Nuxt />
-            <HeaderUrls :urls="urls.data"/>
+            <!-- <HeaderUrls :urls="urls.data"/> -->
             <FooterDelete /> 
         </template>
         <Cookies v-if="!cookiesAccepted"/>
@@ -27,7 +23,6 @@ import HeaderUrls from '~/components/shared/HeaderUrls.vue';
 export default {
     async fetch() {
         this.urls = await this.$store.dispatch('getUrlsFooter');
-        console.log({urls})
     },
     data() {
         return {
