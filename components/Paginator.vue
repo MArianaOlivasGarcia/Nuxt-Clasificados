@@ -3,7 +3,7 @@
     <!-- <div class="pagination"> -->
       <div>
 
-      <a :href="urlTo" v-if="currentPage != 1"><i class="fas fa-chevron-left"></i></a>
+      <a :href="urlBack" v-if="currentPage != 1"><i class="fas fa-chevron-left"></i></a>
       <!-- <a  v-if="currentPage != 1"
         @click="changePage( currentPage - 1)"><i class="fas fa-chevron-left"></i></a> -->
       <!-- <a  v-for="page in  (currentPage <= 2) ? pages.slice( 0, currentPage+4 ) : pages.slice( currentPage-3, currentPage+2 )" 
