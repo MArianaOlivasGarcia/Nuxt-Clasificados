@@ -1,0 +1,75 @@
+@font-face {
+  font-family: 'amenitiesIcon';
+  src:  url('fonts/amenitiesIcon.eot?wl7jbd');
+  src:  url('fonts/amenitiesIcon.eot?wl7jbd#iefix') format('embedded-opentype'),
+    url('fonts/amenitiesIcon.ttf?wl7jbd') format('truetype'),
+    url('fonts/amenitiesIcon.woff?wl7jbd') format('woff'),
+    url('fonts/amenitiesIcon.svg?wl7jbd#amenitiesIcon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+[class^="ico-"], [class*=" ico-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'amenitiesIcon' !important;
+  speak: never;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.ico-tenis:before {
+  content: "\e900";
+}
+.ico-sisterna:before {
+  content: "\e901";
+}
+.ico-seguridad:before {
+  content: "\e902";
+}
+.ico-patio:before {
+  content: "\e903";
+}
+.ico-mascotas:before {
+  content: "\e904";
+}
+.ico-parrilla:before {
+  content: "\e905";
+}
+.ico-jacuzzi:before {
+  content: "\e906";
+}
+.ico-garaje:before {
+  content: "\e907";
+}
+.ico-elevador:before {
+  content: "\e908";
+}
+.ico-chimenea:before {
+  content: "\e909";
+}
+.ico-calefaccion:before {
+  content: "\e90a";
+}
+.ico-vista-mar:before {
+  content: "\e90b";
+}
+.ico-planta-de-energia:before {
+  content: "\e90c";
+}
+.ico-entrada-playa:before {
+  content: "\e90d";
+}
+.ico-frente-playa:before {
+  content: "\e90e";
+}
+.ico-cuarto-de-servicio:before {
+  content: "\e90f";
+}

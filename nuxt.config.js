@@ -26,6 +26,7 @@ export default {
       { rel: 'stylesheet', href: '/css/magnific-popup.css'},
       { rel: 'stylesheet', href: '/css/aos.css'},
       { rel: 'stylesheet', href: '/css/ionicons.min.css'},
+      { rel: 'stylesheet', href: '/amenitiesIcon/style.css'},
       { rel: 'stylesheet', href: '/css/bootstrap-datepicker.css'},
       { rel: 'stylesheet', href: '/css/jquery.timepicker.css'},
       { rel: 'stylesheet', href: '/css/flaticon.css'},

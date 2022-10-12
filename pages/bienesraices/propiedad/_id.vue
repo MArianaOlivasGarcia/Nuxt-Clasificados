@@ -502,6 +502,7 @@ export default {
             this.images.push(this.property.images[property]["largefile"]);
         }
 
+        console.log(this.property)
     },
     components: { Gallery },
     
