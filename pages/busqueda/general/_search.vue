@@ -79,6 +79,8 @@ export default {
             this.$store.dispatch('getTotalsSearch', searchForm )
           ])
 
+          console.log({resp, respTotal})
+
           this.totalResults = Number(respTotal);
           this.products = resp.data
 

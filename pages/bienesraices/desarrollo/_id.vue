@@ -24,6 +24,8 @@
             <div class="col-md-5">
               <div class="listing_details_top_left">
                 <div class="listing_details_top_title">
+
+
                   <h1>{{property.productName}}</h1>
                   <span> <i class="icon-location"></i> {{property.city}} , {{property.state}} </span>
                 
