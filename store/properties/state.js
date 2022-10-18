@@ -1,8 +1,8 @@
 
 const state = {
-    API_URL: "https://api.clasificadoscontacto.com/",
+    // API_URL: "https://api.clasificadoscontacto.com/",
     APIV2_URL: "https://feed.clasificadoscontacto.com/api/",
-    // API_URL: "https://www.sandbox.clasificadoscontacto.com/data/api/",
+    API_URL: "https://www.sandbox.clasificadoscontacto.com/data/api/",
     API_PARAMS: {
         method: "POST",
         headers: {
