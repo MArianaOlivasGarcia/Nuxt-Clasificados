@@ -46,8 +46,7 @@ export default {
 
       { src: 'https://www.googletagmanager.com/gtag/js?id=AW-653666729', async: true },
       { src: 'https://www.googletagmanager.com/gtag/js?id=UA-162799894-1', async: true },
-      { src: 'https://kit.fontawesome.com/2fff93d78d.js', crossOrigin: 'anonymous' },
-
+      { src:'https://kit.fontawesome.com/2fff93d78d.js', crossOrigin:'anonymous' },
     ]
 
   },

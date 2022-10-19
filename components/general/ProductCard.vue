@@ -11,7 +11,8 @@
                 </span> -->
             </div>
             <div class="card-body">
-                <span class="destacado" v-if="item.destacado == '1'">Destacado <i style="color: #e7b211;" class="fa-solid fa-star fa-2xs"></i></span>
+                
+                <span class="destacado" v-if="item.destacado == '1'">Destacado <i style="color: #e7b211;" class="fa-regular fa-star fa-2xs"></i></span>
                 <h5 v-if="item.price" class="card-title pricecard m-0">$ {{ item.price }} {{ item.currency }}</h5>
                 <h5 v-else class="card-title pricecard m-0">Consultar precio</h5>
                 <div class="postcard-bar"></div>

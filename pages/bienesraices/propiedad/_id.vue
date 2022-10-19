@@ -26,7 +26,7 @@
             
             <div>
               <div v-if="property.outstanding == '1'" style="text-align: end;">
-                <span style="font-size: 18px; border: 1px solid black; padding: 2px; border-radius: 10px;">DESCATADO <i class="fa-solid fa-star" style="color: #E7B211;"></i></span>
+                <span style="font-size: 18px; border: 1px solid black; padding: 2px; border-radius: 10px;">DESCATADO <i class="fa-regular fa-star" style="color: #E7B211;"></i></span>
               </div>
               <h1>{{ property.productName }}</h1>
               <p class="card-text text-muted">{{ property.colonia }}, {{ property.municipio }}, {{ property.state }}</p>
