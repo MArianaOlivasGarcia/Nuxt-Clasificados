@@ -50,18 +50,7 @@
             </div>
           </div>
 
-        <div>
-          <span style="font-weight: bold;">Ubicación</span>
-          <client-only>
-
-            <GoogleMap 
-              style="width: 100%; height: 250px" 
-              :mapLat="property.latitude" 
-              :mapLng="property.longitude" 
-              :draggable="false"
-              :scaleControl="false"/>
-          </client-only>
-        </div>
+        
       </div>
 
     </div>
@@ -472,15 +461,32 @@
               </div>
           </div>
 
+
+        </div>
+
+
+        <div>
+          <div>
+          <span style="font-weight: bold;">Ubicación</span>
+          <client-only>
+
+            <GoogleMap 
+              style="width: 100%; height: 250px" 
+              :mapLat="property.latitude" 
+              :mapLng="property.longitude" 
+              :draggable="false"
+              :scaleControl="false"/>
+          </client-only>
+        </div>
         </div>
       </div>
+
 
 
       <div class="col-md-5">
 
         <div class="text-center">
-          <div style="justify-content: center; display: flex;
-              align-items: center;">
+          <div style="justify-content: center; display: flex; align-items: center;">
             <img class="logo-crediteka" src="https://www.crediteka.com/img/logo_color.png" alt="Logo Crediteka">
             <p style="font-weight: 500; font-size: 18px;">¿Te interesa esta propiedad?</p>
           </div>
@@ -665,7 +671,7 @@ i {
 div.data-container {
 display: flex;
 flex-direction: column;
-justify-content: space-between;
+/* justify-content: space-between; */
 }
 
 div.gallery-content {
