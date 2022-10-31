@@ -1,11 +1,11 @@
 <template>
 
   <div class="card">
-    <NuxtLink :to="route" class="myLink imageContent">
+    <a :href="route" class="myLink imageContent">
       <img v-if="!noImage" :src="property.image" :alt="property.name" @error="imageLoadError">
       <img v-else src="@/static/images/property-placeholder.jpeg" :alt="property.name">
-    </NuxtLink>
-    <NuxtLink :to="route" class="card-body">
+    </a>
+    <a :href="route" class="card-body">
 
       <h5 v-if="property.price" class="pricecard m-0">$ {{ property.price }} {{ property.currency }}</h5>
       <h5 v-if="!property.price" class="pricecard m-0">Consultar el precio</h5>
@@ -23,7 +23,7 @@
     
 
     
-    </NuxtLink>
+    </a>
     <span class="operation">{{ property.operation }}</span>
     <span class="type">{{ property.tipo }}</span>
     <span v-if="property.destacado == '1'" class="destacado">Destacado <i style="color: #e7b211 !important" class="fas fa-star"></i></span>
@@ -58,7 +58,6 @@ export default {
   },
    created() {
     this.route = `/bienesraices/propiedad/${helpers.normalize( this.property.name )}_${ this.property.productoid }.html`;
-
     if ( !this.property.userdata  ) {
       this.whatsNumber = null;
       this.nameInmo = null;
