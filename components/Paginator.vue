@@ -29,9 +29,9 @@ export default {
         type: Number,
         required: true
       },
-      // ids: {
-      //   type: String
-      // }
+      isGeneral: {
+        type: Boolean
+      },
     },
     data(){
         return {
@@ -62,8 +62,15 @@ export default {
 
         this.nameRoute = this.$route.name;
 
-        this.urlTo = `/bienesraices/${this.$route.params.search}?pagina=${this.currentPage + 1}`;
-        this.urlBack = `/bienesraices/${this.$route.params.search}?pagina=${this.currentPage - 1}`;
+
+        if ( this.isGeneral ) {
+          this.urlTo = `/busqueda/general/${this.$route.params.search}?pagina=${this.currentPage + 1}`;
+          this.urlBack = `/busqueda/general/${this.$route.params.search}?pagina=${this.currentPage - 1}`;
+
+        } else {
+          this.urlTo = `/bienesraices/${this.$route.params.search}?pagina=${this.currentPage + 1}`;
+          this.urlBack = `/bienesraices/${this.$route.params.search}?pagina=${this.currentPage - 1}`;
+        }
 
     },
     methods: {

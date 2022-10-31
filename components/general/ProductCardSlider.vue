@@ -34,7 +34,6 @@ export default {
         }
     },
     created() {
-        console.log(this.item)
         const hasCategory = this.item.category ?? 'Bienes Raíces' ;
 
         const category = hasCategory.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(' ', '');

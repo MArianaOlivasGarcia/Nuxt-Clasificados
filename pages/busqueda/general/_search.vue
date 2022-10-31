@@ -23,7 +23,7 @@
       <ProductList :products="products"/>
 
       <div  v-if="totalResults > 20 " class="d-flex justify-content-center">
-        <Paginator :totalResults="totalResults"/>
+        <Paginator :isGeneral="true" :totalResults="totalResults"/>
       </div>
 
   </div>
