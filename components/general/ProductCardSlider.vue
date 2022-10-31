@@ -1,5 +1,4 @@
 <template>
-    <div class="col-md-4 mb-3">
         <NuxtLink :to="route" class="card">
             <div class="imageContent">
                 <img class="card-img-top" :src="item.image" alt="foto">
@@ -13,12 +12,10 @@
                 <h5 v-else class="card-title pricecard m-0">Consultar precio</h5>
                 <div class="postcard-bar"></div>
                 <p class="card-text"><small class="text-muted" style="font-size: 14px">{{ item.city }}, {{ item.state }}</small></p>
-                <h1 class="card-text">{{ item.name }}</h1>
+                <h1 class="card-text">{{ item.productName }}</h1>
                 
             </div>
         </NuxtLink> 
-    </div>
-
 </template>
 
 <script>
@@ -42,7 +39,7 @@ export default {
 
         const category = hasCategory.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(' ', '');
 
-        this.route = `/${ category }/${ category == 'bienesraices' ? 'propiedad' : 'detalle' }/${helpers.normalize( this.item?.name )}_${ this.item?.productoid }.html`
+        this.route = `/${ category }/${ category == 'bienesraices' ? 'propiedad' : 'detalle' }/${helpers.normalize( this.item?.productName )}_${ this.item?.productoid }.html`
     }
 }
 </script>

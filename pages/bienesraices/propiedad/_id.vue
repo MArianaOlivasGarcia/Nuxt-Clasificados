@@ -15,12 +15,6 @@
         <Gallery :items="images"/>
       </div>
 
-      <!-- <client-only>
-        <div class="col-md-7 gallery-content ">
-          <lightbox :cells="4" :items="images"></lightbox>
-        </div>
-      </client-only> -->
-
 
       <div class="col-md-5 data-container">
         
@@ -41,13 +35,24 @@
           </div>
         </div>
 
-        <div>
+        <div class="mt-5">
+
           <div class="text-center"><span style="font-weight: bold;">Compartir</span></div>
             <div class="d-flex justify-content-center mt-2">
               <a class="social" :href="`http://www.facebook.com/sharer.php?u=${ url }&t=${ property.description }`" target="_blank"><i class="fab fa-facebook"></i></a>
               <a class="social" :href="`https://twitter.com/intent/tweet?url=${ url }&text=${ property.description }`" target="_blank"><i class="fab fa-twitter"></i></a>
               <a class="social" :href="`https://api.whatsapp.com/send?text=${ property.description } ${url}`" target="_blank"><i class="fab fa-whatsapp"></i></a>
             </div>
+
+        </div>
+
+
+          <div class="text-center mt-5">
+            <div style="justify-content: center; display: flex; align-items: center;">
+              <img class="logo-crediteka" src="https://www.crediteka.com/img/logo_color.png" alt="Logo Crediteka">
+              <p style="font-weight: 500; font-size: 18px;">¿Te interesa esta propiedad?</p>
+            </div>
+            <a href="https://crediteka.com/precalificate" target="__blank" class="btn btn-credi">Crédito pre autorizado</a>
           </div>
 
         
@@ -56,7 +61,7 @@
     </div>
 
     <div class="row mt-5">
-      <div class="col-md-7">
+      <div class="col-md-8">
         <div>
           <span style="font-weight: bold;">Descripción</span>
           <div style="font-size: 14px; text-align: justify; line-height:normal;" v-html="property.descriptionlong"></div>
@@ -179,8 +184,8 @@
                       <p>Estacionamiento interior</p>
                     </div>
                   </li>
-
-                  <li v-if="property.amenities.interior[13].Elevador" >
+                  
+                <!--   <li v-if="property.amenities?.interior[13]?.Elevador" >
                     <div class="listings_details_icon">
                       <span class="ico-elevador"></span>
                     </div>
@@ -189,7 +194,7 @@
                     </div>
                   </li>
 
-                  <li v-if="property.amenities.interior[14]['Mascotas permitidas']" >
+                <li v-if="property.amenities.interior[14]['Mascotas permitidas']" >
                     <div class="listings_details_icon">
                       <span class="ico-mascotas"></span>
                     </div>
@@ -214,12 +219,12 @@
                     <div class="listings_details_content">
                       <p>Chimenea</p>
                     </div>
-                  </li>
+                  </li>-->
 
                 </ul>
                 
             </div>  
-          </div>
+          </div> 
 
 
           <div>
@@ -379,7 +384,7 @@
                     </div>
                   </li>
 
-
+                  <!-- 
                   <li v-if="property.amenities.exterior[18].Garaje">
                     <div class="listings_details_icon">
                       <span class="ico-garaje"></span>
@@ -455,11 +460,11 @@
                     <div class="listings_details_content">
                       <p>Acceso a la playa</p>
                     </div>
-                  </li>
+                  </li> -->
 
                 </ul>
               </div>
-          </div>
+          </div> 
 
 
         </div>
@@ -483,15 +488,15 @@
 
 
 
-      <div class="col-md-5">
+      <div class="col-md-4">
 
-        <div class="text-center">
+        <!-- <div class="text-center">
           <div style="justify-content: center; display: flex; align-items: center;">
             <img class="logo-crediteka" src="https://www.crediteka.com/img/logo_color.png" alt="Logo Crediteka">
             <p style="font-weight: 500; font-size: 18px;">¿Te interesa esta propiedad?</p>
           </div>
           <a href="https://crediteka.com/precalificate" target="__blank" class="btn btn-credi">Crédito pre autorizado</a>
-        </div>
+        </div> -->
 
 
 
@@ -529,8 +534,37 @@
 
 
         </div>
+
+
       </div>
     </div>
+
+
+
+    <div class="row mt-5">
+      
+      <div class="col-md-12 heading-section text-center ftco-animate fadeInUp ftco-animated">
+        <h2 class="mb-4 subtitle">MÁS PROPIEDADES COMO ESTA</h2>
+      </div>
+
+      <div class="col-12 px-5">
+
+        <client-only>
+          <VueHorizontalList
+                :items="similares"
+                :options="options"
+                >
+                <template v-slot:default="{item}">
+                  <ProductCardSlider :item={...item} />
+                  <!-- {{ item }} -->
+                </template>
+            </VueHorizontalList>
+          </client-only>
+      </div>
+
+    </div>
+
+    
 
   </div>
 </template> 
@@ -542,14 +576,35 @@
 
 import { required, email } from 'vuelidate/lib/validators'
 import Gallery from '~/components/Gallery.vue' 
+import VueHorizontalList from 'vue-horizontal-list'
 
 export default {
 async asyncData({ params, store }) {
     const rutaCortada = params.id.split("_");
     const id = rutaCortada[rutaCortada.length - 1].split(".")[0];
-    // fetch data from API
+    
+    let property = {};
+    let similares = [];
+  
     try {
-        const property = await store.dispatch("getPropertyDetail", id);
+        property = await store.dispatch("getPropertyDetail", id);
+        similares = await store.dispatch("getPropertiesSimilares", { folio: 43271 });
+
+      //  TODO: QUITAR
+      similares.push(property);
+      similares.push(property);
+      similares.push(property);
+      similares.push(property);
+      similares.push(property);
+      similares.push(property);
+      similares.push(property);
+      similares.push(property);
+      similares.push(property);
+      similares.push(property);
+
+
+        console.log('AQUI')
+        console.log({property,similares})
 
         if ( property.descriptionlong ) {
           property.descriptionlong = property.descriptionlong
@@ -559,6 +614,7 @@ async asyncData({ params, store }) {
 
         return {
             property,
+            similares
         };
     }
     catch (error) {
@@ -602,6 +658,37 @@ data() {
         },
         url: "",
         images: [],
+
+
+        options: {
+            responsive: [
+            { end: 576, size: 1 },
+            { start: 576, end: 768, size: 2 },
+            { start: 768, end: 992, size: 3 },
+            { size: 3 },
+            ],
+            list: {
+            // 1200 because @media (min-width: 1200px) and therefore I want to switch to windowed mode
+            windowed: 1200,
+
+            // Because: #app {padding: 80px 24px;}
+            padding: 24,
+            },
+            position: {
+              start: 0,
+            },
+            autoplay: { play: false, repeat: false, speed: 2500 },
+      },
+      items: [
+        { title: "Item 0", content: "Content item with description" },
+        { title: "Item 1", content: "Content item with description" },
+        { title: "Item 2", content: "Content item with description" },
+        { title: "Item 2", content: "Content item with description" },
+        { title: "Item 2", content: "Content item with description" },
+        { title: "Item 2", content: "Content item with description" },
+        { title: "Item 2", content: "Content item with description" },
+      ],
+        
     };
 },
 validations: {
@@ -625,10 +712,8 @@ async created() {
     for (const property in this.property.images) {
         this.images.push(this.property.images[property]["largefile"]);
     }
-
-    console.log(this.property)
 },
-components: { Gallery },
+components: { Gallery, VueHorizontalList },
 
 }
 </script>
@@ -651,6 +736,11 @@ line-height: 10px;
 h2 {
 font-size: 16px;
 font-weight: 500;
+}
+
+h2.subtitle {
+  font-size: 24px;
+  font-weight: 500;
 }
 
 .postcard-bar {

@@ -58,16 +58,9 @@ const actions = {
     },
 
     async getPropertyDetail({ commit, state }, id ){
-
-
         if ( id == undefined ) return
-
-
-        // commit('setAPI_PARAMS', { body: `folio=${ id }&token=${ state.token }`})
         commit('setAPI_PARAMS', { body: `folio=${ id }`});
-        
         const config = state.API_PARAMS
-
         try {
             const resp = await fetch(state.API_URL + state.GET_PROPERTYDETAIL, config).then( resp => resp.json() )
 
@@ -76,13 +69,7 @@ const actions = {
             } 
         } catch( err ){
         }
-
-        
-        
-        
-
     },
-
     
 
     async getProductsTypeByCityName({ commit, state }, folio){
@@ -203,6 +190,25 @@ const actions = {
         } 
   
     },
+
+
+    async getPropertiesSimilares({ commit, state }, formData ){
+
+        const resp = await fetch(state.API_URL + state.SEARCH_GENERAL, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8",
+            },
+            body: `folio=${ formData.folio }`
+        }).then((res) => res.json())
+        
+        if ( resp.status == 200  ) {
+
+            return resp.resp.data
+        } 
+  
+    },
+
 
    
     

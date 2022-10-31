@@ -79,11 +79,11 @@
 
                 <hr>
 
-                  <!-- <div class="row google_btn mb-4">
+                  <div class="row google_btn mb-4">
 
                      <div id="my-signin2"></div>
 
-                  </div>                   -->
+                  </div>                  
                 <NuxtLink to="/restablecer.html"><span>¿Olvidaste tu contraseña?</span></NuxtLink> <br>
                 <NuxtLink to="/registro.html"
                   >¿No tienes cuenta?, <span>¡Regístrate!</span></NuxtLink
@@ -134,7 +134,7 @@ export default {
   },
   mounted() {
 
-    //this.renderButton()
+    this.renderButton()
   },
   methods: {
     async login() {

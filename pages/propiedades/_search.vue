@@ -75,7 +75,7 @@ export default {
 
         const searchForm = {
           page: query.pagina ? query.pagina : 1,
-          oracion: search
+          params: search
         }
 
 
