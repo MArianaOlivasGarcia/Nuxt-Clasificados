@@ -501,8 +501,9 @@
 
 
 
-        <div class="contact-form">
+        <div class="contact-form" :class="{ isFixed: isFixed }">
           
+            <div class="text-right"><span @click="closerForm" style="cursor:pointer;"><i class="fa-solid fa-xmark"></i></span></div>
           
             <div class="text-center">
               <img
@@ -549,8 +550,10 @@
 
       <div class="col-12 px-5">
 
-        <client-only>
-          <VueHorizontalList
+        <h6 v-if="similares.length == 0" class="text-center mb-5">No hay más propiedades como esta.</h6>
+
+        <!-- <client-only> -->
+          <VueHorizontalList v-else
                 :items="similares"
                 :options="options"
                 >
@@ -559,7 +562,7 @@
                   <!-- {{ item }} -->
                 </template>
             </VueHorizontalList>
-          </client-only>
+          <!-- </client-only> -->
       </div>
 
     </div>
@@ -590,22 +593,8 @@ async asyncData({ params, store }) {
   
     try {
         property = await store.dispatch("getPropertyDetail", id);
-        similares = await store.dispatch("getPropertiesSimilares", { folio: 43271 });
+        similares = await store.dispatch("getPropertiesSimilares", { folio: id });
 
-      //  TODO: QUITAR
-      similares.push(property);
-      similares.push(property);
-      similares.push(property);
-      similares.push(property);
-      similares.push(property);
-      similares.push(property);
-      similares.push(property);
-      similares.push(property);
-      similares.push(property);
-      similares.push(property);
-
-
-        console.log('AQUI')
         console.log({property,similares})
 
         if ( property.descriptionlong ) {
@@ -681,15 +670,10 @@ data() {
             },
             autoplay: { play: false, repeat: false, speed: 2500 },
       },
-      items: [
-        { title: "Item 0", content: "Content item with description" },
-        { title: "Item 1", content: "Content item with description" },
-        { title: "Item 2", content: "Content item with description" },
-        { title: "Item 2", content: "Content item with description" },
-        { title: "Item 2", content: "Content item with description" },
-        { title: "Item 2", content: "Content item with description" },
-        { title: "Item 2", content: "Content item with description" },
-      ],
+
+      // Formulario contacto
+      isFixed: false,
+      wasCloser: false
         
     };
 },
@@ -708,11 +692,31 @@ validations: {
     },
 },
 
-async created() {
+mounted() {
     const { fullPath } = this.$route;
     this.url = `https://clasificadoscontacto.com${fullPath}`;
     for (const property in this.property.images) {
         this.images.push(this.property.images[property]["largefile"]);
+    }
+
+    window.addEventListener('scroll', this.handleScroll);
+},
+destroyed () {
+    window.removeEventListener('scroll', this.handleScroll);
+},
+methods: {
+    handleScroll (event) {
+      // Any code to be executed when the window is scrolled
+      if ( window.scrollY > 629.5 && !this.wasCloser ) {
+        this.isFixed = true;
+      } else {
+        this.isFixed = false;
+      }
+    },
+    closerForm() {
+      this.wasCloser = true;
+      this.isFixed = false;
+      console.log('asd')
     }
 },
 components: { Gallery, VueHorizontalList },
@@ -859,5 +863,14 @@ left: 0;
 .listings_details_icon > span::before {
 color: #00569d;
 font-size: 35px;
+}
+
+
+.isFixed {
+  position: fixed;
+  bottom: 0;
+  margin-right: 45px;
+  margin-bottom: 15px;
+  z-index: 9 !important;
 }
 </style>
