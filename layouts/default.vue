@@ -3,7 +3,8 @@
 
         <SearchGeneral v-if="showSearchGeneral" />
         <template>
-            <Header />
+            <!-- <Header /> -->
+            <Navbar />
             <Nuxt />
             <HeaderUrls :urls="urls.data"/>
             <FooterDelete /> 
