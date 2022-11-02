@@ -1,5 +1,5 @@
 <template>
-  <client-only  v-if="!loading">
+  <!-- <client-only  v-if="!loading"> -->
 
     
     <div  class="mx-5 pl-1">
@@ -50,7 +50,7 @@
     </div>
 
     
-  </client-only>
+  <!-- </client-only> -->
 </template>
 
 
@@ -274,17 +274,15 @@ export default {
       }
     },
     async created() {
-        // this.getProperties();
-        this.$nextTick( function() {
-          this.loading = false
-        })
+        // this.$nextTick( function() {
+        //   this.loading = false
+        // })
 
-        //TODO: Quitar
-        try {
-          await this.getProperties();
-        } catch (error) {
-          console.log(error)
-        }
+        // try {
+        //   await this.getProperties();
+        // } catch (error) {
+        //   console.log(error)
+        // }
 
     },
     validations: {

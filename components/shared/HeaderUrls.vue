@@ -1,5 +1,33 @@
 <template>
-    <div class="bg-white mt-4 pt-4 pb-3">
+
+
+    <div class=" mt-4 pt-4 pb-3">
+        <div class="container">
+            
+            <div class="row urlContained">
+
+                    <div class="col-md-6" v-for="(value, key) in urls" :key="key">
+                        <h2>{{ key }}</h2>
+
+                        <div class="row">
+                            <div class="col-md-6" v-for="(v, k) in value" :key="k">
+                                <h3 class="mb-2">{{ k }}</h3>
+                                <p style="text-align: justify;">
+                                    <a v-for="(item, index) in v" :key="index" :href="item.url">{{ item.tag }}, </a>
+                                </p>
+                            </div>
+                        </div>
+
+                        
+                    </div>
+
+            </div>
+
+        </div>
+    </div> 
+   
+   
+    <!-- <div class=" mt-4 pt-4 pb-3">
         <div class="container">
             
             <div class="row urlContained">
@@ -19,7 +47,7 @@
             </div>
 
         </div>
-    </div>
+    </div> -->
 </template>
 
 
@@ -98,5 +126,7 @@ padding-left: 50px; }
 .hov-icon:hover span{
     color:#00569f!important;
 }
+
+
 </style>
 

@@ -1,5 +1,5 @@
 <template>
-  <client-only  v-if="!loading">
+  <!-- <client-only  v-if="!loading"> -->
 
     
     <div  class="mx-5 pl-1">
@@ -50,7 +50,7 @@
     </div>
 
     
-  </client-only>
+  <!-- </client-only> -->
 </template>
 
 
@@ -63,14 +63,14 @@ export default {
   async asyncData ({ params, store, query }) {
 
 
-      let loadingProperties = true;
-      let totalResults = 0;
-      let properties = [];
+      
 
       try {
 
       const { search } = params;
-
+      
+        let loadingProperties = true;
+     
    
 
         const searchForm = {
@@ -84,8 +84,8 @@ export default {
             store.dispatch('getTotalsSearch', searchForm )
         ])
 
-        totalResults = Number(respTotal);
-        properties = resp.data
+        const totalResults = Number(respTotal);
+        const properties = resp.data
 
         console.log({totalResults, length: properties.length})
 
@@ -93,18 +93,18 @@ export default {
 
 
       // fetch data from API
-
+      return {
+          loadingProperties,
+          totalResults,
+          properties
+        }
        
       } catch (error) {
         // Redirect to error page or 404 depending on server response
         console.log(error)
       }
 
-      return {
-          loadingProperties,
-          totalResults,
-          properties
-        }
+      
     },
     head() {
       return {
@@ -224,17 +224,15 @@ export default {
       }
     },
     async created() {
-        // this.getProperties();
-        this.$nextTick( function() {
-          this.loading = false
-        })
+        // this.$nextTick( function() {
+        //   this.loading = false
+        // })
 
-        //TODO: Quitar
-        try {
-          await this.getProperties();
-        } catch (error) {
-          console.log(error)
-        }
+        // try {
+        //   await this.getProperties();
+        // } catch (error) {
+        //   console.log(error)
+        // }
 
     },
     validations: {

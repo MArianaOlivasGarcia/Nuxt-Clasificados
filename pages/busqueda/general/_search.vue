@@ -47,45 +47,86 @@
 
 <script>
 export default {
-    data() {
-      return {
-        isLoading: true,
-        totalResults: null,
-        keyword: '',
-        products: []
-      }
-    },
-    async created() {
-      this.getSearchResults();
-    },
-    methods: {
-      async getSearchResults() {
-          
-          this.products = [];
-          this.isLoading = true;
+  async asyncData ({ params, store, query }) {
 
-          const { search } = this.$route.params
 
-          this.keyword = search.split('-por-')[1].split('.')[0].replace(/-/g, ' ') 
+    try {
+      
+    let isLoading = true;
+    let totalResults = null;
+    let products = [];
+    let keyword = '';
 
-          const searchForm = {
-            page: this.$route.query.pagina ? this.$route.query.pagina : 1,
-            keyword: this.keyword,
-            category: undefined
-          }
+    const { search } = params
 
-          const [resp, respTotal ] = await Promise.all([
-            this.$store.dispatch('search', searchForm ),
-            this.$store.dispatch('getTotalsSearch', searchForm )
-          ])
+    keyword = search.split('-por-')[1].split('.')[0].replace(/-/g, ' ') 
 
-          console.log({resp, respTotal})
+    const searchForm = {
+      page: query.pagina ? query.pagina : 1,
+      keyword: keyword,
+      category: undefined
+    }
 
-          this.totalResults = Number(respTotal);
-          this.products = resp.data
+    const [resp, respTotal ] = await Promise.all([
+      store.dispatch('search', searchForm ),
+      store.dispatch('getTotalsSearch', searchForm )
+    ])
 
-          this.isLoading = false;
-      }
+
+     totalResults = Number(respTotal);
+     products = resp.data;
+     isLoading = false;
+
+
+     return {
+      isLoading,
+      totalResults,
+      products,
+      keyword
+     }
+
+    } catch (error) {
+      
+    }
+  },
+  data() {
+    return {
+      // isLoading: true,
+      // totalResults: null,
+      // products: [],
+      // keyword: '',
+    }
+  },
+  async created() {
+  },
+  methods: {
+    async getSearchResults() {
+        
+        this.products = [];
+        this.isLoading = true;
+
+        const { search } = this.$route.params
+
+        this.keyword = search.split('-por-')[1].split('.')[0].replace(/-/g, ' ') 
+
+        const searchForm = {
+          page: this.$route.query.pagina ? this.$route.query.pagina : 1,
+          keyword: this.keyword,
+          category: undefined
+        }
+
+        const [resp, respTotal ] = await Promise.all([
+        this.$store.dispatch('search', searchForm ),
+          this.$store.dispatch('getTotalsSearch', searchForm )
+        ])
+
+        console.log({resp, respTotal})
+
+        this.totalResults = Number(respTotal);
+        this.products = resp.data
+
+        this.isLoading = false;
+    }
     },
     watch: {
       '$route.query.pagina': {
