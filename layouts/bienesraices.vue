@@ -6,7 +6,7 @@
             <!-- <Header /> -->
             <Navbar />
             <Nuxt />
-            <!-- <HeaderUrls :urls="urls.data"/> -->
+            <HeaderUrls :urls="urls.data"/>
             <FooterDelete /> 
         </template>
         <Cookies v-if="!cookiesAccepted"/>
