@@ -503,7 +503,7 @@
 
         <div class="contact-form" :class="{ isFixed: isFixed }">
           
-            <div class="text-right"><span @click="closerForm" style="cursor:pointer;"><i class="fa-solid fa-xmark"></i></span></div>
+            <div v-if="isFixed && !wasCloser" class="text-right"><span @click="closerForm" style="cursor:pointer;"><i class="fa-solid fa-xmark"></i></span></div>
           
             <div class="text-center">
               <img
@@ -692,13 +692,16 @@ validations: {
     },
 },
 
-mounted() {
-    const { fullPath } = this.$route;
+created() {
+  const { fullPath } = this.$route;
     this.url = `https://clasificadoscontacto.com${fullPath}`;
     for (const property in this.property.images) {
         this.images.push(this.property.images[property]["largefile"]);
     }
 
+},
+mounted() {
+    
     window.addEventListener('scroll', this.handleScroll);
 },
 destroyed () {
