@@ -3,17 +3,15 @@
             <div class="imageContent">
                 <img class="card-img-top" :src="item.image" alt="foto">
                 <span class="category">{{ item.category ? item.category : 'Bienes Raíces'  }}</span>
-          
             </div>
+
             <div class="card-body">
-                
                 <span class="destacado" v-if="item.destacado == '1'">Destacado <i style="color: #e7b211;" class="fa-regular fa-star fa-2xs"></i></span>
                 <h5 v-if="item.price" class="card-title pricecard m-0">$ {{ item.price }} {{ item.currency }}</h5>
                 <h5 v-else class="card-title pricecard m-0">Consultar precio</h5>
                 <div class="postcard-bar"></div>
                 <p class="card-text"><small class="text-muted" style="font-size: 14px">{{ item.city }}, {{ item.state }}</small></p>
-                <h1 class="card-text">{{ item.productName }}</h1>
-                
+                <h1 class="card-text">{{ item.productName ? item.productName : item.name}}</h1> 
             </div>
         </NuxtLink> 
 </template>
