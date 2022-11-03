@@ -60,7 +60,6 @@ import { mapGetters } from 'vuex';
 import { required, email } from 'vuelidate/lib/validators' 
 
 export default {
-  layout: 'bienesraices',
   async asyncData ({ params, store, query }) {
 
 

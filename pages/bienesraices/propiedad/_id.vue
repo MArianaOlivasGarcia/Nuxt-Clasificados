@@ -582,7 +582,6 @@ import Gallery from '~/components/Gallery.vue'
 import VueHorizontalList from 'vue-horizontal-list'
 
 export default {
-  layout: 'bienesraices',
 
 async asyncData({ params, store }) {
     const rutaCortada = params.id.split("_");
