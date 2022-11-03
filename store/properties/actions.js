@@ -194,7 +194,7 @@ const actions = {
 
     async getPropertiesSimilares({ commit, state }, formData ){
 
-        const resp = await fetch(state.API_URL + state.SEARCH_GENERAL, {
+        const resp = await fetch(state.API_URL + state.GET_PROPIEDADES_SIMILARES, {
             method: "POST",
             headers: {
                 "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8",
@@ -203,7 +203,6 @@ const actions = {
         }).then((res) => res.json())
         
         if ( resp.status == 200  ) {
-
             return resp.resp.data
         } 
   

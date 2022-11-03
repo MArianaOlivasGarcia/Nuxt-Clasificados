@@ -559,7 +559,6 @@
                 >
                 <template v-slot:default="{item}">
                   <ProductCardSlider :item={...item} />
-                  <!-- {{ item }} -->
                 </template>
             </VueHorizontalList>
           <!-- </client-only> -->
@@ -591,10 +590,12 @@ async asyncData({ params, store }) {
     let similares = [];
   
     try {
+
+        
         property = await store.dispatch("getPropertyDetail", id);
         similares = await store.dispatch("getPropertiesSimilares", { folio: id });
 
-        console.log({property,similares})
+        console.log(similares)
 
         if ( property.descriptionlong ) {
           property.descriptionlong = property.descriptionlong
@@ -719,8 +720,6 @@ destroyed () {
 methods: {
     handleScroll (event) {
 
-      console.log(window.scrollY )
-    console.log({start: this.startScroll, end: this.endScroll})
 
       if ( window.scrollY > this.startScroll && !this.wasCloser ) {
         this.isFixed = true;
