@@ -9,7 +9,7 @@
       :whatsForm="whatsForm"
       :v="$v"/>
 
-    <div class="row">
+    <div class="row" id="first">
       
       <div class="col-md-7">
         <Gallery :items="images"/>
@@ -60,7 +60,7 @@
 
     </div>
 
-    <div class="row mt-5">
+    <div class="row mt-5" id="second">
       <div class="col-md-8">
         <div>
           <span style="font-weight: bold;">Descripción</span>
@@ -501,7 +501,7 @@
 
 
 
-        <div class="contact-form" :class="{ isFixed: isFixed }">
+        <div class="contact-form"  :class="{ 'isFixed': isFixed }">
           
             <div v-if="isFixed && !wasCloser" class="text-right"><span @click="closerForm" style="cursor:pointer;"><i class="fa-solid fa-xmark"></i></span></div>
           
@@ -672,7 +672,11 @@ data() {
 
       // Formulario contacto
       isFixed: false,
-      wasCloser: false
+      wasCloser: false,
+
+  
+      startScroll: 0,
+      endScroll: 0,
         
     };
 },
@@ -702,23 +706,37 @@ created() {
 mounted() {
     
     window.addEventListener('scroll', this.handleScroll);
+
+    let first = document.getElementById("first");
+    let second = document.getElementById("second");
+    this.startScroll = first.clientHeight;
+    this.endScroll = (this.startScroll + second.clientHeight) - 300;
+
 },
 destroyed () {
     window.removeEventListener('scroll', this.handleScroll);
 },
 methods: {
     handleScroll (event) {
-      // Any code to be executed when the window is scrolled
-      if ( window.scrollY > 629.5 && !this.wasCloser ) {
+
+      console.log(window.scrollY )
+    console.log({start: this.startScroll, end: this.endScroll})
+
+      if ( window.scrollY > this.startScroll && !this.wasCloser ) {
         this.isFixed = true;
       } else {
         this.isFixed = false;
       }
+
+      if ( window.scrollY > this.endScroll && !this.wasCloser ) {
+        this.isFixed = false;
+      }
+
+
     },
     closerForm() {
       this.wasCloser = true;
       this.isFixed = false;
-      console.log('asd')
     }
 },
 components: { Gallery, VueHorizontalList },
@@ -871,7 +889,7 @@ font-size: 35px;
 .isFixed {
   position: fixed;
   bottom: 0;
-  margin-right: 45px;
+  margin-right: 165px;
   margin-bottom: 15px;
   z-index: 9 !important;
 }
