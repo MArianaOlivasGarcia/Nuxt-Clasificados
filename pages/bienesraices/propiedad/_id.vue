@@ -710,7 +710,7 @@ mounted() {
     let first = document.getElementById("first");
     let second = document.getElementById("second");
     this.startScroll = first.clientHeight;
-    this.endScroll = (this.startScroll + second.clientHeight) - (this.startScroll / 2);
+    this.endScroll = (this.startScroll + second.clientHeight) - 300;
 
 },
 destroyed () {
