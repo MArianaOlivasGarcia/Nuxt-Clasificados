@@ -503,7 +503,7 @@
 <!--  :class="{ 'isFixed': isFixed }" -->
         <div class="contact-form" >
           
-            <div v-if="isFixed && !wasCloser" class="text-right"><span @click="closerForm" style="cursor:pointer;"><i class="fa-solid fa-xmark"></i></span></div>
+            <!-- <div v-if="isFixed && !wasCloser" class="text-right"><span @click="closerForm" style="cursor:pointer;"><i class="fa-solid fa-xmark"></i></span></div> -->
           
             <div class="text-center">
               <img
