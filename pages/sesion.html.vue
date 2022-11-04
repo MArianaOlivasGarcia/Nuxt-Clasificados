@@ -189,10 +189,11 @@ export default {
     attachSignin(element) {
       this.auth2.attachClickHandler(element, {},
         (googleUser) => {
-
           const token = googleUser.getAuthResponse().id_token;
+          console.log(token)
 
         }, (error) => {
+          console.log({error});
           alert(JSON.stringify(error, undefined, 2));
         });
     }

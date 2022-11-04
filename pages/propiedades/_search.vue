@@ -78,7 +78,7 @@ export default {
           params: search
         }
 
-
+        console.log(searchForm)
         const [resp, respTotal] = await Promise.all([
             store.dispatch('search', searchForm ),
             store.dispatch('getTotalsSearch', searchForm )

@@ -201,7 +201,6 @@ const actions = {
             },
             body: `folio=${ formData.folio }`
         }).then((res) => res.json())
-        
         if ( resp.status == 200  ) {
             return resp.resp.data
         } 
@@ -601,9 +600,10 @@ const actions = {
             headers: {
                 "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8",
             },
-            body: `ids=${ formData.ids ? formData.ids  : ''}&page=${ formData.page ? formData.page : '' }&state=${formData.state ? formData.state : ''}&keyword=${formData.keyword ? formData.keyword : ''}&municipality=${formData.city != undefined ? formData.city : ''}&category=${formData.category ? formData.category : ''}&limit=${ formData.limit ? formData.limit : 20 }&m2t=${formData.m2t ? formData.m2t : ''}&m2c=${formData.m2c ? formData.m2c : ''}&bedroom=${formData.bedroom ? formData.bedroom : ''}&bathroom=${formData.bathroom ? formData.bathroom : ''}&pricemax=${formData.pricemax ? formData.pricemax : ''}&pricemin=${formData.pricemin ? formData.pricemin : ''}&type=${formData.type ? formData.type : ''}&operation=${formData.operation  ? formData.operation : ''}&folio=${formData.folio ? formData.folio : ''}&outstanding=${ formData.outstanding ? formData.outstanding : '' }&suburb=${ formData.suburb ? formData.suburb : '' }&keywordAddrs=${ formData.keywordAddrs ? formData.keywordAddrs : '' }&token=${ state.token }`
+            body: `ids=${ formData.ids ? formData.ids  : ''}&page=${ formData.page ? formData.page : '' }&state=${formData.state ? formData.state : ''}&keyword=${formData.keyword ? formData.keyword : ''}&municipality=${formData.city != undefined ? formData.city : ''}&category=${formData.category ? formData.category : ''}&limit=${ formData.limit ? formData.limit : 20 }&m2t=${formData.m2t ? formData.m2t : ''}&m2c=${formData.m2c ? formData.m2c : ''}&bedroom=${formData.bedroom ? formData.bedroom : ''}&bathroom=${formData.bathroom ? formData.bathroom : ''}&pricemax=${formData.pricemax ? formData.pricemax : ''}&pricemin=${formData.pricemin ? formData.pricemin : ''}&type=${formData.type ? formData.type : ''}&operation=${formData.operation  ? formData.operation : ''}&folio=${formData.folio ? formData.folio : ''}&outstanding=${ formData.outstanding ? formData.outstanding : '' }&suburb=${ formData.suburb ? formData.suburb : '' }&keywordAddrs=${ formData.keywordAddrs ? formData.keywordAddrs : '' }&token=${ state.token }&params=${ formData.params ? formData.params : '' }`
         }).then((res) => res.json())
-        
+
+            console.log(`ids=${ formData.ids ? formData.ids  : ''}&page=${ formData.page ? formData.page : '' }&state=${formData.state ? formData.state : ''}&keyword=${formData.keyword ? formData.keyword : ''}&municipality=${formData.city != undefined ? formData.city : ''}&category=${formData.category ? formData.category : ''}&limit=${ formData.limit ? formData.limit : 20 }&m2t=${formData.m2t ? formData.m2t : ''}&m2c=${formData.m2c ? formData.m2c : ''}&bedroom=${formData.bedroom ? formData.bedroom : ''}&bathroom=${formData.bathroom ? formData.bathroom : ''}&pricemax=${formData.pricemax ? formData.pricemax : ''}&pricemin=${formData.pricemin ? formData.pricemin : ''}&type=${formData.type ? formData.type : ''}&operation=${formData.operation  ? formData.operation : ''}&folio=${formData.folio ? formData.folio : ''}&outstanding=${ formData.outstanding ? formData.outstanding : '' }&suburb=${ formData.suburb ? formData.suburb : '' }&keywordAddrs=${ formData.keywordAddrs ? formData.keywordAddrs : '' }&token=${ state.token }&params=${ formData.params ? formData.params : '' }`)
         if ( resp.status == 200  ) {
             commit("setPropertiesList", resp.resp.data);
             commit( 'setLoading', false )
