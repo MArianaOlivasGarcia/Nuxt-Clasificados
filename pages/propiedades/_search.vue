@@ -68,20 +68,21 @@ export default {
       try {
 
       const { search } = params;
+
       
         let loadingProperties = true;
-     
-   
-
+  
+  
         const searchForm = {
           page: query.pagina ? query.pagina : 1,
-          params: search
+          params: search,
+          category: 1
         }
 
-        console.log(searchForm)
+
         const [resp, respTotal] = await Promise.all([
-            store.dispatch('search', searchForm ),
-            store.dispatch('getTotalsSearch', searchForm )
+            store.dispatch('searchv2', searchForm ),
+            store.dispatch('getTotalsSearchv2', searchForm )
         ])
 
         const totalResults = Number(respTotal);
