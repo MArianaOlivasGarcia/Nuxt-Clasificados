@@ -8,6 +8,7 @@
               class="header-logo mt-2 m-0"
               src="@/static/clasificados-logo-blanco.png"
             />
+            
           </NuxtLink>
         </div>
       

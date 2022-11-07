@@ -1,15 +1,41 @@
 <template>
     <header>
-      <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar ftco-navbar-light sleep" id="ftco-navbar">
+      <nav class="navbar navbar-expand-md navbar-dark ftco_navbar ftco-navbar-light sleep" id="ftco-navbar">
         
         <div class="container-fluid">
-            <a href="/">
+            <a href="/" class="d-none d-md-block">
               <img
                 height="40"
                 class="p-1 pr-3"
                 src="@/static/clasificados-logo-blanco.png"
               />
             </a>
+
+            <a href="/" class="d-md-none">
+              <img
+                height="40"
+                class="p-1 pr-3"
+                src="@/static/cc_icono.png"
+              />
+            </a>
+
+
+            <div class="d-md-none" style="flex: 1;">
+                    <form class="d-flex"  v-on:submit.prevent="goToResults">
+                        <input 
+                            style="width: 90%;"
+                            class="form-control search"
+                            type="text" 
+                            autocomplete="off"
+                            v-model="keyword"
+                            placeholder="¿Qué deseas buscar?">
+                        <button class="btn btn-lupa">
+                            <img class="lupa-icon mr-1"
+                                type="submit"
+                                src="https://img.icons8.com/ios/2x/01569D/search.png" alt="">
+                        </button>
+                    </form>
+                </div>
         
          
 
@@ -24,6 +50,8 @@
             <span class="mr-3 oi oi-menu"></span>
           </button>
   
+
+         
            
   
           <div class="collapse navbar-collapse ml-5" id="ftco-nav">

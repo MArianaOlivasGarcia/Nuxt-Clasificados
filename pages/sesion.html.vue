@@ -79,11 +79,11 @@
 
                 <hr>
 
-                  <!-- <div class="row google_btn mb-4">
+                  <div class="row google_btn mb-4">
 
                      <div id="my-signin2"></div>
 
-                  </div>                   -->
+                  </div>                  
                 <NuxtLink to="/restablecer.html"><span>¿Olvidaste tu contraseña?</span></NuxtLink> <br>
                 <NuxtLink to="/registro.html"
                   >¿No tienes cuenta?, <span>¡Regístrate!</span></NuxtLink
@@ -97,7 +97,7 @@
 
 </template>
 
-<!-- <script src="https://apis.google.com/js/platform.js"></script> -->
+<script src="https://apis.google.com/js/platform.js"></script>
 
 <script>
 
@@ -134,7 +134,7 @@ export default {
   },
   mounted() {
 
-    // this.renderButton()
+    this.renderButton()
   },
   methods: {
     async login() {
@@ -167,36 +167,36 @@ export default {
         this.isLoading = false
 
     },
-    // renderButton() {
-    //   gapi.signin2.render('my-signin2', {
-    //     'scope': 'profile email',
-    //     'width': 240,
-    //     'height': 50,
-    //     'longtitle': true,
-    //     'theme': 'dark',
-    //   });
-    //   this.startApp()
-    // },
-    // startApp() {
-    //   gapi.load('auth2', () => {
-    //     this.auth2 = gapi.auth2.init({
-    //       client_id: '855212464867-dbmnlv1mtfm7ratcr00h7lk706027u30.apps.googleusercontent.com',
-    //       cookiepolicy: 'single_host_origin'
-    //     });
-    //     this.attachSignin(document.getElementById('my-signin2'));
-    //   });
-    // },
-    // attachSignin(element) {
-    //   this.auth2.attachClickHandler(element, {},
-    //     (googleUser) => {
-    //       const token = googleUser.getAuthResponse().id_token;
-    //       console.log(token)
+    renderButton() {
+      gapi.signin2.render('my-signin2', {
+        'scope': 'profile email',
+        'width': 240,
+        'height': 50,
+        'longtitle': true,
+        'theme': 'dark',
+      });
+      this.startApp()
+    },
+    startApp() {
+      gapi.load('auth2', () => {
+        this.auth2 = gapi.auth2.init({
+          client_id: '855212464867-dbmnlv1mtfm7ratcr00h7lk706027u30.apps.googleusercontent.com',
+          cookiepolicy: 'single_host_origin'
+        });
+        this.attachSignin(document.getElementById('my-signin2'));
+      });
+    },
+    attachSignin(element) {
+      this.auth2.attachClickHandler(element, {},
+        (googleUser) => {
+          const token = googleUser.getAuthResponse().id_token;
+          console.log(token)
 
-    //     }, (error) => {
-    //       console.log({error});
-    //       alert(JSON.stringify(error, undefined, 2));
-    //     });
-    // }
+        }, (error) => {
+          console.log({error});
+          alert(JSON.stringify(error, undefined, 2));
+        });
+    }
   }
 };
 
