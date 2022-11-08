@@ -80,10 +80,9 @@
                 <hr>
 
                   <div class="row google_btn mb-4">
+                     <div id="my-signin2" data-text="signup_with"></div>
+                  </div>                
 
-                     <div id="my-signin2"></div>
-
-                  </div>                  
                 <NuxtLink to="/restablecer.html"><span>¿Olvidaste tu contraseña?</span></NuxtLink> <br>
                 <NuxtLink to="/registro.html"
                   >¿No tienes cuenta?, <span>¡Regístrate!</span></NuxtLink
@@ -158,6 +157,7 @@ export default {
             return
         }
 
+
         this.$store.commit('setUserLogged', folio)
         localStorage.setItem('folio', folio)
         window.location.href = 'https://www.clasificadoscontacto.com/panel/#/dashboard'
@@ -169,7 +169,7 @@ export default {
     },
     renderButton() {
       gapi.signin2.render('my-signin2', {
-        'scope': 'profile email',
+        'scope': 'https://www.googleapis.com/auth/plus.login',
         'width': 240,
         'height': 50,
         'longtitle': true,
@@ -188,9 +188,19 @@ export default {
     },
     attachSignin(element) {
       this.auth2.attachClickHandler(element, {},
-        (googleUser) => {
+        async (googleUser) => {
+
+          console.log('Logged in as: ' + googleUser.getBasicProfile().getName());
+
+
           const token = googleUser.getAuthResponse().id_token;
-          console.log(token)
+          const {folio} = await this.$store.dispatch('singInWithGoogle', token )
+
+
+          this.$store.commit('setUserLogged', folio)
+          localStorage.setItem('folio', folio)
+          window.location.href = 'https://www.clasificadoscontacto.com/panel/#/dashboard'
+
 
         }, (error) => {
           console.log({error});
@@ -273,6 +283,9 @@ export default {
   box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 50px;
   border-radius: 20px;
 }
+
+
+
 
 
 

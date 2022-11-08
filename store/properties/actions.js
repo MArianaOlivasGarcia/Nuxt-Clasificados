@@ -13,6 +13,17 @@ const actions = {
         } 
     },
 
+    async singInWithGoogle({ state }, token ){
+        const resp = await fetch(state.APIV2_URL + state.GOOGLE_SINGIN, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8",
+            },
+            body: `token=${ token ? token : ':)' }`
+        }).then((resp) => resp.json())
+        return resp
+    },
+
     async getStates({ commit, state }) {
 
         const resp = await fetch(state.API_URL + state.GET_STATES, {

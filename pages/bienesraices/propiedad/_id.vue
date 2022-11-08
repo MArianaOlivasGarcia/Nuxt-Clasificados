@@ -469,9 +469,9 @@
 
         </div>
 
+  
 
         <div>
-          <div>
           <span style="font-weight: bold;">Ubicación</span>
           <client-only>
 
@@ -483,7 +483,10 @@
               :scaleControl="false"/>
           </client-only>
         </div>
-        </div>
+
+
+
+        
       </div>
 
 
@@ -569,6 +572,7 @@
     
 
   </div>
+
 </template> 
 
 

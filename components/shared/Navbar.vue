@@ -59,7 +59,7 @@
         
             
             <div class="row mt-2">
-                <div class="col-12">
+                <div class="col-12 d-none d-md-block">
                     <form class="d-flex"  v-on:submit.prevent="goToResults" style="width: 100%;">
                         <input 
                             class="form-control search"

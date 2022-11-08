@@ -1,6 +1,7 @@
 
 const state = {
-    APIV2_URL: "https://feed.clasificadoscontacto.com/api/",
+    // APIV2_URL: "https://feed.clasificadoscontacto.com/api/",
+    APIV2_URL: "http://localhost:3001/api/",
     API_URL: "https://api.clasificadoscontacto.com/",
     // API_URL: "https://www.sandbox.clasificadoscontacto.com/data/api/",
     API_PARAMS: {
@@ -23,9 +24,12 @@ const state = {
     VISIT_CONTACT: '?site=VlRndFVwVVl2MExnVGtxVW4rZzhKZz09',
     FORGOT_PASSWORD: '?site=bXoyN0tvN2tRdHFLZE5WYUVHYkxyZnBhYUZvSnVrM29LT1NPazRtSUE3az0=',
     VERIFICATE_PASS: '?site=RlhlaWptQy9wSU1oZFhTQU1RMTg4Z0F2VmdZMHRFWnhvL2ExZU1oeWZQYz0=',
-    CHANGE_PASSWORD: '?site=c3ord1N0azN1MVlTSXl2SGRMZHZzVnFlKzZ1QnM3Qm9pNGVUS05MQUVPTT0=',
     GET_COLONIAS: '?site=ditYbW90MU1LRGp5OTlkTkpET3F1dz09',
+    
+    // AUTH
+    CHANGE_PASSWORD: '?site=c3ord1N0azN1MVlTSXl2SGRMZHZzVnFlKzZ1QnM3Qm9pNGVUS05MQUVPTT0=',
     RENEW_TOKEN:'?site=eWsySVBlWldtQW42Z3Y1c1lQYTVVZz09',
+    GOOGLE_SINGIN:'auth/google',
 
     IDI: '?site=ODA1SmQ4U1RsMTczcjVnUThzNUQycTNwTGdaUVJ2enpmNDNaM0Q2cG5xbz0=',
     WHATSFORM: '?site=MWM2OW1oTWhXVG9JcnlNNThYL1gwSHlZRFEyTXRzZHFXeWYzT3QwR1BWRT0=',
