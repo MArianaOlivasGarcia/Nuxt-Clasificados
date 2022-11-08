@@ -9,16 +9,16 @@
     </CoolLightBox>
 
 
-    <div v-if="!showSm" class="row">
+    <div v-if="!showSm" class="row justify-content-end">
       <div v-for="(image, imageIndex) in items"
           :key="imageIndex"
           :class="items.length > 1 && items.length > totalPermit && imageIndex > totalPermit-1 
-              ? 'd-none' : 'col-4 p-0' ">
+              ? 'd-none' : 'col-4 p-0'">
 
           <div style="position: relative;" class="m-1">
 
             <img 
-            class="image"
+            :class=" imageIndex == 0 ? 'primera image' : 'image'"
             @click="index = imageIndex"
             :src="image" 
             :alt="image">
@@ -66,10 +66,10 @@ export default {
 
 
 
-      if ( this.items.length > 6 ) {
-        this.totalPermit = 6;
-        this.totalPermitTemp = 6;
-      } else if ( this.items.length <= 6 ) {
+      if ( this.items.length > 5 ) {
+        this.totalPermit = 5;
+        this.totalPermitTemp = 5;
+      } else if ( this.items.length <= 5 ) {
         this.totalPermit = this.items.length;
         this.totalPermitTemp = this.items.length;
       }
@@ -114,6 +114,11 @@ export default {
     align-items: center;
     font-size: 3rem;
     font-weight: 100;
+  }
+
+  .primera {
+    position: absolute;
+    height: 410px;
   }
 
 
