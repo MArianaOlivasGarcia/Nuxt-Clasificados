@@ -12,45 +12,26 @@
     <div v-if="!showSm" class="row">
       <div v-for="(image, imageIndex) in items"
           :key="imageIndex"
-          :class="
-            items.length > 1 && items.length > totalPermit && imageIndex > totalPermit-1 
-              ? 'd-none' : 'col-6 p-0' ">
+          :class="items.length > 1 && items.length > totalPermit && imageIndex > totalPermit-1 
+              ? 'd-none' : 'col-4 p-0' ">
+
           <div style="position: relative;" class="m-1">
-          <img 
-          class="image"
-          @click="index = imageIndex"
-          :src="image" :alt="image">
+
+            <img 
+            class="image"
+            @click="index = imageIndex"
+            :src="image" :alt="image">
+
             <div class="image image-end" 
               v-if="items.length > totalPermit && imageIndex == items.length-(items.length-totalPermit+1)"
               @click="index = imageIndex">
               <span>{{(items.length - totalPermit)}}+</span>
             </div>
+
           </div>
 
       </div> 
- 
     </div>
-
-
-    <!-- <div v-else class="row">
-      <div v-for="(image, imageIndex) in items"
-          :key="imageIndex"
-          :class="
-            items.length > 1 && items.length > totalPermit && imageIndex > totalPermit-1 
-              ? 'd-none' : 'col-md-6 p-0' ">
-          <div style="position: relative;" class="m-1">
-          <img 
-          class="image"
-          @click="index = imageIndex"
-          :src="image" :alt="image">
-            <div class="image image-end" 
-              @click="index = imageIndex">
-              <span>{{(items.length - totalPermit)}}+</span>
-            </div>
-          </div>
-
-      </div>
-    </div> -->
 
 
   </div>
@@ -84,10 +65,10 @@ export default {
 
 
 
-      if ( this.items.length > 4 ) {
-        this.totalPermit = 4;
-        this.totalPermitTemp = 4;
-      } else if ( this.items.length <= 4 ) {
+      if ( this.items.length > 6 ) {
+        this.totalPermit = 6;
+        this.totalPermitTemp = 6;
+      } else if ( this.items.length <= 6 ) {
         this.totalPermit = this.items.length;
         this.totalPermitTemp = this.items.length;
       }
@@ -117,7 +98,7 @@ export default {
 <style>
   .image {
     width: 100%;
-    height: 300px;
+    height: 200px;
     cursor: pointer;
     object-fit: cover;
   }

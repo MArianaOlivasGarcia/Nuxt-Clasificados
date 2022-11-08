@@ -38,7 +38,7 @@
     <div class="row mt-3">
 
       <div class="col-12">
-        <Gallery :items="images"/>
+        <GalleryHorizontal :items="images"/>
       </div>
 
     </div>
@@ -748,7 +748,7 @@ flex-direction: column;
 /* justify-content: space-between; */
 }
 
-div.gallery-content {
+div.galleryHorizonGalleryHoriHorizontal-content {
 display: flex;
 flex-direction: column;
 justify-content: center;
