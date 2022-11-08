@@ -343,9 +343,48 @@
                 :category="1" />
             </div>
 
+          </div>
 
+
+          <div class="mt-3" v-if="property.prototipos.length > 0">
+
+            <div class="card protoCard mb-2" v-for="p in property.prototipos" :key="p.prototypeid">
+              <div class="row m-0">
+
+                <div class="col-md-2 p-0 d-flex justify-content-center align-items-center my-1">
+                  <div style="width: 70px; height: 70px;">
+                    <img  
+                    class="protoImage"
+                    :src=" 'https://clasificadoscontacto.com'+ p.image"
+                    alt="">
+                  </div>
+                </div>
+
+                <div class="col-md-4 d-flex flex-column justify-content-center p-0">
+                  <p class="m-0">{{ p.name }}</p>
+                  <!-- <p class="m-0 card-text text-muted">{{ property.colonia }}, {{ property.municipio }}, {{ property.state }}</p> -->
+                  <p class="m-0 price" v-if="p.price">Venta ${{ Number(p.price).toLocaleString()  }} {{ p.currency }}</p>
+                  <p class="m-0 price" v-if="p.pricer">Renta ${{ Number(p.pricer).toLocaleString()  }} {{ p.currencyr }}</p>
+                  <p class="m-0 price" v-if="!p.price">Consultar el precio</p>
+                  <p class="m-0 price" v-if="!p.pricer">Consultar el precio</p>
+                </div>
+
+                <div class="col-md-6 d-flex justify-content-center align-items-center p-0">
+
+                  <span v-if="p.bedrooms > 0"><i class="icon-big-bed-with-one-pillow pl-2 pr-1"></i>{{ p.bedrooms }}</span>
+                  <span v-if="p.bathrooms > 0"><i class="icon-bath pl-2 pr-1"></i>{{ p.bathrooms }}</span>
+                  <span v-if="p.m2c > 0"><i class="icon-ruler pl-2 pr-1"></i>{{ p.m2c }} m<sup>2</sup></span>
+                  <span v-if="p.mlot > 0"><i class="icon-text  pl-2 pr-1"></i>{{ p.mlot }} m<sup>2</sup></span>
+                          
+                </div>
+
+
+              </div>
+            </div>
 
           </div>
+
+
       </div>
 
     </div>
@@ -410,6 +449,7 @@ async asyncData({ params, store }) {
             // .replace(/\r\n\r\n/g, '<br><br>')
             .replace(/\r\n/g, '<br>');
         }
+
 
         return {
             property,
@@ -519,7 +559,7 @@ created() {
       }
     })
 
-console.log(this.property.amenities)
+console.log(this.property.prototipos)
     
 
 
@@ -673,5 +713,14 @@ font-size: 35px;
   margin-right: 165px;
   margin-bottom: 15px;
   z-index: 9 !important;
+}
+
+.protoImage {
+  width: 70px !important;
+  height: 70px !important;
+}
+
+.protoCard p, .protoCard span,  .protoCard i{
+  font-size: 12px;
 }
 </style>
