@@ -548,16 +548,17 @@
 
       <div class="col-12 px-5">
 
-        <h6 class="text-center mb-5">No hay más desarrollos como este por el momento.</h6>
+        <h6 v-if="property.prototipos.length == 0" class="text-center mb-5">No hay más desarrollos como este por el momento.</h6>
 
-          <!-- <VueHorizontalList v-else
-                :items="similares"
+          <VueHorizontalList v-else
+                :items="property.prototipos"
                 :options="options"
                 >
                 <template v-slot:default="{item}">
                   <ProductCardSlider :item={...item} />
                 </template>
-            </VueHorizontalList> -->
+          </VueHorizontalList>
+
       </div>
 
     </div>
