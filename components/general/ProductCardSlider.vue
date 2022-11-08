@@ -34,8 +34,6 @@ export default {
     created() {
         const hasCategory = this.item.category ?? 'Bienes Raíces' ;
 
-        console.log(this.item)
-
         const category = hasCategory.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(' ', '');
 
         this.route = `/${ category }/${ category == 'bienesraices' ? 'propiedad' : 'detalle' }/${helpers.normalize( this.item?.productName ? this.item?.productName : this.item?.name )}_${ this.item?.productoid }.html`
