@@ -102,6 +102,7 @@ export default {
     height: 200px;
     cursor: pointer;
     object-fit: cover;
+    border-radius: 18px;
   }
 
   .image-end {
@@ -114,6 +115,7 @@ export default {
     align-items: center;
     font-size: 3rem;
     font-weight: 100;
+    border-radius: 18px;
   }
 
   .primera {
@@ -123,7 +125,6 @@ export default {
 
 
   img {
-    border-radius: 18px;
   }
 
 
