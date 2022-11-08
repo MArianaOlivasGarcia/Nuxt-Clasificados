@@ -20,7 +20,8 @@
             <img 
             class="image"
             @click="index = imageIndex"
-            :src="image" :alt="image">
+            :src="image" 
+            :alt="image">
 
             <div class="image image-end" 
               v-if="items.length > totalPermit && imageIndex == items.length-(items.length-totalPermit+1)"
@@ -114,4 +115,7 @@ export default {
     font-size: 3rem;
     font-weight: 100;
   }
+
+
+
 </style>
