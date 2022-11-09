@@ -134,7 +134,8 @@ export default {
             const data = {
                 ...this.whatsForm,
                 productId,
-                email: this.whatsForm.email ?? 'Sin email'
+                email: this.whatsForm.email ?? 'Sin email',
+                // prototypeid: ''
             }
         
             const resp = await this.$store.dispatch('sendToWhatsApp', data)
