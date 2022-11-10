@@ -85,10 +85,19 @@
           :disabled="isLoading">
           Enviar
         </button>
-        <!-- <div >
-          <Loader />
-        </div> -->
       </div>
+
+      <div class="col-md-12">
+        <button
+          type="button"
+          @click="openWhatsForm()"
+          class="btn  btn-whats py-3 px-5 mb-2"
+          :disabled="isLoading">
+          Contactar por WhatsApp <i class="fa-brands fa-whatsapp ml-2 fa-lg"></i>
+        </button>
+      </div>
+
+
     </div>
     <!-- <div class="text-center">
       Este sitio está protegido por reCAPTCHA y Google
@@ -105,6 +114,7 @@
 <script>
 
 import Swal from 'sweetalert2'
+import { mapGetters } from 'vuex';
 
 
 export default {
@@ -163,6 +173,9 @@ export default {
       }
 
     },
+    computed: {
+      ...mapGetters({ showWhatsForm: 'getShowWhatsForm' })
+    },
     methods: {
         async sendMain(){
 
@@ -201,7 +214,10 @@ export default {
 
             this.isLoading = false
 
-        }
+      },
+      openWhatsForm() {
+        this.$store.commit('setShowWhatsForm', !this.showWhatsForm)
+      }
     },
 }
 </script>
@@ -272,5 +288,15 @@ sup {
 }
 button {
   width: 100%;
+}
+
+button.btn-whats {
+  background-color: #25d366 !important;
+  color: white;
+}
+
+button.btn-whats:hover {
+  background-color: #22c15d !important;
+  cursor: pointer !important;
 }
 </style>
