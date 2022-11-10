@@ -80,7 +80,7 @@
               <h2>Interiores</h2>
               <div class="row">
 
-                  <div v-for="i in interiors" :key="i" class="col-md-4">
+                  <div v-for="i in interiors" :key="i" class="col-6 col-md-4">
                     <div class="d-flex flex-column justify-content-center align-items-center">
                       <span :class="i == 'Amueblado' 
                         ? 'icon-armchair'
@@ -158,7 +158,7 @@
               <h2>Exteriores</h2>
                 <div class="row">
 
-                  <div v-for="e in exteriors" :key="e" class="col-md-4">
+                  <div v-for="e in exteriors" :key="e" class="col-6 col-md-4">
                     <div class="d-flex flex-column justify-content-center align-items-center">
                       <span :class="e == 'Balcon' 
                         ? 'icon-balcon'
