@@ -13,12 +13,12 @@
       <div v-for="(image, imageIndex) in items"
           :key="imageIndex"
           :class="items.length > 1 && items.length > totalPermit && imageIndex > totalPermit-1 
-              ? 'd-none' : imageIndex === 0 ? 'col-6' : 'col-3 p-0'">
+              ? 'd-none' : imageIndex === 0 ? 'col-md-6' : 'col-md-3 p-0'">
 
           <div style="position: relative;" class="m-1">
 
             <img 
-            :class=" imageIndex == 0 ? 'primera image' : 'image'"
+            :class="(imageIndex == 0 && items.length > 3 ) ? 'primera image' : 'image'"
             @click="index = imageIndex"
             :src="image" 
             :alt="image">
@@ -121,10 +121,6 @@ export default {
   .primera {
     position: absolute;
     height: 410px;
-  }
-
-
-  img {
   }
 
 
