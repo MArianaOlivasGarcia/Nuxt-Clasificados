@@ -443,15 +443,15 @@ head() {
             title: "Clasificados contacto | El buscador"
         };
     }
-    const { title, description, image } = this.property.meta;
+    const { name, descriptionlong, image } = this.property.meta;
     const { keywords } = this.property;
 
     return {
-        title: title,
+        title: name,
         meta: [
-            { hid: "description", name: "description", content: description },
-            { hid: "og-title", property: "og:title", content: title },
-            { hid: "og-description", property: "og:description", content: description },
+            { hid: "description", name: "description", content: descriptionlong },
+            { hid: "og-title", property: "og:title", content: name },
+            { hid: "og-description", property: "og:description", content: descriptionlong },
             { hid: "og-image", property: "og:image", content: image },
             { name: "keywords", content: keywords ? keywords : 'propiedad' },
 
@@ -536,7 +536,7 @@ created() {
       }
     })
 
-console.log(this.property.prototipos)
+console.log(this.property)
     
 
 
