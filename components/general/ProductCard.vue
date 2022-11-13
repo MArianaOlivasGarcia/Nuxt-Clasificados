@@ -1,6 +1,6 @@
 <template>
     <div class="col-md-4 mb-3">
-        <NuxtLink :to="route" class="card">
+        <a :href="route" class="card" target="_blank">
             <div class="imageContent">
                 <img class="card-img-top" :src="item.image" alt="foto">
                 <span class="category">{{ item.category ? item.category : 'Bienes Raíces'  }}</span>
@@ -16,7 +16,7 @@
                 <h1 class="card-text">{{ item.name }}</h1>
                 
             </div>
-        </NuxtLink> 
+        </a> 
     </div>
 
 </template>

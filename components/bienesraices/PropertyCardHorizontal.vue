@@ -1,7 +1,7 @@
 <template>
 
   <div class="card">
-    <a :href="route" class="myLink imageContent">
+    <a :href="route" class="myLink imageContent" target="_blank">
       <img v-if="!noImage" :src="property.image" :alt="property.name" @error="imageLoadError">
       <img v-else src="@/static/images/property-placeholder.jpeg" :alt="property.name">
     </a>

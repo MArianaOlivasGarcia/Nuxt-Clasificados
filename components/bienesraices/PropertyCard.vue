@@ -1,7 +1,7 @@
 
 <template>
 
-  <NuxtLink :to="route" class="card">
+  <a :href="route" class="card" target="_blank">
     <div class="imageContent">
       <img class="card-img-top" :src="property.image" :alt="property.name">
       <span class="type">{{ property.tipo }}</span>
@@ -28,7 +28,7 @@
           <i class="fas fa-heart"></i>
           <i class="far fa-heart"></i>
     </span>
-  </NuxtLink>
+</a>
 
 </template>
 

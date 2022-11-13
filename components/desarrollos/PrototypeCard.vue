@@ -2,7 +2,7 @@
 
 <template>
     <div class="col-md-6 p-0 pr-3">
-      <NuxtLink :to="route">
+      <a :href="route" target="_blank">
           <div class="card my-2">
             <div class="imageContent">
               <img v-if="prototype.image" :src="'https://clasificadoscontacto.com/' + prototype.image" :alt="prototype.name">
@@ -18,7 +18,7 @@
               <p class="mt-2">{{ prototype.description.length > 65 ? prototype.description.substring(0,65) + '...' : prototype.description }}</p>
             </div>
           </div>
-      </NuxtLink>
+        </a>
     </div>
 </template>
 

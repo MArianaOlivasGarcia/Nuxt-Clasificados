@@ -1,5 +1,5 @@
 <template>
-    <header>
+    <div>
       <nav class="navbar navbar-expand-md navbar-dark ftco_navbar ftco-navbar-light sleep" id="ftco-navbar">
         
         <div class="container-fluid">
@@ -104,7 +104,10 @@
                             <NuxtLink to="/sesion.html" class="link">Iniciar sesión</NuxtLink>
                         </li>
                         <li class="nav-item">
-                            <NuxtLink to="/#contacto" class="link "><i class="icon-headset"></i> Contacto</NuxtLink>
+                            <NuxtLink to="/#contacto" class="link">Contacto</NuxtLink>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/blog" class="link">Blog</a>
                         </li>
                         <li class="nav-item" v-if="userLogged">
                         <a class="link icon-top" href="https://www.clasificadoscontacto.com/panel"><i class="fas fa-user-plus"></i>Mi cuenta</a>
@@ -121,7 +124,7 @@
   
         </div>
       </nav>
-    </header>
+    </div>
   </template>
   
   

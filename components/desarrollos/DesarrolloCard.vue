@@ -1,6 +1,6 @@
 
 <template>
-  <NuxtLink :to="route" class="card">
+  <a :href="route" class="card" target="_blank">
     <div class="imageContent">
       <img class="card-img-top" :src="`https://clasificadoscontacto.com${property.largephoto}`" :alt="property.alt">
       <span class="type">{{ property.tipo }}</span>
@@ -19,7 +19,7 @@
     </div>
 
     <span class="operation">{{ 'Desarrollo' }}</span>
-  </NuxtLink>
+</a>
 </template>
 
 <script>

@@ -1,11 +1,11 @@
 <template>
 
   <div class="card">
-    <NuxtLink :to="route" class="imageContent">
+    <a :to="route" class="imageContent" target="_blank">
       <img v-if="!noImage" :src="vehiculo.image" :alt="vehiculo.name" @error="imageLoadError">
       <img v-else src="@/static/images/auto-placeholder.jpeg" :alt="'TITULO'">
-    </NuxtLink>
-    <NuxtLink :to="route" class="card-body">
+    </a>
+    <a :to="route" class="card-body" target="_blank">
       <div class="d-flex" style="align-items: start">
          <span class="year mr-3">{{ vehiculo.year }}</span>
          <div>
@@ -25,7 +25,7 @@
     
 
     
-    </NuxtLink>
+    </a>
     <span class="operation">{{ 'Venta' }}</span>
     <span class="type">{{ 'Auto' }}</span>
     <span v-if="vehiculo.destacado == '1'" class="destacado">Destacado <i style="color: #e7b211 !important" class="fas fa-star"></i></span>

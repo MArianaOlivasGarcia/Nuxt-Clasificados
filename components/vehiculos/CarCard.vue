@@ -1,6 +1,6 @@
 
 <template>
-  <NuxtLink :to="route" class="card">
+  <a :href="route" class="card" target="_blank">
     <div class="imageContent">
       <img class="card-img-top" :src="vehiculo.image" :alt="vehiculo.name">
       <span class="type">{{ vehiculo.category }}</span>
@@ -32,7 +32,7 @@
     </div>
     <span class="operation">{{ vehiculo.operation }}</span>
 
-  </NuxtLink>
+</a>
 
 </template>
 

@@ -69,403 +69,215 @@
         </div>
 
 
-        <div class="amenities mt-3">
-          <span style="font-weight: bold;">Amenidades</span>
+        <div class="amenities mb-3">
+          <span style="font-weight: bold; color: black; font-size: 16px;">Amenidades</span>
           
-          <div>
-            <h2>Interiores</h2>
-            <div class="container-fluid">
-                <ul>
-                  <li v-if="property.amenities.interior[0].Amueblado">
-                    <div class="listings_details_icon">
-                      <span class=" icon-armchair"></span>
+              <h2 v-if="interiors.length > 0">Interiores</h2>
+              <div class="row" v-if="interiors.length > 0">
+
+                  <div v-for="i in interiors" :key="i" class="col-6 col-md-4">
+                    <div class="d-flex flex-column justify-content-center align-items-center">
+                      <span :class="i == 'Amueblado' 
+                        ? 'icon-armchair'
+                        : i == 'Aire_acondicionado'
+                        ? 'icon-air-conditioner'
+                        : i == 'Mini_split'
+                        ? 'icon-aire'
+                        : i == 'Sala'
+                        ? 'icon-living-room'
+                        : i == 'Cuarto_con_television'
+                        ? 'icon-television'
+                        : i == 'Cuarto_de_lavado'
+                        ? 'icon-washing-machine'
+                        : i == 'Cocina'
+                        ? 'icon-kitchen'
+                        : i == 'Casa_inteligente'
+                        ? 'icon-smart-home'
+                        : i == 'Lavadero'
+                        ? 'icon-washing-machine'
+                        : i == 'Comedor'
+                        ? 'icon-mesa'
+                        : i == 'Lavavajillas'
+                        ? 'icon-lavavajillas'
+                        : i == 'Ventilacion'
+                        ? 'icon-ventilacion'
+                        : i == 'Estacionamiento_interior'
+                        ? 'icon-garage'
+                        : 'icon-air-conditioner' "></span>
+                      <p><small>{{i.replace(/_/g, ' ')}}</small></p>
                     </div>
-                    <div class="listings_details_content">
-                      <p>Amueblado</p>
-                    </div>
-                  </li>
-                  <li v-if="property.amenities.interior[1].Aire_acondicionado" >
-                    <div class="listings_details_icon">
-                      <span class="icon-air-conditioner"></span>
-                    </div>
-                    <div class="listings_details_content">
-                      <p>Aire acondicionado</p>
-                    </div>
-                  </li>
-                  <li v-if="property.amenities.interior[2].Mini_split" >
-                    <div class="listings_details_icon">
-                      <span class="icon-aire"></span>
-                    </div>
-                    <div class="listings_details_content">
-                      <p>Mini split</p>
-                    </div>
-                  </li>
-                  <li v-if="property.amenities.interior[3].Sala">
-                    <div class="listings_details_icon">
-                      <span class="icon-living-room"></span>
-                    </div>
-                    <div class="listings_details_content">
-                      <p>Sala</p>
-                    </div>
-                  </li>
-                </ul>
-                <ul>
-                  <li v-if="property.amenities.interior[4].Cuarto_con_television" >
-                    <div class="listings_details_icon">
-                      <span class="icon-television"></span>
-                    </div>
-                    <div class="listings_details_content">
-                      <p>Cuarto con televisión</p>
-                    </div>
-                  </li>
-                  <li v-if="property.amenities.interior[5].Cuarto_de_lavado">
-                    <div class="listings_details_icon">
-                      <span class="icon-washing-machine"></span>
-                    </div>
-                    <div class="listings_details_content">
-                      <p>Cuarto de lavado</p>
-                    </div>
-                  </li>
-                  <li v-if="property.amenities.interior[6].Cocina">
-                    <div class="listings_details_icon">
-                      <span class="icon-kitchen"></span>
-                    </div>
-                    <div class="listings_details_content">
-                      <p>Cocina</p>
-                    </div>
-                  </li>
-                  <li v-if="property.amenities.interior[7].Casa_inteligente" >
-                    <div class="listings_details_icon">
-                      <span class="icon-smart-home"></span>
-                    </div>
-                    <div class="listings_details_content">
-                      <p>Casa inteligente</p>
-                    </div>
-                  </li>
-                </ul>
-                <ul>
-                  <li v-if="property.amenities.interior[8].Lavadero" >
-                    <div class="listings_details_icon">
-                      <span class="icon-washing-machine"></span>
-                    </div>
-                    <div class="listings_details_content">
-                      <p>Lavadero</p>
-                    </div>
-                  </li>
-                  <li v-if="property.amenities.interior[9].Comedor">
-                    <div class="listings_details_icon">
-                      <span class="icon-mesa"></span>
-                    </div>
-                    <div class="listings_details_content">
-                      <p>Comedor</p>
-                    </div>
-                  </li>
-                  <li v-if="property.amenities.interior[10].Lavavajillas">
-                    <div class="listings_details_icon">
-                      <span class="icon-lavavajillas"></span>
-                    </div>
-                    <div class="listings_details_content">
-                      <p>Lavavajillas</p>
-                    </div>
-                  </li>
-                  <li v-if="property.amenities.interior[11].Ventilacion">
-                    <div class="listings_details_icon">
-                      <span class="icon-ventilacion"></span>
-                    </div>
-                    <div class="listings_details_content">
-                      <p>Ventilación</p>
-                    </div>
-                  </li>
-                  <li v-if="property.amenities.interior[12].Estacionamiento_interior" >
-                    <div class="listings_details_icon">
-                      <span class="icon-garage"></span>
-                    </div>
-                    <div class="listings_details_content">
-                      <p>Estacionamiento interior</p>
-                    </div>
-                  </li>
+                  </div>
+
+
+                    
+                  <!--   <li v-if="property.amenities?.interior[13]?.Elevador" >
+                      <div class="listings_details_icon">
+                        <span class="ico-elevador"></span>
+                      </div>
+                      <div class="listings_details_content">
+                        <p>Elevador</p>
+                      </div>
+                    </li>
+
+                  <li v-if="property.amenities.interior[14]['Mascotas permitidas']" >
+                      <div class="listings_details_icon">
+                        <span class="ico-mascotas"></span>
+                      </div>
+                      <div class="listings_details_content">
+                        <p>Mascotas permitidas</p>
+                      </div>
+                    </li>
+
+                    <li v-if="property.amenities.interior[15]['Jacuzzi']" >
+                      <div class="listings_details_icon">
+                        <span class="ico-jacuzzi"></span>
+                      </div>
+                      <div class="listings_details_content">
+                        <p>Jacuzzi</p>
+                      </div>
+                    </li>
+
+                    <li v-if="property.amenities.interior[16]['Chimenea']" >
+                      <div class="listings_details_icon">
+                        <span class="ico-chimenea"></span>
+                      </div>
+                      <div class="listings_details_content">
+                        <p>Chimenea</p>
+                      </div>
+                    </li>-->
+
                   
-                <!--   <li v-if="property.amenities?.interior[13]?.Elevador" >
-                    <div class="listings_details_icon">
-                      <span class="ico-elevador"></span>
-                    </div>
-                    <div class="listings_details_content">
-                      <p>Elevador</p>
-                    </div>
-                  </li>
-
-                <li v-if="property.amenities.interior[14]['Mascotas permitidas']" >
-                    <div class="listings_details_icon">
-                      <span class="ico-mascotas"></span>
-                    </div>
-                    <div class="listings_details_content">
-                      <p>Mascotas permitidas</p>
-                    </div>
-                  </li>
-
-                  <li v-if="property.amenities.interior[15]['Jacuzzi']" >
-                    <div class="listings_details_icon">
-                      <span class="ico-jacuzzi"></span>
-                    </div>
-                    <div class="listings_details_content">
-                      <p>Jacuzzi</p>
-                    </div>
-                  </li>
-
-                  <li v-if="property.amenities.interior[16]['Chimenea']" >
-                    <div class="listings_details_icon">
-                      <span class="ico-chimenea"></span>
-                    </div>
-                    <div class="listings_details_content">
-                      <p>Chimenea</p>
-                    </div>
-                  </li>-->
-
-                </ul>
-                
-            </div>  
-          </div> 
+              </div>  
 
 
-          <div>
-            <h2>Exteriores</h2>
-                <div class="container-fluid">
-                <ul>
-                  <li v-if="property.amenities.exterior[0].Balcon" >
-                    <div class="listings_details_icon">
-                      <span class="icon-balcon"></span>
-                    </div>
-                    <div class="listings_details_content">
-                      <p>Balcón</p>
-                    </div>
-                  </li>
-                  <li v-if="property.amenities.exterior[1].Terraza">
-                    <div class="listings_details_icon">
-                      <span class="icon-terraza"></span>
-                    </div>
-                    <div class="listings_details_content">
-                      <p>Terraza</p>
-                    </div>
-                  </li>
-                  <li v-if="property.amenities.exterior[2].Jardin" >
-                    <div class="listings_details_icon">
-                      <span class="icon-jardin"></span>
-                    </div>
-                    <div class="listings_details_content">
-                      <p>Jardín</p>
-                    </div>
-                  </li>
-                  <li v-if="property.amenities.exterior[3].Piscina" >
-                    <div class="listings_details_icon">
-                      <span class="icon-piscina"></span>
-                    </div>
-                    <div class="listings_details_content">
-                      <p>Piscina</p>
-                    </div>
-                  </li>
-                </ul>
-                <ul>
-                  <li v-if="property.amenities.exterior[4].Ascensor">
-                    <div class="listings_details_icon">
-                      <span class="icon-elevator"></span>
-                    </div>
-                    <div class="listings_details_content">
-                      <p>Ascensor</p>
-                    </div>
-                  </li>
-                  <li v-if="property.amenities.exterior[5].Cajon_Exterior">
-                    <div class="listings_details_icon">
-                      <span class="icon-persianas"></span>
-                    </div>
-                    <div class="listings_details_content">
-                      <p>Cajón exterior</p>
-                    </div>
-                  </li>
-                  <li v-if="property.amenities.exterior[6].BBq">
-                    <div class="listings_details_icon">
-                      <span class="icon-grill"></span>
-                    </div>
-                    <div class="listings_details_content">
-                      <p>BBq</p>
-                    </div>
-                  </li>
-                  <li v-if="property.amenities.exterior[7].Bar">
-                    <div class="listings_details_icon">
-                      <span class="icon-cocktail"></span>
-                    </div>
-                    <div class="listings_details_content">
-                      <p>Bar</p>
-                    </div>
-                  </li>
-                </ul>
-                <ul>
-                  <li v-if="property.amenities.exterior[8].Gym" >
-                    <div class="listings_details_icon">
-                      <span class="icon-weightlifter"></span>
-                    </div>
-                    <div class="listings_details_content">
-                      <p>Gym</p>
-                    </div>
-                  </li>
-                  <li v-if="property.amenities.exterior[9].Muelle">
-                    <div class="listings_details_icon">
-                      <span class="icon-muelle"></span>
-                    </div>
-                    <div class="listings_details_content">
-                      <p>Muelle</p>
-                    </div>
-                  </li>
-                  <li v-if="property.amenities.exterior[10].Cortina_anticiclonica">
-                    <div class="listings_details_icon">
-                      <span class="icon-cyclone"></span>
-                    </div>
-                    <div class="listings_details_content">
-                      <p>Cortina anticiclónica</p>
-                    </div>
-                  </li>
-                  <li v-if="property.amenities.exterior[11].Zona_de_maniobras">
-                    <div class="listings_details_icon">
-                      <span class="icon-trasvolar"></span>
-                    </div>
-                    <div class="listings_details_content">
-                      <p>Zona de maniobras</p>
-                    </div>
-                  </li>
-                </ul>
-                <ul>
-                  <li v-if="property.amenities.exterior[12].Area_de_descargo">
-                    <div class="listings_details_icon">
-                      <span class="icon-discharge"></span>
-                    </div>
-                    <div class="listings_details_content">
-                      <p>Área de descargo</p>
-                    </div>
-                  </li>
-                  <li v-if="property.amenities.exterior[13].Stand">
-                    <div class="listings_details_icon">
-                      <span class="icon-food-stand"></span>
-                    </div>
-                    <div class="listings_details_content">
-                      <p>Stand</p>
-                    </div>
-                  </li>
-                  <li v-if="property.amenities.exterior[14].Cortina_de_metal">
-                    <div class="listings_details_icon">
-                      <span class="icon-blinds"></span>
-                    </div>
-                    <div class="listings_details_content">
-                      <p>Cortina de metal</p>
-                    </div>
-                  </li>
-                  <li v-if="property.amenities.exterior[15].Congelador">
-                    <div class="listings_details_icon">
-                      <span class="icon-freezer"></span>
-                    </div>
-                    <div class="listings_details_content">
-                      <p>Congelador</p>
-                    </div>
-                  </li>
-                </ul>
-                <ul>
-                  <li v-if="property.amenities.exterior[16].Estacionamiento_exterior">
-                    <div class="listings_details_icon">
-                      <span class="icon-parking-area"></span>
-                    </div>
-                    <div class="listings_details_content">
-                      <p>Estacionamiento exterior</p>
-                    </div>
-                  </li>
-                  <li v-if="property.amenities.exterior[17].Cisterna">
-                    <div class="listings_details_icon">
-                      <span class="icon-water-tank"></span>
-                    </div>
-                    <div class="listings_details_content">
-                      <p>Cisterna</p>
-                    </div>
-                  </li>
+              <h2 v-if="exteriors.length > 0">Exteriores</h2>
+              <div class="row" v-if="exteriors.length > 0">
 
-                  <!-- 
-                  <li v-if="property.amenities.exterior[18].Garaje">
-                    <div class="listings_details_icon">
-                      <span class="ico-garaje"></span>
+                  <div v-for="e in exteriors" :key="e" class="col-6 col-md-4">
+                    <div class="d-flex flex-column justify-content-center align-items-center">
+                      <span :class="e == 'Balcon' 
+                        ? 'icon-balcon'
+                        : e == 'Terraza' 
+                        ? 'icon-terraza'
+                        : e == 'Jardin' 
+                        ? 'icon-jardin'
+                        : e == 'Piscina' 
+                        ? 'icon-piscina'
+                        : e == 'Ascensor' 
+                        ? 'icon-elevator'
+                        : e == 'Cajon_Exterior' 
+                        ? 'icon-persianas'
+                        : e == 'BBq' 
+                        ? 'icon-grill'
+                        : e == 'Bar' 
+                        ? 'icon-cocktail'
+                        : e == 'Gym' 
+                        ? 'icon-weightlifter'
+                        : e == 'Muelle' 
+                        ? 'icon-muelle'
+                        : e == 'Cortina_anticiclonica' 
+                        ? 'icon-cyclone'
+                        : e == 'Zona_de_maniobras' 
+                        ? 'icon-trasvolar'
+                        : e == 'Area_de_descargo' 
+                        ? 'icon-discharge'
+                        :  e == 'Stand' 
+                        ? 'icon-food-stand'
+                        :  e == 'Cortina_de_metal' 
+                        ? 'icon-blinds'
+                        :  e == 'Congelador' 
+                        ? 'icon-freezer'
+                        :  e == 'Estacionamiento_exterior' 
+                        ? 'icon-parking-area'
+                        :  e == 'Cisterna' 
+                        ? 'icon-water-tank'
+                        : 'icon-balcon'"></span>
+                      <p><small>{{e.replace(/_/g, ' ')}}</small></p>
                     </div>
-                    <div class="listings_details_content">
-                      <p>Garaje</p>
-                    </div>
-                  </li>
+                  </div>
+
+              </div>  
 
 
-                  <li v-if="property.amenities.exterior[19].Parrilla">
-                    <div class="listings_details_icon">
-                      <span class="ico-parrilla"></span>
-                    </div>
-                    <div class="listings_details_content">
-                      <p>Parrilla</p>
-                    </div>
-                  </li>
+                 
+            
+                    <!-- 
+                    <li v-if="property.amenities.exterior[18].Garaje">
+                      <div class="listings_details_icon">
+                        <span class="ico-garaje"></span>
+                      </div>
+                      <div class="listings_details_content">
+                        <p>Garaje</p>
+                      </div>
+                    </li>
 
 
-                  <li v-if="property.amenities.exterior[20]['Cancha de tenis']">
-                    <div class="listings_details_icon">
-                      <span class="ico-tenis"></span>
-                    </div>
-                    <div class="listings_details_content">
-                      <p>Cancha de tenis</p>
-                    </div>
-                  </li>
-
-                  <li v-if="property.amenities.exterior[21]['Patio']">
-                    <div class="listings_details_icon">
-                      <span class="ico-patio"></span>
-                    </div>
-                    <div class="listings_details_content">
-                      <p>Patio</p>
-                    </div>
-                  </li>
+                    <li v-if="property.amenities.exterior[19].Parrilla">
+                      <div class="listings_details_icon">
+                        <span class="ico-parrilla"></span>
+                      </div>
+                      <div class="listings_details_content">
+                        <p>Parrilla</p>
+                      </div>
+                    </li>
 
 
-                  <li v-if="property.amenities.exterior[22]['Cisterna']">
-                    <div class="listings_details_icon">
-                      <span class="icon-water-tank"></span>
-                    </div>
-                    <div class="listings_details_content">
-                      <p>Cisterna</p>
-                    </div>
-                  </li>
+                    <li v-if="property.amenities.exterior[20]['Cancha de tenis']">
+                      <div class="listings_details_icon">
+                        <span class="ico-tenis"></span>
+                      </div>
+                      <div class="listings_details_content">
+                        <p>Cancha de tenis</p>
+                      </div>
+                    </li>
 
-                  <li v-if="property.amenities.exterior[23]['Vista al mar']">
-                    <div class="listings_details_icon">
-                      <span class="ico-vista-mar"></span>
-                    </div>
-                    <div class="listings_details_content">
-                      <p>Vista al mar</p>
-                    </div>
-                  </li>
+                    <li v-if="property.amenities.exterior[21]['Patio']">
+                      <div class="listings_details_icon">
+                        <span class="ico-patio"></span>
+                      </div>
+                      <div class="listings_details_content">
+                        <p>Patio</p>
+                      </div>
+                    </li>
+
+
+                    <li v-if="property.amenities.exterior[22]['Cisterna']">
+                      <div class="listings_details_icon">
+                        <span class="icon-water-tank"></span>
+                      </div>
+                      <div class="listings_details_content">
+                        <p>Cisterna</p>
+                      </div>
+                    </li>
+
+                    <li v-if="property.amenities.exterior[23]['Vista al mar']">
+                      <div class="listings_details_icon">
+                        <span class="ico-vista-mar"></span>
+                      </div>
+                      <div class="listings_details_content">
+                        <p>Vista al mar</p>
+                      </div>
+                    </li>
 
 
 
-                  <li v-if="property.amenities.exterior[24]['Frente a la playa']">
-                    <div class="listings_details_icon">
-                      <span class="ico-frente-playa"></span>
-                    </div>
-                    <div class="listings_details_content">
-                      <p>Frente a la playa</p>
-                    </div>
-                  </li>
+                    <li v-if="property.amenities.exterior[24]['Frente a la playa']">
+                      <div class="listings_details_icon">
+                        <span class="ico-frente-playa"></span>
+                      </div>
+                      <div class="listings_details_content">
+                        <p>Frente a la playa</p>
+                      </div>
+                    </li>
 
-                  <li v-if="property.amenities.exterior[24]['Acceso a la playa']">
-                    <div class="listings_details_icon">
-                      <span class="ico-entrada-playa"></span>
-                    </div>
-                    <div class="listings_details_content">
-                      <p>Acceso a la playa</p>
-                    </div>
-                  </li> -->
-
-                </ul>
-              </div>
-          </div> 
-
+                    <li v-if="property.amenities.exterior[24]['Acceso a la playa']">
+                      <div class="listings_details_icon">
+                        <span class="ico-entrada-playa"></span>
+                      </div>
+                      <div class="listings_details_content">
+                        <p>Acceso a la playa</p>
+                      </div>
+                    </li> -->
 
         </div>
 
@@ -654,6 +466,8 @@ data() {
         url: "",
         images: [],
 
+        interiors: [],
+        exteriors: [],
 
         options: {
             responsive: [
@@ -707,6 +521,19 @@ created() {
         this.images.push(this.property.images[property]["largefile"]);
     }
 
+     // Amenidades
+     this.property.amenities.interior.forEach( i => {
+      if ( i[Object.keys(i)] == 1 ) {
+        this.interiors.push(Object.keys(i).toString())
+      }
+    })
+
+    this.property.amenities.exterior.forEach( i => {
+      if ( i[Object.keys(i)] == 1 ) {
+        this.exteriors.push(Object.keys(i).toString())
+      }
+    })
+
 },
 mounted() {
     
@@ -751,6 +578,15 @@ components: { Gallery, VueHorizontalList },
 
 
 <style scoped>
+
+@media (max-width: 991px) { 
+  .container {
+    padding: 10px;
+    max-width: 95%;
+  }
+}
+
+
 h1 {
 font-size: 25px;
 font-weight: 500;
@@ -793,7 +629,7 @@ flex-direction: column;
 /* justify-content: space-between; */
 }
 
-div.gallery-content {
+div.galleryHorizonGalleryHoriHorizontal-content {
 display: flex;
 flex-direction: column;
 justify-content: center;
@@ -854,15 +690,10 @@ border-radius: 100%;
 
 
 
-.amenities ul {
-display: flex;
-list-style: none;
+.amenities span {
+  font-size: 20px;
+  color: #00569d;
 }
-
-.amenities li {
-flex: auto;
-}
-
 
 
 .listings_details_content p {
@@ -896,4 +727,18 @@ font-size: 35px;
   margin-bottom: 15px;
   z-index: 9 !important;
 }
+
+.protoImage {
+  width: 100% !important;
+}
+
+.protoCard p, .protoCard span,  .protoCard i{
+  font-size: 14px;
+}
+
+.protContainer {
+  border: 1px solid #e3e6e7;
+  padding: 10px 10px;
+}
+
 </style>

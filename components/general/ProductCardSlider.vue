@@ -1,5 +1,5 @@
 <template>
-        <NuxtLink :to="route" class="card">
+        <a :to="route" class="card" target="_blank">
             <div class="imageContent">
                 <img class="card-img-top" :src="item.image" alt="foto">
                 <span class="category">{{ item.category ? item.category : 'Bienes Raíces'  }}</span>
@@ -13,7 +13,7 @@
                 <p class="card-text"><small class="text-muted" style="font-size: 14px">{{ item.city }}, {{ item.state }}</small></p>
                 <h1 class="card-text">{{ item.productName ? item.productName : item.name}}</h1> 
             </div>
-        </NuxtLink> 
+        </a> 
 </template>
 
 <script>

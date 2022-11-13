@@ -3,15 +3,14 @@
 
         <SearchGeneral v-if="showSearchGeneral" />
         <template>
-            <!-- <Header /> -->
-            <Navbar />
+            <Navbar class="d-none d-md-block"/>
+            <NavbarMovil class="d-md-none"/>
             <Nuxt />
             <HeaderUrls :urls="urls.data"/>
             <FooterDelete /> 
         </template>
         <Cookies v-if="!cookiesAccepted"/>
 
-        
         <!-- <Adviser v-if="showIDI"/> -->
     </div>
 </template>

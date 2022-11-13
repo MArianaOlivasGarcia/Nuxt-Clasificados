@@ -404,6 +404,14 @@ export default {
 
 
 <style scoped>
+
+@media (max-width: 991px) { 
+  .container {
+    padding: 10px;
+    max-width: 95%;
+  }
+}
+
   h1 {
     font-size: 25px;
     font-weight: 500;
