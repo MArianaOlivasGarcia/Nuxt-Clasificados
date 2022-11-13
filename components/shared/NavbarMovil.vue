@@ -37,7 +37,8 @@
             class="navbar-toggler"
             type="button"
             @click="openMenu">
-            <span class="mr-3 oi oi-menu"></span>
+            <i v-if="showMenu" class="fa-solid fa-bars"></i>
+            <i v-else class=" fa-solid fa-x"></i>
           </button>
   
         </div>
