@@ -100,6 +100,13 @@
         </li>
 
 
+        <li class="mb-1">
+          <a href="https://clasificadoscontacto.com/blog" style="width: 100%;" class="nav-link d-inline-flex align-items-center rounded border-0 collapsed">
+            <span>Blog</span><i style="font-size: 14px;" class="fa-solid fa-chevron-right ml-auto"></i>
+          </a>
+        </li>
+
+
      
 
       </ul>

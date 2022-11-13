@@ -107,7 +107,7 @@
                             <NuxtLink to="/#contacto" class="link">Contacto</NuxtLink>
                         </li>
                         <li class="nav-item">
-                            <a href="/blog" class="link">Blog</a>
+                            <a href="https://clasificadoscontacto.com/blog" class="link">Blog</a>
                         </li>
                         <li class="nav-item" v-if="userLogged">
                         <a class="link icon-top" href="https://www.clasificadoscontacto.com/panel"><i class="fas fa-user-plus"></i>Mi cuenta</a>
