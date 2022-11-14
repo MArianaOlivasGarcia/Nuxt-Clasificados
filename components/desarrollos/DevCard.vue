@@ -1,7 +1,7 @@
 
 <template>
 
-    <div class="col-md-4">
+    <div class="col-md-4 mb-2">
 
         <a :href="route" class="card" target="_blank">
             <div class="imageContent">
