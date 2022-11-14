@@ -56,12 +56,14 @@
 
             <SectionLoader v-if="devs.length == 0"/>
             
-            <div v-else class="card-columns">
+            <div v-else class="row">
+
                     <DevCard 
                         v-for="dev in devs" 
                         :key="dev.developmentid"
                         :dev="dev"
-                    /> 
+                    />
+                    
             </div>
 
         </div>

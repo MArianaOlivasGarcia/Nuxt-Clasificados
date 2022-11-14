@@ -1,36 +1,40 @@
 
 <template>
 
-  <a :href="route" class="card" target="_blank">
-    <div class="imageContent">
-      <img v-if="dev.image" class="card-img-top" :src="dev.image" :alt="dev.name">
-      <img v-else class="card-img-top" src="@/static/images/property-placeholder.jpeg" :alt="dev.name">
-      
-    </div>
-    <div class="card-body">
-        <div>
-            <h6 class="card-title pricecard m-0">Desde $ {{ dev.precmin ? Number(dev.precmin).toLocaleString() : '-'  }} hasta {{ dev.precmax ? Number(dev.precmax).toLocaleString() : '-'  }}</h6>
-            <div class="postcard-bar"></div>
-            <p class="card-text"><small class="text-muted" style="font-size: 14px">{{ dev.state }}, {{ dev.city }}</small></p>
-            <h1 class="card-text">{{ dev.name }}</h1>
-            <!-- <p class="text-description">{{ dev.descriptionlong }}</p> -->
-            <p v-if="dev.descriptionlong" class="text-description">{{ dev.descriptionlong.length > 90 ? dev.descriptionlong.substring(0, 90) + '...' : dev.descriptionlong  }}</p>
-            <p class="text-description"></p>
-        </div>
-        <!-- <div class="text-center"> -->
-            <!-- <span v-if="property.bedrooms > 0"><i class="icon-big-bed-with-one-pillow pl-2 pr-1"></i>{{ property.bedrooms }}</span>
-            <span v-if="property.bathrooms > 0"><i class="icon-bath pl-2 pr-1"></i>{{ property.bathrooms }}</span>
-            <span v-if="property.m2c > 0"><i class="icon-ruler pl-2 pr-1"></i>{{ property.m2c }} m<sup>2</sup></span>
-            <span v-if="property.mlot > 0"><i class="icon-text  pl-2 pr-1"></i>{{ property.mlot }} m<sup>2</sup></span> -->
-        <!-- </div> -->
-    </div>
+    <div class="col-md-4">
 
-    <!-- <span class="operation">{{ property.operation }}</span> -->
-    <!-- <span class="fav">
-          <i class="fas fa-heart"></i>
-          <i class="far fa-heart"></i>
-    </span> -->
-  </a>
+        <a :href="route" class="card" target="_blank">
+            <div class="imageContent">
+            <img v-if="dev.image" class="card-img-top" :src="dev.image" :alt="dev.name">
+            <img v-else class="card-img-top" src="@/static/images/property-placeholder.jpeg" :alt="dev.name">
+            
+            </div>
+            <div class="card-body">
+                <div>
+                    <h6 class="card-title pricecard m-0">Desde $ {{ dev.precmin ? Number(dev.precmin).toLocaleString() : '-'  }} hasta {{ dev.precmax ? Number(dev.precmax).toLocaleString() : '-'  }}</h6>
+                    <div class="postcard-bar"></div>
+                    <p class="card-text"><small class="text-muted" style="font-size: 14px">{{ dev.state }}, {{ dev.city }}</small></p>
+                    <h1 class="card-text">{{ dev.name }}</h1>
+                    <!-- <p class="text-description">{{ dev.descriptionlong }}</p> -->
+                    <p v-if="dev.descriptionlong" class="text-description">{{ dev.descriptionlong.length > 90 ? dev.descriptionlong.substring(0, 90) + '...' : dev.descriptionlong  }}</p>
+                    <p class="text-description"></p>
+                </div>
+                <!-- <div class="text-center"> -->
+                    <!-- <span v-if="property.bedrooms > 0"><i class="icon-big-bed-with-one-pillow pl-2 pr-1"></i>{{ property.bedrooms }}</span>
+                    <span v-if="property.bathrooms > 0"><i class="icon-bath pl-2 pr-1"></i>{{ property.bathrooms }}</span>
+                    <span v-if="property.m2c > 0"><i class="icon-ruler pl-2 pr-1"></i>{{ property.m2c }} m<sup>2</sup></span>
+                    <span v-if="property.mlot > 0"><i class="icon-text  pl-2 pr-1"></i>{{ property.mlot }} m<sup>2</sup></span> -->
+                <!-- </div> -->
+            </div>
+
+            <!-- <span class="operation">{{ property.operation }}</span> -->
+            <!-- <span class="fav">
+                <i class="fas fa-heart"></i>
+                <i class="far fa-heart"></i>
+            </span> -->
+        </a>
+
+    </div>
 
 </template>
 
