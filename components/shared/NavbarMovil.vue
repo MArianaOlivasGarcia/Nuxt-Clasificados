@@ -45,6 +45,7 @@
 
       </nav>
     </div>
+    <div class="containerNavBack" @click="openMenu" v-if="showMenu"></div>
     <div class="containerNav" v-if="showMenu">
 
       <div class="mt-3 px-3"> 
@@ -251,14 +252,28 @@
   position: relative;
 }
 
-.containerNav {
-  background-color: #EBEBEB;
-  /* height: calc(100vh - 60px); */
+
+.containerNavBack {
+  background-color: rgba(0,0,0,0.7) !important;
   box-sizing: border-box;
   position: absolute;
   width: 100vw;
   height: 95vh;
   max-height: 95vh;
+  top: 59px;
+  background-color: #eaeaea;
+  z-index: 999;
+  transition: transform .2s ease,opacity .2s ease;
+}
+
+
+.containerNav {
+  background-color: #EBEBEB;
+  box-sizing: border-box;
+  position: absolute;
+  width: 100vw;
+  /* height: 95vh;
+  max-height: 95vh; */
   top: 59px;
   background-color: #eaeaea;
   z-index: 999;
