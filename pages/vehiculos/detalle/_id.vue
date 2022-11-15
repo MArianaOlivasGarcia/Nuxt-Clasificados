@@ -302,7 +302,7 @@
 import { required, email } from 'vuelidate/lib/validators' 
 
 export default {
-    async asyncData ({ params, store }) {
+    async asyncData ({ params, store, redirect }) {
 
       const rutaCortada = params.id.split('_')
       const id = rutaCortada[ rutaCortada.length - 1 ].split('.')[0]
@@ -322,6 +322,8 @@ export default {
         }
       } catch (error) {
         // Redirect to error page or 404 depending on server response
+      redirect('/not-found.html')
+
       }
     },
     head() {

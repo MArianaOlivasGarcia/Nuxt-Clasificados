@@ -407,7 +407,7 @@ import VueHorizontalList from 'vue-horizontal-list'
 
 export default {
 
-async asyncData({ params, store }) {
+async asyncData({ params, store, redirect}) {
     const rutaCortada = params.id.split("_");
     const id = rutaCortada[rutaCortada.length - 1].split(".")[0];
     
@@ -435,6 +435,8 @@ async asyncData({ params, store }) {
     }
     catch (error) {
         // Redirect to error page or 404 depending on server response
+      redirect('/not-found.html')
+
     }
 },
 head() {
