@@ -58,13 +58,13 @@
 
         <li class="mb-1">
           <a href="/" style="width: 100%;" class="nav-link d-inline-flex align-items-center rounded border-0 collapsed">
-            <span>Inicio</span><i style="font-size: 14px;" class="fa-solid fa-chevron-right ml-auto"></i>
+            <i style="font-size: 14px;" class="fa-solid fa-house mr-2"></i><span>Inicio</span>
           </a>
         </li>
 
         <li class="mb-1">
             <a style="cursor: pointer; width: 100%;" class="nav-link d-inline-flex align-items-center rounded border-0 collapsed" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
-              <span>Categorías</span><i style="font-size: 14px;" class="fa-solid fa-chevron-down ml-auto"></i>
+              <div><i style="font-size: 14px;" class="fa-regular fa-square-caret-down mr-2"></i><span>Categorías</span></div><i style="font-size: 14px;" class="fa-solid fa-chevron-down ml-auto"></i>
             </a>
   
             <div class="collapse" id="collapseExample">
@@ -73,19 +73,19 @@
 
                 <li class="mb-1">
                   <a href="/bienesraices" style="width: 100%;" class="nav-link d-inline-flex align-items-center rounded border-0 collapsed">
-                    <span>Inmuebles</span><i style="font-size: 14px;" class="fa-solid fa-chevron-right ml-auto"></i>
+                    <i style="font-size: 14px;" class="fa-solid  fa-building mr-2"></i><span>Inmuebles</span>
                   </a>
                 </li>
 
                 <li class="mb-1">
                   <a href="/desarrollos" style="width: 100%;" class="nav-link d-inline-flex align-items-center rounded border-0 collapsed">
-                    <span>Desarrollos</span><i style="font-size: 14px;" class="fa-solid fa-chevron-right ml-auto"></i>
+                    <i style="font-size: 14px;"  class="fa-solid fa-city mr-2"></i><span>Desarrollos</span>
                   </a>
                 </li>
 
                 <li class="mb-1">
                   <a href="/vehiculos" style="width: 100%;" class="nav-link d-inline-flex align-items-center rounded border-0 collapsed">
-                    <span>Vehículos</span><i style="font-size: 14px;" class="fa-solid fa-chevron-right ml-auto"></i>
+                    <i  style="font-size: 14px;" class="fa-solid fa-car-side mr-2"></i><span>Vehículos</span>
                   </a>
                 </li>
              
@@ -96,14 +96,14 @@
 
         <li class="mb-1">
           <a href="/registro.html" style="width: 100%;" class="nav-link d-inline-flex align-items-center rounded border-0 collapsed">
-            <span>Registrare</span><i style="font-size: 14px;" class="fa-solid fa-chevron-right ml-auto"></i>
+            <i style="font-size: 14px;" class="fa-solid fa-user-plus mr-2"></i><span>Registrare</span>
           </a>
         </li>
 
 
         <li class="mb-1">
           <a href="https://clasificadoscontacto.com/blog" style="width: 100%;" class="nav-link d-inline-flex align-items-center rounded border-0 collapsed">
-            <span>Blog</span><i style="font-size: 14px;" class="fa-solid fa-chevron-right ml-auto"></i>
+            <i style="font-size: 14px;" class="fa-solid  fa-blog mr-2"></i><span>Blog</span>
           </a>
         </li>
 
@@ -129,7 +129,8 @@
         showMenu: false
       }
     },
-    mounted() {
+    destroyed() {
+      window.document.getElementsByTagName('body')[0].style.overflowY = 'scroll'
     },  
     computed: {
       ...mapGetters({

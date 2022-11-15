@@ -3,8 +3,10 @@
 
         <SearchGeneral v-if="showSearchGeneral" />
         <template>
-            <Navbar class="d-none d-md-block"/>
-            <NavbarMovil class="d-md-none"/>
+            <Navbar v-if="this.$mq != 'sm'" />
+            <!-- class="d-none d-md-block" -->
+            <NavbarMovil v-else/>
+            <!--  class="d-md-none" -->
             <Nuxt />
             <!-- <HeaderUrls :urls="urls.data"/> -->
             <FooterDelete /> 
