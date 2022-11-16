@@ -96,7 +96,7 @@
 
         <li class="mb-1">
           <a href="/registro.html" style="width: 100%;" class="nav-link d-inline-flex align-items-center rounded border-0 collapsed">
-            <i style="font-size: 14px;" class="fa-solid fa-user-plus mr-2"></i><span>Registrare</span>
+            <i style="font-size: 14px;" class="fa-solid fa-user-plus mr-2"></i><span>Registrate</span>
           </a>
         </li>
 
