@@ -1,5 +1,5 @@
 <template>
-        <a :to="route" class="card" target="_blank">
+        <a :href="route" class="card" target="_blank">
             <div class="imageContent">
                 <img class="card-img-top" :src="item.image" alt="foto">
                 <span class="category">{{ item.category ? item.category : 'Bienes Raíces'  }}</span>
